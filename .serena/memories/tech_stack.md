@@ -1,0 +1,1 @@
+Python project metadata requires Python >=3.11. No dependencies, package manager, framework, or build tooling are configured in the initial scaffold.

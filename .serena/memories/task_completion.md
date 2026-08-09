@@ -1,0 +1,1 @@
+For the initial scaffold, run `git diff --check` and inspect `git status --short --branch`. No test, formatter, linter, dependency install, or build command is configured.

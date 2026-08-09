@@ -1,0 +1,1853 @@
+{
+  "allowed_verdicts": [
+    "correct",
+    "questionable",
+    "incorrect"
+  ],
+  "examples": [
+    {
+      "alignment_id": "a-000001",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.267262,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000001"
+      ],
+      "source_text": "People are funny.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000001"
+      ],
+      "target_text": "Con người thì hài hước."
+    },
+    {
+      "alignment_id": "a-000002",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.129315,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning"
+      ],
+      "source_segment_ids": [
+        "en-000002"
+      ],
+      "source_text": "We're constantly trying to understand and interpret the world around us.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000002"
+      ],
+      "target_text": "Chúng ta luôn cố hiểu và giải thích thế giới xung quanh chúng ta."
+    },
+    {
+      "alignment_id": "a-000003",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.047874,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning"
+      ],
+      "source_segment_ids": [
+        "en-000003"
+      ],
+      "source_text": "I live in a house with two black cats, and let me tell you, every time I see a black, bunched up sweater out of the corner of my eye, I think it's a cat.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000003"
+      ],
+      "target_text": "Tôi sống cùng với hai chú mèo đen, và để tôi nói với bạn điều này, mỗi lần tôi thấy cái áo len màu đen, chụm thành nùi qua khóe mắt, tôi nghĩ đó là con mèo."
+    },
+    {
+      "alignment_id": "a-000004",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.031014,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning"
+      ],
+      "source_segment_ids": [
+        "en-000004"
+      ],
+      "source_text": "It's not just the things we see.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000004"
+      ],
+      "target_text": "Không chỉ là những thứ ta thấy."
+    },
+    {
+      "alignment_id": "a-000015",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.272894,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1"
+      ],
+      "source_segment_ids": [
+        "en-000015"
+      ],
+      "source_text": "So he communicated his answers by tapping his hoof.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000015"
+      ],
+      "target_text": "Vậy nên chú phản hồi bằng cách dậm chân."
+    },
+    {
+      "alignment_id": "a-000019",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.513577,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "highest_cost",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000019"
+      ],
+      "source_text": "Or would we?",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000019"
+      ],
+      "target_text": "Hoặc chúng ta sẽ có ?"
+    },
+    {
+      "alignment_id": "a-000021",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.323649,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1"
+      ],
+      "source_segment_ids": [
+        "en-000021"
+      ],
+      "source_text": "There have been multiple examples of people being completely convinced that AI understands them.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000021"
+      ],
+      "target_text": "Có rất nhiều ví dụ về nhiều người hoàn toàn bị thuyết phục rằng AI hiểu họ."
+    },
+    {
+      "alignment_id": "a-000033",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.351819,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000033"
+      ],
+      "source_text": "They write the response down on a piece of paper and then send it back out through the door.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000033"
+      ],
+      "target_text": "Họ sẽ viết câu phản hồi vào mảnh giấy đó và gửi lại nó qua khe cửa."
+    },
+    {
+      "alignment_id": "a-000058",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.303293,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1"
+      ],
+      "source_segment_ids": [
+        "en-000058"
+      ],
+      "source_text": "Is it an imposter or not?",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000058"
+      ],
+      "target_text": "Có phải là kẻ mạo danh hay không?"
+    },
+    {
+      "alignment_id": "a-000062",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.017893,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000062"
+      ],
+      "source_text": "Using something like fMRI or EEG, we can take what are like little snapshots of the brain while it’s reading.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000062"
+      ],
+      "target_text": "Sử dụng một cái gì đó như fMRI hoặc EEG, ta có thể chụp được đại loại như ảnh chụp nhanh của não khi nó đang đọc."
+    },
+    {
+      "alignment_id": "a-000063",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.056566,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000063"
+      ],
+      "source_text": "So have people read words or stories and then take pictures of their brain.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000063"
+      ],
+      "target_text": "Vì vậy, hãy nói mọi người đọc các từ hoặc câu chuyện và sau đó chụp ảnh não của họ."
+    },
+    {
+      "alignment_id": "a-000064",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.220591,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000064"
+      ],
+      "source_text": "And those brain images are like fuzzy, out-of-focus pictures of the scratch pad of the brain.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000064"
+      ],
+      "target_text": "Và những hình chụp não đó giống ảnh mờ, ảnh mất nét của bộ nhớ đệm trong não."
+    },
+    {
+      "alignment_id": "a-000065",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.104695,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000065"
+      ],
+      "source_text": "They tell us a little bit about how the brain is processing and representing information while you read.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000065"
+      ],
+      "target_text": "Chúng cho chúng ta biết một chút về cách bộ não đang xử lý và thể hiện thông tin trong khi bạn đọc."
+    },
+    {
+      "alignment_id": "a-000066",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.050665,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000066"
+      ],
+      "source_text": "So here are three brain images taken while a person read the word \"apartment,\" \"house\" and \"celery.\"",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000066"
+      ],
+      "target_text": "Vì vậy, đây là ba hình chụp não được chụp trong khi một người đọc từ “căn hộ” “nhà” và “rau cần tây.”"
+    },
+    {
+      "alignment_id": "a-000074",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.328768,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1"
+      ],
+      "source_segment_ids": [
+        "en-000074"
+      ],
+      "source_text": "So inside a lot of AIs is a neural network.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000074"
+      ],
+      "target_text": "Vì vậy, bên trong rất nhiều AI là một mạng lưới thần kinh."
+    },
+    {
+      "alignment_id": "a-000082",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.361336,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "highest_cost",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000082"
+      ],
+      "source_text": "OK, great.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000082"
+      ],
+      "target_text": "OK, tuyệt vời."
+    },
+    {
+      "alignment_id": "a-000085",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.608744,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "highest_cost",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000085"
+      ],
+      "source_text": "How can we test that?",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000085"
+      ],
+      "target_text": "Vậy làm cách nào để chúng ta kiểm tra?"
+    },
+    {
+      "alignment_id": "a-000090",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.291146,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1"
+      ],
+      "source_segment_ids": [
+        "en-000090"
+      ],
+      "source_text": "So let's train a new model.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000090"
+      ],
+      "target_text": "Vì vậy, hãy đào tạo một mô hình mới."
+    },
+    {
+      "alignment_id": "a-000105",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.342531,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "highest_cost",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000105"
+      ],
+      "source_text": "Well, truthfully, no.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000105"
+      ],
+      "target_text": "Chà, thành thật mà nói, không."
+    },
+    {
+      "alignment_id": "a-000108",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.812605,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000108",
+        "en-000109"
+      ],
+      "source_text": "Neural networks also don't exist in the world. A neural network has never opened a door or seen a sunset, heard a baby cry.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000108"
+      ],
+      "target_text": "Mạng lưới thần kinh cũng không tồn tại trên thế giới Mạng lưới thần kinh chưa bao giờ mở cửa hay nhìn thấy hoàng hôn, nghe tiếng em bé khóc."
+    },
+    {
+      "alignment_id": "a-000120",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.030519,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "annotation"
+      ],
+      "source_segment_ids": [
+        "en-000121"
+      ],
+      "source_text": "(Laughter) But one thing will remain true.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000120"
+      ],
+      "target_text": "(Tiếng cười) Nhưng có một điều sẽ luôn đúng."
+    },
+    {
+      "alignment_id": "a-000123",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.01481,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "end"
+      ],
+      "source_segment_ids": [
+        "en-000124"
+      ],
+      "source_text": "We need to get inside of the metaphorical room of AI in order to see what's happening.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000123"
+      ],
+      "target_text": "Chúng ta cần vào được bên trong trường ẩn dụ của AI để nhìn rõ chuyện gì đang xảy ra."
+    },
+    {
+      "alignment_id": "a-000124",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.072046,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "end",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000125"
+      ],
+      "source_text": "It's what's inside the counts.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000124"
+      ],
+      "target_text": "Nó là thứ ở bên trong các bộ đếm."
+    },
+    {
+      "alignment_id": "a-000125",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.318452,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "end",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000126"
+      ],
+      "source_text": "Thank you.",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000125"
+      ],
+      "target_text": "Cảm ơn các bạn."
+    },
+    {
+      "alignment_id": "a-000126",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.280469,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "annotation",
+        "end",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000127"
+      ],
+      "source_text": "(Applause)",
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "target_segment_ids": [
+        "vi-000126"
+      ],
+      "target_text": "(Vỗ tay)"
+    },
+    {
+      "alignment_id": "a-000001",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.71357,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning",
+        "highest_cost",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000001"
+      ],
+      "source_text": "Hi, I'm Jeff.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000001"
+      ],
+      "target_text": "Xin chào, tôi là Jeff."
+    },
+    {
+      "alignment_id": "a-000002",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.366438,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning"
+      ],
+      "source_segment_ids": [
+        "en-000002"
+      ],
+      "source_text": "I lead AI Research and Health at Google.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000002"
+      ],
+      "target_text": "Tôi đứng đầu mảng Nghiên cứu AI và Sức khỏe tại Google."
+    },
+    {
+      "alignment_id": "a-000003",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.12275,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning"
+      ],
+      "source_segment_ids": [
+        "en-000003"
+      ],
+      "source_text": "I joined Google more than 20 years ago, when we were all wedged into a tiny office space, above what's now a T-Mobile store in downtown Palo Alto.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000003"
+      ],
+      "target_text": "Tôi gia nhập Google hơn 20 năm trước, khi mà chúng tôi còn chen chúc trong một văn phòng chật hẹp, tầng trên cửa hàng T-Mobile bây giờ trên phố Palo Alto."
+    },
+    {
+      "alignment_id": "a-000004",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.030781,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning"
+      ],
+      "source_segment_ids": [
+        "en-000004"
+      ],
+      "source_text": "I've seen a lot of computing transformations in that time, and in the last decade, we've seen AI be able to do tremendous things.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000004"
+      ],
+      "target_text": "Tôi đã thấy rất nhiều sự chuyển đổi điện toán thời kỳ đó, và trong thập kỷ vừa qua, tôi đã thấy AI có thể làm những điều to lớn."
+    },
+    {
+      "alignment_id": "a-000010",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.699397,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1"
+      ],
+      "source_segment_ids": [
+        "en-000010",
+        "en-000011"
+      ],
+      "source_text": "If you think about computer vision alone, just in the last 10 years, computers have effectively developed the ability to see; 10 years ago, they couldn't see, now they can see. You can imagine this has had a transformative effect on what we can do with computers.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000010"
+      ],
+      "target_text": "Chỉ cần nghĩ về thị giác máy tính, thì chỉ trong 10 năm qua, máy tính đã phát triển khả năng thị giác rất hiệu quả; 10 năm trước chúng không thể nhìn giờ chúng đã có thể Bạn có thể nghĩ điều này đã có một hiệu ứng biến đổi đối với những gì ta có thể làm với máy tính."
+    },
+    {
+      "alignment_id": "a-000016",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.334608,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1"
+      ],
+      "source_segment_ids": [
+        "en-000017"
+      ],
+      "source_text": "But they're not a new idea.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000016"
+      ],
+      "target_text": "Nhưng không phải một ý tưởng mới."
+    },
+    {
+      "alignment_id": "a-000036",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.104382,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "annotation"
+      ],
+      "source_segment_ids": [
+        "en-000037"
+      ],
+      "source_text": "(Laughter) I felt maybe we just needed more compute power.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000036"
+      ],
+      "target_text": "(Tiếng cười) Tôi nghĩ ta chỉ cần nhiều năng lực điện toán hơn."
+    },
+    {
+      "alignment_id": "a-000049",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.064383,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "annotation"
+      ],
+      "source_segment_ids": [
+        "en-000050"
+      ],
+      "source_text": "(Laughter) But what made that so remarkable is that the system was never told what a cat was.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000049"
+      ],
+      "target_text": "(Tiếng cười) Nhưng điều đáng chú ý là hệ thống đó chưa bao giờ được dạy con mèo là gì."
+    },
+    {
+      "alignment_id": "a-000061",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.340429,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1"
+      ],
+      "source_segment_ids": [
+        "en-000062"
+      ],
+      "source_text": "\"TPU\" stands for Tensor Processing Unit.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000061"
+      ],
+      "target_text": "TPU nghĩa là Bộ Xử Lý Ten-xơ."
+    },
+    {
+      "alignment_id": "a-000065",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.909819,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000066",
+        "en-000067"
+      ],
+      "source_text": "The first is that most neural networks today are trained to do one thing, and one thing only. You train it for a particular task that you might care deeply about, but it's a pretty heavyweight activity.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000065"
+      ],
+      "target_text": "Đầu tiên là hầu hết mạng nơ-ron ngày nay được dạy để làm một tác vụ duy nhất Bạn dạy nó 1 tác vụ bạn rất quan tâm, nhưng đó lại là công việc khá nặng nhọc."
+    },
+    {
+      "alignment_id": "a-000075",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.043901,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000077"
+      ],
+      "source_text": "If you train a neural network from scratch, it's effectively like forgetting your entire education every time you try to do something new.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000075"
+      ],
+      "target_text": "Nếu bạn huấn luyện một mạng nơ-ron từ đầu, nó giống như việc quên đi tất cả những điều bạn được dạy mỗi khi bạn cố học một thứ gì mới."
+    },
+    {
+      "alignment_id": "a-000076",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.086785,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000078"
+      ],
+      "source_text": "That’s crazy, right?",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000076"
+      ],
+      "target_text": "Điên dồ, phải không?"
+    },
+    {
+      "alignment_id": "a-000077",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.08471,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000079"
+      ],
+      "source_text": "So instead, I think we can and should be training multitask models that can do thousands or millions of different tasks.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000077"
+      ],
+      "target_text": "Thay vào đó, tôi nghĩ chúng ta có thể và nên rèn luyện các mô hình có thể làm hàng ngàn, triệu tác vụ khác nhau."
+    },
+    {
+      "alignment_id": "a-000078",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.117295,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000080"
+      ],
+      "source_text": "Each part of that model would specialize in different kinds of things.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000078"
+      ],
+      "target_text": "Mỗi phần của mô hình đó sẽ chuyên môn hóa những thứ khác nhau."
+    },
+    {
+      "alignment_id": "a-000079",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.155332,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000081"
+      ],
+      "source_text": "And then, if we have a model that can do a thousand things, and the thousand and first thing comes along, we can leverage the expertise we already have in the related kinds of things so that we can more quickly be able to do this new task, just like you, if you're confronted with some new problem, you quickly identify the 17 things you already know that are going to be helpful in solving that problem.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000079"
+      ],
+      "target_text": "Và nếu chúng ta có một mô hình có thể làm hàng ngàn tác vụ, và đến tác vụ thứ 1001, ta có thể tận dụng chuyên môn chúng ta đã có với những kiến thức liên quan để chúng ta có thể nhanh chóng làm được tác vụ mới này, giống như bạn, nếu bạn đối diện với vấn đề mới, bạn nhanh chóng xác định 17 điều bạn đã biết mà sẽ giúp giải quyết vấn đề đó."
+    },
+    {
+      "alignment_id": "a-000090",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.730917,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1",
+        "annotation",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000092",
+        "en-000093"
+      ],
+      "source_text": "(Laughter) AI models can work the same way. Instead of a dense model, we can have one that is sparsely activated.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000090"
+      ],
+      "target_text": "(Tiếng cười) Mô hình AI có thể hoạt động tương tự Thay cho mô hình dày đặc, ta có thể tạo mô hình kích hoạt từng phần."
+    },
+    {
+      "alignment_id": "a-000099",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.676375,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1"
+      ],
+      "source_segment_ids": [
+        "en-000102",
+        "en-000103"
+      ],
+      "source_text": "And we're pretty excited about this, we think this is going to be a step forward in how we build AI systems. But I also wanted to touch on responsible AI.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000099"
+      ],
+      "target_text": "Và chúng tôi rất hào hứng với nó, chúng tôi nghĩ đây sẽ là một bước tiến trong cách xây hệ thống AI Nhưng tôi cũng muốn đề cập đến AI có trách nhiệm."
+    },
+    {
+      "alignment_id": "a-000109",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.563518,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1"
+      ],
+      "source_segment_ids": [
+        "en-000113"
+      ],
+      "source_text": "We continue to update these as we learn more.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000109"
+      ],
+      "target_text": "Chúng tôi tiếp tục cập nhật bộ quy tắc đó khi chúng tôi hiểu nhiều điều hơn."
+    },
+    {
+      "alignment_id": "a-000119",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.1063,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "annotation"
+      ],
+      "source_segment_ids": [
+        "en-000123"
+      ],
+      "source_text": "(Applause) Chris Anderson: Thank you so much.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000119"
+      ],
+      "target_text": "(Tiếng vỗ tay) Chris Anderson: Cảm ơn rất nhiều."
+    },
+    {
+      "alignment_id": "a-000121",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.424288,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000125"
+      ],
+      "source_text": "This is what I heard.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000121"
+      ],
+      "target_text": "Đây là những gì tôi nghe được."
+    },
+    {
+      "alignment_id": "a-000133",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.698437,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1"
+      ],
+      "source_segment_ids": [
+        "en-000137",
+        "en-000138"
+      ],
+      "source_text": "JD: I think it depends on how you apply these systems. It's very clear that AI can be a powerful system for good, or if you apply it in ways that are not so great, it can be a negative consequence.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000133"
+      ],
+      "target_text": "JD: Tôi nghĩ nó phụ thuộc vào cách bạn áp dụng hệ thống Rất rõ ràng là AI có thể là một hệ thống mạnh mẽ cho mục đích tốt., hay nếu bạn áp dụng nó theo cách không tốt, thì có thể gây ra hậu quả xấu."
+    },
+    {
+      "alignment_id": "a-000150",
+      "current_alignment_type": "1:2",
+      "current_cost": 0.770077,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:2",
+        "end",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000155"
+      ],
+      "source_text": "CA: It feels like we're at a time when people are concerned about the power of the big tech companies, and it's almost, if there was ever a moment to really show the world that this is being done to make a better future, that is actually key to Google's future, as well as all of ours.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000150",
+        "vi-000151"
+      ],
+      "target_text": "CA: Tôi cảm thấy chúng ta đang ở thời đại mà con người lo lắng về sức mạnh của các công ty công nghệ lớn, và gần như luôn có một khoảnh khắc để cho thế giới thấy rằng điều này được thực hiện để khiến tương lai tốt đẹp hơn. điều đó chính là chìa khóa của tương lai của Google, cũng như là của chúng ta."
+    },
+    {
+      "alignment_id": "a-000151",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.768514,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1",
+        "end",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000156",
+        "en-000157"
+      ],
+      "source_text": "JD: Indeed. CA: It's very good to hear you come and say that, Jeff.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000152"
+      ],
+      "target_text": "JD: Đúng vậy CA: Thật tuyệt khi anh đã đến đây và diễn thuyết, Jeff."
+    },
+    {
+      "alignment_id": "a-000152",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.015671,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "end"
+      ],
+      "source_segment_ids": [
+        "en-000158"
+      ],
+      "source_text": "Thank you so much for coming here to TED.",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000153"
+      ],
+      "target_text": "Cảm ơn anh rất nhiều đã đến tham dự TED."
+    },
+    {
+      "alignment_id": "a-000153",
+      "current_alignment_type": "2:1",
+      "current_cost": 1.287263,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1",
+        "end",
+        "highest_cost",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000159",
+        "en-000160"
+      ],
+      "source_text": "JD: Thank you. (Applause)",
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "target_segment_ids": [
+        "vi-000154"
+      ],
+      "target_text": "JD: Xin cảm ơn (Tiếng vỗ tay)"
+    },
+    {
+      "alignment_id": "a-000001",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.043555,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning"
+      ],
+      "source_segment_ids": [
+        "en-000001"
+      ],
+      "source_text": "So I'm excited to share a few spicy thoughts on artificial intelligence.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000001"
+      ],
+      "target_text": "Tôi đang rất phấn khích để chia sẻ một vài suy nghĩ thú vị về trí tuệ nhân tạo."
+    },
+    {
+      "alignment_id": "a-000002",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.087786,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning"
+      ],
+      "source_segment_ids": [
+        "en-000002"
+      ],
+      "source_text": "But first, let's get philosophical by starting with this quote by Voltaire, an 18th century Enlightenment philosopher, who said, \"Common sense is not so common.\"",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000002"
+      ],
+      "target_text": "Nhưng trước tiên, cùng học triết với tôi nhe bắt đầu với câu nói của Voltaire, một triết gia Khai sáng của thế kỷ 18, ông nói, “Hiểu biết thông thường không hẳn là thứ thông dụng.”"
+    },
+    {
+      "alignment_id": "a-000003",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.058185,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning"
+      ],
+      "source_segment_ids": [
+        "en-000003"
+      ],
+      "source_text": "Turns out this quote couldn't be more relevant to artificial intelligence today.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000003"
+      ],
+      "target_text": "Để rồi giờ trích dẫn này bỗng hợp lí đến kinh ngạc khi ta nói về trí tuệ nhân tạo ngày nay."
+    },
+    {
+      "alignment_id": "a-000004",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.1105,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "beginning"
+      ],
+      "source_segment_ids": [
+        "en-000004"
+      ],
+      "source_text": "Despite that, AI is an undeniably powerful tool, beating the world-class \"Go\" champion, acing college admission tests and even passing the bar exam.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000004"
+      ],
+      "target_text": "Dù vậy, không thể phủ nhận AI quả là một thứ công cụ tối tân, đã đánh bại nhà vô địch thế giới “Go” , tham gia kỳ thi tuyển sinh đại học và thậm chí vượt qua cả kì thi luật “Bar”."
+    },
+    {
+      "alignment_id": "a-000016",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.801825,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000016",
+        "en-000017"
+      ],
+      "source_text": "So we already see the concentration of power. But what's worse for AI safety, we are now at the mercy of those few tech companies because researchers in the larger community do not have the means to truly inspect and dissect these models.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000016"
+      ],
+      "target_text": "Nên là ta thấy đó, quả là một sự tập trung quyền lực không hề nhẹ Nhưng điều tệ hơn về tính an toàn của AI là, chúng ta bây giờ đang phụ thuộc vào số ít các công ty công nghệ do các nhà nghiên cứu tại các cộng đồng lớn hơn không đủ nguồn lực để quan sát và tháo lắp những mô hình này."
+    },
+    {
+      "alignment_id": "a-000025",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.685213,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1"
+      ],
+      "source_segment_ids": [
+        "en-000026",
+        "en-000027"
+      ],
+      "source_text": "And we need to make AI safer by teaching human norms and values. Perhaps we can draw an analogy from \"David and Goliath,\" here, Goliath being the extreme-scale language models, and seek inspiration from an old-time classic, \"The Art of War,\" which tells us, in my interpretation, know your enemy, choose your battles, and innovate your weapons.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000025"
+      ],
+      "target_text": "Ta cần làm AI an toàn hơn, bằng cách dạy chúng các chuẩn mực và giá trị con người Có lẽ ta nên lấy câu chuyện “David và gã khổng lồ Goliath” làm ví dụ, ở đó, Goliath chính là những mô hình ngôn ngữ khổng lồ, và lấy cảm hứng từ cuốn sách kinh điển “Binh pháp Tôn Tử”, trong đó có nói, theo tôi nhớ thôi nhé, Biết mặt kẻ thù, chọn lựa trận chiến, và cải tiến vũ khí."
+    },
+    {
+      "alignment_id": "a-000026",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.74431,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1"
+      ],
+      "source_segment_ids": [
+        "en-000028",
+        "en-000029"
+      ],
+      "source_text": "Let's start with the first, know your enemy, which means we need to evaluate AI with scrutiny. AI is passing the bar exam.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000026"
+      ],
+      "target_text": "Bắt đầu với câu đầu tiên, biết mặt kẻ thù điều đó có nghĩa là là ta cần phải đánh giá AI một cách kĩ càng AI vừa đỗ kì thi Bar rồi đấy."
+    },
+    {
+      "alignment_id": "a-000027",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.694235,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1"
+      ],
+      "source_segment_ids": [
+        "en-000030",
+        "en-000031"
+      ],
+      "source_text": "Does that mean that AI is robust at common sense? You might assume so, but you never know.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000027"
+      ],
+      "target_text": "Vậy điều đó có nghĩa là AI có trực giác đúng không? cứ cho là vậy đi, nhưng đố ai mà biết được."
+    },
+    {
+      "alignment_id": "a-000030",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.849199,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000034",
+        "en-000035"
+      ],
+      "source_text": "GPT-4, the newest, greatest AI system says 30 hours. Not good.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000030"
+      ],
+      "target_text": "GPT-4, hệ thống AI tân tiến nhất cho kết quả là 30 giờ thấy chưa đủ tốt hả."
+    },
+    {
+      "alignment_id": "a-000033",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.670325,
+      "review": {
+        "note": "Source en-000038 ('How do I do it?') is not represented in vi-000033; vi-000033 corresponds to en-000039 ('Just use the six liter jug, right?').",
+        "preferred_source_ids": [
+          "en-000039"
+        ],
+        "preferred_target_ids": [
+          "vi-000033"
+        ],
+        "verdict": "incorrect"
+      },
+      "selection_reasons": [
+        "2:1"
+      ],
+      "source_segment_ids": [
+        "en-000038",
+        "en-000039"
+      ],
+      "source_text": "How do I do it? Just use the six liter jug, right?",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000033"
+      ],
+      "target_text": "Chỉ cần sử dụng bình sáu lít thôi, đúng không?"
+    },
+    {
+      "alignment_id": "a-000035",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.777442,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1",
+        "annotation",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000041",
+        "en-000042"
+      ],
+      "source_text": "(Laughter) Step one, fill the six-liter jug, step two, pour the water from six to 12-liter jug, step three, fill the six-liter jug again, step four, very carefully, pour the water from six to 12-liter jug. And finally you have six liters of water in the six-liter jug that should be empty by now.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000035"
+      ],
+      "target_text": "(Tiếng cười) Bước một, đổ đầy bình sáu lít, bước hai, đổ nước từ bình sáu vào bình 12 lít bước ba, đổ đầy lại bình sáu lít, bước bốn, cẩn thận đổ nước từ bình 6 vào lại bình 12 lít Và cuối cùng bạn có sáu lít nước trong bình sáu lít mà đáng ra giờ nó đã chả còn 1 giọt."
+    },
+    {
+      "alignment_id": "a-000040",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.694279,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1"
+      ],
+      "source_segment_ids": [
+        "en-000047",
+        "en-000048"
+      ],
+      "source_text": "AI today is unbelievably intelligent and then shockingly stupid. (Laughter) It is an unavoidable side effect of teaching AI through brute-force scale.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000040"
+      ],
+      "target_text": "AI ngày nay thông minh đến kinh ngạc, nhưng cũng ngớ ngẩn đến bất ngờ (Tiếng cười) Đó là tác dụng phụ không thể tránh khỏi của việc dạy dỗ AI bằng vũ lực."
+    },
+    {
+      "alignment_id": "a-000047",
+      "current_alignment_type": "3:1",
+      "current_cost": 1.591813,
+      "review": {
+        "note": "vi-000047 covers the first two source segments but omits en-000057 ('common sense is among the top priorities').",
+        "preferred_source_ids": [
+          "en-000055",
+          "en-000056"
+        ],
+        "preferred_target_ids": [
+          "vi-000047"
+        ],
+        "verdict": "incorrect"
+      },
+      "selection_reasons": [
+        "3:1",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000055",
+        "en-000056",
+        "en-000057"
+      ],
+      "source_text": "So this observation leads us to the next wisdom, choose your battles. So what fundamental questions should we ask right now and tackle today in order to overcome this status quo with extreme-scale AI? I'll say common sense is among the top priorities.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000047"
+      ],
+      "target_text": "Quan sát này cũng dẫn ta đến yếu tố tiếp theo, chọn lựa trận chiến Vậy những câu hỏi cơ bản mà ta cần hỏi bây giờ và giải quyết ngay hôm nay nhằm giải quyết hiện trạng của AI quy mô lớn này là gì?"
+    },
+    {
+      "alignment_id": "a-000049",
+      "current_alignment_type": "3:1",
+      "current_cost": 1.345803,
+      "review": {
+        "note": "Neighboring evidence establishes a 4:1 boundary: vi-000048 translates en-000057 (common sense is a top priority), while vi-000049 begins with en-000058 (common sense has been a long-standing AI challenge) and continues through en-000059..en-000061 (the dark-matter analogy).",
+        "preferred_source_ids": [
+          "en-000058",
+          "en-000059",
+          "en-000060",
+          "en-000061"
+        ],
+        "preferred_target_ids": [
+          "vi-000049"
+        ],
+        "verdict": "incorrect"
+      },
+      "selection_reasons": [
+        "3:1",
+        "highest_cost"
+      ],
+      "source_segment_ids": [
+        "en-000059",
+        "en-000060",
+        "en-000061"
+      ],
+      "source_text": "To explain why, let me draw an analogy to dark matter. So only five percent of the universe is normal matter that you can see and interact with, and the remaining 95 percent is dark matter and dark energy. Dark matter is completely invisible, but scientists speculate that it's there because it influences the visible world, even including the trajectory of light.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000049"
+      ],
+      "target_text": "Trực giác là một thách thức sừng sững về AI Để giải thích, tôi sẽ thử lấy vật chất tối làm ví dụ Chỉ có 5% của vũ trụ là vật chất thông thường mà bạn có thể thấy và tương tác, còn 95% còn lại là vật chất tối và năng lượng tối Vật chất tối hoàn toàn vô hình, nhưng các nhà khoa học cho rằng nó tồn tại để tạo ảnh hưởng đến thế giới hữu hình, bao gồm cả quỹ đạo ánh sáng."
+    },
+    {
+      "alignment_id": "a-000057",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.139614,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000069"
+      ],
+      "source_text": "However, the AI field for decades has considered common sense as a nearly impossible challenge.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000057"
+      ],
+      "target_text": "Dẫu vậy, mảng AI trong suốt thập kỉ qua đã coi trực giác như một điều gần như không thể."
+    },
+    {
+      "alignment_id": "a-000058",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.006187,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000070"
+      ],
+      "source_text": "So much so that when my students and colleagues and I started working on it several years ago, we were very much discouraged.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000058"
+      ],
+      "target_text": "Tuyệt vọng đến mức khi các sinh viên, đồng nghiệp và cả tôi bắt đầu làm về vấn đề này cách đây vài năm, chúng tôi đã từng rất nản."
+    },
+    {
+      "alignment_id": "a-000059",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.744013,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000071",
+        "en-000072"
+      ],
+      "source_text": "We’ve been told that it’s a research topic of ’70s and ’80s; shouldn’t work on it because it will never work; in fact, don't even say the word to be taken seriously. Now fast forward to this year, I’m hearing: “Don’t work on it because ChatGPT has almost solved it.”",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000059"
+      ],
+      "target_text": "Chúng tôi biết là chủ đề này đã từng được nghiên cứu vào những năm 70 80; không nên nghiên cứu vì nó không thể thành công đâu; trên thực tế, nghiên cứu này còn chả được đầu tư nghiêm túc Rồi, đi nhanh tới năm nay, Tôi nghe là: “Đừng làm việc nữa vì ChatGPT gần như làm được hết rồi.”"
+    },
+    {
+      "alignment_id": "a-000060",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.082639,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000073"
+      ],
+      "source_text": "And: “Just scale things up and magic will arise, and nothing else matters.”",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000060"
+      ],
+      "target_text": "Rồi nào là “Chỉ cần mở rộng thôi và phép màu sẽ xuất hiện, không còn vấn đề gì nữa.”"
+    },
+    {
+      "alignment_id": "a-000061",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.021636,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "middle"
+      ],
+      "source_segment_ids": [
+        "en-000074"
+      ],
+      "source_text": "So my position is that giving true common sense human-like robots common sense to AI, is still moonshot.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000061"
+      ],
+      "target_text": "Vai trò của tôi đó là đưa ra những nhận định đúng robot giống con người với AI là trực giác, vẫn còn khó lắm."
+    },
+    {
+      "alignment_id": "a-000086",
+      "current_alignment_type": "1:2",
+      "current_cost": 0.703753,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:2"
+      ],
+      "source_segment_ids": [
+        "en-000099"
+      ],
+      "source_text": "And in doing so, we also generate, algorithmically, human-inspectable, symbolic, commonsense knowledge representation, so that people can inspect and make corrections and even use it to train other neural commonsense models.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000086",
+        "vi-000087"
+      ],
+      "target_text": "Làm như vậy, ta cũng sẽ tạo ra thuật toán, người khác có thể xem. đặc trưng, khả năng diễn đạt kiến thức thông thường, để mọi người có thể kiểm tra và sửa chữa và thậm chí sử dụng nó để đào tạo các mô hình thần kinh tri giác khác."
+    },
+    {
+      "alignment_id": "a-000088",
+      "current_alignment_type": "2:1",
+      "current_cost": 0.680761,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "2:1"
+      ],
+      "source_segment_ids": [
+        "en-000101",
+        "en-000102"
+      ],
+      "source_text": "Each individual piece may seem quirky and incomplete, but when you step back, it's almost as if these pieces weave together into a tapestry that we call human experience and common sense. We're now entering a new era in which AI is almost like a new intellectual species with unique strengths and weaknesses compared to humans.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000089"
+      ],
+      "target_text": "Từng mảnh riêng lẻ có vẻ hơi kì và không hoàn thiện, nhưng khi bạn lùi lại, thì như thể những mảnh ghép này đan lại với nhau thành một tấm thảm mà ta hay gọi là trải nghiệm và trực giác con người Chúng ta hiện đang bước vào 1 kỷ nguyên mới tại đó AI như một chủng loài với trí tuệ riêng với những điểm mạnh và điểm yếu độc đáo so với con người."
+    },
+    {
+      "alignment_id": "a-000114",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.119446,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "end"
+      ],
+      "source_segment_ids": [
+        "en-000130"
+      ],
+      "source_text": "It's likely that there's right amount of scale, but beyond that, the winning recipe might be something else.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000115"
+      ],
+      "target_text": "Có thể việc mở rộng quy mô cũng hợp lí nếu vừa đủ, nhưng bên cạnh đó, nguyên liệu của thành công có thể là một thứ gì đó khác."
+    },
+    {
+      "alignment_id": "a-000115",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.393259,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "end"
+      ],
+      "source_segment_ids": [
+        "en-000131"
+      ],
+      "source_text": "So some synthesis of ideas will be critical here.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000116"
+      ],
+      "target_text": "Vậy nên việc tổng hợp các ý tưởng lại biết đâu có thể tạo sự đột phá thì sao."
+    },
+    {
+      "alignment_id": "a-000116",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.177639,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "end"
+      ],
+      "source_segment_ids": [
+        "en-000132"
+      ],
+      "source_text": "CA: Yejin Choi, thank you so much for your talk.",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000117"
+      ],
+      "target_text": "CA: Yejin Choi, cảm ơn rất nhiều vi bài diễn thuyết nhé."
+    },
+    {
+      "alignment_id": "a-000117",
+      "current_alignment_type": "1:1",
+      "current_cost": 0.276837,
+      "review": {
+        "note": "",
+        "preferred_source_ids": [],
+        "preferred_target_ids": [],
+        "verdict": "correct"
+      },
+      "selection_reasons": [
+        "1:1",
+        "annotation",
+        "end",
+        "short_source"
+      ],
+      "source_segment_ids": [
+        "en-000133"
+      ],
+      "source_text": "(Applause)",
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "target_segment_ids": [
+        "vi-000118"
+      ],
+      "target_text": "(Vỗ tay)"
+    }
+  ],
+  "purpose": "Assistant-assisted alignment review approved by the researcher; examples must not enter the final test set.",
+  "version": "1.0.0"
+}

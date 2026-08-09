@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic WIT3-style fixture for parser tests; not a corpus extract. -->
+<xml>
+  <file id="1903">
+    <head>
+      <talkid>1903</talkid>
+      <title>A synthetic caption example</title>
+      <speaker>Example Speaker</speaker>
+    </head>
+    <content>
+      <transcription>
+        <seekvideo id="2939">(Music)</seekvideo>
+        <seekvideo id="7555">
+          For any of you who have visited &amp; studied this place...
+        </seekvideo>
+        <seekvideo id="11221">These shots might start to look familiar.</seekvideo>
+        <seekvideo id="14500">(Applause)</seekvideo>
+      </transcription>
+    </content>
+  </file>
+  <file id="1904">
+    <talkid>1904</talkid>
+    <title>Another synthetic talk</title>
+    <transcription>
+      <seekvideo id="100">A separate talk.</seekvideo>
+    </transcription>
+  </file>
+</xml>

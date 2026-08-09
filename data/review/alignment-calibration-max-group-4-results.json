@@ -1,0 +1,69 @@
+{
+  "candidates": [
+    {
+      "confirmed_correct_cases_broken": 0,
+      "confirmed_correct_cases_preserved": 72,
+      "confirmed_incorrect_cases_corrected": 2,
+      "exact_reviewed_boundary_matches": 74,
+      "grouped_alignment_behavior": {
+        "grouped_units": 24
+      },
+      "long_range_drift_units": 0,
+      "parameters": {
+        "group_penalty": 0.35,
+        "max_group_size": 4,
+        "skip_penalty": 1.2
+      },
+      "reviewed_source_segment_coverage": 96,
+      "reviewed_target_segment_coverage": 77,
+      "skip_behavior": {
+        "unaligned_source_segments": 0,
+        "unaligned_target_segments": 0
+      }
+    },
+    {
+      "confirmed_correct_cases_broken": 0,
+      "confirmed_correct_cases_preserved": 72,
+      "confirmed_incorrect_cases_corrected": 2,
+      "exact_reviewed_boundary_matches": 74,
+      "grouped_alignment_behavior": {
+        "grouped_units": 24
+      },
+      "long_range_drift_units": 0,
+      "parameters": {
+        "group_penalty": 0.5,
+        "max_group_size": 4,
+        "skip_penalty": 1.4
+      },
+      "reviewed_source_segment_coverage": 96,
+      "reviewed_target_segment_coverage": 77,
+      "skip_behavior": {
+        "unaligned_source_segments": 0,
+        "unaligned_target_segments": 0
+      }
+    },
+    {
+      "confirmed_correct_cases_broken": 0,
+      "confirmed_correct_cases_preserved": 72,
+      "confirmed_incorrect_cases_corrected": 2,
+      "exact_reviewed_boundary_matches": 74,
+      "grouped_alignment_behavior": {
+        "grouped_units": 24
+      },
+      "long_range_drift_units": 0,
+      "parameters": {
+        "group_penalty": 0.65,
+        "max_group_size": 4,
+        "skip_penalty": 1.6
+      },
+      "reviewed_source_segment_coverage": 96,
+      "reviewed_target_segment_coverage": 77,
+      "skip_behavior": {
+        "unaligned_source_segments": 0,
+        "unaligned_target_segments": 0
+      }
+    }
+  ],
+  "reviewed_examples": 75,
+  "status": "complete"
+}

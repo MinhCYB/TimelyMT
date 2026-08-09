@@ -1,0 +1,33 @@
+{
+  "alignment_config_version": "1.0.0",
+  "alignment_parameters": {
+    "group_penalty": 0.65,
+    "max_group_size": 4,
+    "skip_penalty": 1.6
+  },
+  "created_at": "2026-08-09T04:33:11Z",
+  "dataset_name": "TimelyMT Streaming Dataset v1",
+  "known_limitations": [
+    "TED timing is simulated source-clock timing, not word-level acoustic alignment.",
+    "The deterministic aligner has no bilingual lexical or semantic model.",
+    "Grouped boundaries and short segments can have high diagnostic cost.",
+    "Dataset v1 must not be silently changed based on later model results."
+  ],
+  "manifest_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+  "provider_distribution": {
+    "ted": 17
+  },
+  "snapshot_version": "1.0.0",
+  "source_language": "en",
+  "split_counts": {
+    "dev": 3,
+    "test": 2,
+    "train": 12
+  },
+  "split_manifest_checksum": "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4",
+  "talk_count": 17,
+  "target_language": "vi",
+  "timing_modes": {
+    "simulated": 17
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "dataset": {
+    "name": "TimelyMT",
+    "source_language": "en",
+    "status": "unassigned",
+    "target_language": "vi"
+  },
+  "provenance": {
+    "builder": "timelymt.data.manifest",
+    "builder_version": "1.0.0",
+    "generated_at": "2026-08-09T04:30:45Z"
+  },
+  "schema_version": "1.0.0",
+  "talks": [
+    {
+      "canonical_path": "data/streaming/processed/ted-alona-fyshe-ai-understand/streaming-talk.json",
+      "cohort": "pilot",
+      "content_checksum": "17e2f3ea2793a4af240ae26e51492d70d77572a9ac17bbb7707fe4004d2910d1",
+      "domain": "nlp_language_models",
+      "provider": "ted",
+      "speaker": "Alona Fyshe",
+      "statistics": {
+        "alignment_units": 126,
+        "source_clock_duration_ms": 779600,
+        "source_segments": 127,
+        "stream_tokens": 1949,
+        "target_segments": 126
+      },
+      "talk_id": "ted-alona-fyshe-ai-understand",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-andrew-ng-ai-opportunities/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "d438cf23a93dec70fa17cf6b5fbec55f0d94893565341777fde7c3024d079bf8",
+      "domain": "ai_ml",
+      "provider": "ted",
+      "speaker": "Andrew Ng",
+      "statistics": {
+        "alignment_units": 82,
+        "source_clock_duration_ms": 755200,
+        "source_segments": 84,
+        "stream_tokens": 1888,
+        "target_segments": 82
+      },
+      "talk_id": "ted-andrew-ng-ai-opportunities",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-chris-urmson-self-driving-cars/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "9b395db4fa85f39abf12e254e7af66bbe4645a4314a0cca33471d246b4a2aa37",
+      "domain": "autonomous_systems",
+      "provider": "ted",
+      "speaker": "Chris Urmson",
+      "statistics": {
+        "alignment_units": 146,
+        "source_clock_duration_ms": 1233200,
+        "source_segments": 163,
+        "stream_tokens": 3083,
+        "target_segments": 148
+      },
+      "talk_id": "ted-chris-urmson-self-driving-cars",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-greg-brockman-chatgpt-potential/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "6259a57e2f4cdc81e35eed847afe93bdaa870557c1cf006bcc69af58b166e8cb",
+      "domain": "llm_chatgpt",
+      "provider": "ted",
+      "speaker": "Greg Brockman",
+      "statistics": {
+        "alignment_units": 318,
+        "source_clock_duration_ms": 2263200,
+        "source_segments": 339,
+        "stream_tokens": 5658,
+        "target_segments": 318
+      },
+      "talk_id": "ted-greg-brockman-chatgpt-potential",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-jeff-dean-ai-smart/streaming-talk.json",
+      "cohort": "pilot",
+      "content_checksum": "ee38e43445f2da9d5e02a0080ab64488c39a2cfca91fd496e412adc36cc64485",
+      "domain": "ai_ml",
+      "provider": "ted",
+      "speaker": "Jeff Dean",
+      "statistics": {
+        "alignment_units": 153,
+        "source_clock_duration_ms": 1358400,
+        "source_segments": 160,
+        "stream_tokens": 3396,
+        "target_segments": 154
+      },
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-joseph-redmon-computer-vision/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "31ad1b884d2dd9ce813919cc8c9afb8dedaf44ccb7714415993e56aa48a56bb6",
+      "domain": "computer_vision",
+      "provider": "ted",
+      "speaker": "Joseph Redmon",
+      "statistics": {
+        "alignment_units": 50,
+        "source_clock_duration_ms": 434400,
+        "source_segments": 64,
+        "stream_tokens": 1086,
+        "target_segments": 50
+      },
+      "talk_id": "ted-joseph-redmon-computer-vision",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-joy-buolamwini-algorithmic-bias/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "7d4b2e5c0e20b40d5138c2dd147797881261f88dd741cec32c330706ecd46bba",
+      "domain": "ai_ethics",
+      "provider": "ted",
+      "speaker": "Joy Buolamwini",
+      "statistics": {
+        "alignment_units": 74,
+        "source_clock_duration_ms": 468400,
+        "source_segments": 87,
+        "stream_tokens": 1171,
+        "target_segments": 74
+      },
+      "talk_id": "ted-joy-buolamwini-algorithmic-bias",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-kai-fu-lee-ai-humanity/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "f28e4c6f4a759a9e61465f86a869b44d9476ab9c8bba074a9dce97b076375ab3",
+      "domain": "ai_deep_learning",
+      "provider": "ted",
+      "speaker": "Kai-Fu Lee",
+      "statistics": {
+        "alignment_units": 93,
+        "source_clock_duration_ms": 762800,
+        "source_segments": 99,
+        "stream_tokens": 1907,
+        "target_segments": 97
+      },
+      "talk_id": "ted-kai-fu-lee-ai-humanity",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-ken-goldberg-robots/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "04ac26b3d1f3f08bcc90a0e34d1603711fb8e08cfcf89d570a6a49c1ae8dd9c1",
+      "domain": "robotics",
+      "provider": "ted",
+      "speaker": "Ken Goldberg",
+      "statistics": {
+        "alignment_units": 137,
+        "source_clock_duration_ms": 977600,
+        "source_segments": 140,
+        "stream_tokens": 2444,
+        "target_segments": 140
+      },
+      "talk_id": "ted-ken-goldberg-robots",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-kevin-slavin-algorithms/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "cd8d230ea5822b12529c9164e8eb6f0ab679cf58ba238a4ecaa017715fb478d7",
+      "domain": "computer_science",
+      "provider": "ted",
+      "speaker": "Kevin Slavin",
+      "statistics": {
+        "alignment_units": 133,
+        "source_clock_duration_ms": 971200,
+        "source_segments": 152,
+        "stream_tokens": 2428,
+        "target_segments": 138
+      },
+      "talk_id": "ted-kevin-slavin-algorithms",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-luis-von-ahn-crowdsourcing/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "66ddcae2d860a23f002240581d9c3376e10b2180bc6323e86311feb88014263e",
+      "domain": "nlp_language",
+      "provider": "ted",
+      "speaker": "Luis von Ahn",
+      "statistics": {
+        "alignment_units": 212,
+        "source_clock_duration_ms": 1303200,
+        "source_segments": 220,
+        "stream_tokens": 3258,
+        "target_segments": 230
+      },
+      "talk_id": "ted-luis-von-ahn-crowdsourcing",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-margaret-mitchell-ai-values/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "3a782c2e04024cf326cd774805999c6c9d37a8a40cdde71bf63352c50dccb67e",
+      "domain": "ai_ethics",
+      "provider": "ted",
+      "speaker": "Margaret Mitchell",
+      "statistics": {
+        "alignment_units": 83,
+        "source_clock_duration_ms": 552000,
+        "source_segments": 84,
+        "stream_tokens": 1380,
+        "target_segments": 84
+      },
+      "talk_id": "ted-margaret-mitchell-ai-values",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-maurice-conti-intuitive-ai/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "b84d81178e5891d264aa23c6ff42a0ed4102756845dc0701107e401ab9d667c4",
+      "domain": "ai_robotics_design",
+      "provider": "ted",
+      "speaker": "Maurice Conti",
+      "statistics": {
+        "alignment_units": 149,
+        "source_clock_duration_ms": 958800,
+        "source_segments": 154,
+        "stream_tokens": 2397,
+        "target_segments": 150
+      },
+      "talk_id": "ted-maurice-conti-intuitive-ai",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-sal-khan-ai-education/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "29177f9fdad574809859252fa0dd751827f829d55e461639e0e07591bd983905",
+      "domain": "ai_education",
+      "provider": "ted",
+      "speaker": "Sal Khan",
+      "statistics": {
+        "alignment_units": 156,
+        "source_clock_duration_ms": 1197200,
+        "source_segments": 161,
+        "stream_tokens": 2993,
+        "target_segments": 163
+      },
+      "talk_id": "ted-sal-khan-ai-education",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-sims-witherspoon-ai-climate/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "40e36a47c10cd8eafbeb83f8b58933e00ea1648ef560c8439ea6baa234e79731",
+      "domain": "ai_climate",
+      "provider": "ted",
+      "speaker": "Sims Witherspoon",
+      "statistics": {
+        "alignment_units": 99,
+        "source_clock_duration_ms": 675600,
+        "source_segments": 103,
+        "stream_tokens": 1689,
+        "target_segments": 103
+      },
+      "talk_id": "ted-sims-witherspoon-ai-climate",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-stuart-russell-safe-ai/streaming-talk.json",
+      "cohort": "unassigned",
+      "content_checksum": "4f233a79bec1618067dd432c6adeac1923d2c8068bf35766b6f7979b49847e25",
+      "domain": "ai_safety",
+      "provider": "ted",
+      "speaker": "Stuart Russell",
+      "statistics": {
+        "alignment_units": 195,
+        "source_clock_duration_ms": 1100400,
+        "source_segments": 201,
+        "stream_tokens": 2751,
+        "target_segments": 197
+      },
+      "talk_id": "ted-stuart-russell-safe-ai",
+      "timing_mode": "simulated"
+    },
+    {
+      "canonical_path": "data/streaming/processed/ted-yejin-choi-ai-smart-stupid/streaming-talk.json",
+      "cohort": "pilot",
+      "content_checksum": "bb1ca1c92350656a033a6b5ae140d27a3f891d0028df71d03512a7c811490d15",
+      "domain": "llm_reasoning",
+      "provider": "ted",
+      "speaker": "Yejin Choi",
+      "statistics": {
+        "alignment_units": 117,
+        "source_clock_duration_ms": 904400,
+        "source_segments": 133,
+        "stream_tokens": 2261,
+        "target_segments": 118
+      },
+      "talk_id": "ted-yejin-choi-ai-smart-stupid",
+      "timing_mode": "simulated"
+    }
+  ]
+}

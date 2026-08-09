@@ -1,0 +1,5 @@
+[project]
+name = "timelymt"
+version = "0.0.0"
+description = "Research scaffold for English-Vietnamese simultaneous interpretation timing policies."
+requires-python = ">=3.11"

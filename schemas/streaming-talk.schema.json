@@ -1,0 +1,396 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:timelymt:schema:streaming-talk:1.0.0",
+  "title": "TimelyMT Canonical Streaming Talk",
+  "description": "Canonical representation of one bilingual English-Vietnamese talk. The stream contains source information only; target references and alignments are reference-only data.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "talk",
+    "source",
+    "target_reference",
+    "alignments",
+    "stream",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0",
+      "description": "Version of this canonical data contract."
+    },
+    "talk": {
+      "$ref": "#/$defs/talk"
+    },
+    "source": {
+      "$ref": "#/$defs/sourceReference"
+    },
+    "target_reference": {
+      "$ref": "#/$defs/targetReference"
+    },
+    "alignments": {
+      "type": "array",
+      "description": "Reference-only bilingual alignment units. Runtime policies must not consume this array.",
+      "items": {
+        "$ref": "#/$defs/alignment"
+      }
+    },
+    "stream": {
+      "$ref": "#/$defs/sourceStream"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "extensionMetadata": {
+      "type": "object",
+      "description": "Provider- or pipeline-specific metadata. Values must be JSON-compatible.",
+      "additionalProperties": true
+    },
+    "talk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "talk_id",
+        "source_language",
+        "target_language"
+      ],
+      "properties": {
+        "talk_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "title": {
+          "type": "string"
+        },
+        "speaker": {
+          "type": "string"
+        },
+        "source_language": {
+          "const": "en"
+        },
+        "target_language": {
+          "const": "vi"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "topics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "provider": {
+          "type": "string"
+        },
+        "original_source_id": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "duration_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "metadata": {
+          "$ref": "#/$defs/extensionMetadata"
+        }
+      }
+    },
+    "sourceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "language",
+        "segments"
+      ],
+      "properties": {
+        "language": {
+          "const": "en"
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceSegment"
+          }
+        }
+      }
+    },
+    "sourceSegment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "segment_id",
+        "index",
+        "text",
+        "start_ms",
+        "end_ms"
+      ],
+      "properties": {
+        "segment_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "text": {
+          "type": "string"
+        },
+        "start_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "metadata": {
+          "$ref": "#/$defs/extensionMetadata"
+        }
+      }
+    },
+    "targetReference": {
+      "type": "object",
+      "description": "Gold Vietnamese reference data for alignment, evaluation, and analysis. It is never runtime-visible.",
+      "additionalProperties": false,
+      "required": [
+        "language",
+        "segments"
+      ],
+      "properties": {
+        "language": {
+          "const": "vi"
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/targetSegment"
+          }
+        }
+      }
+    },
+    "targetSegment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "segment_id",
+        "index",
+        "text"
+      ],
+      "dependentRequired": {
+        "start_ms": [
+          "end_ms"
+        ],
+        "end_ms": [
+          "start_ms"
+        ]
+      },
+      "properties": {
+        "segment_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "text": {
+          "type": "string"
+        },
+        "start_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Optional original target timing, when supplied by the provider."
+        },
+        "end_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Optional original target timing, when supplied by the provider."
+        },
+        "metadata": {
+          "$ref": "#/$defs/extensionMetadata"
+        }
+      }
+    },
+    "alignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "alignment_id",
+        "source_segment_ids",
+        "target_segment_ids",
+        "method"
+      ],
+      "properties": {
+        "alignment_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "source_segment_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/identifier"
+          }
+        },
+        "target_segment_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/identifier"
+          }
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "metadata": {
+          "$ref": "#/$defs/extensionMetadata"
+        }
+      }
+    },
+    "sourceStream": {
+      "type": "object",
+      "description": "Source-only simulated online input. A runtime consumer may access only the emitted prefix, never future tokens.",
+      "additionalProperties": false,
+      "required": [
+        "timing_mode",
+        "tokens"
+      ],
+      "properties": {
+        "timing_mode": {
+          "type": "string",
+          "enum": [
+            "simulated",
+            "recovered_from_caption_starts"
+          ]
+        },
+        "timing_parameters": {
+          "$ref": "#/$defs/extensionMetadata",
+          "description": "Parameters emitted by the timed-source stage. Simulated clocks remain distinguishable from recovered caption timing."
+        },
+        "tokens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceToken"
+          }
+        }
+      }
+    },
+    "sourceToken": {
+      "type": "object",
+      "description": "A human-readable lexical source unit for streaming simulation, independent of any model tokenizer. Whitespace and standalone subtitle punctuation are not runtime tokens; original punctuation remains in source reference segments.",
+      "additionalProperties": false,
+      "required": [
+        "token_id",
+        "index",
+        "text",
+        "source_segment_id",
+        "segment_index",
+        "emit_ms"
+      ],
+      "properties": {
+        "token_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Global zero-based index in the talk's source stream."
+        },
+        "text": {
+          "type": "string"
+        },
+        "source_segment_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "segment_index": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Zero-based token index within the referenced source segment."
+        },
+        "emit_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Time in integer milliseconds when the complete source token has become available to the online system."
+        }
+      }
+    },
+    "toolRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/$defs/extensionMetadata"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "processing_version"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "source_identifier": {
+          "type": "string"
+        },
+        "acquired_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "parser": {
+          "$ref": "#/$defs/toolRecord"
+        },
+        "alignment": {
+          "$ref": "#/$defs/toolRecord"
+        },
+        "timing": {
+          "$ref": "#/$defs/toolRecord"
+        },
+        "processing_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "processed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/$defs/extensionMetadata"
+        }
+      }
+    }
+  }
+}

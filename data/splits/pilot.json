@@ -1,0 +1,10 @@
+{
+  "dataset_manifest_checksum": "8266fc1cccb27c8a5bb1f114ee406fa9e8dc453d5ad46731edcaff5b6b769a32",
+  "schema_version": "1.0.0",
+  "split_type": "pilot",
+  "talk_ids": [
+    "ted-alona-fyshe-ai-understand",
+    "ted-jeff-dean-ai-smart",
+    "ted-yejin-choi-ai-smart-stupid"
+  ]
+}

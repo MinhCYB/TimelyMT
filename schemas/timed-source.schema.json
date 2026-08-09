@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:timelymt:schema:timed-source:1.0.0",
+  "title": "TimelyMT Timed English Source",
+  "description": "Source-only intermediate representation of lexical token completion times.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "talk_id", "language", "timing", "segments", "statistics", "provenance"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "talk_id": {"$ref": "#/$defs/identifier"},
+    "language": {"const": "en"},
+    "timing": {"$ref": "#/$defs/timing"},
+    "segments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/segment"}
+    },
+    "statistics": {"$ref": "#/$defs/statistics"},
+    "provenance": {"$ref": "#/$defs/provenance"}
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "parameters"],
+      "properties": {
+        "mode": {"enum": ["recovered_from_caption_starts", "simulated"]},
+        "parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["words_per_second", "allocation", "original_timing_source", "final_segment_fallback"],
+          "properties": {
+            "words_per_second": {"type": "number", "exclusiveMinimum": 0},
+            "allocation": {"enum": ["uniform", "character_weighted"]},
+            "original_timing_source": {
+              "oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]
+            },
+            "final_segment_fallback": {
+              "enum": ["not_applicable", "source_metadata_duration", "speech_rate_estimate"]
+            }
+          }
+        }
+      }
+    },
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["token_id", "global_index", "segment_index", "source_segment_id", "text", "emit_ms"],
+      "properties": {
+        "token_id": {"type": "string", "pattern": "^tok-[0-9]{6}$"},
+        "global_index": {"type": "integer", "minimum": 0},
+        "segment_index": {"type": "integer", "minimum": 0},
+        "source_segment_id": {"$ref": "#/$defs/identifier"},
+        "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+        "emit_ms": {"type": "integer", "minimum": 0}
+      }
+    },
+    "segment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segment_id", "index", "text", "start_ms", "end_ms", "tokens"],
+      "properties": {
+        "segment_id": {"type": "string", "pattern": "^en-[0-9]{6}$"},
+        "index": {"type": "integer", "minimum": 0},
+        "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+        "start_ms": {"type": "integer", "minimum": 0},
+        "end_ms": {"type": "integer", "minimum": 0},
+        "tokens": {"type": "array", "items": {"$ref": "#/$defs/token"}}
+      }
+    },
+    "statistics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segment_count", "token_count", "start_ms", "end_ms", "duration_ms", "mean_tokens_per_segment", "effective_tokens_per_second"],
+      "properties": {
+        "segment_count": {"type": "integer", "minimum": 1},
+        "token_count": {"type": "integer", "minimum": 0},
+        "start_ms": {"type": "integer", "minimum": 0},
+        "end_ms": {"type": "integer", "minimum": 0},
+        "duration_ms": {"type": "integer", "minimum": 0},
+        "mean_tokens_per_segment": {"type": "number", "minimum": 0},
+        "effective_tokens_per_second": {
+          "oneOf": [{"type": "number", "minimum": 0}, {"type": "null"}]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_artifact", "source_checksum_sha256", "timing_tool", "timing_version", "processed_at"],
+      "properties": {
+        "source_artifact": {"type": "string", "minLength": 1},
+        "source_checksum_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "timing_tool": {"const": "timelymt.data.timing"},
+        "timing_version": {"type": "string", "minLength": 1},
+        "processed_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}

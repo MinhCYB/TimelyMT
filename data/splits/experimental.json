@@ -1,0 +1,45 @@
+{
+  "dataset_manifest_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+  "schema_version": "1.0.0",
+  "split_type": "experimental",
+  "splits": {
+    "dev": [
+      "ted-jeff-dean-ai-smart",
+      "ted-luis-von-ahn-crowdsourcing",
+      "ted-sims-witherspoon-ai-climate"
+    ],
+    "test": [
+      "ted-joy-buolamwini-algorithmic-bias",
+      "ted-margaret-mitchell-ai-values"
+    ],
+    "train": [
+      "ted-alona-fyshe-ai-understand",
+      "ted-andrew-ng-ai-opportunities",
+      "ted-chris-urmson-self-driving-cars",
+      "ted-greg-brockman-chatgpt-potential",
+      "ted-joseph-redmon-computer-vision",
+      "ted-kai-fu-lee-ai-humanity",
+      "ted-ken-goldberg-robots",
+      "ted-kevin-slavin-algorithms",
+      "ted-maurice-conti-intuitive-ai",
+      "ted-sal-khan-ai-education",
+      "ted-stuart-russell-safe-ai",
+      "ted-yejin-choi-ai-smart-stupid"
+    ]
+  },
+  "strategy": {
+    "group_by": "speaker",
+    "name": "seeded_sorted_groups",
+    "ratios": {
+      "dev": 0.15,
+      "test": 0.15,
+      "train": 0.7
+    },
+    "seed": 20260809,
+    "test_exclusions": [
+      "ted-alona-fyshe-ai-understand",
+      "ted-jeff-dean-ai-smart",
+      "ted-yejin-choi-ai-smart-stupid"
+    ]
+  }
+}

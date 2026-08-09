@@ -1,0 +1,1 @@
+Initial scaffold only. Source root: `src/timelymt/`; reusable modules are separated from `training/` entrypoints and `experiments/` definitions. Read `mem:tech_stack` and `mem:conventions` for current project constraints.

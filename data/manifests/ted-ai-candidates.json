@@ -1,0 +1,216 @@
+{
+  "manifest_version": "1.0",
+  "description": "Curated candidate list of English-Vietnamese AI and technology talks. Availability is discovered during acquisition.",
+  "candidates": [
+    {
+      "id": "ted-jeff-dean-ai-smart",
+      "slug": "jeff_dean_ai_isn_t_as_smart_as_you_think_but_it_could_be",
+      "title": "AI isn't as smart as you think -- but it could be",
+      "speaker": "Jeff Dean",
+      "domain": "ai_ml",
+      "priority": "P0",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/jeff_dean_ai_isn_t_as_smart_as_you_think_but_it_could_be"
+    },
+    {
+      "id": "ted-yejin-choi-ai-smart-stupid",
+      "slug": "yejin_choi_why_ai_is_incredibly_smart_and_shockingly_stupid",
+      "title": "Why AI is incredibly smart and shockingly stupid",
+      "speaker": "Yejin Choi",
+      "domain": "llm_reasoning",
+      "priority": "P0",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/yejin_choi_why_ai_is_incredibly_smart_and_shockingly_stupid"
+    },
+    {
+      "id": "ted-alona-fyshe-ai-understand",
+      "slug": "alona_fyshe_does_ai_actually_understand_us",
+      "title": "Does AI actually understand us?",
+      "speaker": "Alona Fyshe",
+      "domain": "nlp_language_models",
+      "priority": "P0",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/alona_fyshe_does_ai_actually_understand_us"
+    },
+    {
+      "id": "ted-greg-brockman-chatgpt-potential",
+      "slug": "greg_brockman_the_inside_story_of_chatgpt_s_astonishing_potential",
+      "title": "The inside story of ChatGPT's astonishing potential",
+      "speaker": "Greg Brockman",
+      "domain": "llm_chatgpt",
+      "priority": "P0",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/greg_brockman_the_inside_story_of_chatgpt_s_astonishing_potential"
+    },
+    {
+      "id": "ted-sal-khan-ai-education",
+      "slug": "sal_khan_how_ai_could_save_not_destroy_education",
+      "title": "How AI could save (not destroy) education",
+      "speaker": "Sal Khan",
+      "domain": "ai_education",
+      "priority": "P1",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/sal_khan_how_ai_could_save_not_destroy_education"
+    },
+    {
+      "id": "ted-sims-witherspoon-ai-climate",
+      "slug": "sims_witherspoon_can_ai_help_solve_the_climate_crisis",
+      "title": "Can AI help solve the climate crisis?",
+      "speaker": "Sims Witherspoon",
+      "domain": "ai_climate",
+      "priority": "P1",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/sims_witherspoon_can_ai_help_solve_the_climate_crisis"
+    },
+    {
+      "id": "ted-maurice-conti-intuitive-ai",
+      "slug": "maurice_conti_the_incredible_inventions_of_intuitive_ai",
+      "title": "The incredible inventions of intuitive AI",
+      "speaker": "Maurice Conti",
+      "domain": "ai_robotics_design",
+      "priority": "P1",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/maurice_conti_the_incredible_inventions_of_intuitive_ai"
+    },
+    {
+      "id": "ted-janelle-shane-ai-danger",
+      "slug": "janelle_shane_the_danger_of_ai_is_weirder_than_you_think",
+      "title": "The danger of AI is weirder than you think",
+      "speaker": "Janelle Shane",
+      "domain": "machine_learning",
+      "priority": "P1",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/janelle_shane_the_danger_of_ai_is_weirder_than_you_think"
+    },
+    {
+      "id": "ted-kai-fu-lee-ai-humanity",
+      "slug": "kai_fu_lee_how_ai_can_save_our_humanity",
+      "title": "How AI can save our humanity",
+      "speaker": "Kai-Fu Lee",
+      "domain": "ai_deep_learning",
+      "priority": "P1",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/kai_fu_lee_how_ai_can_save_our_humanity"
+    },
+    {
+      "id": "ted-fei-fei-li-human-centered-ai",
+      "slug": "fei_fei_li_how_to_make_ai_that_s_good_for_people",
+      "title": "How to make AI that's good for people",
+      "speaker": "Fei-Fei Li",
+      "domain": "ai_ml",
+      "priority": "P1",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/fei_fei_li_how_to_make_ai_that_s_good_for_people"
+    },
+    {
+      "id": "ted-andrew-ng-ai-opportunities",
+      "slug": "andrew_ng_how_ai_could_empower_any_business",
+      "title": "How AI could empower any business",
+      "speaker": "Andrew Ng",
+      "domain": "ai_ml",
+      "priority": "P1",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/andrew_ng_how_ai_could_empower_any_business"
+    },
+    {
+      "id": "ted-timnit-gebru-ai-harms",
+      "slug": "timnit_gebru_how_can_we_stop_ai_from_harming_people",
+      "title": "How can we stop AI from harming people?",
+      "speaker": "Timnit Gebru",
+      "domain": "ai_safety",
+      "priority": "P1",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/timnit_gebru_how_can_we_stop_ai_from_harming_people"
+    },
+    {
+      "id": "ted-stuart-russell-safe-ai",
+      "slug": "stuart_russell_3_principles_for_creating_safer_ai",
+      "title": "3 principles for creating safer AI",
+      "speaker": "Stuart Russell",
+      "domain": "ai_safety",
+      "priority": "P2",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/stuart_russell_3_principles_for_creating_safer_ai"
+    },
+    {
+      "id": "ted-joy-buolamwini-algorithmic-bias",
+      "slug": "joy_buolamwini_how_i_m_fighting_bias_in_algorithms",
+      "title": "How I'm fighting bias in algorithms",
+      "speaker": "Joy Buolamwini",
+      "domain": "ai_ethics",
+      "priority": "P2",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms"
+    },
+    {
+      "id": "ted-margaret-mitchell-ai-values",
+      "slug": "margaret_mitchell_how_we_can_build_ai_to_help_humans_not_hurt_us",
+      "title": "How we can build AI to help humans, not hurt us",
+      "speaker": "Margaret Mitchell",
+      "domain": "ai_ethics",
+      "priority": "P2",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/margaret_mitchell_how_we_can_build_ai_to_help_humans_not_hurt_us"
+    },
+    {
+      "id": "ted-ken-goldberg-robots",
+      "slug": "ken_goldberg_4_lessons_from_robots_about_being_human",
+      "title": "4 lessons from robots about being human",
+      "speaker": "Ken Goldberg",
+      "domain": "robotics",
+      "priority": "P2",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/ken_goldberg_4_lessons_from_robots_about_being_human"
+    },
+    {
+      "id": "ted-daniela-rus-robots",
+      "slug": "daniela_rus_the_robots_are_coming_will_they_be_friend_or_foe",
+      "title": "The robots are coming. Will they be friend or foe?",
+      "speaker": "Daniela Rus",
+      "domain": "robotics",
+      "priority": "P2",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/daniela_rus_the_robots_are_coming_will_they_be_friend_or_foe"
+    },
+    {
+      "id": "ted-joseph-redmon-computer-vision",
+      "slug": "joseph_redmon_how_computers_learn_to_recognize_objects_instantly",
+      "title": "How computers learn to recognize objects instantly",
+      "speaker": "Joseph Redmon",
+      "domain": "computer_vision",
+      "priority": "P2",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/joseph_redmon_how_computers_learn_to_recognize_objects_instantly"
+    },
+    {
+      "id": "ted-chris-urmson-self-driving-cars",
+      "slug": "chris_urmson_how_a_driverless_car_sees_the_road",
+      "title": "How a driverless car sees the road",
+      "speaker": "Chris Urmson",
+      "domain": "autonomous_systems",
+      "priority": "P2",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/chris_urmson_how_a_driverless_car_sees_the_road"
+    },
+    {
+      "id": "ted-kevin-slavin-algorithms",
+      "slug": "kevin_slavin_how_algorithms_shape_our_world",
+      "title": "How algorithms shape our world",
+      "speaker": "Kevin Slavin",
+      "domain": "computer_science",
+      "priority": "P2",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/kevin_slavin_how_algorithms_shape_our_world"
+    },
+    {
+      "id": "ted-luis-von-ahn-crowdsourcing",
+      "slug": "luis_von_ahn_massive_scale_online_collaboration",
+      "title": "Massive-scale online collaboration",
+      "speaker": "Luis von Ahn",
+      "domain": "nlp_language",
+      "priority": "P2",
+      "provider": "ted",
+      "source_url": "https://www.ted.com/talks/luis_von_ahn_massive_scale_online_collaboration"
+    }
+  ]
+}

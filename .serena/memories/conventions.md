@@ -1,0 +1,1 @@
+Keep reusable runtime code under `src/timelymt/`; keep training-specific logic in `training/`; keep experiment-specific definitions and light artifacts in `experiments/`. The initial scaffold has no application code or implementation conventions beyond this layout.

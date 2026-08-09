@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:timelymt:schema:dataset-split:1.0.0",
+  "title": "TimelyMT External Dataset Split",
+  "oneOf": [
+    {"$ref": "#/$defs/pilot"},
+    {"$ref": "#/$defs/experimental"}
+  ],
+  "$defs": {
+    "base": {"type": "object", "required": ["schema_version", "split_type", "dataset_manifest_checksum"], "properties": {"schema_version": {"const": "1.0.0"}, "dataset_manifest_checksum": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
+    "pilot": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "additionalProperties": false, "required": ["schema_version", "split_type", "dataset_manifest_checksum", "talk_ids"], "properties": {"schema_version": {"const": "1.0.0"}, "split_type": {"const": "pilot"}, "dataset_manifest_checksum": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "talk_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}}}]},
+    "experimental": {"allOf": [{"$ref": "#/$defs/base"}, {"type": "object", "additionalProperties": false, "required": ["schema_version", "split_type", "dataset_manifest_checksum", "strategy", "splits"], "properties": {"schema_version": {"const": "1.0.0"}, "split_type": {"const": "experimental"}, "dataset_manifest_checksum": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "strategy": {"type": "object", "additionalProperties": false, "required": ["name", "seed", "group_by", "ratios", "test_exclusions"], "properties": {"name": {"const": "seeded_sorted_groups"}, "seed": {"type": "integer"}, "group_by": {"enum": ["talk", "speaker"]}, "test_exclusions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}, "ratios": {"type": "object", "additionalProperties": false, "required": ["train", "dev", "test"], "properties": {"train": {"type": "number", "exclusiveMinimum": 0}, "dev": {"type": "number", "exclusiveMinimum": 0}, "test": {"type": "number", "exclusiveMinimum": 0}}}}}, "splits": {"type": "object", "additionalProperties": false, "required": ["train", "dev", "test"], "properties": {"train": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}, "dev": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}, "test": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}}}}}]}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:timelymt:schema:dataset-manifest:1.0.0",
+  "title": "TimelyMT Dataset Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "dataset", "talks", "provenance"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "dataset": {"type": "object", "additionalProperties": false, "required": ["name", "source_language", "target_language", "status"], "properties": {"name": {"type": "string", "minLength": 1}, "source_language": {"const": "en"}, "target_language": {"const": "vi"}, "status": {"enum": ["pilot", "unassigned"]}}},
+    "talks": {"type": "array", "items": {"$ref": "#/$defs/talk"}},
+    "provenance": {"type": "object", "additionalProperties": false, "required": ["builder", "builder_version", "generated_at"], "properties": {"builder": {"type": "string", "minLength": 1}, "builder_version": {"type": "string", "minLength": 1}, "generated_at": {"type": "string", "format": "date-time"}}}
+  },
+  "$defs": {
+    "talk": {"type": "object", "additionalProperties": false, "required": ["talk_id", "canonical_path", "content_checksum", "timing_mode", "statistics", "cohort"], "properties": {"talk_id": {"type": "string", "minLength": 1}, "canonical_path": {"type": "string", "pattern": "/streaming-talk\\.json$"}, "content_checksum": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "speaker": {"type": "string"}, "domain": {"type": "string"}, "provider": {"type": "string"}, "topics": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}, "timing_mode": {"enum": ["simulated", "recovered_from_caption_starts"]}, "cohort": {"enum": ["pilot", "unassigned"]}, "statistics": {"type": "object", "additionalProperties": false, "required": ["source_segments", "target_segments", "alignment_units", "stream_tokens", "source_clock_duration_ms"], "properties": {"source_segments": {"type": "integer", "minimum": 0}, "target_segments": {"type": "integer", "minimum": 0}, "alignment_units": {"type": "integer", "minimum": 0}, "stream_tokens": {"type": "integer", "minimum": 0}, "source_clock_duration_ms": {"type": "integer", "minimum": 0}}}}}
+  }
+}

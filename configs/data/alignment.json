@@ -1,0 +1,12 @@
+{
+  "calibration_set_version": "1.0.0",
+  "group_penalty": 0.65,
+  "max_group_size": 4,
+  "reviewed_correct_count": 72,
+  "reviewed_count": 75,
+  "reviewed_incorrect_count": 3,
+  "reviewed_questionable_count": 0,
+  "selection_basis": "assistant-assisted researcher-approved calibration review; selected on reviewed boundary preservation and correction, not alignment cost",
+  "skip_penalty": 1.6,
+  "version": "1.0.0"
+}
