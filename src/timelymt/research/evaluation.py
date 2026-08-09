@@ -19,18 +19,43 @@ def average_lagging(source_length: int, target_emissions: Sequence[int]) -> floa
     return sum(target_emissions[t - 1] - (t - 1) / ratio for t in range(1, tau + 1)) / tau
 
 
-def latency_metrics(records: Sequence[Mapping[str, Any]]) -> dict[str, float]:
+def length_adaptive_average_lagging(
+    source_length: int,
+    target_emissions: Sequence[int],
+    reference_length: int,
+) -> float:
+    """LAAL of Papi et al. (2022), using lexical source-token positions."""
+    if source_length <= 0 or not target_emissions or reference_length <= 0:
+        raise ValueError("LAAL requires non-empty source, hypothesis, and reference")
+    adaptive_target_length = max(len(target_emissions), reference_length)
+    ratio = adaptive_target_length / source_length
+    try:
+        tau = next(index for index, consumed in enumerate(target_emissions, start=1) if consumed >= source_length)
+    except StopIteration:
+        tau = len(target_emissions)
+    return sum(target_emissions[t - 1] - (t - 1) / ratio for t in range(1, tau + 1)) / tau
+
+
+def latency_metrics(
+    records: Sequence[Mapping[str, Any]],
+    references: Mapping[str, str],
+) -> dict[str, float]:
     commits = [commit for record in records for commit in record["commits"]]
     source_total = sum(record["source_token_count"] for record in records)
     unit_tokens = [commit["source_token_count"] for commit in commits]
     durations = [commit["source_clock_duration_ms"] for commit in commits]
     first = [record["commits"][0] for record in records]
     al_weighted_sum = 0.0
+    laal_weighted_sum = 0.0
     target_token_total = 0
     for record in records:
-        emissions = [commit["source_end"] + 1 for commit in record["commits"] for _ in commit["translated_text"].split()]
+        emissions = [commit["observation_token_index"] + 1 for commit in record["commits"] for _ in commit["translated_text"].split()]
         talk_al = average_lagging(record["source_token_count"], emissions)
+        talk_laal = length_adaptive_average_lagging(
+            record["source_token_count"], emissions, len(references[record["talk_id"]].split()),
+        )
         al_weighted_sum += talk_al * len(emissions)
+        laal_weighted_sum += talk_laal * len(emissions)
         target_token_total += len(emissions)
     return {
         "number_of_commits": float(len(commits)),
@@ -43,6 +68,7 @@ def latency_metrics(records: Sequence[Mapping[str, Any]]) -> dict[str, float]:
         "mean_commit_observation_position": mean(item["observation_token_index"] + 1 for item in commits),
         "forced_commit_rate": sum(item["reason"] in {"max_length", "talk_end"} for item in commits) / len(commits),
         "token_level_average_lagging": al_weighted_sum / target_token_total,
+        "token_level_length_adaptive_average_lagging": laal_weighted_sum / target_token_total,
     }
 
 

@@ -1,0 +1,45 @@
+{
+  "COMMIT": 3,
+  "LISTEN": 61,
+  "artifact_status": "smoke",
+  "artifact_type": "mu_zhang2020_supervision",
+  "config": {
+    "hypothesis_tokenization": "translated_text.split()",
+    "max_source_tokens": 48,
+    "min_source_tokens": 4,
+    "oracle_scope": "full admissible remaining source unit (up to 48 lexical tokens); training/dev supervision only",
+    "prefix_preservation_threshold": 0.9,
+    "supervision_version": "1.0.0"
+  },
+  "config_checksum": "1a85415d58da5617a269d315c9a89e2d2390c8c4cd342c7b9acb01ba65a4a3aa",
+  "dataset_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+  "expected_talk_ids": [
+    "ted-alona-fyshe-ai-understand",
+    "ted-andrew-ng-ai-opportunities",
+    "ted-chris-urmson-self-driving-cars",
+    "ted-greg-brockman-chatgpt-potential",
+    "ted-joseph-redmon-computer-vision",
+    "ted-kai-fu-lee-ai-humanity",
+    "ted-ken-goldberg-robots",
+    "ted-kevin-slavin-algorithms",
+    "ted-maurice-conti-intuitive-ai",
+    "ted-sal-khan-ai-education",
+    "ted-stuart-russell-safe-ai",
+    "ted-yejin-choi-ai-smart-stupid"
+  ],
+  "publishable": false,
+  "split": "train",
+  "split_checksum": "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4",
+  "state_count": 64,
+  "talk_ids": [
+    "ted-alona-fyshe-ai-understand"
+  ],
+  "training_only_note": "Full admissible remaining-unit translation (at most 48 lexical source tokens) constructs MU train/dev supervision only; MU runtime remains causal.",
+  "translator": {
+    "config_fingerprint": "a54ba8356642a7a696234453b3fc0a29d2dcf85db5299677c492ae967281bd1c",
+    "config_version": "1.1.0",
+    "generation_config_fingerprint": "293a8d0431b29ae9950564e9b93a54aa8814d9b79282f4a7e905a5720025c1fb",
+    "model_id": "VietAI/envit5-translation",
+    "model_revision": "840bc88104d5a4277af740eaedb024df8c3093e7"
+  }
+}

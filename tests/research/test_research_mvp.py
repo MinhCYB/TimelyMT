@@ -1,18 +1,19 @@
 from __future__ import annotations
 
 import unittest
+import json
 from pathlib import Path
 import tempfile
 
 from timelymt.data.translation_artifacts import RuntimeSourceToken, RuntimeTalk, TranslationHypothesis
-from timelymt.research.evaluation import average_lagging, quality_metrics
+from timelymt.research.evaluation import average_lagging, latency_metrics, quality_metrics
 from timelymt.research.policy import flatten_state, train_policy
 from timelymt.research.pseudo_labels import generate_pseudo_labels
 from timelymt.research.streaming import (
     causal_state, fixed_n, fixed_time, learned_rollout, local_agreement_style, lcp_length, prediction_record,
     select_dev_configuration,
 )
-from timelymt.research.cli import train
+from timelymt.research.cli import _validate_pseudo_talk_file, train
 
 
 def talk(count: int, emits: list[int] | None = None, split: str = "train") -> RuntimeTalk:
@@ -110,11 +111,29 @@ class PseudoAndFeatureTests(unittest.TestCase):
         self.assertIn("previous_target_text", p2)
         self.assertFalse(any("future" in key or "gold" in key for key in p2))
 
+    def test_resumable_validation_checks_feature_names_not_source_text(self):
+        row = generate_pseudo_labels(talk(4), Provider())[0]
+        row["causal"]["current_source_text"] = "an exciting future"
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "talk.jsonl"
+            path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+            self.assertEqual(_validate_pseudo_talk_file(path, "talk", "train"), [row])
+            row["causal"]["future_reference"] = "leak"
+            path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, "leaked"):
+                _validate_pseudo_talk_file(path, "talk", "train")
+
 
 class EvaluationTests(unittest.TestCase):
     def test_average_lagging_hand_cases(self):
         self.assertAlmostEqual(average_lagging(4, [1, 2, 3, 4]), 1.0)
         self.assertAlmostEqual(average_lagging(4, [2, 2, 4, 4]), 5 / 3)
+
+    def test_latency_metrics_preserves_al(self):
+        runtime = talk(4)
+        record = prediction_record("fixed_n_4", runtime, fixed_n(runtime, Provider(), 4))
+        metrics = latency_metrics([record], {"talk": "r0 r1 r2 r3"})
+        self.assertAlmostEqual(metrics["token_level_average_lagging"], 4.0)
 
     def test_sacrebleu_fixture(self):
         records = [{"talk_id": "x", "prediction": "xin chao"}]

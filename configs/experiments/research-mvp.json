@@ -1,9 +1,16 @@
 {
-  "baseline_strategies": [
-    "fixed_n_4", "fixed_n_8", "fixed_n_12",
-    "fixed_time_1600", "fixed_time_3200", "fixed_time_4800",
-    "local_agreement_style_k2", "local_agreement_style_k3"
-  ],
+  "benchmark_suite_frozen": true,
+  "benchmark_strategies": {
+    "sanity_fixed": [
+      "fixed_n_4", "fixed_n_8", "fixed_n_12",
+      "fixed_time_1600", "fixed_time_3200", "fixed_time_4800"
+    ],
+    "adaptive_heuristic": [
+      "local_agreement_style_k2", "local_agreement_style_k3", "local_agreement_la2"
+    ],
+    "literature_learned": ["mu_zhang2020"],
+    "ours": ["P0", "P1", "P2"]
+  },
   "common": {
     "hypothesis_tokenization": "translated_text.split()",
     "maximum_source_tokens_per_unit": 48,
@@ -20,6 +27,23 @@
     }
   },
   "local_agreement_style": {"history_k": [2, 3], "stable_ratio_threshold": 0.90},
+  "local_agreement_la2": {
+    "history_k": 2,
+    "source_mapping": "causal prefixes within consecutive maximum-48-token source units",
+    "target_emission": "new longest-common-whitespace-token prefix only",
+    "termination": "flush current hypothesis suffix after immutable emitted prefix at maximum-unit or talk end"
+  },
+  "mu_zhang2020": {
+    "classifier": "balanced logistic regression",
+    "inference_threshold": 0.50,
+    "oracle_prefix_preservation_threshold": 0.90,
+    "runtime_text_features": ["current_source_text", "current_hypothesis_text"],
+    "runtime_numeric_features": [
+      "source_buffer_token_count", "source_buffer_character_count",
+      "source_clock_elapsed_ms", "current_target_token_count", "source_target_length_ratio"
+    ]
+  },
+  "latency_metrics": ["Average Lagging", "Length-Adaptive Average Lagging"],
   "pseudo_labels": {
     "lookahead_updates": 2,
     "max_source_tokens": 48,

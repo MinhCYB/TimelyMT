@@ -118,6 +118,30 @@ def _commit(
     )
 
 
+def _emission_commit(
+    talk: RuntimeTalk,
+    source_start: int,
+    observation_end: int,
+    target_tokens: Sequence[str],
+    reason: str,
+) -> Commit:
+    """Record a target-prefix emission at its causal source observation."""
+    source_tokens = talk.tokens[source_start : observation_end + 1]
+    return Commit(
+        source_start=source_start,
+        source_end=observation_end,
+        observation_token_index=observation_end,
+        observation_emit_ms=talk.tokens[observation_end].emit_ms,
+        source_token_count=len(source_tokens),
+        source_clock_duration_ms=(
+            source_tokens[-1].emit_ms - source_tokens[0].emit_ms if source_tokens else 0
+        ),
+        target_token_count=len(target_tokens),
+        translated_text=" ".join(target_tokens),
+        reason=reason,
+    )
+
+
 def fixed_n(talk: RuntimeTalk, provider: HypothesisProvider, n: int) -> list[Commit]:
     commits: list[Commit] = []
     for start in range(0, len(talk.tokens), n):
@@ -164,6 +188,57 @@ def local_agreement_style(talk: RuntimeTalk, provider: HypothesisProvider, histo
     if start < len(talk.tokens):
         end = len(talk.tokens) - 1
         commits.append(_commit(talk, start, end, provider(talk, start, end), "talk_end"))
+    return commits
+
+
+def local_agreement_la2(talk: RuntimeTalk, provider: HypothesisProvider) -> list[Commit]:
+    """Local Agreement LA-2 adaptation over source-unit token prefixes.
+
+    Consecutive normalized hypotheses use exact ``str.split()`` tokens. Only
+    newly agreed prefix tokens are emitted; the current suffix is flushed at
+    the 48-token source-unit bound or talk end without revising emitted tokens.
+    """
+    commits: list[Commit] = []
+    start = 0
+    previous_tokens: list[str] | None = None
+    emitted_count = 0
+    last_emission_end = start - 1
+    for end in range(len(talk.tokens)):
+        count = end - start + 1
+        if count < MIN_SOURCE_TOKENS:
+            continue
+        current_tokens = provider(talk, start, end).translated_text.split()
+        termination = (
+            "max_length" if count >= MAX_SOURCE_TOKENS
+            else "talk_end" if end == len(talk.tokens) - 1
+            else None
+        )
+        if termination:
+            remaining = current_tokens[emitted_count:]
+            if remaining:
+                commits.append(_emission_commit(
+                    talk, last_emission_end + 1, end, remaining, termination,
+                ))
+            start = end + 1
+            previous_tokens = None
+            emitted_count = 0
+            last_emission_end = start - 1
+        elif previous_tokens is not None:
+            stable_count = lcp_length((" ".join(previous_tokens), " ".join(current_tokens)))
+            stable_count = max(emitted_count, stable_count)
+            newly_stable = current_tokens[emitted_count:stable_count]
+            if newly_stable:
+                commits.append(_emission_commit(talk, last_emission_end + 1, end, newly_stable, "agreement"))
+                emitted_count = stable_count
+                last_emission_end = end
+            previous_tokens = current_tokens
+        else:
+            previous_tokens = current_tokens
+    if start < len(talk.tokens):
+        end = len(talk.tokens) - 1
+        remaining = provider(talk, start, end).translated_text.split()
+        if remaining:
+            commits.append(_emission_commit(talk, start, end, remaining, "talk_end"))
     return commits
 
 
