@@ -1,29 +1,51 @@
-# Python
+# Python bytecode and tooling
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Virtual environments and local environment files
 .venv/
 venv/
-
-# Environment
+env/
 .env
 
-# IDE
+# IDE and operating systems
 .vscode/
 .idea/
-
-# Notebooks
-.ipynb_checkpoints/
-
-# Frontend
-node_modules/
-dist/
-build/
-
-# Operating systems
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Research data and artifacts
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+.playwright-cli/
+
+# Local runtime and model caches
+.cache/
+.huggingface/
+huggingface/
+.torch/
+outputs/translator/cache/
+
+# Downloaded model weights
+*.safetensors
+pytorch_model*.bin
+model*.bin
+tokenizer.model
+
+# Generated dataset intermediates; keep frozen metadata separately trackable
 data/manifests/acquisition-results.jsonl
 data/streaming/raw/*
 !data/streaming/raw/ted/
@@ -37,23 +59,33 @@ data/streaming/timed/*
 !data/streaming/timed/.gitkeep
 data/streaming/processed/*
 !data/streaming/processed/.gitkeep
+
+# Generated policy inputs and supervision
 data/policy/prefixes/*
 !data/policy/prefixes/.gitkeep
 data/policy/hypotheses/*
 !data/policy/hypotheses/.gitkeep
 data/policy/pseudo_labels/*
 !data/policy/pseudo_labels/.gitkeep
-checkpoints/*
-!checkpoints/policy/
+data/policy/mu_zhang2020/
+
+# Generated policy checkpoints
+checkpoints/policy/*
 !checkpoints/policy/.gitkeep
-outputs/*
-!outputs/runs/
+
+# Generated predictions, metrics, logs, figures, and experiment state
+outputs/dataset/
+outputs/experiments/
+outputs/runs/*
 !outputs/runs/.gitkeep
-!outputs/logs/
+outputs/logs/*
 !outputs/logs/.gitkeep
-!outputs/predictions/
+outputs/predictions/*
 !outputs/predictions/.gitkeep
-!outputs/metrics/
+outputs/metrics/*
 !outputs/metrics/.gitkeep
-!outputs/figures/
+outputs/figures/*
 !outputs/figures/.gitkeep
+
+# Exported experiment archives
+*.tar.gz
