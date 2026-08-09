@@ -1,0 +1,31 @@
+{
+  "baseline_strategies": [
+    "fixed_n_4", "fixed_n_8", "fixed_n_12",
+    "fixed_time_1600", "fixed_time_3200", "fixed_time_4800",
+    "local_agreement_style_k2", "local_agreement_style_k3"
+  ],
+  "common": {
+    "hypothesis_tokenization": "translated_text.split()",
+    "maximum_source_tokens_per_unit": 48,
+    "minimum_source_tokens_before_commit": 4,
+    "timing_label": "simulated source-clock"
+  },
+  "learned": {
+    "probability_thresholds": [0.30, 0.40, 0.50, 0.60, 0.70],
+    "tfidf": {"word_ngrams": [1, 2], "max_features_per_field": 10000, "min_df": 2},
+    "variants": {
+      "P0": "current source text plus numeric causal state",
+      "P1": "P0 plus immediately previous committed source unit text",
+      "P2": "P1 plus immediately previous system-generated committed target unit text"
+    }
+  },
+  "local_agreement_style": {"history_k": [2, 3], "stable_ratio_threshold": 0.90},
+  "pseudo_labels": {
+    "lookahead_updates": 2,
+    "max_source_tokens": 48,
+    "min_source_tokens": 4,
+    "stability_threshold": 0.90,
+    "target_hypothesis_tokenization": "whitespace split"
+  },
+  "version": "1.0.0"
+}

@@ -6,11 +6,16 @@ TimelyMT nghiên cứu quyết định **LISTEN** (tiếp tục nhận source) h
 
 Dataset trung tâm là các bilingual talk liên tục theo phong cách TED. Dữ liệu streaming được dùng để tạo source prefixes, translation hypotheses, pseudo-labels, và đánh giá các heuristic cùng learned policy.
 
-**Current milestone:** M0.8 - Alignment Calibration, Corpus Scaling, Dataset QA, and Final Split Freeze
+**Current milestone:** M1.3 - Dataset-safe causal translation requests and hypothesis artifacts
 
 The resumable high-level dataset commands are `make prepare-dataset`, `make validate-dataset`, and `make dataset-summary`. M0.8 gate status and limitations are recorded in [`docs/dataset-quality-report.md`](docs/dataset-quality-report.md).
 
 Translator fine-tuning là một extension tùy chọn trong tương lai, không thuộc scope hiện tại.
+
+The M1 translator contract and frozen EnViT5 integration are documented in
+[`docs/translator.md`](docs/translator.md).
+The leakage-safe Dataset v1 request and derived-hypothesis contracts are
+documented in [`docs/translation-artifacts.md`](docs/translation-artifacts.md).
 
 ## Repository Structure
 

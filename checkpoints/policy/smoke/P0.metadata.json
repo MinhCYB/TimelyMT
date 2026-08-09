@@ -1,0 +1,18 @@
+{
+  "COMMIT": 6,
+  "LISTEN": 74,
+  "artifact_status": "smoke",
+  "checkpoint": "D:/Dev/TimelyMT/checkpoints/policy/smoke/P0.joblib",
+  "checkpoint_sha256": "ec80ee4aceb9384db34222bfbc1364d5a9d17c5d37530f9956362d7f995bf415",
+  "class_weight": "balanced",
+  "feature_dimension": 165,
+  "pseudo_manifest": "data/policy/pseudo_labels/smoke/train/manifest.json",
+  "publishable": false,
+  "random_state": 20260809,
+  "reload_predict_proba_smoke": 0.040577249629559074,
+  "sklearn_version": "1.7.2",
+  "talk_coverage": 1,
+  "training_seconds": 0.20925130000250647,
+  "training_states": 80,
+  "variant": "P0"
+}

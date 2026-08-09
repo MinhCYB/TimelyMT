@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:timelymt:schema:derived-translation-artifact-manifest:1.0.0",
+  "title": "TimelyMT Derived Translation Artifact Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["artifact_schema_version", "artifact_type", "artifact_path", "artifact_checksum", "record_count", "source_talk_ids", "provenance", "created_at"],
+  "properties": {
+    "artifact_schema_version": {"const": "1.0.0"},
+    "artifact_type": {"enum": ["translation_requests", "translation_hypotheses"]},
+    "artifact_path": {"type": "string", "minLength": 1},
+    "artifact_checksum": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "record_count": {"type": "integer", "minimum": 0},
+    "source_talk_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "created_at": {"type": "string", "format": "date-time"},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dataset_name", "dataset_snapshot_version", "dataset_snapshot_checksum", "dataset_manifest_path", "split_manifest_path", "split_checksum", "translator_model_id", "translator_revision", "translator_config_version", "translator_config_fingerprint", "generation_config_fingerprint"],
+      "properties": {
+        "dataset_name": {"const": "TimelyMT Streaming Dataset v1"},
+        "dataset_snapshot_version": {"type": "string", "minLength": 1},
+        "dataset_snapshot_checksum": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "dataset_manifest_path": {"type": "string", "minLength": 1},
+        "split_manifest_path": {"type": "string", "minLength": 1},
+        "split_checksum": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "translator_model_id": {"type": "string", "minLength": 1},
+        "translator_revision": {"type": "string", "minLength": 1},
+        "translator_config_version": {"type": "string", "minLength": 1},
+        "translator_config_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "generation_config_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

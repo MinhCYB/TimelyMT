@@ -1,0 +1,23 @@
+{
+  "config_version": "1.1.0",
+  "device_policy": "auto",
+  "dtype_policy": {
+    "cpu": "float32",
+    "cuda": "float16"
+  },
+  "frozen": true,
+  "generation_parameters": {
+    "do_sample": false,
+    "max_new_tokens": 256,
+    "num_beams": 1
+  },
+  "maximum_input_handling": {
+    "includes_model_prefix": true,
+    "max_input_tokens": 512,
+    "strategy": "error"
+  },
+  "model_id": "VietAI/envit5-translation",
+  "model_revision": "840bc88104d5a4277af740eaedb024df8c3093e7",
+  "source_language": "en",
+  "target_language": "vi"
+}

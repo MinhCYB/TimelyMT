@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:timelymt:schema:translation-hypothesis:1.0.0",
+  "title": "TimelyMT Derived Translation Hypothesis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_schema_version", "request_id", "talk_id", "split",
+    "start_token_index", "end_token_index", "observation_emit_ms", "source_text",
+    "translated_text", "source_token_count", "target_token_count",
+    "translator_model_id", "translator_revision", "translator_config_version",
+    "translator_config_fingerprint", "generation_config_fingerprint",
+    "device", "dtype", "cache_hit"
+  ],
+  "properties": {
+    "artifact_schema_version": {"const": "1.0.0"},
+    "request_id": {"type": "string", "pattern": "^trq-[0-9a-f]{64}$"},
+    "talk_id": {"type": "string", "minLength": 1},
+    "split": {"enum": ["train", "dev", "test"]},
+    "start_token_index": {"type": "integer", "minimum": 0},
+    "end_token_index": {"type": "integer", "minimum": 0},
+    "observation_emit_ms": {"type": "integer", "minimum": 0},
+    "source_text": {"type": "string", "minLength": 1},
+    "translated_text": {"type": "string"},
+    "source_token_count": {"type": "integer", "minimum": 1},
+    "target_token_count": {"type": ["integer", "null"], "minimum": 0},
+    "translator_model_id": {"type": "string", "minLength": 1},
+    "translator_revision": {"type": "string", "minLength": 1},
+    "translator_config_version": {"type": "string", "minLength": 1},
+    "translator_config_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "generation_config_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "device": {"type": ["string", "null"]},
+    "dtype": {"type": ["string", "null"]},
+    "cache_hit": {"type": ["boolean", "null"]}
+  }
+}
