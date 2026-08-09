@@ -60,6 +60,9 @@ data/streaming/timed/*
 !data/streaming/timed/.gitkeep
 data/streaming/processed/*
 !data/streaming/processed/.gitkeep
+!data/streaming/processed/*/
+data/streaming/processed/*/*
+!data/streaming/processed/*/streaming-talk.json
 
 # Generated policy inputs and supervision
 data/policy/prefixes/*
