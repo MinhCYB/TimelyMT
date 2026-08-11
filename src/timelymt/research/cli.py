@@ -589,7 +589,7 @@ def report(split_name: str) -> None:
 
 def main(argv: Sequence[str] | None = None) -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("stage", choices=("pseudo", "validate-pseudo", "mu-supervision", "validate-mu", "train", "train-mu", "rollout", "rollout-selected", "evaluate", "select", "freeze", "report"))
+    parser.add_argument("stage", choices=("pseudo", "validate-pseudo", "mu-supervision", "validate-mu", "train", "train-mu", "rollout", "rollout-selected", "evaluate", "select", "freeze", "report", "import-v1", "train-v2", "rollout-v2", "evaluate-v2", "compare-v2", "select-v2", "freeze-v2"))
     parser.add_argument("--split", choices=("train", "dev", "test"))
     parser.add_argument("--talk-id")
     parser.add_argument("--max-talks", type=int)
@@ -602,8 +602,39 @@ def main(argv: Sequence[str] | None = None) -> None:
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--allow-smoke", action="store_true")
     parser.add_argument("--include-selected", action="store_true")
+    parser.add_argument("--source", type=Path)
+    parser.add_argument("--thresholds", nargs="*", type=float)
     args = parser.parse_args(argv)
-    if args.stage == "pseudo":
+    if args.stage in {"train-v2", "rollout-v2", "evaluate-v2", "compare-v2", "select-v2", "freeze-v2"} and args.split == "test":
+        parser.error("Policy V2 forbids --split test")
+    if args.stage == "import-v1":
+        if args.source is None:
+            parser.error("import-v1 requires --source ARCHIVE_OR_EXPANDED_DIRECTORY")
+        from .policy_v2_runner import import_v1
+        import_v1(args.source)
+    elif args.stage == "train-v2":
+        if args.variant is None:
+            parser.error("train-v2 requires --variant P0|P1|P2")
+        from .policy_v2_runner import train_v2
+        train_v2(args.variant, args.pseudo_labels)
+    elif args.stage == "rollout-v2":
+        if args.variant is None:
+            parser.error("rollout-v2 requires --variant P0|P1|P2")
+        from .policy_v2_runner import rollout_v2
+        rollout_v2(args.variant, args.thresholds or THRESHOLDS, args.batch_size)
+    elif args.stage == "evaluate-v2":
+        from .policy_v2_runner import evaluate_v2
+        evaluate_v2(args.strategies)
+    elif args.stage == "compare-v2":
+        from .policy_v2_runner import compare_v1_v2
+        compare_v1_v2()
+    elif args.stage == "select-v2":
+        from .policy_v2_runner import select_v2
+        select_v2()
+    elif args.stage == "freeze-v2":
+        from .policy_v2_runner import freeze_v2
+        freeze_v2()
+    elif args.stage == "pseudo":
         pseudo(args.split or "train", args.batch_size, talk_id=args.talk_id, max_talks=args.max_talks, max_states=args.max_states, smoke=args.smoke)
     elif args.stage == "validate-pseudo":
         validate_pseudo(args.split or "train", smoke=args.smoke)

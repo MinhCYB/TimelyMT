@@ -1,0 +1,33 @@
+{
+  "archive": "timelymt-checkpoint.tar.gz",
+  "archive_contents_summary": {
+    "checkpoints/policy": {
+      "bytes": 3812267,
+      "file_count": 9
+    },
+    "data/policy": {
+      "bytes": 61748011,
+      "file_count": 37
+    },
+    "outputs/experiments/research-mvp": {
+      "bytes": 24860384,
+      "file_count": 104
+    }
+  },
+  "archive_sha256": "f1f58cd36bf94ee72714ce1163c35e34d4e34211222c83ea8ca03acd12e982ca",
+  "archive_size_bytes": 7499239,
+  "checkpoint_stage": "dev-frozen-complete",
+  "completed_stage_names": [
+    "train-supervision-complete",
+    "dev-supervision-complete",
+    "dev-supervision-and-policies-complete",
+    "dev-baselines-complete",
+    "dev-frozen-complete"
+  ],
+  "created_at_utc": "2026-08-11T16:04:19Z",
+  "dataset_manifest_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+  "git_commit": "6c75da5d60cc626ab79e7e82cae471e18be27531",
+  "schema_version": "1.0.0",
+  "split_checksum": "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4",
+  "translator_config_fingerprint": "a54ba8356642a7a696234453b3fc0a29d2dcf85db5299677c492ae967281bd1c"
+}

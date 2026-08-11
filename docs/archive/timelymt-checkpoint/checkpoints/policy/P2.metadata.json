@@ -1,0 +1,18 @@
+{
+  "COMMIT": 2943,
+  "LISTEN": 19075,
+  "artifact_status": "full",
+  "checkpoint": "/kaggle/working/TimelyMT/checkpoints/policy/P2.joblib",
+  "checkpoint_sha256": "c4e383319024c43b01db2e9a42de854f142dafcfad5fd5e9dbcd3c591df517d4",
+  "class_weight": "balanced",
+  "feature_dimension": 30011,
+  "pseudo_manifest": "data/policy/pseudo_labels/train/manifest.json",
+  "publishable": true,
+  "random_state": 20260809,
+  "reload_predict_proba_smoke": 0.07230205277599291,
+  "sklearn_version": "1.6.1",
+  "talk_coverage": 12,
+  "training_seconds": 2.9798278369999025,
+  "training_states": 22018,
+  "variant": "P2"
+}

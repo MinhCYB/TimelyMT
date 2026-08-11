@@ -1,0 +1,14 @@
+{
+  "dataset_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+  "gpu_name": "Tesla T4",
+  "inference_batch_size": 3,
+  "model_id": "VietAI/envit5-translation",
+  "model_revision": "840bc88104d5a4277af740eaedb024df8c3093e7",
+  "python_version": "3.12.13",
+  "repository_branch": "main",
+  "repository_commit": "6c75da5d60cc626ab79e7e82cae471e18be27531",
+  "repository_url": "https://github.com/MinhCYB/TimelyMT.git",
+  "split_checksum": "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4",
+  "torch_version": "2.10.0+cu128",
+  "transformers_version": "4.57.6"
+}

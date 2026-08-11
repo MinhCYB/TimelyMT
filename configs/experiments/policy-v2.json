@@ -1,0 +1,47 @@
+{
+  "experiment_label": "POST-HOC EXPLORATORY DEV EXTENSION",
+  "experiment_status": "post_hoc_exploratory",
+  "publishable_confirmatory_evidence": false,
+  "encoder": {
+    "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "revision": "e62509716f15c5fd03a6fd3156a4bc5e43f83f26",
+    "pooling": "attention-mask-mean-l2-v1",
+    "fine_tuned": false,
+    "expected_dimension": 384
+  },
+  "inputs": {
+    "P0": ["current_source_text", "V1_numeric_causal_vector"],
+    "P1": ["current_source_text", "previous_committed_source_text", "V1_numeric_causal_vector"],
+    "P2": ["current_source_text", "previous_committed_source_text", "previous_committed_target_text", "V1_numeric_causal_vector"],
+    "missing_history": "zero_embedding",
+    "numeric_feature_identity": "src/timelymt/research/policy.py::NUMERIC_FEATURES"
+  },
+  "classifier": {
+    "architecture": ["Linear(input,256)", "GELU", "Dropout(0.20)", "Linear(256,64)", "GELU", "Dropout(0.10)", "Linear(64,1)"],
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "epochs": 20,
+    "early_stopping": false,
+    "seed": 20260809,
+    "loss": "BCEWithLogitsLoss(pos_weight=TRAIN_LISTEN/TRAIN_COMMIT)"
+  },
+  "runtime": {
+    "minimum_source_tokens": 4,
+    "maximum_source_tokens": 48,
+    "thresholds": [0.30, 0.40, 0.50, 0.60, 0.70],
+    "commit_rule": "p_commit >= threshold",
+    "history": "policy_own_previous_commits"
+  },
+  "selection_rule_identity": "V1 select_dev_configuration with Fixed-N/8 reference",
+  "source_v1": {
+    "checkpoint_stage": "dev-frozen-complete",
+    "commit": "6c75da5d60cc626ab79e7e82cae471e18be27531",
+    "dataset_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+    "split_checksum": "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4",
+    "translator_fingerprint": "a54ba8356642a7a696234453b3fc0a29d2dcf85db5299677c492ae967281bd1c"
+  },
+  "test_access": "forbidden",
+  "version": "2.0.0"
+}

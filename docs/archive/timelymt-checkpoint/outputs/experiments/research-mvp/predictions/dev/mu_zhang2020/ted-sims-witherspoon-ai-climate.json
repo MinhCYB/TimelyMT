@@ -1,0 +1,2483 @@
+{
+  "artifact_status": "full",
+  "artifact_version": "1.0.0",
+  "commits": [
+    {
+      "causal_features": {
+        "current_target_token_count": 39.0,
+        "source_buffer_character_count": 183.0,
+        "source_buffer_token_count": 30.0,
+        "source_clock_elapsed_ms": 11419.0,
+        "source_target_length_ratio": 0.7692307692307693
+      },
+      "commit_probability": 0.5261688698869844,
+      "observation_emit_ms": 11638,
+      "observation_token_index": 29,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 11419,
+      "source_end": 29,
+      "source_start": 0,
+      "source_token_count": 30,
+      "target_token_count": 39,
+      "translated_text": "Bạn có thể đã có kinh nghiệm của unboxing đồ nội thất và đi qua hướng dẫn đi một cái gì đó như thế này Lắp ráp kệ sách theo sơ đồ cung cấp Có tôi biết những gì"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 22.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1859.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.5153500030928339,
+      "observation_emit_ms": 13600,
+      "observation_token_index": 33,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1859,
+      "source_end": 33,
+      "source_start": 30,
+      "source_token_count": 4,
+      "target_token_count": 5,
+      "translated_text": "một kệ sách trông như"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 25.0,
+        "source_buffer_character_count": 116.0,
+        "source_buffer_token_count": 20.0,
+        "source_clock_elapsed_ms": 7180.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.5113437966311267,
+      "observation_emit_ms": 21434,
+      "observation_token_index": 53,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 7180,
+      "source_end": 53,
+      "source_start": 34,
+      "source_token_count": 20,
+      "target_token_count": 25,
+      "translated_text": "Có lẽ tôi sẽ không đọc hướng dẫn lắp ráp nếu tôi không cần thêm một chút trợ giúp trong quá trình hoặc có thể"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 9.0,
+        "source_buffer_character_count": 29.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 1722.0,
+        "source_target_length_ratio": 0.5555555555555556
+      },
+      "commit_probability": 0.5988073020911198,
+      "observation_emit_ms": 23610,
+      "observation_token_index": 58,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1722,
+      "source_end": 58,
+      "source_start": 54,
+      "source_token_count": 5,
+      "target_token_count": 9,
+      "translated_text": "Bạn đã mở một cuốn sách nấu ăn với"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 18.0,
+        "source_buffer_character_count": 87.0,
+        "source_buffer_token_count": 16.0,
+        "source_clock_elapsed_ms": 6311.0,
+        "source_target_length_ratio": 0.8888888888888888
+      },
+      "commit_probability": 0.5328249800231154,
+      "observation_emit_ms": 30103,
+      "observation_token_index": 74,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 6311,
+      "source_end": 74,
+      "source_start": 59,
+      "source_token_count": 16,
+      "target_token_count": 18,
+      "translated_text": "một tác giả nghĩ rằng bạn đã phần nào của một đầu bếp Deglaze pan What Laughter OK"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 18.0,
+        "source_buffer_character_count": 63.0,
+        "source_buffer_token_count": 12.0,
+        "source_clock_elapsed_ms": 4426.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.6558617152533674,
+      "observation_emit_ms": 34800,
+      "observation_token_index": 86,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4426,
+      "source_end": 86,
+      "source_start": 75,
+      "source_token_count": 12,
+      "target_token_count": 18,
+      "translated_text": "tắt tôi đi vào một tìm kiếm riêng biệt để hiểu bất cứ điều gì có nghĩa là"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 26.0,
+        "source_buffer_character_count": 109.0,
+        "source_buffer_token_count": 22.0,
+        "source_clock_elapsed_ms": 7397.0,
+        "source_target_length_ratio": 0.8461538461538461
+      },
+      "commit_probability": 0.6100134973497119,
+      "observation_emit_ms": 43435,
+      "observation_token_index": 108,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 7397,
+      "source_end": 108,
+      "source_start": 87,
+      "source_token_count": 22,
+      "target_token_count": 26,
+      "translated_text": "Hướng dẫn bạn phải làm gì và không phải làm như thế nào là khá vô dụng và ngay cả khi chúng ta đang nói chuyện"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 15.0,
+        "source_buffer_character_count": 63.0,
+        "source_buffer_token_count": 11.0,
+        "source_clock_elapsed_ms": 4292.0,
+        "source_target_length_ratio": 0.7333333333333333
+      },
+      "commit_probability": 0.7158121460482169,
+      "observation_emit_ms": 48174,
+      "observation_token_index": 119,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4292,
+      "source_end": 119,
+      "source_start": 109,
+      "source_token_count": 11,
+      "target_token_count": 15,
+      "translated_text": "về một điều quan trọng như biến đổi khí hậu, chúng ta đều nghe thấy"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 7.0,
+        "source_buffer_character_count": 32.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 1602.0,
+        "source_target_length_ratio": 0.7142857142857143
+      },
+      "commit_probability": 0.5727850712534974,
+      "observation_emit_ms": 50044,
+      "observation_token_index": 124,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1602,
+      "source_end": 124,
+      "source_start": 120,
+      "source_token_count": 5,
+      "target_token_count": 7,
+      "translated_text": "Thời gian Chuyển đổi sang tái tạo"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 33.0,
+        "source_buffer_character_count": 120.0,
+        "source_buffer_token_count": 20.0,
+        "source_clock_elapsed_ms": 7841.0,
+        "source_target_length_ratio": 0.6060606060606061
+      },
+      "commit_probability": 0.5132264802943692,
+      "observation_emit_ms": 58241,
+      "observation_token_index": 144,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 7841,
+      "source_end": 144,
+      "source_start": 125,
+      "source_token_count": 20,
+      "target_token_count": 33,
+      "translated_text": "Năng lượng Điện khí hoá mọi thứ khác Triển khai các giải pháp công bằng và công bằng Vâng, hãy làm tất cả những điều đó Nhưng làm thế nào để trả lời"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 27.0,
+        "source_buffer_character_count": 108.0,
+        "source_buffer_token_count": 16.0,
+        "source_clock_elapsed_ms": 6345.0,
+        "source_target_length_ratio": 0.5925925925925926
+      },
+      "commit_probability": 0.7331103284560838,
+      "observation_emit_ms": 64800,
+      "observation_token_index": 160,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 6345,
+      "source_end": 160,
+      "source_start": 145,
+      "source_token_count": 16,
+      "target_token_count": 27,
+      "translated_text": "làm thế nào để chúng ta hiểu được giải pháp nào là thực sự khả thi cho dù đó là với cơ sở hạ tầng ngày nay"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 20.0,
+        "source_buffer_character_count": 49.0,
+        "source_buffer_token_count": 8.0,
+        "source_clock_elapsed_ms": 2781.0,
+        "source_target_length_ratio": 0.4
+      },
+      "commit_probability": 0.591533646878445,
+      "observation_emit_ms": 67794,
+      "observation_token_index": 168,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2781,
+      "source_end": 168,
+      "source_start": 161,
+      "source_token_count": 8,
+      "target_token_count": 20,
+      "translated_text": "Chúng ta có thể làm gì để ngăn chặn sự phát triển của môi trường pháp lý hay bất kỳ"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 37.0,
+        "source_buffer_character_count": 155.0,
+        "source_buffer_token_count": 27.0,
+        "source_clock_elapsed_ms": 9756.0,
+        "source_target_length_ratio": 0.7297297297297297
+      },
+      "commit_probability": 0.5272293109924949,
+      "observation_emit_ms": 77906,
+      "observation_token_index": 195,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 9756,
+      "source_end": 195,
+      "source_start": 169,
+      "source_token_count": 27,
+      "target_token_count": 37,
+      "translated_text": "Một số phụ thuộc và ràng buộc khác mà chúng ta phải xem xét cách chúng ta giải quyết biến đổi khí hậu cũng phụ thuộc vào định nghĩa của chúng ta về vấn đề đó là"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 28.0,
+        "source_buffer_character_count": 105.0,
+        "source_buffer_token_count": 18.0,
+        "source_clock_elapsed_ms": 6865.0,
+        "source_target_length_ratio": 0.6428571428571429
+      },
+      "commit_probability": 0.5737506380669202,
+      "observation_emit_ms": 85538,
+      "observation_token_index": 213,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 6865,
+      "source_end": 213,
+      "source_start": 196,
+      "source_token_count": 18,
+      "target_token_count": 28,
+      "translated_text": "khoa học thách thức một vấn đề chính trị xã hội một vấn đề kinh tế và hơn thế nữa Và cách chúng ta giải quyết nó sẽ"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 7.0,
+        "source_buffer_character_count": 51.0,
+        "source_buffer_token_count": 11.0,
+        "source_clock_elapsed_ms": 3724.0,
+        "source_target_length_ratio": 1.5714285714285714
+      },
+      "commit_probability": 0.6831559298563468,
+      "observation_emit_ms": 90000,
+      "observation_token_index": 224,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3724,
+      "source_end": 224,
+      "source_start": 214,
+      "source_token_count": 11,
+      "target_token_count": 7,
+      "translated_text": "Không có câu trả lời duy nhất"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 36.0,
+        "source_buffer_character_count": 125.0,
+        "source_buffer_token_count": 18.0,
+        "source_clock_elapsed_ms": 7893.0,
+        "source_target_length_ratio": 0.5
+      },
+      "commit_probability": 0.6842423794409017,
+      "observation_emit_ms": 98058,
+      "observation_token_index": 242,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 7893,
+      "source_end": 242,
+      "source_start": 225,
+      "source_token_count": 18,
+      "target_token_count": 36,
+      "translated_text": "Tôi là một nhà khoa học, vì vậy tôi tiếp cận biến đổi khí hậu như một thách thức khoa học. Tôi cũng là một người lạc quan về công nghệ và trí tuệ nhân tạo."
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 12.0,
+        "source_buffer_character_count": 74.0,
+        "source_buffer_token_count": 14.0,
+        "source_clock_elapsed_ms": 3894.0,
+        "source_target_length_ratio": 1.1666666666666667
+      },
+      "commit_probability": 0.504587699005869,
+      "observation_emit_ms": 102448,
+      "observation_token_index": 256,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3894,
+      "source_end": 256,
+      "source_start": 243,
+      "source_token_count": 14,
+      "target_token_count": 12,
+      "translated_text": "Tôi cũng tiếp cận nó như một công nghệ Khi nó đến"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 23.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1388.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.8149326405990038,
+      "observation_emit_ms": 103990,
+      "observation_token_index": 260,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1388,
+      "source_end": 260,
+      "source_start": 257,
+      "source_token_count": 4,
+      "target_token_count": 6,
+      "translated_text": "đến một tương lai bền vững"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 44.0,
+        "source_buffer_character_count": 159.0,
+        "source_buffer_token_count": 26.0,
+        "source_clock_elapsed_ms": 9692.0,
+        "source_target_length_ratio": 0.5909090909090909
+      },
+      "commit_probability": 0.5627609347229345,
+      "observation_emit_ms": 114453,
+      "observation_token_index": 286,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 9692,
+      "source_end": 286,
+      "source_start": 261,
+      "source_token_count": 26,
+      "target_token_count": 44,
+      "translated_text": "Trí tuệ nhân tạo có thể giúp chúng ta làm ba điều quan trọng Đầu tiên nó có thể giúp chúng ta hiểu biến đổi khí hậu và ảnh hưởng của nó đến hệ sinh thái của Trái đất Thứ hai nó có thể"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 4.0,
+        "source_buffer_character_count": 116.0,
+        "source_buffer_token_count": 19.0,
+        "source_clock_elapsed_ms": 7288.0,
+        "source_target_length_ratio": 4.75
+      },
+      "commit_probability": 0.8451460160117946,
+      "observation_emit_ms": 122051,
+      "observation_token_index": 305,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 7288,
+      "source_end": 305,
+      "source_start": 287,
+      "source_token_count": 19,
+      "target_token_count": 4,
+      "translated_text": "Và thứ ba là"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 29.0,
+        "source_buffer_character_count": 107.0,
+        "source_buffer_token_count": 18.0,
+        "source_clock_elapsed_ms": 7333.0,
+        "source_target_length_ratio": 0.6206896551724138
+      },
+      "commit_probability": 0.8117937734477426,
+      "observation_emit_ms": 129639,
+      "observation_token_index": 323,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 7333,
+      "source_end": 323,
+      "source_start": 306,
+      "source_token_count": 18,
+      "target_token_count": 29,
+      "translated_text": "Ngày nay, chúng ta có thể thúc đẩy khoa học đột phá mà chúng ta cần như phản ứng tổng hợp như một nguồn năng lượng không có carbon."
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 30.0,
+        "source_buffer_character_count": 100.0,
+        "source_buffer_token_count": 18.0,
+        "source_clock_elapsed_ms": 7036.0,
+        "source_target_length_ratio": 0.6
+      },
+      "commit_probability": 0.72911498758695,
+      "observation_emit_ms": 136851,
+      "observation_token_index": 341,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 7036,
+      "source_end": 341,
+      "source_start": 324,
+      "source_token_count": 18,
+      "target_token_count": 30,
+      "translated_text": "Tôi muốn nói về điều thứ hai là tối ưu hóa các hệ thống hiện tại và cụ thể là làm thế nào chúng ta có thể sử dụng AI"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 7.0,
+        "source_buffer_character_count": 23.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1583.0,
+        "source_target_length_ratio": 0.5714285714285714
+      },
+      "commit_probability": 0.9453242085802124,
+      "observation_emit_ms": 138609,
+      "observation_token_index": 345,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1583,
+      "source_end": 345,
+      "source_start": 342,
+      "source_token_count": 4,
+      "target_token_count": 7,
+      "translated_text": "để khai thác một siêu năng lực"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 21.0,
+        "source_buffer_character_count": 82.0,
+        "source_buffer_token_count": 15.0,
+        "source_clock_elapsed_ms": 5215.0,
+        "source_target_length_ratio": 0.7142857142857143
+      },
+      "commit_probability": 0.5778624377806443,
+      "observation_emit_ms": 144000,
+      "observation_token_index": 360,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 5215,
+      "source_end": 360,
+      "source_start": 346,
+      "source_token_count": 15,
+      "target_token_count": 21,
+      "translated_text": "Chúng tôi đã có trong cuộc chiến này năng lượng gió tái tạo không nghi ngờ một chìa khóa để một"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 26.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 847.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.6913787371710283,
+      "observation_emit_ms": 145623,
+      "observation_token_index": 364,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 847,
+      "source_end": 364,
+      "source_start": 361,
+      "source_token_count": 4,
+      "target_token_count": 5,
+      "translated_text": "Tương lai bền vững nhưng"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 8.0,
+        "source_buffer_character_count": 42.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 2263.0,
+        "source_target_length_ratio": 0.625
+      },
+      "commit_probability": 0.7908616860150485,
+      "observation_emit_ms": 148380,
+      "observation_token_index": 369,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2263,
+      "source_end": 369,
+      "source_start": 365,
+      "source_token_count": 5,
+      "target_token_count": 8,
+      "translated_text": "Vấn đề là chúng khó đoán. Đôi khi"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 18.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1040.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.9095897710559548,
+      "observation_emit_ms": 149680,
+      "observation_token_index": 373,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1040,
+      "source_end": 373,
+      "source_start": 370,
+      "source_token_count": 4,
+      "target_token_count": 5,
+      "translated_text": "Mặt trời chiếu sáng và"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 3.0,
+        "source_buffer_character_count": 18.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1040.0,
+        "source_target_length_ratio": 1.3333333333333333
+      },
+      "commit_probability": 0.9500495842905969,
+      "observation_emit_ms": 150980,
+      "observation_token_index": 377,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1040,
+      "source_end": 377,
+      "source_start": 374,
+      "source_token_count": 4,
+      "target_token_count": 3,
+      "translated_text": "Gió thổi và"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 25.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1040.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.6649823695369732,
+      "observation_emit_ms": 152800,
+      "observation_token_index": 381,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1040,
+      "source_end": 381,
+      "source_start": 378,
+      "source_token_count": 4,
+      "target_token_count": 5,
+      "translated_text": "Đôi khi nó chỉ không"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 32.0,
+        "source_buffer_character_count": 116.0,
+        "source_buffer_token_count": 20.0,
+        "source_clock_elapsed_ms": 7750.0,
+        "source_target_length_ratio": 0.625
+      },
+      "commit_probability": 0.5534282498430667,
+      "observation_emit_ms": 160800,
+      "observation_token_index": 401,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 7750,
+      "source_end": 401,
+      "source_start": 382,
+      "source_token_count": 20,
+      "target_token_count": 32,
+      "translated_text": "Bây giờ đối với một nhà vận hành hệ thống điện người cần cung cấp để đáp ứng nhu cầu trong thời gian thực 24-7 điều này là vô cùng vấn đề"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 7.0,
+        "source_buffer_character_count": 31.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 1042.0,
+        "source_target_length_ratio": 0.7142857142857143
+      },
+      "commit_probability": 0.582575433320324,
+      "observation_emit_ms": 162493,
+      "observation_token_index": 406,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1042,
+      "source_end": 406,
+      "source_start": 402,
+      "source_token_count": 5,
+      "target_token_count": 7,
+      "translated_text": "Năng lượng tái tạo không thể 100%."
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 30.0,
+        "source_buffer_character_count": 120.0,
+        "source_buffer_token_count": 20.0,
+        "source_clock_elapsed_ms": 6885.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.5563034844167112,
+      "observation_emit_ms": 169898,
+      "observation_token_index": 426,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 6885,
+      "source_end": 426,
+      "source_start": 407,
+      "source_token_count": 20,
+      "target_token_count": 30,
+      "translated_text": "Bây giờ thật không may là các nhà máy nhiên liệu hóa thạch lại ngược lại bạn có thể đốt cháy một lượng than cụ thể tại một tập hợp"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 22.0,
+        "source_buffer_character_count": 87.0,
+        "source_buffer_token_count": 15.0,
+        "source_clock_elapsed_ms": 6524.0,
+        "source_target_length_ratio": 0.6818181818181818
+      },
+      "commit_probability": 0.5347386125086061,
+      "observation_emit_ms": 176800,
+      "observation_token_index": 441,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 6524,
+      "source_end": 441,
+      "source_start": 427,
+      "source_token_count": 15,
+      "target_token_count": 22,
+      "translated_text": "thời gian để cung cấp chính xác lượng điện bạn muốn trong một cửa sổ thời gian có thể dự đoán được"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 14.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 724.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.8741537741907078,
+      "observation_emit_ms": 177705,
+      "observation_token_index": 445,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 724,
+      "source_end": 445,
+      "source_start": 442,
+      "source_token_count": 4,
+      "target_token_count": 6,
+      "translated_text": "Vì vậy, nếu bạn là một"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 18.0,
+        "source_buffer_character_count": 83.0,
+        "source_buffer_token_count": 15.0,
+        "source_clock_elapsed_ms": 5796.0,
+        "source_target_length_ratio": 0.8333333333333334
+      },
+      "commit_probability": 0.5249368500354293,
+      "observation_emit_ms": 183954,
+      "observation_token_index": 460,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 5796,
+      "source_end": 460,
+      "source_start": 446,
+      "source_token_count": 15,
+      "target_token_count": 18,
+      "translated_text": "Quản lý hệ thống điện có công việc của họ là giữ cho ánh sáng trên nguồn nào"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 46.0,
+        "source_buffer_token_count": 8.0,
+        "source_clock_elapsed_ms": 3447.0,
+        "source_target_length_ratio": 1.3333333333333333
+      },
+      "commit_probability": 0.8063032447525003,
+      "observation_emit_ms": 187673,
+      "observation_token_index": 468,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3447,
+      "source_end": 468,
+      "source_start": 461,
+      "source_token_count": 8,
+      "target_token_count": 6,
+      "translated_text": "Nhưng đây là một trong những"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 3.0,
+        "source_buffer_character_count": 42.0,
+        "source_buffer_token_count": 11.0,
+        "source_clock_elapsed_ms": 3346.0,
+        "source_target_length_ratio": 3.6666666666666665
+      },
+      "commit_probability": 0.625571508990286,
+      "observation_emit_ms": 191251,
+      "observation_token_index": 479,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3346,
+      "source_end": 479,
+      "source_start": 469,
+      "source_token_count": 11,
+      "target_token_count": 3,
+      "translated_text": "Đó là một"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 13.0,
+        "source_buffer_character_count": 44.0,
+        "source_buffer_token_count": 7.0,
+        "source_clock_elapsed_ms": 2612.0,
+        "source_target_length_ratio": 0.5384615384615384
+      },
+      "commit_probability": 0.5101810229383102,
+      "observation_emit_ms": 194586,
+      "observation_token_index": 486,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2612,
+      "source_end": 486,
+      "source_start": 480,
+      "source_token_count": 7,
+      "target_token_count": 13,
+      "translated_text": "công cụ mạnh mẽ để dự báo các hệ thống AI có thể"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 8.0,
+        "source_buffer_character_count": 90.0,
+        "source_buffer_token_count": 16.0,
+        "source_clock_elapsed_ms": 5618.0,
+        "source_target_length_ratio": 2.0
+      },
+      "commit_probability": 0.6859377006954066,
+      "observation_emit_ms": 200697,
+      "observation_token_index": 502,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 5618,
+      "source_end": 502,
+      "source_start": 487,
+      "source_token_count": 16,
+      "target_token_count": 8,
+      "translated_text": "Vì vậy, trong khi chúng ta không thể"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 28.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1351.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.5723339807944093,
+      "observation_emit_ms": 202808,
+      "observation_token_index": 506,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1351,
+      "source_end": 506,
+      "source_start": 503,
+      "source_token_count": 4,
+      "target_token_count": 6,
+      "translated_text": "loại bỏ sự biến thiên của"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 8.0,
+        "source_buffer_character_count": 18.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 845.0,
+        "source_target_length_ratio": 0.625
+      },
+      "commit_probability": 0.8382364369214744,
+      "observation_emit_ms": 203991,
+      "observation_token_index": 511,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 845,
+      "source_end": 511,
+      "source_start": 507,
+      "source_token_count": 5,
+      "target_token_count": 8,
+      "translated_text": "gió, chúng ta có thể sử dụng AI"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 11.0,
+        "source_buffer_character_count": 43.0,
+        "source_buffer_token_count": 6.0,
+        "source_clock_elapsed_ms": 3040.0,
+        "source_target_length_ratio": 0.5454545454545454
+      },
+      "commit_probability": 0.5118828328813967,
+      "observation_emit_ms": 207200,
+      "observation_token_index": 517,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3040,
+      "source_end": 517,
+      "source_start": 512,
+      "source_token_count": 6,
+      "target_token_count": 11,
+      "translated_text": "để dự đoán chính xác hơn tính sẵn có của nó"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 18.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1272.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.5738841017335122,
+      "observation_emit_ms": 208981,
+      "observation_token_index": 521,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1272,
+      "source_end": 521,
+      "source_start": 518,
+      "source_token_count": 4,
+      "target_token_count": 5,
+      "translated_text": "Đó là đội của tôi."
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 4.0,
+        "source_buffer_character_count": 17.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 902.0,
+        "source_target_length_ratio": 1.25
+      },
+      "commit_probability": 0.6837122754604771,
+      "observation_emit_ms": 210392,
+      "observation_token_index": 526,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 902,
+      "source_end": 526,
+      "source_start": 522,
+      "source_token_count": 5,
+      "target_token_count": 4,
+      "translated_text": "làm gì với AI"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 16.0,
+        "source_buffer_character_count": 59.0,
+        "source_buffer_token_count": 9.0,
+        "source_clock_elapsed_ms": 3850.0,
+        "source_target_length_ratio": 0.5625
+      },
+      "commit_probability": 0.583385560381101,
+      "observation_emit_ms": 214400,
+      "observation_token_index": 535,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3850,
+      "source_end": 535,
+      "source_start": 527,
+      "source_token_count": 9,
+      "target_token_count": 16,
+      "translated_text": "để đẩy nhanh quá trình chuyển đổi sang năng lượng tái tạo như năng lượng gió"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 4.0,
+        "source_buffer_character_count": 18.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1600.0,
+        "source_target_length_ratio": 1.0
+      },
+      "commit_probability": 0.5669694754085638,
+      "observation_emit_ms": 216400,
+      "observation_token_index": 539,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1600,
+      "source_end": 539,
+      "source_start": 536,
+      "source_token_count": 4,
+      "target_token_count": 4,
+      "translated_text": "Phần khó khăn là"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 8.0,
+        "source_buffer_character_count": 53.0,
+        "source_buffer_token_count": 11.0,
+        "source_clock_elapsed_ms": 3378.0,
+        "source_target_length_ratio": 1.375
+      },
+      "commit_probability": 0.5093566494153463,
+      "observation_emit_ms": 220178,
+      "observation_token_index": 550,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3378,
+      "source_end": 550,
+      "source_start": 540,
+      "source_token_count": 11,
+      "target_token_count": 8,
+      "translated_text": "Đầu tiên chúng tôi nghiên cứu thử thách"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 13.0,
+        "source_buffer_character_count": 93.0,
+        "source_buffer_token_count": 17.0,
+        "source_clock_elapsed_ms": 6491.0,
+        "source_target_length_ratio": 1.3076923076923077
+      },
+      "commit_probability": 0.6090448260548187,
+      "observation_emit_ms": 227027,
+      "observation_token_index": 567,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 6491,
+      "source_end": 567,
+      "source_start": 551,
+      "source_token_count": 17,
+      "target_token_count": 13,
+      "translated_text": "Chúng tôi đã tìm ra mọi thứ có thể về vấn đề này."
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 41.0,
+        "source_buffer_character_count": 147.0,
+        "source_buffer_token_count": 26.0,
+        "source_clock_elapsed_ms": 8959.0,
+        "source_target_length_ratio": 0.6341463414634146
+      },
+      "commit_probability": 0.5350613980663578,
+      "observation_emit_ms": 236290,
+      "observation_token_index": 593,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 8959,
+      "source_end": 593,
+      "source_start": 568,
+      "source_token_count": 26,
+      "target_token_count": 41,
+      "translated_text": "nhóm đó là một sự kết hợp của nghiên cứu khoa học kỹ sư một quản lý sản phẩm một quản lý chương trình và một nhà phân tích tác động quyết định rằng một mạng nơ-ron được đào tạo trên"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 9.0,
+        "source_buffer_character_count": 52.0,
+        "source_buffer_token_count": 6.0,
+        "source_clock_elapsed_ms": 2733.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.721632655891666,
+      "observation_emit_ms": 239783,
+      "observation_token_index": 599,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2733,
+      "source_end": 599,
+      "source_start": 594,
+      "source_token_count": 6,
+      "target_token_count": 9,
+      "translated_text": "1.lịch sử thời tiết và sản xuất điện tuabin"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 47.0,
+        "source_buffer_character_count": 179.0,
+        "source_buffer_token_count": 34.0,
+        "source_clock_elapsed_ms": 12592.0,
+        "source_target_length_ratio": 0.723404255319149
+      },
+      "commit_probability": 0.5575756660652197,
+      "observation_emit_ms": 253210,
+      "observation_token_index": 633,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 12592,
+      "source_end": 633,
+      "source_start": 600,
+      "source_token_count": 34,
+      "target_token_count": 47,
+      "translated_text": "Thông tin có thể sẽ giúp chúng tôi hoàn thành mục tiêu của chúng tôi Tiếp theo chúng tôi cần tìm hai yếu tố cốt lõi dữ liệu để đào tạo hệ thống và một đối tác sẵn sàng triển khai nó Cả hai đều có thể"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 11.0,
+        "source_buffer_character_count": 48.0,
+        "source_buffer_token_count": 9.0,
+        "source_clock_elapsed_ms": 3287.0,
+        "source_target_length_ratio": 0.8181818181818182
+      },
+      "commit_probability": 0.6138739613455322,
+      "observation_emit_ms": 256670,
+      "observation_token_index": 642,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3287,
+      "source_end": 642,
+      "source_start": 634,
+      "source_token_count": 9,
+      "target_token_count": 11,
+      "translated_text": "là trở ngại chính khi nói đến việc triển khai AI"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 16.0,
+        "source_buffer_character_count": 105.0,
+        "source_buffer_token_count": 17.0,
+        "source_clock_elapsed_ms": 6507.0,
+        "source_target_length_ratio": 1.0625
+      },
+      "commit_probability": 0.6123083326792275,
+      "observation_emit_ms": 263350,
+      "observation_token_index": 659,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 6507,
+      "source_end": 659,
+      "source_start": 643,
+      "source_token_count": 17,
+      "target_token_count": 16,
+      "translated_text": "Có những khoảng trống lớn trong dữ liệu quan trọng về khí hậu không chỉ trong"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 30.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1094.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.6553181672354257,
+      "observation_emit_ms": 265196,
+      "observation_token_index": 663,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1094,
+      "source_end": 663,
+      "source_start": 660,
+      "source_token_count": 4,
+      "target_token_count": 6,
+      "translated_text": "điện năng nhưng trong nông nghiệp"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 9.0,
+        "source_buffer_character_count": 32.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1026.0,
+        "source_target_length_ratio": 0.4444444444444444
+      },
+      "commit_probability": 0.5070424866667596,
+      "observation_emit_ms": 267179,
+      "observation_token_index": 667,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1026,
+      "source_end": 667,
+      "source_start": 664,
+      "source_token_count": 4,
+      "target_token_count": 9,
+      "translated_text": "ngành công nghiệp vận tải và nhiều ngành khác"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 13.0,
+        "source_buffer_character_count": 51.0,
+        "source_buffer_token_count": 10.0,
+        "source_clock_elapsed_ms": 2979.0,
+        "source_target_length_ratio": 0.7692307692307693
+      },
+      "commit_probability": 0.5889513691091803,
+      "observation_emit_ms": 270500,
+      "observation_token_index": 677,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2979,
+      "source_end": 677,
+      "source_start": 668,
+      "source_token_count": 10,
+      "target_token_count": 13,
+      "translated_text": "một số dữ liệu của chúng tôi chúng tôi có thể mua hoặc"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 12.0,
+        "source_buffer_character_count": 99.0,
+        "source_buffer_token_count": 17.0,
+        "source_clock_elapsed_ms": 6037.0,
+        "source_target_length_ratio": 1.4166666666666667
+      },
+      "commit_probability": 0.6371891393807062,
+      "observation_emit_ms": 277203,
+      "observation_token_index": 694,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 6037,
+      "source_end": 694,
+      "source_start": 678,
+      "source_token_count": 17,
+      "target_token_count": 12,
+      "translated_text": "Nhưng một số dữ liệu chúng tôi cần là độc quyền và"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 21.0,
+        "source_buffer_character_count": 146.0,
+        "source_buffer_token_count": 23.0,
+        "source_clock_elapsed_ms": 9200.0,
+        "source_target_length_ratio": 1.0952380952380953
+      },
+      "commit_probability": 0.5533670899484096,
+      "observation_emit_ms": 286715,
+      "observation_token_index": 717,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 9200,
+      "source_end": 717,
+      "source_start": 695,
+      "source_token_count": 23,
+      "target_token_count": 21,
+      "translated_text": "nó sẽ giống như thông tin sản xuất tua-bin và các dữ liệu vận hành khác từ các trang trại gió."
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 24.0,
+        "source_buffer_character_count": 82.0,
+        "source_buffer_token_count": 13.0,
+        "source_clock_elapsed_ms": 5130.0,
+        "source_target_length_ratio": 0.5416666666666666
+      },
+      "commit_probability": 0.586120020060295,
+      "observation_emit_ms": 291996,
+      "observation_token_index": 730,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 5130,
+      "source_end": 730,
+      "source_start": 718,
+      "source_token_count": 13,
+      "target_token_count": 24,
+      "translated_text": "Chúng ta có thể đào tạo các mô hình của chúng tôi để tìm hiểu mối quan hệ giữa thời tiết lịch sử và"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 3.0,
+        "source_buffer_character_count": 33.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 1434.0,
+        "source_target_length_ratio": 1.6666666666666667
+      },
+      "commit_probability": 0.6792339715379434,
+      "observation_emit_ms": 294184,
+      "observation_token_index": 735,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1434,
+      "source_end": 735,
+      "source_start": 731,
+      "source_token_count": 5,
+      "target_token_count": 3,
+      "translated_text": "Vậy nên, nó"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 13.0,
+        "source_buffer_character_count": 51.0,
+        "source_buffer_token_count": 8.0,
+        "source_clock_elapsed_ms": 2942.0,
+        "source_target_length_ratio": 0.6153846153846154
+      },
+      "commit_probability": 0.5752824568274395,
+      "observation_emit_ms": 297503,
+      "observation_token_index": 743,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2942,
+      "source_end": 743,
+      "source_start": 736,
+      "source_token_count": 8,
+      "target_token_count": 13,
+      "translated_text": "Sau đó có thể đưa ra dự đoán về sức mạnh tương lai"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 12.0,
+        "source_buffer_character_count": 49.0,
+        "source_buffer_token_count": 8.0,
+        "source_clock_elapsed_ms": 2263.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.5003194756255548,
+      "observation_emit_ms": 300671,
+      "observation_token_index": 751,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2263,
+      "source_end": 751,
+      "source_start": 744,
+      "source_token_count": 8,
+      "target_token_count": 12,
+      "translated_text": "sẵn có dựa trên những gì dữ liệu nói về tương lai"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 48.0,
+        "source_buffer_character_count": 213.0,
+        "source_buffer_token_count": 36.0,
+        "source_clock_elapsed_ms": 13779.0,
+        "source_target_length_ratio": 0.75
+      },
+      "commit_probability": 0.5030468638435267,
+      "observation_emit_ms": 314979,
+      "observation_token_index": 787,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 13779,
+      "source_end": 787,
+      "source_start": 752,
+      "source_token_count": 36,
+      "target_token_count": 48,
+      "translated_text": "Bây giờ có lẽ đáng đề cập ở đây rằng chúng tôi đã xem xét một vài năm dữ liệu về độ phân giải theo giờ không phải dữ liệu lịch sử ở thang thời gian có sự khác biệt lớn về khí hậu so với ngày nay"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 21.0,
+        "source_buffer_character_count": 86.0,
+        "source_buffer_token_count": 15.0,
+        "source_clock_elapsed_ms": 5747.0,
+        "source_target_length_ratio": 0.7142857142857143
+      },
+      "commit_probability": 0.5052319105746702,
+      "observation_emit_ms": 321444,
+      "observation_token_index": 802,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 5747,
+      "source_end": 802,
+      "source_start": 788,
+      "source_token_count": 15,
+      "target_token_count": 21,
+      "translated_text": "Thêm vào dữ liệu, chúng tôi cần tìm một đối tác có chuyên môn về lĩnh vực và sự sẵn lòng"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 20.0,
+        "source_buffer_character_count": 95.0,
+        "source_buffer_token_count": 19.0,
+        "source_clock_elapsed_ms": 7050.0,
+        "source_target_length_ratio": 0.95
+      },
+      "commit_probability": 0.6828397877833051,
+      "observation_emit_ms": 328764,
+      "observation_token_index": 821,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 7050,
+      "source_end": 821,
+      "source_start": 803,
+      "source_token_count": 19,
+      "target_token_count": 20,
+      "translated_text": "Và bạn biết một cách đáng ngạc nhiên rằng đây có thể là một trở ngại lớn khi nói đến"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 19.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 682.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.5836929360991301,
+      "observation_emit_ms": 330323,
+      "observation_token_index": 825,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 682,
+      "source_end": 825,
+      "source_start": 822,
+      "source_token_count": 4,
+      "target_token_count": 5,
+      "translated_text": "đang triển khai AI trong"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 36.0,
+        "source_buffer_character_count": 155.0,
+        "source_buffer_token_count": 26.0,
+        "source_clock_elapsed_ms": 9928.0,
+        "source_target_length_ratio": 0.7222222222222222
+      },
+      "commit_probability": 0.7366573695939307,
+      "observation_emit_ms": 340640,
+      "observation_token_index": 851,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 9928,
+      "source_end": 851,
+      "source_start": 826,
+      "source_token_count": 26,
+      "target_token_count": 36,
+      "translated_text": "Tin hay không tùy bạn, không phải tất cả các quản lý trang trại gió đều muốn để một nhóm các nhà nghiên cứu AI kiểm tra hàng triệu hoặc hàng tỷ đô la của họ"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 21.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1062.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.5522527975238587,
+      "observation_emit_ms": 342262,
+      "observation_token_index": 855,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1062,
+      "source_end": 855,
+      "source_start": 852,
+      "source_token_count": 4,
+      "target_token_count": 5,
+      "translated_text": "Nhưng điều quan trọng là"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 2.0,
+        "source_buffer_character_count": 14.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 869.0,
+        "source_target_length_ratio": 2.0
+      },
+      "commit_probability": 0.8666365623901774,
+      "observation_emit_ms": 343324,
+      "observation_token_index": 859,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 869,
+      "source_end": 859,
+      "source_start": 856,
+      "source_token_count": 4,
+      "target_token_count": 2,
+      "translated_text": "là để"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 9.0,
+        "source_buffer_character_count": 67.0,
+        "source_buffer_token_count": 12.0,
+        "source_clock_elapsed_ms": 4925.0,
+        "source_target_length_ratio": 1.3333333333333333
+      },
+      "commit_probability": 0.5491488633475988,
+      "observation_emit_ms": 348731,
+      "observation_token_index": 871,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4925,
+      "source_end": 871,
+      "source_start": 860,
+      "source_token_count": 12,
+      "target_token_count": 9,
+      "translated_text": "Chúng ta phải có cơ hội triển khai trong"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 10.0,
+        "source_buffer_character_count": 48.0,
+        "source_buffer_token_count": 10.0,
+        "source_clock_elapsed_ms": 3210.0,
+        "source_target_length_ratio": 1.0
+      },
+      "commit_probability": 0.5257616607930206,
+      "observation_emit_ms": 352327,
+      "observation_token_index": 881,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3210,
+      "source_end": 881,
+      "source_start": 872,
+      "source_token_count": 10,
+      "target_token_count": 10,
+      "translated_text": "May mắn cho chúng tôi Google đã sẵn sàng và"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 7.0,
+        "source_buffer_character_count": 22.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1193.0,
+        "source_target_length_ratio": 0.5714285714285714
+      },
+      "commit_probability": 0.5482709997199878,
+      "observation_emit_ms": 354156,
+      "observation_token_index": 885,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1193,
+      "source_end": 885,
+      "source_start": 882,
+      "source_token_count": 4,
+      "target_token_count": 7,
+      "translated_text": "Bạn đồng hành sẵn sàng OK có"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 4.0,
+        "source_buffer_character_count": 18.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 779.0,
+        "source_target_length_ratio": 1.0
+      },
+      "commit_probability": 0.7327864693866624,
+      "observation_emit_ms": 355827,
+      "observation_token_index": 889,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 779,
+      "source_end": 889,
+      "source_start": 886,
+      "source_token_count": 4,
+      "target_token_count": 4,
+      "translated_text": "DeepMind là một phần"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 22.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 1671.0,
+        "source_target_length_ratio": 0.8333333333333334
+      },
+      "commit_probability": 0.6886121039662182,
+      "observation_emit_ms": 357721,
+      "observation_token_index": 894,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1671,
+      "source_end": 894,
+      "source_start": 890,
+      "source_token_count": 5,
+      "target_token_count": 6,
+      "translated_text": "của Google nhưng nó không phải"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 17.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1449.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.5259600689760431,
+      "observation_emit_ms": 359281,
+      "observation_token_index": 898,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1449,
+      "source_end": 898,
+      "source_start": 895,
+      "source_token_count": 4,
+      "target_token_count": 6,
+      "translated_text": "một điều chắc chắn rằng họ"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 69.0,
+        "source_buffer_character_count": 258.0,
+        "source_buffer_token_count": 47.0,
+        "source_clock_elapsed_ms": 18337.0,
+        "source_target_length_ratio": 0.6811594202898551
+      },
+      "commit_probability": 0.5038756739273244,
+      "observation_emit_ms": 378174,
+      "observation_token_index": 945,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 18337,
+      "source_end": 945,
+      "source_start": 899,
+      "source_token_count": 47,
+      "target_token_count": 69,
+      "translated_text": "Họ cho phép chúng tôi thử nghiệm trên hệ thống của họ, nhưng họ cho phép chúng tôi thử nghiệm trên 700 megawatts công suất năng lượng gió tương đương với một trang trại gió lớn ở Mỹ, điều này làm cho họ trở thành một đại diện tuyệt vời cho các nhà điều hành trang trại gió bên ngoài. Họ cũng cho chúng tôi mượn một chuyên gia"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 18.0,
+        "source_buffer_character_count": 157.0,
+        "source_buffer_token_count": 27.0,
+        "source_clock_elapsed_ms": 10842.0,
+        "source_target_length_ratio": 1.5
+      },
+      "commit_probability": 0.5103308178673231,
+      "observation_emit_ms": 389411,
+      "observation_token_index": 972,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 10842,
+      "source_end": 972,
+      "source_start": 946,
+      "source_token_count": 27,
+      "target_token_count": 18,
+      "translated_text": "Đây là một thành phần quan trọng khác của AI cho các triển khai thực tế Làm việc"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 25.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1485.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.5303268747496396,
+      "observation_emit_ms": 391245,
+      "observation_token_index": 976,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1485,
+      "source_end": 976,
+      "source_start": 973,
+      "source_token_count": 4,
+      "target_token_count": 6,
+      "translated_text": "với một nhóm chuyên gia miền"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 11.0,
+        "source_buffer_character_count": 46.0,
+        "source_buffer_token_count": 10.0,
+        "source_clock_elapsed_ms": 2883.0,
+        "source_target_length_ratio": 0.9090909090909091
+      },
+      "commit_probability": 0.5110189309470161,
+      "observation_emit_ms": 394478,
+      "observation_token_index": 986,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2883,
+      "source_end": 986,
+      "source_start": 977,
+      "source_token_count": 10,
+      "target_token_count": 11,
+      "translated_text": "có thể cho bạn biết họ cần gì họ cần gì"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 50.0,
+        "source_buffer_character_count": 196.0,
+        "source_buffer_token_count": 34.0,
+        "source_clock_elapsed_ms": 14065.0,
+        "source_target_length_ratio": 0.68
+      },
+      "commit_probability": 0.5138450636815782,
+      "observation_emit_ms": 408717,
+      "observation_token_index": 1020,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 14065,
+      "source_end": 1020,
+      "source_start": 987,
+      "source_token_count": 34,
+      "target_token_count": 50,
+      "translated_text": "nó để làm việc mà ràng buộc giữ cho hệ thống an toàn những gì số liệu định lượng để sử dụng để đo lường hiệu suất AI và hiệu suất AI cần phải tốt hơn bao nhiêu so với các hệ thống trước đây của họ để thực hiện"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 12.0,
+        "source_buffer_character_count": 59.0,
+        "source_buffer_token_count": 12.0,
+        "source_clock_elapsed_ms": 4402.0,
+        "source_target_length_ratio": 1.0
+      },
+      "commit_probability": 0.5114041585476858,
+      "observation_emit_ms": 413381,
+      "observation_token_index": 1032,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4402,
+      "source_end": 1032,
+      "source_start": 1021,
+      "source_token_count": 12,
+      "target_token_count": 12,
+      "translated_text": "Giá chuyển đổi thậm chí còn đáng giá và đó chỉ là"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 13.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 719.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.5550503258462018,
+      "observation_emit_ms": 414609,
+      "observation_token_index": 1036,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 719,
+      "source_end": 1036,
+      "source_start": 1033,
+      "source_token_count": 4,
+      "target_token_count": 6,
+      "translated_text": "đặt tên một vài Vì vậy"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 28.0,
+        "source_buffer_character_count": 70.0,
+        "source_buffer_token_count": 15.0,
+        "source_clock_elapsed_ms": 5649.0,
+        "source_target_length_ratio": 0.5357142857142857
+      },
+      "commit_probability": 0.550970852621128,
+      "observation_emit_ms": 420467,
+      "observation_token_index": 1051,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 5649,
+      "source_end": 1051,
+      "source_start": 1037,
+      "source_token_count": 15,
+      "target_token_count": 28,
+      "translated_text": "Tại thời điểm này, chúng tôi có ý tưởng của chúng tôi, chúng tôi có dữ liệu của chúng tôi, chúng tôi có triển khai của chúng tôi"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 43.0,
+        "source_buffer_character_count": 190.0,
+        "source_buffer_token_count": 26.0,
+        "source_clock_elapsed_ms": 10692.0,
+        "source_target_length_ratio": 0.6046511627906976
+      },
+      "commit_probability": 0.6034267122273765,
+      "observation_emit_ms": 431892,
+      "observation_token_index": 1077,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 10692,
+      "source_end": 1077,
+      "source_start": 1052,
+      "source_token_count": 26,
+      "target_token_count": 43,
+      "translated_text": "Đối tác Bây giờ để kiểm tra và triển khai hệ thống của chúng tôi Cải thiện độ chính xác của dự báo cung cấp điện là vô cùng quan trọng Nếu dự đoán cao hơn thế hệ thực tế điện tái tạo"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 37.0,
+        "source_buffer_character_count": 142.0,
+        "source_buffer_token_count": 24.0,
+        "source_clock_elapsed_ms": 8119.0,
+        "source_target_length_ratio": 0.6486486486486487
+      },
+      "commit_probability": 0.5374113616531514,
+      "observation_emit_ms": 440565,
+      "observation_token_index": 1101,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 8119,
+      "source_end": 1101,
+      "source_start": 1078,
+      "source_token_count": 24,
+      "target_token_count": 37,
+      "translated_text": "Các nhà quản lý có thể không có đủ nguồn cung để đáp ứng nhu cầu Điều này dẫn đến việc mua nhiên liệu hóa thạch thâm dụng carbon để lấp đầy khoảng cách đó bởi vì"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 65.0,
+        "source_buffer_token_count": 11.0,
+        "source_clock_elapsed_ms": 4180.0,
+        "source_target_length_ratio": 2.2
+      },
+      "commit_probability": 0.5086416117506966,
+      "observation_emit_ms": 445200,
+      "observation_token_index": 1112,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4180,
+      "source_end": 1112,
+      "source_start": 1102,
+      "source_token_count": 11,
+      "target_token_count": 5,
+      "translated_text": "Bây giờ là tin tốt"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 9.0,
+        "source_buffer_character_count": 23.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1226.0,
+        "source_target_length_ratio": 0.4444444444444444
+      },
+      "commit_probability": 0.5376172538695719,
+      "observation_emit_ms": 446642,
+      "observation_token_index": 1116,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1226,
+      "source_end": 1116,
+      "source_start": 1113,
+      "source_token_count": 4,
+      "target_token_count": 9,
+      "translated_text": "Hệ thống AI của chúng tôi đã thực hiện"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 4.0,
+        "source_buffer_character_count": 31.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 1732.0,
+        "source_target_length_ratio": 1.25
+      },
+      "commit_probability": 0.5670884555464776,
+      "observation_emit_ms": 448518,
+      "observation_token_index": 1121,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1732,
+      "source_end": 1121,
+      "source_start": 1117,
+      "source_token_count": 5,
+      "target_token_count": 4,
+      "translated_text": "Tốt hơn Google 20%"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 47.0,
+        "source_buffer_character_count": 181.0,
+        "source_buffer_token_count": 32.0,
+        "source_clock_elapsed_ms": 11772.0,
+        "source_target_length_ratio": 0.6808510638297872
+      },
+      "commit_probability": 0.5485025593148696,
+      "observation_emit_ms": 460867,
+      "observation_token_index": 1153,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 11772,
+      "source_end": 1153,
+      "source_start": 1122,
+      "source_token_count": 32,
+      "target_token_count": 47,
+      "translated_text": "Thậm chí tin tốt hơn là Google đã quyết định mở rộng quy mô công nghệ này và việc mở rộng quy mô là rất quan trọng chúng ta sẽ hết thời gian trong thời gian đếm ngược của khí hậu nếu chúng ta không triển khai"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 27.0,
+        "source_buffer_character_count": 152.0,
+        "source_buffer_token_count": 24.0,
+        "source_clock_elapsed_ms": 9572.0,
+        "source_target_length_ratio": 0.8888888888888888
+      },
+      "commit_probability": 0.5005736826626691,
+      "observation_emit_ms": 471207,
+      "observation_token_index": 1177,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 9572,
+      "source_end": 1177,
+      "source_start": 1154,
+      "source_token_count": 24,
+      "target_token_count": 27,
+      "translated_text": "Giải pháp này đang được phát triển thành một sản phẩm phần mềm mà công ty Engie của Pháp là một trong những công ty đầu tiên"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 8.0,
+        "source_buffer_character_count": 39.0,
+        "source_buffer_token_count": 8.0,
+        "source_clock_elapsed_ms": 2525.0,
+        "source_target_length_ratio": 1.0
+      },
+      "commit_probability": 0.5669331354825706,
+      "observation_emit_ms": 474125,
+      "observation_token_index": 1185,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2525,
+      "source_end": 1185,
+      "source_start": 1178,
+      "source_token_count": 8,
+      "target_token_count": 8,
+      "translated_text": "Nhưng bạn biết nó thậm chí không mất"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 29.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 2429.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.5228716447061478,
+      "observation_emit_ms": 476651,
+      "observation_token_index": 1189,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2429,
+      "source_end": 1189,
+      "source_start": 1186,
+      "source_token_count": 4,
+      "target_token_count": 6,
+      "translated_text": "Một tổ chức nghiên cứu lớn"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 67.0,
+        "source_buffer_character_count": 281.0,
+        "source_buffer_token_count": 48.0,
+        "source_clock_elapsed_ms": 18140.0,
+        "source_target_length_ratio": 0.7164179104477612
+      },
+      "commit_probability": 0.4762318794794113,
+      "observation_emit_ms": 494985,
+      "observation_token_index": 1237,
+      "reason": "max_length",
+      "source_clock_duration_ms": 18140,
+      "source_end": 1237,
+      "source_start": 1190,
+      "source_token_count": 48,
+      "target_token_count": 67,
+      "translated_text": "để làm công việc này nơi chúng tôi tập trung vào AI để dự báo về cung một tổ chức phi lợi nhuận nhỏ ở Anh tên là Open Climate Fix đang tập trung vào AI để dự báo về cầu Họ đã tìm thấy một đối tác sẵn sàng trong mạng lưới điện quốc gia Anh và hiện đang triển khai dự báo gấp hai lần"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 36.0,
+        "source_buffer_character_count": 125.0,
+        "source_buffer_token_count": 25.0,
+        "source_clock_elapsed_ms": 8790.0,
+        "source_target_length_ratio": 0.6944444444444444
+      },
+      "commit_probability": 0.5677006603195667,
+      "observation_emit_ms": 504100,
+      "observation_token_index": 1262,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 8790,
+      "source_end": 1262,
+      "source_start": 1238,
+      "source_token_count": 25,
+      "target_token_count": 36,
+      "translated_text": "Chính xác hơn so với lưới điện của Anh hệ thống trước đây được sử dụng bây giờ tất cả điều này là để nói rằng AI có thể giúp chúng ta với sự chuyển đổi"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 6.0,
+        "source_buffer_character_count": 23.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1800.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.7224403445154794,
+      "observation_emit_ms": 506100,
+      "observation_token_index": 1266,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1800,
+      "source_end": 1266,
+      "source_start": 1263,
+      "source_token_count": 4,
+      "target_token_count": 6,
+      "translated_text": "đến năng lượng tái tạo nhưng"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 12.0,
+        "source_buffer_character_count": 38.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 2300.0,
+        "source_target_length_ratio": 0.4166666666666667
+      },
+      "commit_probability": 0.5868716745298795,
+      "observation_emit_ms": 509400,
+      "observation_token_index": 1271,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2300,
+      "source_end": 1271,
+      "source_start": 1267,
+      "source_token_count": 5,
+      "target_token_count": 12,
+      "translated_text": "Chúng ta không phải là những nhà khoa học và kỹ thuật"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 7.0,
+        "source_buffer_character_count": 60.0,
+        "source_buffer_token_count": 14.0,
+        "source_clock_elapsed_ms": 4272.0,
+        "source_target_length_ratio": 2.0
+      },
+      "commit_probability": 0.5781072373039665,
+      "observation_emit_ms": 514172,
+      "observation_token_index": 1285,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4272,
+      "source_end": 1285,
+      "source_start": 1272,
+      "source_token_count": 14,
+      "target_token_count": 7,
+      "translated_text": "Chúng ta cần phải làm việc với"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 8.0,
+        "source_buffer_character_count": 28.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 1655.0,
+        "source_target_length_ratio": 0.625
+      },
+      "commit_probability": 0.7746932056463268,
+      "observation_emit_ms": 516655,
+      "observation_token_index": 1290,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1655,
+      "source_end": 1290,
+      "source_start": 1286,
+      "source_token_count": 5,
+      "target_token_count": 8,
+      "translated_text": " các đối tác và chuyên gia có thể"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 18.0,
+        "source_buffer_character_count": 71.0,
+        "source_buffer_token_count": 15.0,
+        "source_clock_elapsed_ms": 4870.0,
+        "source_target_length_ratio": 0.8333333333333334
+      },
+      "commit_probability": 0.5723653217439987,
+      "observation_emit_ms": 522042,
+      "observation_token_index": 1305,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4870,
+      "source_end": 1305,
+      "source_start": 1291,
+      "source_token_count": 15,
+      "target_token_count": 18,
+      "translated_text": "Vì vậy, cho những người trong số các bạn quan tâm đến không gian này nếu bạn là"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 24.0,
+        "source_buffer_character_count": 91.0,
+        "source_buffer_token_count": 17.0,
+        "source_clock_elapsed_ms": 6956.0,
+        "source_target_length_ratio": 0.7083333333333334
+      },
+      "commit_probability": 0.5297856285594887,
+      "observation_emit_ms": 529092,
+      "observation_token_index": 1322,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 6956,
+      "source_end": 1322,
+      "source_start": 1306,
+      "source_token_count": 17,
+      "target_token_count": 24,
+      "translated_text": "Một chuyên gia về lĩnh vực xin chia sẻ những vấn đề bạn phải đối mặt và những thách thức mà bạn có để"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 40.0,
+        "source_buffer_character_count": 139.0,
+        "source_buffer_token_count": 26.0,
+        "source_clock_elapsed_ms": 10443.0,
+        "source_target_length_ratio": 0.65
+      },
+      "commit_probability": 0.5274596237421046,
+      "observation_emit_ms": 539817,
+      "observation_token_index": 1348,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 10443,
+      "source_end": 1348,
+      "source_start": 1323,
+      "source_token_count": 26,
+      "target_token_count": 40,
+      "translated_text": "Ngành của chúng tôi có thể đảm bảo rằng các hoạt động theo đuổi AI sẽ có tác động trong thế giới thực và không chỉ đơn thuần là học thuật Thậm chí tốt hơn nếu bạn muốn khuyến khích"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 31.0,
+        "source_buffer_character_count": 122.0,
+        "source_buffer_token_count": 23.0,
+        "source_clock_elapsed_ms": 9034.0,
+        "source_target_length_ratio": 0.7419354838709677
+      },
+      "commit_probability": 0.5221161422599506,
+      "observation_emit_ms": 549040,
+      "observation_token_index": 1371,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 9034,
+      "source_end": 1371,
+      "source_start": 1349,
+      "source_token_count": 23,
+      "target_token_count": 31,
+      "translated_text": "Các nhà nghiên cứu ML sẽ giải quyết vấn đề của bạn Tôi sẽ cho bạn biết một bí mật nhỏ xây dựng một cuộc thi và họ sẽ đến Cười"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 18.0,
+        "source_buffer_character_count": 63.0,
+        "source_buffer_token_count": 12.0,
+        "source_clock_elapsed_ms": 3866.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.5099844952751139,
+      "observation_emit_ms": 553146,
+      "observation_token_index": 1383,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3866,
+      "source_end": 1383,
+      "source_start": 1372,
+      "source_token_count": 12,
+      "target_token_count": 18,
+      "translated_text": "Đó là sự thật chỉ cần không quên các bộ dữ liệu và số liệu nếu bạn đang"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 40.0,
+        "source_buffer_character_count": 153.0,
+        "source_buffer_token_count": 29.0,
+        "source_clock_elapsed_ms": 10862.0,
+        "source_target_length_ratio": 0.725
+      },
+      "commit_probability": 0.5489852840264818,
+      "observation_emit_ms": 564102,
+      "observation_token_index": 1412,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 10862,
+      "source_end": 1412,
+      "source_start": 1384,
+      "source_token_count": 29,
+      "target_token_count": 40,
+      "translated_text": "một người giữ dữ liệu nơi an toàn và có trách nhiệm để làm như vậy xin vui lòng chia sẻ dữ liệu liên quan đến những thách thức Nếu bạn không chắc liệu dữ liệu bạn có thậm chí"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 8.0,
+        "source_buffer_character_count": 42.0,
+        "source_buffer_token_count": 6.0,
+        "source_clock_elapsed_ms": 1691.0,
+        "source_target_length_ratio": 0.75
+      },
+      "commit_probability": 0.5382683099251383,
+      "observation_emit_ms": 567001,
+      "observation_token_index": 1418,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1691,
+      "source_end": 1418,
+      "source_start": 1413,
+      "source_token_count": 6,
+      "target_token_count": 8,
+      "translated_text": "Khí hậu-quan trọng bạn có thể xem Climate"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 50.0,
+        "source_buffer_character_count": 178.0,
+        "source_buffer_token_count": 28.0,
+        "source_clock_elapsed_ms": 11082.0,
+        "source_target_length_ratio": 0.56
+      },
+      "commit_probability": 0.5047629770612508,
+      "observation_emit_ms": 578566,
+      "observation_token_index": 1446,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 11082,
+      "source_end": 1446,
+      "source_start": 1419,
+      "source_token_count": 28,
+      "target_token_count": 50,
+      "translated_text": "Thay đổi trang web của AI nơi họ đã công bố danh sách mong muốn của các bộ dữ liệu quan trọng về khí hậu Truy cập vào các bộ dữ liệu này sẽ không chặn các nghiên cứu và đổi mới quan trọng trong AI cho khí hậu Nếu"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 20.0,
+        "source_buffer_character_count": 69.0,
+        "source_buffer_token_count": 12.0,
+        "source_clock_elapsed_ms": 4333.0,
+        "source_target_length_ratio": 0.6
+      },
+      "commit_probability": 0.5079339354377371,
+      "observation_emit_ms": 583316,
+      "observation_token_index": 1458,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4333,
+      "source_end": 1458,
+      "source_start": 1447,
+      "source_token_count": 12,
+      "target_token_count": 20,
+      "translated_text": "Anh là một đối tác triển khai quân, xin vui lòng cho chúng tôi biết anh là ai, đặc biệt"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 4.0,
+        "source_buffer_character_count": 20.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1167.0,
+        "source_target_length_ratio": 1.0
+      },
+      "commit_probability": 0.9570826745391228,
+      "observation_emit_ms": 584650,
+      "observation_token_index": 1462,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1167,
+      "source_end": 1462,
+      "source_start": 1459,
+      "source_token_count": 4,
+      "target_token_count": 4,
+      "translated_text": "Nếu bạn sẵn sàng"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 39.0,
+        "source_buffer_character_count": 134.0,
+        "source_buffer_token_count": 25.0,
+        "source_clock_elapsed_ms": 9963.0,
+        "source_target_length_ratio": 0.6410256410256411
+      },
+      "commit_probability": 0.5978743581700307,
+      "observation_emit_ms": 594946,
+      "observation_token_index": 1487,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 9963,
+      "source_end": 1487,
+      "source_start": 1463,
+      "source_token_count": 25,
+      "target_token_count": 39,
+      "translated_text": "Thử nghiệm các hệ thống tiên tiến Và cho tất cả những ai quan tâm đến không gian này xin hãy biết rằng bạn không cần phải là chuyên gia kỹ thuật để làm việc trong AI công nghệ"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 13.0,
+        "source_buffer_character_count": 46.0,
+        "source_buffer_token_count": 8.0,
+        "source_clock_elapsed_ms": 2635.0,
+        "source_target_length_ratio": 0.6153846153846154
+      },
+      "commit_probability": 0.5638465886761438,
+      "observation_emit_ms": 597801,
+      "observation_token_index": 1495,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2635,
+      "source_end": 1495,
+      "source_start": 1488,
+      "source_token_count": 8,
+      "target_token_count": 13,
+      "translated_text": "Để hành động vì môi trường đòi hỏi nhiều kỹ năng khác nhau"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 16.0,
+        "source_buffer_character_count": 53.0,
+        "source_buffer_token_count": 9.0,
+        "source_clock_elapsed_ms": 3002.0,
+        "source_target_length_ratio": 0.5625
+      },
+      "commit_probability": 0.5413773047394708,
+      "observation_emit_ms": 601096,
+      "observation_token_index": 1504,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3002,
+      "source_end": 1504,
+      "source_start": 1496,
+      "source_token_count": 9,
+      "target_token_count": 16,
+      "translated_text": "Chương 10.những bộ thông tin và sự đa dạng của nền tảng mà có bao gồm"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 23.0,
+        "source_buffer_character_count": 83.0,
+        "source_buffer_token_count": 12.0,
+        "source_clock_elapsed_ms": 4685.0,
+        "source_target_length_ratio": 0.5217391304347826
+      },
+      "commit_probability": 0.5332640782372061,
+      "observation_emit_ms": 606367,
+      "observation_token_index": 1516,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4685,
+      "source_end": 1516,
+      "source_start": 1505,
+      "source_token_count": 12,
+      "target_token_count": 23,
+      "translated_text": "nghiên cứu các nhà khoa học và kỹ sư nhưng nó cũng bao gồm các nhà đạo đức và chuyên gia chính sách"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 14.0,
+        "source_buffer_character_count": 65.0,
+        "source_buffer_token_count": 9.0,
+        "source_clock_elapsed_ms": 3222.0,
+        "source_target_length_ratio": 0.6428571428571429
+      },
+      "commit_probability": 0.5575333850457206,
+      "observation_emit_ms": 610541,
+      "observation_token_index": 1525,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3222,
+      "source_end": 1525,
+      "source_start": 1517,
+      "source_token_count": 9,
+      "target_token_count": 14,
+      "translated_text": "nhóm truyền thông quản lý sản phẩm quản lý chương trình và rất nhiều"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 12.0,
+        "source_buffer_character_count": 55.0,
+        "source_buffer_token_count": 12.0,
+        "source_clock_elapsed_ms": 4047.0,
+        "source_target_length_ratio": 1.0
+      },
+      "commit_probability": 0.5029059544001924,
+      "observation_emit_ms": 614880,
+      "observation_token_index": 1537,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4047,
+      "source_end": 1537,
+      "source_start": 1526,
+      "source_token_count": 12,
+      "target_token_count": 12,
+      "translated_text": "Bây giờ cho nhãn cảnh báo AI không phải là một bạc"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 18.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 720.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.5523397949025767,
+      "observation_emit_ms": 616320,
+      "observation_token_index": 1541,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 720,
+      "source_end": 1541,
+      "source_start": 1538,
+      "source_token_count": 4,
+      "target_token_count": 5,
+      "translated_text": "viên đạn Nó sẽ không"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 17.0,
+        "source_buffer_character_count": 50.0,
+        "source_buffer_token_count": 8.0,
+        "source_clock_elapsed_ms": 3102.0,
+        "source_target_length_ratio": 0.47058823529411764
+      },
+      "commit_probability": 0.6436583588935786,
+      "observation_emit_ms": 619822,
+      "observation_token_index": 1549,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3102,
+      "source_end": 1549,
+      "source_start": 1542,
+      "source_token_count": 8,
+      "target_token_count": 17,
+      "translated_text": "Nó không phải là giải quyết tất cả các vấn đề gây ra biến đổi khí hậu."
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 19.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1244.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.6228386876396703,
+      "observation_emit_ms": 621481,
+      "observation_token_index": 1553,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1244,
+      "source_end": 1553,
+      "source_start": 1550,
+      "source_token_count": 4,
+      "target_token_count": 5,
+      "translated_text": "thậm chí công cụ đúng"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 24.0,
+        "source_buffer_character_count": 84.0,
+        "source_buffer_token_count": 16.0,
+        "source_clock_elapsed_ms": 6208.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.5298637301709489,
+      "observation_emit_ms": 628000,
+      "observation_token_index": 1569,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 6208,
+      "source_end": 1569,
+      "source_start": 1554,
+      "source_token_count": 16,
+      "target_token_count": 24,
+      "translated_text": "Đối với nhiều thách thức mà chúng ta phải đối mặt, AI cũng không phải là một công nghệ không có những căng thẳng"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 30.0,
+        "source_buffer_character_count": 116.0,
+        "source_buffer_token_count": 22.0,
+        "source_clock_elapsed_ms": 7863.0,
+        "source_target_length_ratio": 0.7333333333333333
+      },
+      "commit_probability": 0.5283565974927981,
+      "observation_emit_ms": 636027,
+      "observation_token_index": 1591,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 7863,
+      "source_end": 1591,
+      "source_start": 1570,
+      "source_token_count": 22,
+      "target_token_count": 30,
+      "translated_text": "Nó cần được triển khai một cách an toàn và có trách nhiệm chưa kể đến khi mạng lưới của chúng ta được chạy bằng năng lượng sạch AI sẽ"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 4.0,
+        "source_buffer_character_count": 24.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1379.0,
+        "source_target_length_ratio": 1.0
+      },
+      "commit_probability": 0.6212741665502929,
+      "observation_emit_ms": 637837,
+      "observation_token_index": 1595,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1379,
+      "source_end": 1595,
+      "source_start": 1592,
+      "source_token_count": 4,
+      "target_token_count": 4,
+      "translated_text": "có dấu ấn carbon"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 9.0,
+        "source_buffer_character_count": 28.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 1896.0,
+        "source_target_length_ratio": 0.4444444444444444
+      },
+      "commit_probability": 0.6720025260840182,
+      "observation_emit_ms": 639906,
+      "observation_token_index": 1599,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 1896,
+      "source_end": 1599,
+      "source_start": 1596,
+      "source_token_count": 4,
+      "target_token_count": 9,
+      "translated_text": "cũng như bất kỳ năng lượng thâm dụng nào"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 8.0,
+        "source_buffer_character_count": 24.0,
+        "source_buffer_token_count": 5.0,
+        "source_clock_elapsed_ms": 906.0,
+        "source_target_length_ratio": 0.625
+      },
+      "commit_probability": 0.5372961062256453,
+      "observation_emit_ms": 641674,
+      "observation_token_index": 1604,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 906,
+      "source_end": 1604,
+      "source_start": 1600,
+      "source_token_count": 5,
+      "target_token_count": 8,
+      "translated_text": "Công nghệ chúng ta sử dụng Nhưng AI"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 9.0,
+        "source_buffer_character_count": 33.0,
+        "source_buffer_token_count": 6.0,
+        "source_clock_elapsed_ms": 2371.0,
+        "source_target_length_ratio": 0.6666666666666666
+      },
+      "commit_probability": 0.5346271145095376,
+      "observation_emit_ms": 644329,
+      "observation_token_index": 1610,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2371,
+      "source_end": 1610,
+      "source_start": 1605,
+      "source_token_count": 6,
+      "target_token_count": 9,
+      "translated_text": "có thể là một công cụ chuyển đổi trong"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 11.0,
+        "source_buffer_character_count": 37.0,
+        "source_buffer_token_count": 6.0,
+        "source_clock_elapsed_ms": 2656.0,
+        "source_target_length_ratio": 0.5454545454545454
+      },
+      "commit_probability": 0.5419998845323989,
+      "observation_emit_ms": 647270,
+      "observation_token_index": 1616,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2656,
+      "source_end": 1616,
+      "source_start": 1611,
+      "source_token_count": 6,
+      "target_token_count": 11,
+      "translated_text": "Cuộc chiến chống biến đổi khí hậu của chúng ta là"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 14.0,
+        "source_buffer_character_count": 49.0,
+        "source_buffer_token_count": 11.0,
+        "source_clock_elapsed_ms": 3299.0,
+        "source_target_length_ratio": 0.7857142857142857
+      },
+      "commit_probability": 0.6315804126843483,
+      "observation_emit_ms": 650948,
+      "observation_token_index": 1627,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 3299,
+      "source_end": 1627,
+      "source_start": 1617,
+      "source_token_count": 11,
+      "target_token_count": 14,
+      "translated_text": "Chỉ cần tất cả chúng ta để sử dụng nó hiệu quả tại sao"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 5.0,
+        "source_buffer_character_count": 13.0,
+        "source_buffer_token_count": 4.0,
+        "source_clock_elapsed_ms": 731.0,
+        "source_target_length_ratio": 0.8
+      },
+      "commit_probability": 0.7641562070518683,
+      "observation_emit_ms": 651862,
+      "observation_token_index": 1631,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 731,
+      "source_end": 1631,
+      "source_start": 1628,
+      "source_token_count": 4,
+      "target_token_count": 5,
+      "translated_text": "Chúng ta cần phải là"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 13.0,
+        "source_buffer_character_count": 62.0,
+        "source_buffer_token_count": 11.0,
+        "source_clock_elapsed_ms": 4314.0,
+        "source_target_length_ratio": 0.8461538461538461
+      },
+      "commit_probability": 0.5611113177442985,
+      "observation_emit_ms": 657091,
+      "observation_token_index": 1642,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 4314,
+      "source_end": 1642,
+      "source_start": 1632,
+      "source_token_count": 11,
+      "target_token_count": 13,
+      "translated_text": "Những gì chúng ta có thể làm thật sự rất thú vị nhưng"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 10.0,
+        "source_buffer_character_count": 35.0,
+        "source_buffer_token_count": 9.0,
+        "source_clock_elapsed_ms": 2235.0,
+        "source_target_length_ratio": 0.9
+      },
+      "commit_probability": 0.6934810193043016,
+      "observation_emit_ms": 659617,
+      "observation_token_index": 1651,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 2235,
+      "source_end": 1651,
+      "source_start": 1643,
+      "source_token_count": 9,
+      "target_token_count": 10,
+      "translated_text": "Đó là cách chúng ta có thể làm nó sẽ"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 23.0,
+        "source_buffer_character_count": 126.0,
+        "source_buffer_token_count": 20.0,
+        "source_clock_elapsed_ms": 8128.0,
+        "source_target_length_ratio": 0.8695652173913043
+      },
+      "commit_probability": 0.6764158467991955,
+      "observation_emit_ms": 668716,
+      "observation_token_index": 1671,
+      "reason": "meaningful_unit",
+      "source_clock_duration_ms": 8128,
+      "source_end": 1671,
+      "source_start": 1652,
+      "source_token_count": 20,
+      "target_token_count": 23,
+      "translated_text": "Vì vậy, trong cuộc trò chuyện hành động vì môi trường tiếp theo của bạn khi ai đó giới thiệu với bạn một"
+    },
+    {
+      "causal_features": {
+        "current_target_token_count": 28.0,
+        "source_buffer_character_count": 104.0,
+        "source_buffer_token_count": 17.0,
+        "source_clock_elapsed_ms": 6264.0,
+        "source_target_length_ratio": 0.6071428571428571
+      },
+      "commit_probability": 0.34130783355058225,
+      "observation_emit_ms": 675600,
+      "observation_token_index": 1688,
+      "reason": "talk_end",
+      "source_clock_duration_ms": 6264,
+      "source_end": 1688,
+      "source_start": 1672,
+      "source_token_count": 17,
+      "target_token_count": 28,
+      "translated_text": "thú vị những gì xin vui lòng giúp đỡ để thúc đẩy cuộc trò chuyện đến tác động như thế nào Cảm ơn chúc mừng và vỗ tay"
+    }
+  ],
+  "prediction": "Bạn có thể đã có kinh nghiệm của unboxing đồ nội thất và đi qua hướng dẫn đi một cái gì đó như thế này Lắp ráp kệ sách theo sơ đồ cung cấp Có tôi biết những gì một kệ sách trông như Có lẽ tôi sẽ không đọc hướng dẫn lắp ráp nếu tôi không cần thêm một chút trợ giúp trong quá trình hoặc có thể Bạn đã mở một cuốn sách nấu ăn với một tác giả nghĩ rằng bạn đã phần nào của một đầu bếp Deglaze pan What Laughter OK tắt tôi đi vào một tìm kiếm riêng biệt để hiểu bất cứ điều gì có nghĩa là Hướng dẫn bạn phải làm gì và không phải làm như thế nào là khá vô dụng và ngay cả khi chúng ta đang nói chuyện về một điều quan trọng như biến đổi khí hậu, chúng ta đều nghe thấy Thời gian Chuyển đổi sang tái tạo Năng lượng Điện khí hoá mọi thứ khác Triển khai các giải pháp công bằng và công bằng Vâng, hãy làm tất cả những điều đó Nhưng làm thế nào để trả lời làm thế nào để chúng ta hiểu được giải pháp nào là thực sự khả thi cho dù đó là với cơ sở hạ tầng ngày nay Chúng ta có thể làm gì để ngăn chặn sự phát triển của môi trường pháp lý hay bất kỳ Một số phụ thuộc và ràng buộc khác mà chúng ta phải xem xét cách chúng ta giải quyết biến đổi khí hậu cũng phụ thuộc vào định nghĩa của chúng ta về vấn đề đó là khoa học thách thức một vấn đề chính trị xã hội một vấn đề kinh tế và hơn thế nữa Và cách chúng ta giải quyết nó sẽ Không có câu trả lời duy nhất Tôi là một nhà khoa học, vì vậy tôi tiếp cận biến đổi khí hậu như một thách thức khoa học. Tôi cũng là một người lạc quan về công nghệ và trí tuệ nhân tạo. Tôi cũng tiếp cận nó như một công nghệ Khi nó đến đến một tương lai bền vững Trí tuệ nhân tạo có thể giúp chúng ta làm ba điều quan trọng Đầu tiên nó có thể giúp chúng ta hiểu biến đổi khí hậu và ảnh hưởng của nó đến hệ sinh thái của Trái đất Thứ hai nó có thể Và thứ ba là Ngày nay, chúng ta có thể thúc đẩy khoa học đột phá mà chúng ta cần như phản ứng tổng hợp như một nguồn năng lượng không có carbon. Tôi muốn nói về điều thứ hai là tối ưu hóa các hệ thống hiện tại và cụ thể là làm thế nào chúng ta có thể sử dụng AI để khai thác một siêu năng lực Chúng tôi đã có trong cuộc chiến này năng lượng gió tái tạo không nghi ngờ một chìa khóa để một Tương lai bền vững nhưng Vấn đề là chúng khó đoán. Đôi khi Mặt trời chiếu sáng và Gió thổi và Đôi khi nó chỉ không Bây giờ đối với một nhà vận hành hệ thống điện người cần cung cấp để đáp ứng nhu cầu trong thời gian thực 24-7 điều này là vô cùng vấn đề Năng lượng tái tạo không thể 100%. Bây giờ thật không may là các nhà máy nhiên liệu hóa thạch lại ngược lại bạn có thể đốt cháy một lượng than cụ thể tại một tập hợp thời gian để cung cấp chính xác lượng điện bạn muốn trong một cửa sổ thời gian có thể dự đoán được Vì vậy, nếu bạn là một Quản lý hệ thống điện có công việc của họ là giữ cho ánh sáng trên nguồn nào Nhưng đây là một trong những Đó là một công cụ mạnh mẽ để dự báo các hệ thống AI có thể Vì vậy, trong khi chúng ta không thể loại bỏ sự biến thiên của gió, chúng ta có thể sử dụng AI để dự đoán chính xác hơn tính sẵn có của nó Đó là đội của tôi. làm gì với AI để đẩy nhanh quá trình chuyển đổi sang năng lượng tái tạo như năng lượng gió Phần khó khăn là Đầu tiên chúng tôi nghiên cứu thử thách Chúng tôi đã tìm ra mọi thứ có thể về vấn đề này. nhóm đó là một sự kết hợp của nghiên cứu khoa học kỹ sư một quản lý sản phẩm một quản lý chương trình và một nhà phân tích tác động quyết định rằng một mạng nơ-ron được đào tạo trên 1.lịch sử thời tiết và sản xuất điện tuabin Thông tin có thể sẽ giúp chúng tôi hoàn thành mục tiêu của chúng tôi Tiếp theo chúng tôi cần tìm hai yếu tố cốt lõi dữ liệu để đào tạo hệ thống và một đối tác sẵn sàng triển khai nó Cả hai đều có thể là trở ngại chính khi nói đến việc triển khai AI Có những khoảng trống lớn trong dữ liệu quan trọng về khí hậu không chỉ trong điện năng nhưng trong nông nghiệp ngành công nghiệp vận tải và nhiều ngành khác một số dữ liệu của chúng tôi chúng tôi có thể mua hoặc Nhưng một số dữ liệu chúng tôi cần là độc quyền và nó sẽ giống như thông tin sản xuất tua-bin và các dữ liệu vận hành khác từ các trang trại gió. Chúng ta có thể đào tạo các mô hình của chúng tôi để tìm hiểu mối quan hệ giữa thời tiết lịch sử và Vậy nên, nó Sau đó có thể đưa ra dự đoán về sức mạnh tương lai sẵn có dựa trên những gì dữ liệu nói về tương lai Bây giờ có lẽ đáng đề cập ở đây rằng chúng tôi đã xem xét một vài năm dữ liệu về độ phân giải theo giờ không phải dữ liệu lịch sử ở thang thời gian có sự khác biệt lớn về khí hậu so với ngày nay Thêm vào dữ liệu, chúng tôi cần tìm một đối tác có chuyên môn về lĩnh vực và sự sẵn lòng Và bạn biết một cách đáng ngạc nhiên rằng đây có thể là một trở ngại lớn khi nói đến đang triển khai AI trong Tin hay không tùy bạn, không phải tất cả các quản lý trang trại gió đều muốn để một nhóm các nhà nghiên cứu AI kiểm tra hàng triệu hoặc hàng tỷ đô la của họ Nhưng điều quan trọng là là để Chúng ta phải có cơ hội triển khai trong May mắn cho chúng tôi Google đã sẵn sàng và Bạn đồng hành sẵn sàng OK có DeepMind là một phần của Google nhưng nó không phải một điều chắc chắn rằng họ Họ cho phép chúng tôi thử nghiệm trên hệ thống của họ, nhưng họ cho phép chúng tôi thử nghiệm trên 700 megawatts công suất năng lượng gió tương đương với một trang trại gió lớn ở Mỹ, điều này làm cho họ trở thành một đại diện tuyệt vời cho các nhà điều hành trang trại gió bên ngoài. Họ cũng cho chúng tôi mượn một chuyên gia Đây là một thành phần quan trọng khác của AI cho các triển khai thực tế Làm việc với một nhóm chuyên gia miền có thể cho bạn biết họ cần gì họ cần gì nó để làm việc mà ràng buộc giữ cho hệ thống an toàn những gì số liệu định lượng để sử dụng để đo lường hiệu suất AI và hiệu suất AI cần phải tốt hơn bao nhiêu so với các hệ thống trước đây của họ để thực hiện Giá chuyển đổi thậm chí còn đáng giá và đó chỉ là đặt tên một vài Vì vậy Tại thời điểm này, chúng tôi có ý tưởng của chúng tôi, chúng tôi có dữ liệu của chúng tôi, chúng tôi có triển khai của chúng tôi Đối tác Bây giờ để kiểm tra và triển khai hệ thống của chúng tôi Cải thiện độ chính xác của dự báo cung cấp điện là vô cùng quan trọng Nếu dự đoán cao hơn thế hệ thực tế điện tái tạo Các nhà quản lý có thể không có đủ nguồn cung để đáp ứng nhu cầu Điều này dẫn đến việc mua nhiên liệu hóa thạch thâm dụng carbon để lấp đầy khoảng cách đó bởi vì Bây giờ là tin tốt Hệ thống AI của chúng tôi đã thực hiện Tốt hơn Google 20% Thậm chí tin tốt hơn là Google đã quyết định mở rộng quy mô công nghệ này và việc mở rộng quy mô là rất quan trọng chúng ta sẽ hết thời gian trong thời gian đếm ngược của khí hậu nếu chúng ta không triển khai Giải pháp này đang được phát triển thành một sản phẩm phần mềm mà công ty Engie của Pháp là một trong những công ty đầu tiên Nhưng bạn biết nó thậm chí không mất Một tổ chức nghiên cứu lớn để làm công việc này nơi chúng tôi tập trung vào AI để dự báo về cung một tổ chức phi lợi nhuận nhỏ ở Anh tên là Open Climate Fix đang tập trung vào AI để dự báo về cầu Họ đã tìm thấy một đối tác sẵn sàng trong mạng lưới điện quốc gia Anh và hiện đang triển khai dự báo gấp hai lần Chính xác hơn so với lưới điện của Anh hệ thống trước đây được sử dụng bây giờ tất cả điều này là để nói rằng AI có thể giúp chúng ta với sự chuyển đổi đến năng lượng tái tạo nhưng Chúng ta không phải là những nhà khoa học và kỹ thuật Chúng ta cần phải làm việc với  các đối tác và chuyên gia có thể Vì vậy, cho những người trong số các bạn quan tâm đến không gian này nếu bạn là Một chuyên gia về lĩnh vực xin chia sẻ những vấn đề bạn phải đối mặt và những thách thức mà bạn có để Ngành của chúng tôi có thể đảm bảo rằng các hoạt động theo đuổi AI sẽ có tác động trong thế giới thực và không chỉ đơn thuần là học thuật Thậm chí tốt hơn nếu bạn muốn khuyến khích Các nhà nghiên cứu ML sẽ giải quyết vấn đề của bạn Tôi sẽ cho bạn biết một bí mật nhỏ xây dựng một cuộc thi và họ sẽ đến Cười Đó là sự thật chỉ cần không quên các bộ dữ liệu và số liệu nếu bạn đang một người giữ dữ liệu nơi an toàn và có trách nhiệm để làm như vậy xin vui lòng chia sẻ dữ liệu liên quan đến những thách thức Nếu bạn không chắc liệu dữ liệu bạn có thậm chí Khí hậu-quan trọng bạn có thể xem Climate Thay đổi trang web của AI nơi họ đã công bố danh sách mong muốn của các bộ dữ liệu quan trọng về khí hậu Truy cập vào các bộ dữ liệu này sẽ không chặn các nghiên cứu và đổi mới quan trọng trong AI cho khí hậu Nếu Anh là một đối tác triển khai quân, xin vui lòng cho chúng tôi biết anh là ai, đặc biệt Nếu bạn sẵn sàng Thử nghiệm các hệ thống tiên tiến Và cho tất cả những ai quan tâm đến không gian này xin hãy biết rằng bạn không cần phải là chuyên gia kỹ thuật để làm việc trong AI công nghệ Để hành động vì môi trường đòi hỏi nhiều kỹ năng khác nhau Chương 10.những bộ thông tin và sự đa dạng của nền tảng mà có bao gồm nghiên cứu các nhà khoa học và kỹ sư nhưng nó cũng bao gồm các nhà đạo đức và chuyên gia chính sách nhóm truyền thông quản lý sản phẩm quản lý chương trình và rất nhiều Bây giờ cho nhãn cảnh báo AI không phải là một bạc viên đạn Nó sẽ không Nó không phải là giải quyết tất cả các vấn đề gây ra biến đổi khí hậu. thậm chí công cụ đúng Đối với nhiều thách thức mà chúng ta phải đối mặt, AI cũng không phải là một công nghệ không có những căng thẳng Nó cần được triển khai một cách an toàn và có trách nhiệm chưa kể đến khi mạng lưới của chúng ta được chạy bằng năng lượng sạch AI sẽ có dấu ấn carbon cũng như bất kỳ năng lượng thâm dụng nào Công nghệ chúng ta sử dụng Nhưng AI có thể là một công cụ chuyển đổi trong Cuộc chiến chống biến đổi khí hậu của chúng ta là Chỉ cần tất cả chúng ta để sử dụng nó hiệu quả tại sao Chúng ta cần phải là Những gì chúng ta có thể làm thật sự rất thú vị nhưng Đó là cách chúng ta có thể làm nó sẽ Vì vậy, trong cuộc trò chuyện hành động vì môi trường tiếp theo của bạn khi ai đó giới thiệu với bạn một thú vị những gì xin vui lòng giúp đỡ để thúc đẩy cuộc trò chuyện đến tác động như thế nào Cảm ơn chúc mừng và vỗ tay",
+  "publishable": true,
+  "source_final_emit_ms": 675600,
+  "source_token_count": 1689,
+  "split": "dev",
+  "strategy": "mu_zhang2020",
+  "talk_id": "ted-sims-witherspoon-ai-climate"
+}

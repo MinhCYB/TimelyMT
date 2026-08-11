@@ -1,0 +1,37 @@
+{
+  "COMMIT": 849,
+  "LISTEN": 4947,
+  "artifact_status": "full",
+  "config": {
+    "hypothesis_tokenization": "whitespace split",
+    "lookahead_updates": 2,
+    "max_source_tokens": 48,
+    "min_source_tokens": 4,
+    "pseudo_label_version": "1.0.0",
+    "stability_threshold": 0.9
+  },
+  "config_checksum": "397eb12cab2f5832b3010f027b3b2c8db3cbbde1459a086b1c5aca2a1fe454cc",
+  "dataset_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+  "expected_talk_ids": [
+    "ted-jeff-dean-ai-smart",
+    "ted-luis-von-ahn-crowdsourcing",
+    "ted-sims-witherspoon-ai-climate"
+  ],
+  "publishable": true,
+  "split": "dev",
+  "split_checksum": "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4",
+  "state_count": 5796,
+  "talk_ids": [
+    "ted-jeff-dean-ai-smart",
+    "ted-luis-von-ahn-crowdsourcing",
+    "ted-sims-witherspoon-ai-climate"
+  ],
+  "training_only_note": "Future hypotheses construct train/dev supervision only and are unavailable to runtime policy.",
+  "translator": {
+    "config_fingerprint": "a54ba8356642a7a696234453b3fc0a29d2dcf85db5299677c492ae967281bd1c",
+    "config_version": "1.1.0",
+    "generation_config_fingerprint": "293a8d0431b29ae9950564e9b93a54aa8814d9b79282f4a7e905a5720025c1fb",
+    "model_id": "VietAI/envit5-translation",
+    "model_revision": "840bc88104d5a4277af740eaedb024df8c3093e7"
+  }
+}

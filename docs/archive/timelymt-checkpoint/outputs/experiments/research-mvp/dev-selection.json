@@ -1,0 +1,44 @@
+{
+  "fixed_n_8_dev_AL": -36.05593081874613,
+  "reason": "smallest DEV AL above fixed_n_8, then highest chrF",
+  "selected_dev_metrics": {
+    "BLEU": 27.08624219655757,
+    "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+    "artifact_status": "full",
+    "chrF2": 61.39613931040764,
+    "chrF2_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+    "commits_per_100_source_tokens": 13.052858683926646,
+    "forced_commit_rate": 0.0018365472910927456,
+    "mean_commit_observation_position": 1527.32782369146,
+    "mean_first_commit_simulated_source_clock_latency_ms": 8008.666666666667,
+    "mean_first_commit_source_tokens": 20.333333333333332,
+    "mean_simulated_source_clock_duration_ms": 2665.040404040404,
+    "mean_source_tokens_per_unit": 7.661157024793388,
+    "median_source_tokens_per_unit": 6,
+    "number_of_commits": 1089.0,
+    "per_talk": [
+      {
+        "BLEU": 28.2069476882992,
+        "chrF2": 63.402092323457694,
+        "talk_id": "ted-jeff-dean-ai-smart"
+      },
+      {
+        "BLEU": 26.47102546708685,
+        "chrF2": 60.25458102841772,
+        "talk_id": "ted-luis-von-ahn-crowdsourcing"
+      },
+      {
+        "BLEU": 25.98512844023059,
+        "chrF2": 59.804161323778146,
+        "talk_id": "ted-sims-witherspoon-ai-climate"
+      }
+    ],
+    "publishable": true,
+    "sacrebleu_version": "2.6.0",
+    "token_level_average_lagging": -8.918660919302527,
+    "token_level_length_adaptive_average_lagging": 61.25431361813498
+  },
+  "selected_strategy": "learned_P1_0.60",
+  "selected_threshold": 0.6,
+  "selected_variant": "P1"
+}

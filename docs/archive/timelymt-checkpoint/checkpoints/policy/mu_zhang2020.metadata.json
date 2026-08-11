@@ -1,0 +1,29 @@
+{
+  "COMMIT": 1417,
+  "LISTEN": 25164,
+  "artifact_status": "full",
+  "checkpoint": "/kaggle/working/TimelyMT/checkpoints/policy/mu_zhang2020.joblib",
+  "checkpoint_sha256": "6aee7d7f66a9003c9428c94eee654dfc09cc4ed27539a656a0552097ed62e4a6",
+  "class_weight": "balanced",
+  "feature_dimension": 20005,
+  "features": {
+    "numeric": [
+      "source_buffer_token_count",
+      "source_buffer_character_count",
+      "source_clock_elapsed_ms",
+      "current_target_token_count",
+      "source_target_length_ratio"
+    ],
+    "text": [
+      "current_source_text",
+      "current_hypothesis_text"
+    ]
+  },
+  "publishable": true,
+  "random_state": 20260809,
+  "reload_predict_proba_smoke": 0.12859925793491048,
+  "sklearn_version": "1.6.1",
+  "strategy": "mu_zhang2020",
+  "supervision_manifest": "data/policy/mu_zhang2020/train/manifest.json",
+  "training_states": 26581
+}

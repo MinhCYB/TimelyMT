@@ -1,0 +1,37 @@
+{
+  "BLEU": 27.230068402289177,
+  "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+  "artifact_status": "full",
+  "chrF2": 61.40333778990825,
+  "chrF2_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+  "commits_per_100_source_tokens": 12.525470454273043,
+  "forced_commit_rate": 0.0028708133971291866,
+  "mean_commit_observation_position": 1504.5885167464114,
+  "mean_first_commit_simulated_source_clock_latency_ms": 2687,
+  "mean_first_commit_source_tokens": 8,
+  "mean_simulated_source_clock_duration_ms": 2786.5789473684213,
+  "mean_source_tokens_per_unit": 7.983732057416268,
+  "median_source_tokens_per_unit": 8,
+  "number_of_commits": 1045.0,
+  "per_talk": [
+    {
+      "BLEU": 27.876894308301,
+      "chrF2": 63.480092256085854,
+      "talk_id": "ted-jeff-dean-ai-smart"
+    },
+    {
+      "BLEU": 26.410643944825274,
+      "chrF2": 60.19081327301987,
+      "talk_id": "ted-luis-von-ahn-crowdsourcing"
+    },
+    {
+      "BLEU": 26.62140713031831,
+      "chrF2": 59.768127516990276,
+      "talk_id": "ted-sims-witherspoon-ai-climate"
+    }
+  ],
+  "publishable": true,
+  "sacrebleu_version": "2.6.0",
+  "token_level_average_lagging": -36.05593081874613,
+  "token_level_length_adaptive_average_lagging": -9.805647546637239
+}

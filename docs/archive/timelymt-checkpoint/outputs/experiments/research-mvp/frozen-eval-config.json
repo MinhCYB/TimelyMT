@@ -1,0 +1,128 @@
+{
+  "baseline_config": {
+    "fixed_n_12": [
+      "fixed_n",
+      12
+    ],
+    "fixed_n_4": [
+      "fixed_n",
+      4
+    ],
+    "fixed_n_8": [
+      "fixed_n",
+      8
+    ],
+    "fixed_time_1600": [
+      "fixed_time",
+      1600
+    ],
+    "fixed_time_3200": [
+      "fixed_time",
+      3200
+    ],
+    "fixed_time_4800": [
+      "fixed_time",
+      4800
+    ],
+    "local_agreement_la2": [
+      "la2",
+      2
+    ],
+    "local_agreement_style_k2": [
+      "local",
+      2
+    ],
+    "local_agreement_style_k3": [
+      "local",
+      3
+    ]
+  },
+  "dataset_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+  "evaluation_metric_config": {
+    "hypothesis_tokenization": "translated_text.split()",
+    "latency": [
+      "standard token-level Average Lagging",
+      "Length-Adaptive Average Lagging",
+      "source-clock statistics"
+    ],
+    "quality": [
+      "SacreBLEU corpus BLEU",
+      "chrF2"
+    ]
+  },
+  "experiment_run_version": "1.0.0",
+  "mu_feature_config": {
+    "numeric": [
+      "source_buffer_token_count",
+      "source_buffer_character_count",
+      "source_clock_elapsed_ms",
+      "current_target_token_count",
+      "source_target_length_ratio"
+    ],
+    "text": [
+      "current_source_text",
+      "current_hypothesis_text"
+    ]
+  },
+  "mu_supervision_config": {
+    "hypothesis_tokenization": "translated_text.split()",
+    "max_source_tokens": 48,
+    "min_source_tokens": 4,
+    "oracle_scope": "full admissible remaining source unit (up to 48 lexical tokens); training/dev supervision only",
+    "prefix_preservation_threshold": 0.9,
+    "supervision_version": "1.0.0"
+  },
+  "policy_feature_config": {
+    "numeric": [
+      "source_buffer_token_count",
+      "source_buffer_character_count",
+      "source_clock_elapsed_ms",
+      "current_target_token_count",
+      "previous_target_token_count",
+      "target_token_count_delta",
+      "previous_current_lcp_ratio",
+      "previous_current_change_ratio",
+      "prior_committed_unit_count",
+      "previous_committed_source_tokens",
+      "previous_committed_target_tokens"
+    ],
+    "tfidf": {
+      "max_features_per_field": 10000,
+      "min_df": 2,
+      "word_ngrams": [
+        1,
+        2
+      ]
+    },
+    "variants": {
+      "P0": "local",
+      "P1": "+previous source",
+      "P2": "+previous source and system target"
+    }
+  },
+  "pseudo_label_config": {
+    "hypothesis_tokenization": "whitespace split",
+    "lookahead_updates": 2,
+    "max_source_tokens": 48,
+    "min_source_tokens": 4,
+    "pseudo_label_version": "1.0.0",
+    "stability_threshold": 0.9
+  },
+  "selected_learned_threshold": 0.6,
+  "selected_learned_variant": "P1",
+  "split_checksum": "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4",
+  "timestamp": "2026-08-11T16:04:09Z",
+  "trained_checkpoint_hashes": {
+    "P0": "6853bdaecc4b38ffa540166874419e663a165d28a6c83f2e0b47c9a4c1f3e9db",
+    "P1": "6e1d273bf2008178265ade654729bb9710e7acfa67b8caa70a8a6114cf8508c4",
+    "P2": "c4e383319024c43b01db2e9a42de854f142dafcfad5fd5e9dbcd3c591df517d4",
+    "mu_zhang2020": "6aee7d7f66a9003c9428c94eee654dfc09cc4ed27539a656a0552097ed62e4a6"
+  },
+  "translator": {
+    "config_fingerprint": "a54ba8356642a7a696234453b3fc0a29d2dcf85db5299677c492ae967281bd1c",
+    "config_version": "1.1.0",
+    "generation_config_fingerprint": "293a8d0431b29ae9950564e9b93a54aa8814d9b79282f4a7e905a5720025c1fb",
+    "model_id": "VietAI/envit5-translation",
+    "model_revision": "840bc88104d5a4277af740eaedb024df8c3093e7"
+  }
+}
