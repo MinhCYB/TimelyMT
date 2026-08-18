@@ -1,0 +1,7 @@
+# Torch is installed separately from the CUDA 12.6 wheel index by the bootstrap.
+joblib==1.5.3
+numpy==2.2.6
+sacrebleu==2.6.0
+scikit-learn==1.7.2
+sentencepiece==0.2.2
+transformers==4.57.6

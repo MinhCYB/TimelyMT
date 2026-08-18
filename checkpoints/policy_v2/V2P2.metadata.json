@@ -1,0 +1,210 @@
+{
+  "artifact_status": "full",
+  "batch_size": 256,
+  "checkpoint_sha256": "4d531caf165175a4c8b5ef00b54ad09ef7effb3b5f453f0d3f28e1480263fbe7",
+  "dataset_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+  "embedding_dimension": 384,
+  "encoder_model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "encoder_revision": "e62509716f15c5fd03a6fd3156a4bc5e43f83f26",
+  "epochs": 20,
+  "experiment_label": "POST-HOC EXPLORATORY DEV EXTENSION",
+  "experiment_status": "post_hoc_exploratory",
+  "input_field_definitions": {
+    "P0": [
+      "current_source_text"
+    ],
+    "P1": [
+      "current_source_text",
+      "previous_committed_source_text"
+    ],
+    "P2": [
+      "current_source_text",
+      "previous_committed_source_text",
+      "previous_committed_target_text"
+    ]
+  },
+  "label_counts": {
+    "COMMIT": 2943,
+    "LISTEN": 19075
+  },
+  "mlp_architecture": [
+    "Linear(input,256)",
+    "GELU",
+    "Dropout(0.20)",
+    "Linear(256,64)",
+    "GELU",
+    "Dropout(0.10)",
+    "Linear(64,1)"
+  ],
+  "model_family": "frozen MiniLM embeddings + MLP",
+  "numeric_feature_config": {
+    "fingerprint": "d787ec3c12606bc6a199639675fd07b975288fdf68458d3f9e8f313af70c9bcc",
+    "ordered_features": [
+      "source_buffer_token_count",
+      "source_buffer_character_count",
+      "source_clock_elapsed_ms",
+      "current_target_token_count",
+      "previous_target_token_count",
+      "target_token_count_delta",
+      "previous_current_lcp_ratio",
+      "previous_current_change_ratio",
+      "prior_committed_unit_count",
+      "previous_committed_source_tokens",
+      "previous_committed_target_tokens"
+    ]
+  },
+  "numeric_scaler_fit_split": "train",
+  "optimizer": {
+    "learning_rate": 0.001,
+    "name": "AdamW",
+    "weight_decay": 0.0001
+  },
+  "pooling_version": "attention-mask-mean-l2-v1",
+  "pseudo_label_config": {
+    "config": {
+      "hypothesis_tokenization": "whitespace split",
+      "lookahead_updates": 2,
+      "max_source_tokens": 48,
+      "min_source_tokens": 4,
+      "pseudo_label_version": "1.0.0",
+      "stability_threshold": 0.9
+    },
+    "fingerprint": "397eb12cab2f5832b3010f027b3b2c8db3cbbde1459a086b1c5aca2a1fe454cc"
+  },
+  "publishable": false,
+  "runtime": {
+    "encoder_device": "cpu",
+    "encoder_dtype": "float32",
+    "policy_device": "cpu",
+    "policy_dtype": "float32",
+    "translator_device": "cuda",
+    "translator_dtype": "float16"
+  },
+  "seed": 20260809,
+  "split_checksum": "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4",
+  "train_talk_ids": [
+    "ted-alona-fyshe-ai-understand",
+    "ted-andrew-ng-ai-opportunities",
+    "ted-chris-urmson-self-driving-cars",
+    "ted-greg-brockman-chatgpt-potential",
+    "ted-joseph-redmon-computer-vision",
+    "ted-kai-fu-lee-ai-humanity",
+    "ted-ken-goldberg-robots",
+    "ted-kevin-slavin-algorithms",
+    "ted-maurice-conti-intuitive-ai",
+    "ted-sal-khan-ai-education",
+    "ted-stuart-russell-safe-ai",
+    "ted-yejin-choi-ai-smart-stupid"
+  ],
+  "training_history": [
+    {
+      "epoch": 1,
+      "train_balanced_accuracy": 0.5745235668171448,
+      "train_loss": 1.1838000387519134
+    },
+    {
+      "epoch": 2,
+      "train_balanced_accuracy": 0.5938682588223873,
+      "train_loss": 1.1608243972666745
+    },
+    {
+      "epoch": 3,
+      "train_balanced_accuracy": 0.6050910149992719,
+      "train_loss": 1.1531100343462448
+    },
+    {
+      "epoch": 4,
+      "train_balanced_accuracy": 0.6103402747439445,
+      "train_loss": 1.1405968231643315
+    },
+    {
+      "epoch": 5,
+      "train_balanced_accuracy": 0.6139371875151691,
+      "train_loss": 1.1363547872983746
+    },
+    {
+      "epoch": 6,
+      "train_balanced_accuracy": 0.6176370079122373,
+      "train_loss": 1.1317146293516434
+    },
+    {
+      "epoch": 7,
+      "train_balanced_accuracy": 0.6189748070482015,
+      "train_loss": 1.1178747793668535
+    },
+    {
+      "epoch": 8,
+      "train_balanced_accuracy": 0.6293170234454638,
+      "train_loss": 1.1166539897991468
+    },
+    {
+      "epoch": 9,
+      "train_balanced_accuracy": 0.6412115916703073,
+      "train_loss": 1.0989122465029542
+    },
+    {
+      "epoch": 10,
+      "train_balanced_accuracy": 0.6488160768894714,
+      "train_loss": 1.0911208003480555
+    },
+    {
+      "epoch": 11,
+      "train_balanced_accuracy": 0.6493781855249745,
+      "train_loss": 1.0722915959061519
+    },
+    {
+      "epoch": 12,
+      "train_balanced_accuracy": 0.6707587010339304,
+      "train_loss": 1.0604042089410997
+    },
+    {
+      "epoch": 13,
+      "train_balanced_accuracy": 0.66898500072812,
+      "train_loss": 1.0545938233933339
+    },
+    {
+      "epoch": 14,
+      "train_balanced_accuracy": 0.6820649483034804,
+      "train_loss": 1.045210897868374
+    },
+    {
+      "epoch": 15,
+      "train_balanced_accuracy": 0.69546332702296,
+      "train_loss": 1.0197317208209884
+    },
+    {
+      "epoch": 16,
+      "train_balanced_accuracy": 0.6900383476530265,
+      "train_loss": 1.006947266318101
+    },
+    {
+      "epoch": 17,
+      "train_balanced_accuracy": 0.7046609387893792,
+      "train_loss": 1.000967765454863
+    },
+    {
+      "epoch": 18,
+      "train_balanced_accuracy": 0.7111868355905053,
+      "train_loss": 0.9806264281971316
+    },
+    {
+      "epoch": 19,
+      "train_balanced_accuracy": 0.7215591476141935,
+      "train_loss": 0.9638742306585674
+    },
+    {
+      "epoch": 20,
+      "train_balanced_accuracy": 0.7235075967186059,
+      "train_loss": 0.9447070701655689
+    }
+  ],
+  "training_seconds": 111.01436970000032,
+  "translator_fingerprint": "a54ba8356642a7a696234453b3fc0a29d2dcf85db5299677c492ae967281bd1c",
+  "v1_source_commit": "6c75da5d60cc626ab79e7e82cae471e18be27531",
+  "v2_code_commit": "07ea170569aa3ebb9fd85ac71cef2a759947c2c7",
+  "variant": "P2",
+  "weighted_bce": {
+    "formula": "pos_weight = TRAIN_LISTEN / TRAIN_COMMIT",
+    "positive_weight": 6.481481481481482
+  }
+}

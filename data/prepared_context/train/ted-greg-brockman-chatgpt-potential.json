@@ -1,0 +1,38 @@
+{
+  "metadata": {"domain": "llm_chatgpt", "speaker": "Greg Brockman", "title": "The inside story of ChatGPT's astonishing potential"},
+  "schema_version": "prepared-context-v0",
+  "sources": [
+    {
+      "acquired_at": "2026-08-18T00:00:00Z",
+      "available_before_talk": true,
+      "checksum": "sha256:4c832f2f7abef24118af8e108116d37092658735d787b1e380542d7b181a6676",
+      "classification": "SAFE_PRETALK_CONFIRMED",
+      "language": "en",
+      "published_at": "2022-11-30T00:00:00Z",
+      "reference_used": false,
+      "relationship": "Official pre-talk OpenAI publication introducing ChatGPT, the system discussed by Greg Brockman in the associated April 2023 talk.",
+      "source_id": "chatgpt-2022-launch-lead",
+      "source_type": "official_article",
+      "source_uri": "https://openai.com/index/chatgpt/",
+      "text": "Introducing ChatGPT\n\nWe’ve trained a model called ChatGPT which interacts in a conversational way. The dialogue format makes it possible for ChatGPT to answer followup questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests.",
+      "transcript_used": false
+    },
+    {
+      "acquired_at": "2026-08-18T00:00:00Z",
+      "available_before_talk": true,
+      "checksum": "sha256:b5f6eff4b52a0c98264e46c3229303cc067f1dd0d5a69136d290cbaff2747360",
+      "classification": "SAFE_PRETALK_CONFIRMED",
+      "language": "en",
+      "published_at": "2023-03-23T00:00:00Z",
+      "reference_used": false,
+      "relationship": "Official pre-talk OpenAI publication describing ChatGPT plugins, a capability discussed by Greg Brockman in the associated April 2023 talk.",
+      "source_id": "chatgpt-2023-plugins-lead",
+      "source_type": "official_article",
+      "source_uri": "https://openai.com/index/chatgpt-plugins/",
+      "text": "ChatGPT plugins\n\nWe’ve implemented initial support for plugins in ChatGPT. Plugins are tools designed specifically for language models with safety as a core principle, and help ChatGPT access up-to-date information, run computations, or use third-party services.",
+      "transcript_used": false
+    }
+  ],
+  "split": "train",
+  "talk_id": "ted-greg-brockman-chatgpt-potential"
+}

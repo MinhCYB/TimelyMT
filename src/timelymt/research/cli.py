@@ -129,10 +129,10 @@ class Provider:
         return hypotheses
 
 
-def _translator(batch_size: int) -> tuple[Any, Provider]:
+def _translator(batch_size: int, *, device: str | None = None) -> tuple[Any, Provider]:
     config = load_config(ROOT / "configs/translator/envit5.json")
     identity = translator_identity(config)
-    translator = EnViT5Translator(config, cache=TranslationCache(ROOT / "outputs/translator/cache"))
+    translator = EnViT5Translator(config, device=device, cache=TranslationCache(ROOT / "outputs/translator/cache"))
     return identity, Provider(translator, identity, batch_size)
 
 
@@ -589,7 +589,7 @@ def report(split_name: str) -> None:
 
 def main(argv: Sequence[str] | None = None) -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("stage", choices=("pseudo", "validate-pseudo", "mu-supervision", "validate-mu", "train", "train-mu", "rollout", "rollout-selected", "evaluate", "select", "freeze", "report", "import-v1", "train-v2", "rollout-v2", "evaluate-v2", "compare-v2", "select-v2", "freeze-v2"))
+    parser.add_argument("stage", choices=("pseudo", "validate-pseudo", "mu-supervision", "validate-mu", "train", "train-mu", "rollout", "rollout-selected", "evaluate", "select", "freeze", "report", "import-v1", "train-v2", "rollout-v2", "evaluate-v2", "compare-v2", "select-v2", "freeze-v2", "validate-p3", "inspect-p3", "train-p3", "inspect-p3-checkpoint", "rollout-p3", "evaluate-p3"))
     parser.add_argument("--split", choices=("train", "dev", "test"))
     parser.add_argument("--talk-id")
     parser.add_argument("--max-talks", type=int)
@@ -604,10 +604,40 @@ def main(argv: Sequence[str] | None = None) -> None:
     parser.add_argument("--include-selected", action="store_true")
     parser.add_argument("--source", type=Path)
     parser.add_argument("--thresholds", nargs="*", type=float)
+    parser.add_argument("--encoder-device", choices=("cpu", "cuda"), default="cpu")
+    parser.add_argument("--encoder-dtype", choices=("float32", "float16"), default="float32")
+    parser.add_argument("--policy-device", choices=("cpu", "cuda"), default="cpu")
+    parser.add_argument("--policy-dtype", choices=("float32", "float16"), default="float32")
+    parser.add_argument("--translator-device", choices=("cpu", "cuda"), default="cuda")
+    parser.add_argument("--translator-dtype", choices=("float32", "float16"), default="float16")
     args = parser.parse_args(argv)
-    if args.stage in {"train-v2", "rollout-v2", "evaluate-v2", "compare-v2", "select-v2", "freeze-v2"} and args.split == "test":
+    if args.stage in {"train-v2", "rollout-v2", "evaluate-v2", "compare-v2", "select-v2", "freeze-v2", "validate-p3", "inspect-p3", "train-p3", "inspect-p3-checkpoint", "rollout-p3", "evaluate-p3"} and args.split == "test":
         parser.error("Policy V2 forbids --split test")
-    if args.stage == "import-v1":
+    if args.stage == "validate-p3":
+        from .policy_p3_global_runner import validate_prepared_p3
+        validate_prepared_p3()
+    elif args.stage == "inspect-p3":
+        if args.talk_id is None or args.split not in {"train", "dev"}:
+            parser.error("inspect-p3 requires --split train|dev and --talk-id TALK_ID")
+        from .policy_p3_global_runner import inspect_p3
+        inspect_p3(args.talk_id, args.split)
+    elif args.stage == "train-p3":
+        from .policy_p3_global_runner import train_p3
+        train_p3()
+    elif args.stage == "inspect-p3-checkpoint":
+        from .policy_p3_global_runner import inspect_p3_checkpoint
+        inspect_p3_checkpoint()
+    elif args.stage == "rollout-p3":
+        if args.split not in {"train", "dev"}:
+            parser.error("rollout-p3 requires --split train|dev")
+        from .policy_p3_global_runner import rollout_p3
+        rollout_p3(args.split, args.thresholds or THRESHOLDS, talk_id=args.talk_id, batch_size=args.batch_size)
+    elif args.stage == "evaluate-p3":
+        if args.split not in {None, "dev"}:
+            parser.error("evaluate-p3 supports DEV only")
+        from .policy_p3_global_runner import evaluate_p3
+        evaluate_p3(args.strategies)
+    elif args.stage == "import-v1":
         if args.source is None:
             parser.error("import-v1 requires --source ARCHIVE_OR_EXPANDED_DIRECTORY")
         from .policy_v2_runner import import_v1
@@ -616,12 +646,20 @@ def main(argv: Sequence[str] | None = None) -> None:
         if args.variant is None:
             parser.error("train-v2 requires --variant P0|P1|P2")
         from .policy_v2_runner import train_v2
-        train_v2(args.variant, args.pseudo_labels)
+        train_v2(
+            args.variant, args.pseudo_labels, encoder_device=args.encoder_device,
+            encoder_dtype=args.encoder_dtype, policy_device=args.policy_device, policy_dtype=args.policy_dtype,
+        )
     elif args.stage == "rollout-v2":
         if args.variant is None:
             parser.error("rollout-v2 requires --variant P0|P1|P2")
         from .policy_v2_runner import rollout_v2
-        rollout_v2(args.variant, args.thresholds or THRESHOLDS, args.batch_size)
+        rollout_v2(
+            args.variant, args.thresholds or THRESHOLDS, args.batch_size,
+            encoder_device=args.encoder_device, encoder_dtype=args.encoder_dtype,
+            policy_device=args.policy_device, policy_dtype=args.policy_dtype,
+            translator_device=args.translator_device, translator_dtype=args.translator_dtype,
+        )
     elif args.stage == "evaluate-v2":
         from .policy_v2_runner import evaluate_v2
         evaluate_v2(args.strategies)

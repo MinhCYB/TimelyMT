@@ -14,8 +14,9 @@ from .evaluation import latency_metrics, quality_metrics
 from .policy import VARIANTS
 from .policy_v2 import (
     DATASET_CHECKSUM, ENCODER_MODEL_ID, ENCODER_REVISION, EXPERIMENT_LABEL, EXPERIMENT_STATUS,
-    POOLING_VERSION, SPLIT_CHECKSUM, THRESHOLDS, TRANSLATOR_FINGERPRINT, V1_SOURCE_COMMIT,
-    EmbeddingCache, FrozenMiniLMEncoder, atomic_json, current_git_commit, load_v2_checkpoint,
+    LOCAL_RUNTIME, POOLING_VERSION, SPLIT_CHECKSUM, THRESHOLDS, TRANSLATOR_FINGERPRINT, V1_SOURCE_COMMIT,
+    EmbeddingCache, FrozenMiniLMEncoder, NumericScaler, V2MLP, atomic_json, current_git_commit,
+    input_dimension, load_v2_checkpoint,
     make_checkpoint_metadata, metrics_are_complete, restore_v1_artifacts, save_v2_checkpoint,
     select_v2_configuration, sha256_file, train_v2_policy, validate_prediction_record,
     validate_v1_supervision, v1_identity_document, reject_test_split,
@@ -47,8 +48,11 @@ def all_v2_strategies(variants: Sequence[str] = VARIANTS, thresholds: Sequence[f
     return [_strategy(variant, threshold) for variant in variants for threshold in thresholds]
 
 
-def _encoder_cache(cache_dir: Path = V2_CACHE, *, batch_size: int = 256):
-    encoder = FrozenMiniLMEncoder(batch_size=batch_size)
+def _encoder_cache(
+    cache_dir: Path = V2_CACHE, *, batch_size: int = 256,
+    device: str = "cpu", dtype: str = "float32",
+):
+    encoder = FrozenMiniLMEncoder(batch_size=batch_size, device=device, dtype=dtype)
     return encoder, EmbeddingCache(cache_dir, encoder)
 
 
@@ -65,20 +69,48 @@ def _valid_checkpoint(variant: str, checkpoint_dir: Path = V2_CHECKPOINTS) -> bo
         "encoder_model_id": ENCODER_MODEL_ID, "encoder_revision": ENCODER_REVISION,
         "dataset_checksum": DATASET_CHECKSUM, "split_checksum": SPLIT_CHECKSUM,
         "translator_fingerprint": TRANSLATOR_FINGERPRINT, "v1_source_commit": V1_SOURCE_COMMIT,
+        "runtime": LOCAL_RUNTIME,
     }
     try:
         expected_train_ids = set(_load_json(ROOT / "data/splits/experimental.json")["splits"]["train"])
     except (OSError, UnicodeError, json.JSONDecodeError, KeyError):
         return False
-    return (
+    metadata_valid = (
         all(metadata.get(key) == value for key, value in expected.items())
         and set(metadata.get("train_talk_ids", [])) == expected_train_ids
         and metadata.get("numeric_scaler_fit_split") == "train"
         and metadata.get("checkpoint_sha256") == sha256_file(path)
     )
+    if not metadata_valid:
+        return False
+    try:
+        import torch
+
+        payload = torch.load(path, map_location="cpu", weights_only=True)
+        scaler_value = payload["scaler"]
+        scaler = NumericScaler(
+            tuple(scaler_value["mean"]), tuple(scaler_value["scale"]), scaler_value["fitted_split"],
+        )
+        expected_dimension = input_dimension(variant, int(metadata["embedding_dimension"]))
+        model = V2MLP(expected_dimension)
+        model.load_state_dict(payload["model_state_dict"], strict=True)
+        return (
+            payload.get("format_version") == "1.0.0"
+            and payload.get("variant") == variant
+            and payload.get("embedding_dimension") == metadata["embedding_dimension"] == 384
+            and payload.get("input_dimension") == expected_dimension
+            and scaler.fitted_split == "train"
+            and len(scaler.mean) == len(scaler.scale) == 11
+        )
+    except (OSError, RuntimeError, KeyError, TypeError, ValueError):
+        return False
 
 
-def train_v2(variant: str, pseudo_manifest: Path | None = None, *, cache_dir: Path = V2_CACHE) -> None:
+def train_v2(
+    variant: str, pseudo_manifest: Path | None = None, *, cache_dir: Path = V2_CACHE,
+    encoder_device: str = "cpu", encoder_dtype: str = "float32",
+    policy_device: str = "cpu", policy_dtype: str = "float32",
+) -> None:
     if variant not in VARIANTS:
         raise ValueError(f"unknown V2 variant: {variant}")
     if _valid_checkpoint(variant):
@@ -88,9 +120,14 @@ def train_v2(variant: str, pseudo_manifest: Path | None = None, *, cache_dir: Pa
     if manifest_path.name != "manifest.json":
         raise RuntimeError("V2 training requires a V1 TRAIN manifest")
     manifest, rows = validate_v1_supervision(manifest_path.parent, "train")
-    _, cache = _encoder_cache(cache_dir)
+    if {
+        "encoder_device": encoder_device, "encoder_dtype": encoder_dtype,
+        "policy_device": policy_device, "policy_dtype": policy_dtype,
+    } != {key: LOCAL_RUNTIME[key] for key in ("encoder_device", "encoder_dtype", "policy_device", "policy_dtype")}:
+        raise RuntimeError("V2 training must use the frozen local CPU/float32 runtime")
+    _, cache = _encoder_cache(cache_dir, device=encoder_device, dtype=encoder_dtype)
     started = time.perf_counter()
-    policy, training = train_v2_policy(rows, variant, cache)
+    policy, training = train_v2_policy(rows, variant, cache, device=policy_device)
     checkpoint_path = V2_CHECKPOINTS / f"V2{variant}.pt"
     checkpoint_hash = save_v2_checkpoint(checkpoint_path, policy)
     metadata = make_checkpoint_metadata(
@@ -107,10 +144,24 @@ def _prediction_path(strategy: str, talk_id: str) -> Path:
     return V2_EXPERIMENT / "predictions/dev" / strategy / f"{talk_id}.json"
 
 
-def rollout_v2(variant: str, thresholds: Sequence[float], batch_size: int = 1) -> None:
+def rollout_v2(
+    variant: str, thresholds: Sequence[float], batch_size: int = 1, *,
+    encoder_device: str = "cpu", encoder_dtype: str = "float32",
+    policy_device: str = "cpu", policy_dtype: str = "float32",
+    translator_device: str = "cuda", translator_dtype: str = "float16",
+) -> None:
     from .cli import _manifests, _runtime_talk, _translator
 
     reject_test_split("dev")
+    runtime = {
+        "encoder_device": encoder_device, "encoder_dtype": encoder_dtype,
+        "policy_device": policy_device, "policy_dtype": policy_dtype,
+        "translator_device": translator_device, "translator_dtype": translator_dtype,
+    }
+    if runtime != LOCAL_RUNTIME:
+        raise RuntimeError("V2 rollout must use the frozen local CPU/CPU/CUDA runtime")
+    if batch_size != 1:
+        raise RuntimeError("V2 local rollout requires translator batch size 1")
     if not _valid_checkpoint(variant):
         raise RuntimeError(f"V2{variant} checkpoint is not full/hash-valid")
     _, split = _manifests()
@@ -118,9 +169,11 @@ def rollout_v2(variant: str, thresholds: Sequence[float], batch_size: int = 1) -
     metadata_path = V2_CHECKPOINTS / f"V2{variant}.metadata.json"
     metadata = _load_json(metadata_path)
     model_hash = metadata["checkpoint_sha256"]
-    _, cache = _encoder_cache()
-    policy = load_v2_checkpoint(V2_CHECKPOINTS / f"V2{variant}.pt", metadata_path, cache)
-    _, provider = _translator(batch_size)
+    _, cache = _encoder_cache(device=encoder_device, dtype=encoder_dtype)
+    policy = load_v2_checkpoint(
+        V2_CHECKPOINTS / f"V2{variant}.pt", metadata_path, cache, device=policy_device,
+    )
+    _, provider = _translator(batch_size, device=translator_device)
     for threshold in thresholds:
         strategy = _strategy(variant, float(threshold))
         for index, talk_id in enumerate(expected_talks, start=1):
@@ -138,6 +191,7 @@ def rollout_v2(variant: str, thresholds: Sequence[float], batch_size: int = 1) -
                 "artifact_status": "full", "publishable": False, "experiment_status": EXPERIMENT_STATUS,
                 "experiment_label": EXPERIMENT_LABEL, "model_sha256": model_hash,
                 "dataset_checksum": DATASET_CHECKSUM, "encoder_revision": ENCODER_REVISION,
+                "runtime": dict(LOCAL_RUNTIME),
             })
             atomic_json(path, record)
             validate_prediction_record(record, strategy=strategy, talk_id=talk_id, model_hash=model_hash)
@@ -193,6 +247,7 @@ def evaluate_v2(strategies: Sequence[str] | None = None) -> None:
             "artifact_status": "full", "publishable": False, "experiment_status": EXPERIMENT_STATUS,
             "experiment_label": EXPERIMENT_LABEL, "dataset_checksum": DATASET_CHECKSUM,
             "encoder_revision": ENCODER_REVISION, "model_sha256": metadata["checkpoint_sha256"],
+            "runtime": dict(LOCAL_RUNTIME),
         })
         all_metrics[strategy] = metrics
         atomic_json(V2_EXPERIMENT / f"metrics/dev/{strategy}.json", metrics)
@@ -256,14 +311,18 @@ def select_v2() -> None:
     print(json.dumps(result, indent=2))
 
 
+def _frozen_document_matches(existing: Mapping[str, Any], expected: Mapping[str, Any]) -> bool:
+    validated_fields = (
+        "artifact_status", "experiment_status", "v1_source_identity", "dataset_checksum", "split_checksum",
+        "translator_fingerprint", "encoder", "runtime", "checkpoint_hashes", "metrics_sha256",
+        "v1_metrics_sha256", "selected_strategy", "selection_sha256", "train_manifest_checksum",
+        "dev_manifest_checksum", "test_status",
+    )
+    return all(existing.get(key) == expected.get(key) for key in validated_fields)
+
+
 def freeze_v2() -> None:
     path = V2_EXPERIMENT / "v2-frozen-config.json"
-    if path.exists():
-        existing = _load_json(path)
-        if existing.get("artifact_status") == "v2-dev-frozen-complete" and existing.get("experiment_status") == EXPERIMENT_STATUS:
-            print("V2 freeze: validated resume hit")
-            return
-        raise RuntimeError("refusing to overwrite invalid V2 frozen config")
     train_manifest, _ = validate_v1_supervision(PSEUDO / "train", "train")
     dev_manifest, _ = validate_v1_supervision(PSEUDO / "dev", "dev")
     hashes = {}
@@ -279,6 +338,7 @@ def freeze_v2() -> None:
         selection.get("experiment_status") != EXPERIMENT_STATUS
         or selection.get("selected_strategy") not in all_v2_strategies()
         or selection.get("v2_metrics_sha256") != sha256_file(metrics_path)
+        or selection.get("v1_metrics_sha256") != sha256_file(V1_METRICS)
     ):
         raise RuntimeError("freeze requires an identity-valid V2 DEV selection")
     document = {
@@ -288,17 +348,26 @@ def freeze_v2() -> None:
         "dataset_checksum": DATASET_CHECKSUM, "split_checksum": SPLIT_CHECKSUM,
         "translator_fingerprint": TRANSLATOR_FINGERPRINT,
         "encoder": {"model_id": ENCODER_MODEL_ID, "revision": ENCODER_REVISION, "pooling": POOLING_VERSION, "frozen": True},
+        "runtime": dict(LOCAL_RUNTIME),
         "thresholds": list(THRESHOLDS), "selection_rule_identity": "V1 select_dev_configuration (unchanged adapter)",
         "checkpoint_hashes": hashes, "metrics_sha256": sha256_file(metrics_path),
+        "v1_metrics_sha256": sha256_file(V1_METRICS), "selected_strategy": selection["selected_strategy"],
         "selection_sha256": sha256_file(selection_path), "train_manifest_checksum": train_manifest["config_checksum"],
         "dev_manifest_checksum": dev_manifest["config_checksum"],
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
         "test_status": "UNTOUCHED",
     }
+    if path.exists():
+        existing = _load_json(path)
+        if _frozen_document_matches(existing, document):
+            print("V2 freeze: validated resume hit")
+            return
+        raise RuntimeError("refusing to accept or overwrite identity-invalid V2 frozen config")
     atomic_json(path, document)
     atomic_json(V2_EXPERIMENT / "run-provenance.json", {
         "experiment_status": EXPERIMENT_STATUS, "v1_source_commit": V1_SOURCE_COMMIT,
         "v2_code_commit": document["v2_code_commit"], "frozen_config_sha256": sha256_file(path),
+        "runtime": dict(LOCAL_RUNTIME),
     })
 
 

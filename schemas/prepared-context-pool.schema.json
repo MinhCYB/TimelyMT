@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:timelymt:schema:prepared-context-pool:prepared-context-v0",
+  "title": "TimelyMT Prepared Context Pool v0",
+  "description": "Standalone inventory of acquired pre-talk material. Metadata is informational and is not prepared source text.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "talk_id", "split", "metadata", "sources"],
+  "properties": {
+    "schema_version": {"const": "prepared-context-v0"},
+    "talk_id": {"$ref": "#/$defs/identifier"},
+    "split": {"enum": ["train", "dev"]},
+    "metadata": {"$ref": "#/$defs/metadata"},
+    "sources": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/source"}
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Descriptive provenance only. These fields are not eligible prepared context sources.",
+      "additionalProperties": false,
+      "properties": {
+        "title": {"type": "string"},
+        "speaker": {"type": "string"},
+        "domain": {"type": "string"}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id", "source_type", "text", "source_uri", "language",
+        "published_at", "acquired_at", "available_before_talk",
+        "classification", "relationship", "transcript_used",
+        "reference_used", "checksum"
+      ],
+      "properties": {
+        "source_id": {"$ref": "#/$defs/identifier"},
+        "source_type": {
+          "enum": [
+            "paper", "official_article", "project_documentation",
+            "event_abstract", "slides", "speaker_notes", "glossary", "other"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "description": "Exact source-preserving text. It is hashed without normalization."
+        },
+        "source_uri": {"type": "string", "format": "uri", "minLength": 1},
+        "language": {"const": "en"},
+        "published_at": {"type": ["string", "null"], "format": "date-time"},
+        "acquired_at": {"type": ["string", "null"], "format": "date-time"},
+        "available_before_talk": {"type": "boolean"},
+        "classification": {
+          "enum": [
+            "SAFE_PRETALK_CONFIRMED", "SAFE_PRETALK_PLAUSIBLE",
+            "PUBLIC_POST_TALK", "TRANSCRIPT_DERIVED", "REFERENCE_DERIVED",
+            "QUESTIONABLE", "UNAVAILABLE"
+          ]
+        },
+        "relationship": {"type": "string", "minLength": 1},
+        "transcript_used": {"type": "boolean"},
+        "reference_used": {"type": "boolean"},
+        "checksum": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"classification": {"const": "UNAVAILABLE"}}, "required": ["classification"]},
+          "then": {"properties": {"acquired_at": {"type": "null"}, "available_before_talk": {"const": false}}},
+          "else": {
+            "properties": {
+              "text": {"type": "string", "minLength": 1},
+              "acquired_at": {"type": "string", "format": "date-time"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"classification": {"const": "SAFE_PRETALK_CONFIRMED"}}, "required": ["classification"]},
+          "then": {
+            "properties": {
+              "available_before_talk": {"const": true},
+              "transcript_used": {"const": false},
+              "reference_used": {"const": false}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"classification": {"const": "PUBLIC_POST_TALK"}}, "required": ["classification"]},
+          "then": {"properties": {"available_before_talk": {"const": false}}}
+        },
+        {
+          "if": {"properties": {"classification": {"const": "TRANSCRIPT_DERIVED"}}, "required": ["classification"]},
+          "then": {"properties": {"transcript_used": {"const": true}}}
+        },
+        {
+          "if": {"properties": {"classification": {"const": "REFERENCE_DERIVED"}}, "required": ["classification"]},
+          "then": {"properties": {"reference_used": {"const": true}}}
+        }
+      ]
+    }
+  }
+}

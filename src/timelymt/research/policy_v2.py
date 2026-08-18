@@ -32,6 +32,11 @@ EXPERIMENT_LABEL = "POST-HOC EXPLORATORY DEV EXTENSION"
 ENCODER_MODEL_ID = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 ENCODER_REVISION = "e62509716f15c5fd03a6fd3156a4bc5e43f83f26"
 POOLING_VERSION = "attention-mask-mean-l2-v1"
+LOCAL_RUNTIME = {
+    "encoder_device": "cpu", "encoder_dtype": "float32",
+    "policy_device": "cpu", "policy_dtype": "float32",
+    "translator_device": "cuda", "translator_dtype": "float16",
+}
 EXPECTED_EMBEDDING_DIMENSION = 384
 DATASET_CHECKSUM = "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce"
 SPLIT_CHECKSUM = "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4"
@@ -222,14 +227,25 @@ class NumericScaler:
 class FrozenMiniLMEncoder:
     """Pinned Transformers encoder with mask-aware mean pooling."""
 
-    def __init__(self, *, device: str | torch.device | None = None, batch_size: int = 256) -> None:
+    def __init__(
+        self, *, device: str | torch.device = "cpu", dtype: str = "float32", batch_size: int = 256,
+    ) -> None:
         from transformers import AutoModel, AutoTokenizer
 
-        self.device = torch.device(device or ("cuda" if torch.cuda.is_available() else "cpu"))
+        self.device = torch.device(device)
+        expected_dtype = "float16" if self.device.type == "cuda" else "float32"
+        if dtype != expected_dtype:
+            raise ValueError(f"MiniLM {self.device.type} requires {expected_dtype}, not {dtype}")
+        self.dtype = dtype
         self.batch_size = batch_size
         self.tokenizer = AutoTokenizer.from_pretrained(ENCODER_MODEL_ID, revision=ENCODER_REVISION)
-        dtype = torch.float16 if self.device.type == "cuda" else torch.float32
-        self.model = AutoModel.from_pretrained(ENCODER_MODEL_ID, revision=ENCODER_REVISION, torch_dtype=dtype)
+        torch_dtype = torch.float16 if dtype == "float16" else torch.float32
+        self.model = AutoModel.from_pretrained(ENCODER_MODEL_ID, revision=ENCODER_REVISION, torch_dtype=torch_dtype)
+        resolved_revision = getattr(self.model.config, "_commit_hash", None)
+        if resolved_revision != ENCODER_REVISION:
+            raise RuntimeError(
+                f"MiniLM resolved revision mismatch: expected={ENCODER_REVISION} actual={resolved_revision}"
+            )
         self.model.eval().requires_grad_(False).to(self.device)
         hidden_size = int(self.model.config.hidden_size)
         if hidden_size != EXPECTED_EMBEDDING_DIMENSION:
@@ -484,22 +500,24 @@ def make_checkpoint_metadata(
         "weighted_bce": {"formula": "pos_weight = TRAIN_LISTEN / TRAIN_COMMIT", "positive_weight": training["positive_weight"]},
         "numeric_scaler_fit_split": "train", "checkpoint_sha256": checkpoint_hash,
         "v1_source_commit": V1_SOURCE_COMMIT, "v2_code_commit": v2_code_commit,
+        "runtime": dict(LOCAL_RUNTIME),
         "training_history": training["training_history"],
     }
 
 
 def validate_prediction_record(
-    record: Mapping[str, Any], *, strategy: str, talk_id: str, model_hash: str,
+    record: Mapping[str, Any], *, strategy: str, talk_id: str, model_hash: str, split_name: str = "dev",
 ) -> None:
     expected = {
-        "strategy": strategy, "talk_id": talk_id, "split": "dev", "artifact_status": "full",
+        "strategy": strategy, "talk_id": talk_id, "split": split_name, "artifact_status": "full",
         "experiment_status": EXPERIMENT_STATUS, "model_sha256": model_hash,
         "dataset_checksum": DATASET_CHECKSUM, "encoder_revision": ENCODER_REVISION,
+        "runtime": LOCAL_RUNTIME,
     }
     if any(record.get(key) != value for key, value in expected.items()):
-        raise RuntimeError("invalid resumable V2 DEV prediction identity")
+        raise RuntimeError(f"invalid resumable V2 {split_name.upper()} prediction identity")
     if not isinstance(record.get("commits"), list) or not record["commits"]:
-        raise RuntimeError("invalid resumable V2 DEV prediction commits")
+        raise RuntimeError(f"invalid resumable V2 {split_name.upper()} prediction commits")
 
 
 def metrics_are_complete(path: Path, strategies: Sequence[str]) -> bool:
@@ -514,6 +532,7 @@ def metrics_are_complete(path: Path, strategies: Sequence[str]) -> bool:
         and row.get("experiment_status") == EXPERIMENT_STATUS
         and row.get("dataset_checksum") == DATASET_CHECKSUM
         and row.get("encoder_revision") == ENCODER_REVISION
+        and row.get("runtime") == LOCAL_RUNTIME
         and isinstance(row.get("model_sha256"), str)
         for row in document.values()
     )

@@ -1,4 +1,4 @@
-.PHONY: help inspect-data fetch-talks acquire-data parse-data align-data time-data build-data manifest-data prepare-data prepare-dataset validate-data validate-dataset dataset-summary run-fixed-n run-fixed-time run-local-agreement generate-labels train-policy compare-models run-ablation evaluate test demo-api demo-web clean
+.PHONY: help inspect-data fetch-talks acquire-data parse-data align-data time-data build-data manifest-data prepare-data prepare-dataset validate-data validate-dataset dataset-summary run-fixed-n run-fixed-time run-local-agreement generate-labels train-policy compare-models run-ablation evaluate policy-v2-local policy-v2-test test demo-api demo-web clean
 
 ifeq ($(OS),Windows_NT)
 PYTHONPATH_ENV := set PYTHONPATH=src&&
@@ -29,6 +29,8 @@ help:
 	@echo   compare-models
 	@echo   run-ablation
 	@echo   evaluate
+	@echo   policy-v2-local - Run/resume exploratory Policy V2 locally through frozen DEV.
+	@echo   policy-v2-test - Run/resume the locked Policy V2 held-out TEST protocol.
 	@echo   test
 	@echo   demo-api
 	@echo   demo-web
@@ -63,6 +65,12 @@ dataset-summary:
 
 test:
 	$(PYTHONPATH_ENV) python -m unittest discover -s tests -p "test_*.py" -v
+
+policy-v2-local:
+	C:/ProgramData/miniconda3/python.exe scripts/policy_v2_bootstrap.py $(ARGS)
+
+policy-v2-test:
+	$(PYTHONPATH_ENV) python -m timelymt.research.policy_v2_test
 
 inspect-data fetch-talks prepare-data validate-data run-fixed-n run-fixed-time run-local-agreement generate-labels train-policy compare-models run-ablation evaluate demo-api demo-web clean:
 	@echo "Not implemented yet."

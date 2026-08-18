@@ -1,0 +1,23 @@
+{
+  "metadata": {"domain": "ai_education", "speaker": "Sal Khan", "title": "How AI could save (not destroy) education"},
+  "schema_version": "prepared-context-v0",
+  "sources": [
+    {
+      "acquired_at": "2026-08-18T00:00:00Z",
+      "available_before_talk": true,
+      "checksum": "sha256:be3f53c230ccae6d10b35f4cfd7088decd8be396206059ce473467ca838cab71",
+      "classification": "SAFE_PRETALK_CONFIRMED",
+      "language": "en",
+      "published_at": "2023-03-14T00:00:00Z",
+      "reference_used": false,
+      "relationship": "Official pre-talk Khan Academy GPT-4 and Khanmigo announcement by Sal Khan, relevant to the associated April 2023 education talk. Original primary URL: https://blog.khanacademy.org/harnessing-ai-so-that-all-students-benefit-a-nonprofit-approach-for-equal-access/ Archived representation acquired: https://web.archive.org/web/20230314222155id_/https://blog.khanacademy.org/harnessing-ai-so-that-all-students-benefit-a-nonprofit-approach-for-equal-access/ (archive timestamp 2023-03-14T22:21:55Z).",
+      "source_id": "khanmigo-gpt4-2023-announcement-lead",
+      "source_type": "official_article",
+      "source_uri": "https://blog.khanacademy.org/harnessing-ai-so-that-all-students-benefit-a-nonprofit-approach-for-equal-access/",
+      "text": "Harnessing GPT-4 so that all students benefit. A nonprofit approach for equal access\n\nA few weeks ago, I gave a technology demonstration to a handful of public school administrators. I showed them an experimental artificial intelligence tool we’re developing at Khan Academy that uses GPT-4. It is not an exaggeration to say that it was one of the most positive reactions to a technology demo that I’ve ever done—if not the most positive reaction.",
+      "transcript_used": false
+    }
+  ],
+  "split": "train",
+  "talk_id": "ted-sal-khan-ai-education"
+}

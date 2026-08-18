@@ -80,6 +80,11 @@ checkpoints/policy/*
 # Generated predictions, metrics, logs, figures, and experiment state
 outputs/dataset/
 outputs/experiments/
+!outputs/experiments/
+outputs/experiments/*
+!outputs/experiments/policy-v2/
+outputs/experiments/policy-v2/*
+!outputs/experiments/policy-v2/test-plan.json
 outputs/runs/*
 !outputs/runs/.gitkeep
 outputs/logs/*

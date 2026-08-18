@@ -12,7 +12,7 @@ import torch
 
 from timelymt.research.policy import NUMERIC_FEATURES
 from timelymt.research.policy_v2 import (
-    DATASET_CHECKSUM, ENCODER_REVISION, EXPERIMENT_STATUS, SPLIT_CHECKSUM,
+    DATASET_CHECKSUM, ENCODER_REVISION, EXPERIMENT_STATUS, LOCAL_RUNTIME, SPLIT_CHECKSUM,
     TRANSLATOR_FINGERPRINT, V1_SOURCE_COMMIT, EmbeddingCache, FrozenMiniLMEncoder,
     NumericScaler, V2MLP, V2Policy, class_weight, load_v2_checkpoint, restore_v1_artifacts,
     save_v2_checkpoint, select_v2_configuration, state_texts, train_v2_policy, validate_causal_state,
@@ -163,7 +163,7 @@ class PolicyV2ArtifactTests(unittest.TestCase):
             "strategy": "v2_P0_0.30", "talk_id": "dev-talk", "split": "dev",
             "artifact_status": "full", "experiment_status": EXPERIMENT_STATUS,
             "model_sha256": "abc", "dataset_checksum": DATASET_CHECKSUM,
-            "encoder_revision": ENCODER_REVISION, "commits": [{}],
+            "encoder_revision": ENCODER_REVISION, "runtime": LOCAL_RUNTIME, "commits": [{}],
         }
         validate_prediction_record(record, strategy="v2_P0_0.30", talk_id="dev-talk", model_hash="abc")
         record["model_sha256"] = "wrong"

@@ -1,0 +1,23 @@
+{
+  "metadata": {"domain": "ai_climate", "speaker": "Sims Witherspoon", "title": "Can AI help solve the climate crisis?"},
+  "schema_version": "prepared-context-v0",
+  "sources": [
+    {
+      "acquired_at": "2026-08-18T00:00:00Z",
+      "available_before_talk": true,
+      "checksum": "sha256:8259e773f5f353769d83bdcfe9cad54c0f503bde7e69b71371fb820e4183a4c7",
+      "classification": "SAFE_PRETALK_CONFIRMED",
+      "language": "en",
+      "published_at": "2019-02-26T00:00:00Z",
+      "reference_used": false,
+      "relationship": "Official pre-talk DeepMind technical article coauthored by Sims Witherspoon, describing machine learning for wind-power forecasting and grid commitments relevant to the associated 2020 climate talk.",
+      "source_id": "deepmind-wind-energy-2019-lead",
+      "source_type": "official_article",
+      "source_uri": "https://deepmind.google/blog/machine-learning-can-boost-the-value-of-wind-energy/",
+      "text": "Machine learning can boost the value of wind energy\n\nCarbon-free technologies like renewable energy help combat climate change, but many of them have not reached their full potential. Consider wind power: over the past decade, wind farms have become an important source of carbon-free electricity as the cost of turbines has plummeted and adoption has surged. However, the variable nature of wind itself makes it an unpredictable energy source—less useful than one that can reliably deliver power at a set time.",
+      "transcript_used": false
+    }
+  ],
+  "split": "dev",
+  "talk_id": "ted-sims-witherspoon-ai-climate"
+}

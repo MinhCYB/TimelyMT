@@ -1,0 +1,34 @@
+{
+  "experiment_label": "POST-HOC EXPLORATORY DEV EXTENSION",
+  "experiment_status": "post_hoc_exploratory",
+  "forbidden_operations": [
+    "training",
+    "fine_tuning",
+    "pseudo_label_generation",
+    "threshold_search",
+    "variant_selection",
+    "dev_reselection",
+    "test_based_selection",
+    "hyperparameter_changes",
+    "feature_changes",
+    "checkpoint_replacement"
+  ],
+  "history_ablation": [
+    "v2_P0_0.50",
+    "v2_P1_0.50",
+    "v2_P2_0.50"
+  ],
+  "pipeline": [
+    "frozen_prediction",
+    "frozen_evaluation",
+    "reporting"
+  ],
+  "primary_strategy": "v2_P2_0.50",
+  "reference_systems": [
+    "learned_P1_0.60",
+    "local_agreement_la2",
+    "fixed_n_8",
+    "fixed_time_3200"
+  ],
+  "schema_version": "1.0.0"
+}

@@ -1,0 +1,26 @@
+{
+  "eligible_source_count": 8,
+  "pools": [
+    {"path": "train/ted-alona-fyshe-ai-understand.json", "source_ids": [], "split": "train", "talk_id": "ted-alona-fyshe-ai-understand"},
+    {"path": "train/ted-andrew-ng-ai-opportunities.json", "source_ids": [], "split": "train", "talk_id": "ted-andrew-ng-ai-opportunities"},
+    {"path": "train/ted-chris-urmson-self-driving-cars.json", "source_ids": [], "split": "train", "talk_id": "ted-chris-urmson-self-driving-cars"},
+    {"path": "train/ted-greg-brockman-chatgpt-potential.json", "sources": [{"checksum": "sha256:4c832f2f7abef24118af8e108116d37092658735d787b1e380542d7b181a6676", "source_id": "chatgpt-2022-launch-lead"}, {"checksum": "sha256:b5f6eff4b52a0c98264e46c3229303cc067f1dd0d5a69136d290cbaff2747360", "source_id": "chatgpt-2023-plugins-lead"}], "split": "train", "talk_id": "ted-greg-brockman-chatgpt-potential"},
+    {"path": "train/ted-joseph-redmon-computer-vision.json", "sources": [{"checksum": "sha256:d0f6cb1dd702695b0288896c8bb05b047956153b143f6cc6ac2ed38d9614c320", "source_id": "yolo-2015-abstract"}, {"checksum": "sha256:5038075db8baea9a1b589d47c79c8d20019c2dacf1cf9b9dda4188c51fe16d2c", "source_id": "yolo9000-2016-abstract"}], "split": "train", "talk_id": "ted-joseph-redmon-computer-vision"},
+    {"path": "train/ted-kai-fu-lee-ai-humanity.json", "source_ids": [], "split": "train", "talk_id": "ted-kai-fu-lee-ai-humanity"},
+    {"path": "train/ted-ken-goldberg-robots.json", "source_ids": [], "split": "train", "talk_id": "ted-ken-goldberg-robots"},
+    {"path": "train/ted-kevin-slavin-algorithms.json", "source_ids": [], "split": "train", "talk_id": "ted-kevin-slavin-algorithms"},
+    {"path": "train/ted-maurice-conti-intuitive-ai.json", "source_ids": [], "split": "train", "talk_id": "ted-maurice-conti-intuitive-ai"},
+    {"path": "train/ted-sal-khan-ai-education.json", "sources": [{"checksum": "sha256:be3f53c230ccae6d10b35f4cfd7088decd8be396206059ce473467ca838cab71", "source_id": "khanmigo-gpt4-2023-announcement-lead"}], "split": "train", "talk_id": "ted-sal-khan-ai-education"},
+    {"path": "train/ted-stuart-russell-safe-ai.json", "sources": [{"checksum": "sha256:c57440befd2d1f8cc7441286dce1ad70ba20bfcecc114cb67c25980ee341ee46", "source_id": "cirl-2016-abstract"}], "split": "train", "talk_id": "ted-stuart-russell-safe-ai"},
+    {"path": "train/ted-yejin-choi-ai-smart-stupid.json", "sources": [{"checksum": "sha256:859103cb6a4c6caf86a3f90bb9b2a52f525c0a6d17ac182e3fc6c51890eb0e54", "source_id": "delphi-2021-abstract"}], "split": "train", "talk_id": "ted-yejin-choi-ai-smart-stupid"},
+    {"path": "dev/ted-jeff-dean-ai-smart.json", "source_ids": [], "split": "dev", "talk_id": "ted-jeff-dean-ai-smart"},
+    {"path": "dev/ted-luis-von-ahn-crowdsourcing.json", "source_ids": [], "split": "dev", "talk_id": "ted-luis-von-ahn-crowdsourcing"},
+    {"path": "dev/ted-sims-witherspoon-ai-climate.json", "sources": [{"checksum": "sha256:8259e773f5f353769d83bdcfe9cad54c0f503bde7e69b71371fb820e4183a4c7", "source_id": "deepmind-wind-energy-2019-lead"}], "split": "dev", "talk_id": "ted-sims-witherspoon-ai-climate"}
+  ],
+  "pool_count": 15,
+  "schema_version": "prepared-context-v0",
+  "talks_with_eligible_context": 6,
+  "talks_without_eligible_context": 9,
+  "train_talks": 12,
+  "dev_talks": 3
+}

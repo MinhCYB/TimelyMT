@@ -1,0 +1,38 @@
+{
+  "metadata": {"domain": "computer_vision", "speaker": "Joseph Redmon", "title": "How computers learn to recognize objects instantly"},
+  "schema_version": "prepared-context-v0",
+  "sources": [
+    {
+      "acquired_at": "2026-08-18T00:00:00Z",
+      "available_before_talk": true,
+      "checksum": "sha256:d0f6cb1dd702695b0288896c8bb05b047956153b143f6cc6ac2ed38d9614c320",
+      "classification": "SAFE_PRETALK_CONFIRMED",
+      "language": "en",
+      "published_at": "2016-05-09T22:22:11Z",
+      "reference_used": false,
+      "relationship": "Joseph Redmon coauthored this pre-talk YOLO paper; its object-detection method is the subject of the associated 2017 computer-vision talk.",
+      "source_id": "yolo-2015-abstract",
+      "source_type": "paper",
+      "source_uri": "https://arxiv.org/abs/1506.02640v5",
+      "text": "You Only Look Once: Unified, Real-Time Object Detection\n\nAbstract: We present YOLO, a new approach to object detection. Prior work on object detection repurposes classifiers to perform detection. Instead, we frame object detection as a regression problem to spatially separated bounding boxes and associated class probabilities. A single neural network predicts bounding boxes and class probabilities directly from full images in one evaluation. Since the whole detection pipeline is a single network, it can be optimized end-to-end directly on detection performance.\nOur unified architecture is extremely fast. Our base YOLO model processes images in real-time at 45 frames per second. A smaller version of the network, Fast YOLO, processes an astounding 155 frames per second while still achieving double the mAP of other real-time detectors. Compared to state-of-the-art detection systems, YOLO makes more localization errors but is far less likely to predict false detections where nothing exists. Finally, YOLO learns very general representations of objects. It outperforms all other detection methods, including DPM and R-CNN, by a wide margin when generalizing from natural images to artwork on both the Picasso Dataset and the People-Art Dataset.",
+      "transcript_used": false
+    },
+    {
+      "acquired_at": "2026-08-18T00:00:00Z",
+      "available_before_talk": true,
+      "checksum": "sha256:5038075db8baea9a1b589d47c79c8d20019c2dacf1cf9b9dda4188c51fe16d2c",
+      "classification": "SAFE_PRETALK_CONFIRMED",
+      "language": "en",
+      "published_at": "2016-12-25T07:21:38Z",
+      "reference_used": false,
+      "relationship": "Joseph Redmon coauthored this pre-talk YOLO9000 paper, which extends the object-detection work discussed in the associated 2017 computer-vision talk.",
+      "source_id": "yolo9000-2016-abstract",
+      "source_type": "paper",
+      "source_uri": "https://arxiv.org/abs/1612.08242v1",
+      "text": "YOLO9000: Better, Faster, Stronger\n\nAbstract: We introduce YOLO9000, a state-of-the-art, real-time object detection system that can detect over 9000 object categories. First we propose various improvements to the YOLO detection method, both novel and drawn from prior work. The improved model, YOLOv2, is state-of-the-art on standard detection tasks like PASCAL VOC and COCO. At 67 FPS, YOLOv2 gets 76.8 mAP on VOC 2007. At 40 FPS, YOLOv2 gets 78.6 mAP, outperforming state-of-the-art methods like Faster RCNN with ResNet and SSD while still running significantly faster. Finally we propose a method to jointly train on object detection and classification. Using this method we train YOLO9000 simultaneously on the COCO detection dataset and the ImageNet classification dataset. Our joint training allows YOLO9000 to predict detections for object classes that don't have labelled detection data. We validate our approach on the ImageNet detection task. YOLO9000 gets 19.7 mAP on the ImageNet detection validation set despite only having detection data for 44 of the 200 classes. On the 156 classes not in COCO, YOLO9000 gets 16.0 mAP. But YOLO can detect more than just 200 classes; it predicts detections for more than 9000 different object categories. And it still runs in real-time.",
+      "transcript_used": false
+    }
+  ],
+  "split": "train",
+  "talk_id": "ted-joseph-redmon-computer-vision"
+}

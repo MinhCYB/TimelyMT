@@ -1,0 +1,210 @@
+{
+  "artifact_status": "full",
+  "batch_size": 256,
+  "checkpoint_sha256": "f7f0c58d7ab4d3ec662aebc697a385c9747ab42ad0df77676aab7c962e03d299",
+  "dataset_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+  "embedding_dimension": 384,
+  "encoder_model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "encoder_revision": "e62509716f15c5fd03a6fd3156a4bc5e43f83f26",
+  "epochs": 20,
+  "experiment_label": "POST-HOC EXPLORATORY DEV EXTENSION",
+  "experiment_status": "post_hoc_exploratory",
+  "input_field_definitions": {
+    "P0": [
+      "current_source_text"
+    ],
+    "P1": [
+      "current_source_text",
+      "previous_committed_source_text"
+    ],
+    "P2": [
+      "current_source_text",
+      "previous_committed_source_text",
+      "previous_committed_target_text"
+    ]
+  },
+  "label_counts": {
+    "COMMIT": 2943,
+    "LISTEN": 19075
+  },
+  "mlp_architecture": [
+    "Linear(input,256)",
+    "GELU",
+    "Dropout(0.20)",
+    "Linear(256,64)",
+    "GELU",
+    "Dropout(0.10)",
+    "Linear(64,1)"
+  ],
+  "model_family": "frozen MiniLM embeddings + MLP",
+  "numeric_feature_config": {
+    "fingerprint": "d787ec3c12606bc6a199639675fd07b975288fdf68458d3f9e8f313af70c9bcc",
+    "ordered_features": [
+      "source_buffer_token_count",
+      "source_buffer_character_count",
+      "source_clock_elapsed_ms",
+      "current_target_token_count",
+      "previous_target_token_count",
+      "target_token_count_delta",
+      "previous_current_lcp_ratio",
+      "previous_current_change_ratio",
+      "prior_committed_unit_count",
+      "previous_committed_source_tokens",
+      "previous_committed_target_tokens"
+    ]
+  },
+  "numeric_scaler_fit_split": "train",
+  "optimizer": {
+    "learning_rate": 0.001,
+    "name": "AdamW",
+    "weight_decay": 0.0001
+  },
+  "pooling_version": "attention-mask-mean-l2-v1",
+  "pseudo_label_config": {
+    "config": {
+      "hypothesis_tokenization": "whitespace split",
+      "lookahead_updates": 2,
+      "max_source_tokens": 48,
+      "min_source_tokens": 4,
+      "pseudo_label_version": "1.0.0",
+      "stability_threshold": 0.9
+    },
+    "fingerprint": "397eb12cab2f5832b3010f027b3b2c8db3cbbde1459a086b1c5aca2a1fe454cc"
+  },
+  "publishable": false,
+  "runtime": {
+    "encoder_device": "cpu",
+    "encoder_dtype": "float32",
+    "policy_device": "cpu",
+    "policy_dtype": "float32",
+    "translator_device": "cuda",
+    "translator_dtype": "float16"
+  },
+  "seed": 20260809,
+  "split_checksum": "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4",
+  "train_talk_ids": [
+    "ted-alona-fyshe-ai-understand",
+    "ted-andrew-ng-ai-opportunities",
+    "ted-chris-urmson-self-driving-cars",
+    "ted-greg-brockman-chatgpt-potential",
+    "ted-joseph-redmon-computer-vision",
+    "ted-kai-fu-lee-ai-humanity",
+    "ted-ken-goldberg-robots",
+    "ted-kevin-slavin-algorithms",
+    "ted-maurice-conti-intuitive-ai",
+    "ted-sal-khan-ai-education",
+    "ted-stuart-russell-safe-ai",
+    "ted-yejin-choi-ai-smart-stupid"
+  ],
+  "training_history": [
+    {
+      "epoch": 1,
+      "train_balanced_accuracy": 0.56994708994709,
+      "train_loss": 1.1809894961723462
+    },
+    {
+      "epoch": 2,
+      "train_balanced_accuracy": 0.5888432600359206,
+      "train_loss": 1.1608701445272611
+    },
+    {
+      "epoch": 3,
+      "train_balanced_accuracy": 0.5971040240765011,
+      "train_loss": 1.1545793274213643
+    },
+    {
+      "epoch": 4,
+      "train_balanced_accuracy": 0.6015358477743799,
+      "train_loss": 1.1464577146312371
+    },
+    {
+      "epoch": 5,
+      "train_balanced_accuracy": 0.604195912819766,
+      "train_loss": 1.141024777193855
+    },
+    {
+      "epoch": 6,
+      "train_balanced_accuracy": 0.6083704674530362,
+      "train_loss": 1.141873530356606
+    },
+    {
+      "epoch": 7,
+      "train_balanced_accuracy": 0.610112130479103,
+      "train_loss": 1.129493080851752
+    },
+    {
+      "epoch": 8,
+      "train_balanced_accuracy": 0.6182631911072278,
+      "train_loss": 1.1306362132067165
+    },
+    {
+      "epoch": 9,
+      "train_balanced_accuracy": 0.6236192417843794,
+      "train_loss": 1.1176671908016327
+    },
+    {
+      "epoch": 10,
+      "train_balanced_accuracy": 0.6327683122178536,
+      "train_loss": 1.1086001190142796
+    },
+    {
+      "epoch": 11,
+      "train_balanced_accuracy": 0.6352342119314596,
+      "train_loss": 1.1015283769012332
+    },
+    {
+      "epoch": 12,
+      "train_balanced_accuracy": 0.641232949856803,
+      "train_loss": 1.0927521371367148
+    },
+    {
+      "epoch": 13,
+      "train_balanced_accuracy": 0.6461734867239455,
+      "train_loss": 1.0898773843666678
+    },
+    {
+      "epoch": 14,
+      "train_balanced_accuracy": 0.6441240716470074,
+      "train_loss": 1.0896752104034584
+    },
+    {
+      "epoch": 15,
+      "train_balanced_accuracy": 0.6473899325275472,
+      "train_loss": 1.0772607078430103
+    },
+    {
+      "epoch": 16,
+      "train_balanced_accuracy": 0.6462802776564245,
+      "train_loss": 1.0756730319953591
+    },
+    {
+      "epoch": 17,
+      "train_balanced_accuracy": 0.6548390854812873,
+      "train_loss": 1.074724938187507
+    },
+    {
+      "epoch": 18,
+      "train_balanced_accuracy": 0.6614261443619242,
+      "train_loss": 1.062752213765256
+    },
+    {
+      "epoch": 19,
+      "train_balanced_accuracy": 0.6651832435318674,
+      "train_loss": 1.059795330532111
+    },
+    {
+      "epoch": 20,
+      "train_balanced_accuracy": 0.656649677200136,
+      "train_loss": 1.0521892579139573
+    }
+  ],
+  "training_seconds": 263.01895559999866,
+  "translator_fingerprint": "a54ba8356642a7a696234453b3fc0a29d2dcf85db5299677c492ae967281bd1c",
+  "v1_source_commit": "6c75da5d60cc626ab79e7e82cae471e18be27531",
+  "v2_code_commit": "07ea170569aa3ebb9fd85ac71cef2a759947c2c7",
+  "variant": "P0",
+  "weighted_bce": {
+    "formula": "pos_weight = TRAIN_LISTEN / TRAIN_COMMIT",
+    "positive_weight": 6.481481481481482
+  }
+}
