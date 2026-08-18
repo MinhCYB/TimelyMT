@@ -27,6 +27,7 @@ from timelymt.translator.envit5 import (
 
 
 CONFIG_PATH = Path(__file__).parents[2] / "configs/translator/envit5.json"
+TOKENIZER_FIXTURE_PATH = Path(__file__).parents[1] / "fixtures/envit5_tokenizer_v4_probes.json"
 
 
 class EchoTranslator(Translator):
@@ -117,14 +118,30 @@ class LoaderTorch:
     float32 = object()
 
 
-class LoaderTransformers:
-    class AutoTokenizer:
-        calls: list[tuple[str, dict[str, object]]] = []
+class LoaderTokenizer:
+    pad_token = "<pad>"
+    eos_token = "</s>"
+    unk_token = "<unk>"
+    pad_token_id = 0
+    eos_token_id = 1
 
-        @classmethod
-        def from_pretrained(cls, model_id: str, **kwargs: object) -> object:
-            cls.calls.append((model_id, kwargs))
-            return object()
+    def __init__(self, **kwargs: object) -> None:
+        self.additional_special_tokens = kwargs["additional_special_tokens"]
+
+    def encode(self, text: str) -> list[int]:
+        return [*[ord(character) for character in text], 1]
+
+    def decode(self, token_ids: list[int]) -> str:
+        return "".join(chr(token_id) for token_id in token_ids if token_id not in (0, 1))
+
+
+class LoaderTransformers:
+    tokenizer_calls: list[dict[str, object]] = []
+
+    class PreTrainedTokenizerFast:
+        def __new__(cls, **kwargs: object) -> LoaderTokenizer:
+            LoaderTransformers.tokenizer_calls.append(kwargs)
+            return LoaderTokenizer(**kwargs)
 
     class AutoModelForSeq2SeqLM:
         calls: list[tuple[str, dict[str, object]]] = []
@@ -135,6 +152,15 @@ class LoaderTransformers:
             cls.calls.append((model_id, kwargs))
             cls.model = LoaderModel()
             return cls.model
+
+
+class LoaderHuggingFaceHub:
+    calls: list[dict[str, object]] = []
+
+    @classmethod
+    def hf_hub_download(cls, **kwargs: object) -> str:
+        cls.calls.append(kwargs)
+        return "pinned-tokenizer.json"
 
 
 class RuntimeFactory:
@@ -188,22 +214,37 @@ class TranslatorContractTests(unittest.TestCase):
 
 
 class EnViT5Tests(unittest.TestCase):
-    def test_runtime_loader_uses_pinned_slow_tokenizer_and_original_checkpoint(self) -> None:
+    def test_runtime_loader_uses_pinned_tokenizer_json_and_original_checkpoint(self) -> None:
         config = load_config(CONFIG_PATH)
-        LoaderTransformers.AutoTokenizer.calls = []
+        LoaderHuggingFaceHub.calls = []
+        LoaderTransformers.tokenizer_calls = []
         LoaderTransformers.AutoModelForSeq2SeqLM.calls = []
         LoaderTransformers.AutoModelForSeq2SeqLM.model = None
 
         def import_module(name: str) -> object:
-            return {"torch": LoaderTorch, "transformers": LoaderTransformers}[name]
+            return {
+                "torch": LoaderTorch,
+                "transformers": LoaderTransformers,
+                "huggingface_hub": LoaderHuggingFaceHub,
+            }[name]
 
         with patch("timelymt.translator.envit5.importlib.import_module", side_effect=import_module):
             runtime = _load_runtime(config, "cuda")
 
         revision = "840bc88104d5a4277af740eaedb024df8c3093e7"
         self.assertEqual(
-            LoaderTransformers.AutoTokenizer.calls,
-            [("VietAI/envit5-translation", {"revision": revision, "use_fast": False})],
+            LoaderHuggingFaceHub.calls,
+            [{"repo_id": "VietAI/envit5-translation", "filename": "tokenizer.json", "revision": revision}],
+        )
+        self.assertEqual(
+            LoaderTransformers.tokenizer_calls,
+            [{
+                "tokenizer_file": "pinned-tokenizer.json",
+                "pad_token": "<pad>",
+                "eos_token": "</s>",
+                "unk_token": "<unk>",
+                "additional_special_tokens": [f"<extra_id_{index}>" for index in range(48)],
+            }],
         )
         self.assertEqual(
             LoaderTransformers.AutoModelForSeq2SeqLM.calls,
@@ -221,6 +262,37 @@ class EnViT5Tests(unittest.TestCase):
         self.assertEqual(model.device, "cuda")
         self.assertTrue(model.evaluated)
         self.assertTrue(all(not parameter.requires_grad for parameter in model.parameters()))
+
+    def test_cached_direct_tokenizer_matches_v4_reference_probes(self) -> None:
+        from huggingface_hub import hf_hub_download
+        from transformers import PreTrainedTokenizerFast
+
+        fixture = json.loads(TOKENIZER_FIXTURE_PATH.read_text(encoding="utf-8"))
+        try:
+            tokenizer_file = hf_hub_download(
+                "VietAI/envit5-translation",
+                "tokenizer.json",
+                revision="840bc88104d5a4277af740eaedb024df8c3093e7",
+                local_files_only=True,
+            )
+        except Exception as error:
+            self.skipTest(f"pinned EnViT5 tokenizer.json is not cached locally: {error}")
+        tokenizer = PreTrainedTokenizerFast(
+            tokenizer_file=tokenizer_file,
+            pad_token=fixture["pad_token"],
+            eos_token=fixture["eos_token"],
+            unk_token=fixture["unk_token"],
+            additional_special_tokens=fixture["additional_special_tokens"],
+        )
+        self.assertEqual(tokenizer.pad_token_id, fixture["pad_token_id"])
+        self.assertEqual(tokenizer.eos_token_id, fixture["eos_token_id"])
+        self.assertEqual(tokenizer.unk_token, fixture["unk_token"])
+        self.assertEqual(tokenizer.additional_special_tokens, fixture["additional_special_tokens"])
+        for probe, expected_ids in fixture["probes"].items():
+            with self.subTest(probe=probe):
+                self.assertEqual(tokenizer.encode(probe), expected_ids)
+                self.assertEqual(tokenizer.encode(probe), tokenizer.encode(probe))
+                self.assertEqual(tokenizer.decode(expected_ids, skip_special_tokens=True), probe)
 
     def test_loading_is_lazy_and_result_is_deterministic(self) -> None:
         translator, factory = fake_translator()

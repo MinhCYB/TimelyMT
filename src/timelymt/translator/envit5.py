@@ -18,6 +18,14 @@ SUPPORTED_DEVICES = {"auto", "cpu", "cuda"}
 SUPPORTED_DTYPES = {"cpu": "float32", "cuda": "float16"}
 MODEL_PREFIX = "en: "
 TARGET_CONTROL_PREFIX = "vi:"
+_TOKENIZER_FILENAME = "tokenizer.json"
+_TOKENIZER_SPECIAL_TOKENS = {
+    "pad_token": "<pad>",
+    "eos_token": "</s>",
+    "unk_token": "<unk>",
+    "additional_special_tokens": [f"<extra_id_{index}>" for index in range(48)],
+}
+_TOKENIZER_EXPECTED_IDS = {"pad_token_id": 0, "eos_token_id": 1}
 
 
 @dataclass(frozen=True)
@@ -316,19 +324,22 @@ def _load_runtime(config: EnViT5Config, device: str) -> _Runtime:
     try:
         torch = importlib.import_module("torch")
         transformers = importlib.import_module("transformers")
+        huggingface_hub = importlib.import_module("huggingface_hub")
     except ImportError as error:
         raise RuntimeError(
-            "EnViT5 inference requires torch, transformers, and sentencepiece; install project dependencies"
+            "EnViT5 inference requires torch, transformers, and huggingface_hub; install project dependencies"
         ) from error
 
     dtype_name = config.dtype_policy[device]
     dtype = torch.float16 if dtype_name == "float16" else torch.float32
     revision_args = {"revision": config.model_revision} if config.model_revision else {}
-    tokenizer = transformers.AutoTokenizer.from_pretrained(
-        config.model_id,
-        use_fast=False,
+    tokenizer_file = huggingface_hub.hf_hub_download(
+        repo_id=config.model_id,
+        filename=_TOKENIZER_FILENAME,
         **revision_args,
     )
+    tokenizer = transformers.PreTrainedTokenizerFast(tokenizer_file=tokenizer_file, **_TOKENIZER_SPECIAL_TOKENS)
+    _validate_tokenizer(tokenizer)
     model = transformers.AutoModelForSeq2SeqLM.from_pretrained(
         config.model_id,
         dtype=dtype,
@@ -343,3 +354,14 @@ def _load_runtime(config: EnViT5Config, device: str) -> _Runtime:
     resolved_revision = getattr(model.config, "_commit_hash", None) or config.model_revision
     parameter_count = sum(parameter.numel() for parameter in model.parameters())
     return _Runtime(tokenizer, model, torch, device, dtype_name, resolved_revision, parameter_count)
+
+
+def _validate_tokenizer(tokenizer: Any) -> None:
+    """Reject tokenizer artifacts that do not retain EnViT5's pinned special tokens."""
+
+    for attribute, expected in _TOKENIZER_EXPECTED_IDS.items():
+        if getattr(tokenizer, attribute) != expected:
+            raise RuntimeError(f"pinned EnViT5 tokenizer has unexpected {attribute}: {getattr(tokenizer, attribute)!r}")
+    for attribute, expected in _TOKENIZER_SPECIAL_TOKENS.items():
+        if getattr(tokenizer, attribute) != expected:
+            raise RuntimeError(f"pinned EnViT5 tokenizer has unexpected {attribute}: {getattr(tokenizer, attribute)!r}")
