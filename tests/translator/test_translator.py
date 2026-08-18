@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from timelymt.translator import (
     InputTooLongError,
@@ -19,6 +20,7 @@ from timelymt.translator.envit5 import (
     MODEL_PREFIX,
     EnViT5Translator,
     _Runtime,
+    _load_runtime,
     load_config,
     resolve_device,
 )
@@ -80,6 +82,61 @@ class FakeTorch:
         return nullcontext()
 
 
+class LoaderParameter:
+    def __init__(self, count: int) -> None:
+        self.count = count
+        self.requires_grad = True
+
+    def requires_grad_(self, value: bool) -> LoaderParameter:
+        self.requires_grad = value
+        return self
+
+    def numel(self) -> int:
+        return self.count
+
+
+class LoaderModel:
+    def __init__(self) -> None:
+        self.config = type("ModelConfig", (), {"_commit_hash": None})()
+        self.device: str | None = None
+        self.evaluated = False
+        self.parameters_list = [LoaderParameter(2), LoaderParameter(3)]
+
+    def to(self, device: str) -> None:
+        self.device = device
+
+    def eval(self) -> None:
+        self.evaluated = True
+
+    def parameters(self) -> list[LoaderParameter]:
+        return self.parameters_list
+
+
+class LoaderTorch:
+    float16 = object()
+    float32 = object()
+
+
+class LoaderTransformers:
+    class AutoTokenizer:
+        calls: list[tuple[str, dict[str, object]]] = []
+
+        @classmethod
+        def from_pretrained(cls, model_id: str, **kwargs: object) -> object:
+            cls.calls.append((model_id, kwargs))
+            return object()
+
+    class AutoModelForSeq2SeqLM:
+        calls: list[tuple[str, dict[str, object]]] = []
+        model: LoaderModel | None = None
+
+        @classmethod
+        def from_pretrained(cls, model_id: str, **kwargs: object) -> LoaderModel:
+            cls.calls.append((model_id, kwargs))
+            cls.model = LoaderModel()
+            return cls.model
+
+
 class RuntimeFactory:
     def __init__(self, decoded_outputs: list[str] | None = None) -> None:
         self.tokenizer = FakeTokenizer(decoded_outputs)
@@ -131,6 +188,40 @@ class TranslatorContractTests(unittest.TestCase):
 
 
 class EnViT5Tests(unittest.TestCase):
+    def test_runtime_loader_uses_pinned_slow_tokenizer_and_original_checkpoint(self) -> None:
+        config = load_config(CONFIG_PATH)
+        LoaderTransformers.AutoTokenizer.calls = []
+        LoaderTransformers.AutoModelForSeq2SeqLM.calls = []
+        LoaderTransformers.AutoModelForSeq2SeqLM.model = None
+
+        def import_module(name: str) -> object:
+            return {"torch": LoaderTorch, "transformers": LoaderTransformers}[name]
+
+        with patch("timelymt.translator.envit5.importlib.import_module", side_effect=import_module):
+            runtime = _load_runtime(config, "cuda")
+
+        revision = "840bc88104d5a4277af740eaedb024df8c3093e7"
+        self.assertEqual(
+            LoaderTransformers.AutoTokenizer.calls,
+            [("VietAI/envit5-translation", {"revision": revision, "use_fast": False})],
+        )
+        self.assertEqual(
+            LoaderTransformers.AutoModelForSeq2SeqLM.calls,
+            [
+                (
+                    "VietAI/envit5-translation",
+                    {"revision": revision, "dtype": LoaderTorch.float16, "use_safetensors": False},
+                ),
+            ],
+        )
+        self.assertEqual((runtime.device, runtime.dtype, runtime.resolved_revision, runtime.parameter_count), ("cuda", "float16", revision, 5))
+        model = LoaderTransformers.AutoModelForSeq2SeqLM.model
+        self.assertIsNotNone(model)
+        assert model is not None
+        self.assertEqual(model.device, "cuda")
+        self.assertTrue(model.evaluated)
+        self.assertTrue(all(not parameter.requires_grad for parameter in model.parameters()))
+
     def test_loading_is_lazy_and_result_is_deterministic(self) -> None:
         translator, factory = fake_translator()
         self.assertFalse(translator.is_loaded)

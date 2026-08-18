@@ -145,6 +145,13 @@ PYTHONPATH=src python -m timelymt.translator.cli \
 
 On Windows `cmd.exe`, use `set PYTHONPATH=src` before invoking the Python command.
 
+Kaggle compatibility smoke command (loads only the pinned EnViT5 tokenizer and
+model, then translates one synthetic source; it does not run a DEV rollout):
+
+```shell
+PYTHONPATH=src python -m timelymt.translator.cli --text "A tiny synthetic English string." --device cuda --config configs/translator/envit5.json
+```
+
 ## Limitations And Later Work
 
 EnViT5 behavior on incomplete prefixes may be unstable as a prefix grows; that

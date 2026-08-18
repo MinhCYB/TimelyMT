@@ -324,10 +324,15 @@ def _load_runtime(config: EnViT5Config, device: str) -> _Runtime:
     dtype_name = config.dtype_policy[device]
     dtype = torch.float16 if dtype_name == "float16" else torch.float32
     revision_args = {"revision": config.model_revision} if config.model_revision else {}
-    tokenizer = transformers.AutoTokenizer.from_pretrained(config.model_id, **revision_args)
+    tokenizer = transformers.AutoTokenizer.from_pretrained(
+        config.model_id,
+        use_fast=False,
+        **revision_args,
+    )
     model = transformers.AutoModelForSeq2SeqLM.from_pretrained(
         config.model_id,
-        torch_dtype=dtype,
+        dtype=dtype,
+        use_safetensors=False,
         **revision_args,
     )
     model.to(device)
