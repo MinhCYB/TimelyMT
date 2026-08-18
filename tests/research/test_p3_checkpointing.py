@@ -5,12 +5,15 @@ from pathlib import Path
 import tarfile
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import torch
 
 from timelymt.research.p3_checkpointing import (
     P3_CHECKPOINT_ROOT, P3_PACKAGE_SCHEMA_VERSION, _safe_relative,
-    discover_p3_candidates, resolve_local_conflict, restore_p3_candidate,
+    UPSTREAM_SUPERVISION_ROOT, discover_p3_candidates,
+    discover_upstream_supervision_candidates, resolve_local_conflict,
+    restore_p3_candidate, restore_upstream_supervision,
 )
 from timelymt.research.policy_p3_global import P3_INPUT_DIMENSION
 from timelymt.research.policy import NUMERIC_FEATURES
@@ -19,6 +22,14 @@ from timelymt.data.translation_artifacts import stable_fingerprint
 
 
 class P3CheckpointingTests(unittest.TestCase):
+    def _upstream_package(self, root: Path, name: str = "timelymt-checkpoint") -> Path:
+        package = root / name
+        train = package / Path(*UPSTREAM_SUPERVISION_ROOT.parts)
+        train.mkdir(parents=True)
+        (train / "manifest.json").write_text("{}", encoding="utf-8")
+        (train / "talk.jsonl").write_text("{}\n", encoding="utf-8")
+        return package
+
     def _package(self, root: Path, name: str, *, created_at: str, compatible: bool = True) -> tuple[Path, Path, Path]:
         package = root / name; checkpoint_root = package / Path(*P3_CHECKPOINT_ROOT.parts); checkpoint_root.mkdir(parents=True)
         manifest = root / "manifest.json"; manifest.write_text("{}", encoding="utf-8")
@@ -82,6 +93,73 @@ class P3CheckpointingTests(unittest.TestCase):
             target_archive = root / "repo-archive"
             restore_p3_candidate(archive, target_archive, config_path=config, manifest_path=manifest)
             self.assertTrue((target_archive / P3_CHECKPOINT_ROOT / "P3_GLOBAL.metadata.json").is_file())
+
+    def test_upstream_discovery_uses_expanded_package_root_not_manifest_parent(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            package = self._upstream_package(root)
+            found = discover_upstream_supervision_candidates(root)
+            self.assertEqual(len(found), 1)
+            self.assertEqual(found[0]["mode"], "mounted-expanded")
+            self.assertEqual(found[0]["package_root"], package)
+            self.assertEqual(found[0]["manifest"], package / Path(*UPSTREAM_SUPERVISION_ROOT.parts) / "manifest.json")
+            self.assertNotEqual(found[0]["package_root"], package / Path(*UPSTREAM_SUPERVISION_ROOT.parts))
+
+    def test_upstream_discovery_supports_nested_kaggle_dataset_layout(self):
+        with tempfile.TemporaryDirectory() as directory:
+            kaggle_input = Path(directory) / "kaggle/input/datasets/owner/dataset"
+            package = self._upstream_package(kaggle_input)
+            found = discover_upstream_supervision_candidates(Path(directory) / "kaggle/input")
+            self.assertEqual([item["package_root"] for item in found], [package])
+
+    def test_upstream_expanded_restore_copies_only_train_supervision(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            package = self._upstream_package(root)
+            dev = package / "data/policy/pseudo_labels/dev/manifest.json"
+            dev.parent.mkdir(parents=True)
+            dev.write_text("{}", encoding="utf-8")
+            target = root / "repo"
+            with patch("timelymt.research.p3_checkpointing.validate_v1_supervision") as validate:
+                restore_upstream_supervision(package, target)
+            validate.assert_called_once()
+            validated_path, split_name = validate.call_args.args
+            self.assertEqual(validated_path.name, "train")
+            self.assertEqual(split_name, "train")
+            self.assertTrue((target / Path(*UPSTREAM_SUPERVISION_ROOT.parts) / "manifest.json").is_file())
+            self.assertFalse((target / "data/policy/pseudo_labels/dev").exists())
+
+    def test_upstream_discovery_and_restore_support_raw_archive(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            package = self._upstream_package(root)
+            archive = root / "upstream.tar.gz"
+            with tarfile.open(archive, "w:gz") as handle:
+                for path in package.rglob("*"):
+                    if path.is_file():
+                        handle.add(path, path.relative_to(package).as_posix())
+            shutil_target = root / "timelymt-checkpoint"
+            import shutil
+            shutil.rmtree(shutil_target)
+            found = discover_upstream_supervision_candidates(root)
+            self.assertEqual(found, [{"mode": "raw-archive", "package_root": archive, "manifest": None}])
+            target = root / "repo"
+            with patch("timelymt.research.p3_checkpointing.validate_v1_supervision") as validate:
+                restore_upstream_supervision(archive, target)
+            validate.assert_called_once()
+            self.assertEqual(validate.call_args.args[0].name, "train")
+            self.assertEqual(validate.call_args.args[1], "train")
+            self.assertTrue((target / Path(*UPSTREAM_SUPERVISION_ROOT.parts) / "manifest.json").is_file())
+
+    def test_upstream_restore_rejects_test_paths(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            package = self._upstream_package(root)
+            forbidden = package / "data/policy/pseudo_labels/TEST/leak.json"
+            forbidden.parent.mkdir(parents=True)
+            forbidden.write_text("leak", encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, "TEST path"):
+                restore_upstream_supervision(package, root / "repo")
 
     def test_notebook_is_json_and_every_code_cell_compiles(self):
         notebook = json.loads((Path(__file__).parents[2] / "notebooks/kaggle-p3-global.ipynb").read_text(encoding="utf-8"))

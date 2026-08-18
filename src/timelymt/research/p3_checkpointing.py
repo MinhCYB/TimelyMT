@@ -33,6 +33,7 @@ P3_CHECKPOINT_ROOT = PurePosixPath("checkpoints/policy_p3_global")
 UPSTREAM_SUPERVISION_ROOT = PurePosixPath("data/policy/pseudo_labels/train")
 P3_STAGE_ORDER = {"NONE": 0, "TRAINED": 1, "DEV_SINGLE_ROLLOUT": 2, "DEV_GRID_ROLLOUT": 3, "DEV_EVALUATED": 4}
 _PACKAGE_METADATA = PurePosixPath("checkpoint-metadata.json")
+_UPSTREAM_MANIFEST = UPSTREAM_SUPERVISION_ROOT / "manifest.json"
 
 
 def utc_now() -> str:
@@ -70,6 +71,37 @@ def _safe_relative(name: str, roots: Iterable[PurePosixPath]) -> PurePosixPath:
     if any(part.lower() == "test" for part in path.parts):
         raise RuntimeError(f"TEST path is forbidden in checkpoint package: {name!r}")
     return path
+
+
+def _is_test_path(path: PurePosixPath) -> bool:
+    return any(part.lower() == "test" for part in path.parts)
+
+
+def _is_upstream_train_path(path: PurePosixPath) -> bool:
+    return path == UPSTREAM_SUPERVISION_ROOT or UPSTREAM_SUPERVISION_ROOT in path.parents
+
+
+def discover_upstream_supervision_candidates(*roots: Path) -> list[dict[str, Path | str | None]]:
+    """Find raw packages and structurally valid expanded upstream package roots."""
+    candidates: list[dict[str, Path | str | None]] = []
+    seen: set[Path] = set()
+    for root in roots:
+        root = Path(root)
+        if not root.is_dir():
+            continue
+        for archive in sorted(root.rglob("*.tar.gz")):
+            if archive not in seen:
+                candidates.append({"mode": "raw-archive", "package_root": archive, "manifest": None})
+                seen.add(archive)
+        for manifest in sorted(root.rglob("manifest.json")):
+            for package_root in manifest.parents:
+                expected_manifest = package_root / Path(*_UPSTREAM_MANIFEST.parts)
+                if expected_manifest == manifest:
+                    if package_root not in seen:
+                        candidates.append({"mode": "mounted-expanded", "package_root": package_root, "manifest": manifest})
+                        seen.add(package_root)
+                    break
+    return candidates
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -290,13 +322,23 @@ def restore_upstream_supervision(candidate: Path, repo_root: Path) -> None:
         staged = Path(temporary) / "root"
         staged.mkdir()
         if candidate.is_dir():
-            sources = [(path, path.relative_to(candidate).as_posix()) for path in candidate.rglob("*") if path.is_file()]
+            expected_manifest = candidate / Path(*_UPSTREAM_MANIFEST.parts)
+            if not expected_manifest.is_file():
+                raise RuntimeError(f"expanded upstream package lacks TRAIN manifest: {candidate}")
+            sources = [(path, path.relative_to(candidate).as_posix()) for path in candidate.rglob("*")]
             for source, name in sources:
-                # Validate traversal/symlinks globally but retain only the narrow
-                # upstream whitelist from a broader historical package.
-                relative = _safe_relative(name, (UPSTREAM_SUPERVISION_ROOT,)) if name.startswith(str(UPSTREAM_SUPERVISION_ROOT)) else PurePosixPath(name)
-                if relative == _PACKAGE_METADATA or not (relative == UPSTREAM_SUPERVISION_ROOT or UPSTREAM_SUPERVISION_ROOT in relative.parents):
+                relative = PurePosixPath(name)
+                if _is_test_path(relative):
+                    raise RuntimeError(f"TEST path is forbidden in upstream package: {name!r}")
+                if source.is_symlink():
+                    raise RuntimeError(f"symlink forbidden in expanded upstream package: {source}")
+                if source.is_dir():
                     continue
+                # A historical package can contain more artifacts, but restore
+                # only the frozen TRAIN supervision subtree.
+                if not _is_upstream_train_path(relative):
+                    continue
+                _safe_relative(name, (UPSTREAM_SUPERVISION_ROOT,))
                 target = staged / Path(*relative.parts); target.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(source, target)
         else:
             with tarfile.open(candidate, "r:gz") as archive:
@@ -307,8 +349,11 @@ def restore_upstream_supervision(candidate: Path, repo_root: Path) -> None:
                     relative = PurePosixPath(name)
                     if relative.is_absolute() or any(part in {"", ".", ".."} for part in relative.parts):
                         raise RuntimeError(f"unsafe upstream archive path: {name!r}")
-                    if relative == _PACKAGE_METADATA or not (relative == UPSTREAM_SUPERVISION_ROOT or UPSTREAM_SUPERVISION_ROOT in relative.parents):
+                    if _is_test_path(relative):
+                        raise RuntimeError(f"TEST path is forbidden in upstream package: {name!r}")
+                    if not _is_upstream_train_path(relative):
                         continue
+                    _safe_relative(name, (UPSTREAM_SUPERVISION_ROOT,))
                     if not member.isfile():
                         raise RuntimeError("unsafe upstream archive member")
                     source = archive.extractfile(member)
