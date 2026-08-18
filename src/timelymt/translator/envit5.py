@@ -26,6 +26,9 @@ _TOKENIZER_SPECIAL_TOKENS = {
     "additional_special_tokens": [f"<extra_id_{index}>" for index in range(48)],
 }
 _TOKENIZER_EXPECTED_IDS = {"pad_token_id": 0, "eos_token_id": 1}
+_TOKENIZER_EXTRA_TOKEN_IDS = {
+    f"<extra_id_{index}>": 50047 - index for index in range(48)
+}
 
 
 @dataclass(frozen=True)
@@ -333,13 +336,7 @@ def _load_runtime(config: EnViT5Config, device: str) -> _Runtime:
     dtype_name = config.dtype_policy[device]
     dtype = torch.float16 if dtype_name == "float16" else torch.float32
     revision_args = {"revision": config.model_revision} if config.model_revision else {}
-    tokenizer_file = huggingface_hub.hf_hub_download(
-        repo_id=config.model_id,
-        filename=_TOKENIZER_FILENAME,
-        **revision_args,
-    )
-    tokenizer = transformers.PreTrainedTokenizerFast(tokenizer_file=tokenizer_file, **_TOKENIZER_SPECIAL_TOKENS)
-    _validate_tokenizer(tokenizer)
+    tokenizer = _load_tokenizer(config, transformers=transformers, huggingface_hub=huggingface_hub)
     model = transformers.AutoModelForSeq2SeqLM.from_pretrained(
         config.model_id,
         dtype=dtype,
@@ -356,12 +353,53 @@ def _load_runtime(config: EnViT5Config, device: str) -> _Runtime:
     return _Runtime(tokenizer, model, torch, device, dtype_name, resolved_revision, parameter_count)
 
 
+def _load_tokenizer(config: EnViT5Config, *, transformers: Any, huggingface_hub: Any) -> Any:
+    """Load the pinned tokenizer.json without AutoTokenizer compatibility layers."""
+
+    revision_args = {"revision": config.model_revision} if config.model_revision else {}
+    tokenizer_file = huggingface_hub.hf_hub_download(
+        repo_id=config.model_id,
+        filename=_TOKENIZER_FILENAME,
+        **revision_args,
+    )
+    tokenizer = transformers.PreTrainedTokenizerFast(tokenizer_file=tokenizer_file, **_TOKENIZER_SPECIAL_TOKENS)
+    _validate_tokenizer(tokenizer)
+    return tokenizer
+
+
+def tokenizer_diagnostics(config: EnViT5Config) -> Mapping[str, Any]:
+    """Load and validate only the direct pinned tokenizer for an operator diagnostic."""
+
+    try:
+        transformers = importlib.import_module("transformers")
+        huggingface_hub = importlib.import_module("huggingface_hub")
+    except ImportError as error:
+        raise RuntimeError("EnViT5 tokenizer diagnostics require transformers and huggingface_hub") from error
+    tokenizer = _load_tokenizer(config, transformers=transformers, huggingface_hub=huggingface_hub)
+    return {
+        "pad_token": tokenizer.pad_token,
+        "pad_token_id": tokenizer.pad_token_id,
+        "eos_token": tokenizer.eos_token,
+        "eos_token_id": tokenizer.eos_token_id,
+        "unk_token": tokenizer.unk_token,
+        "extra_special_token_count": len(tokenizer.extra_special_tokens),
+    }
+
+
 def _validate_tokenizer(tokenizer: Any) -> None:
     """Reject tokenizer artifacts that do not retain EnViT5's pinned special tokens."""
 
     for attribute, expected in _TOKENIZER_EXPECTED_IDS.items():
         if getattr(tokenizer, attribute) != expected:
             raise RuntimeError(f"pinned EnViT5 tokenizer has unexpected {attribute}: {getattr(tokenizer, attribute)!r}")
-    for attribute, expected in _TOKENIZER_SPECIAL_TOKENS.items():
+    for attribute in ("pad_token", "eos_token", "unk_token"):
+        expected = _TOKENIZER_SPECIAL_TOKENS[attribute]
         if getattr(tokenizer, attribute) != expected:
             raise RuntimeError(f"pinned EnViT5 tokenizer has unexpected {attribute}: {getattr(tokenizer, attribute)!r}")
+    actual_extra_tokens = tokenizer.extra_special_tokens
+    if set(actual_extra_tokens) != set(_TOKENIZER_EXTRA_TOKEN_IDS):
+        raise RuntimeError("pinned EnViT5 tokenizer has unexpected extra_special_tokens")
+    for token, expected_id in _TOKENIZER_EXTRA_TOKEN_IDS.items():
+        actual_id = tokenizer.convert_tokens_to_ids(token)
+        if actual_id != expected_id:
+            raise RuntimeError(f"pinned EnViT5 tokenizer has unexpected ID for {token}: {actual_id!r}")

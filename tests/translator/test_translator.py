@@ -21,6 +21,7 @@ from timelymt.translator.envit5 import (
     EnViT5Translator,
     _Runtime,
     _load_runtime,
+    _validate_tokenizer,
     load_config,
     resolve_device,
 )
@@ -126,7 +127,10 @@ class LoaderTokenizer:
     eos_token_id = 1
 
     def __init__(self, **kwargs: object) -> None:
-        self.additional_special_tokens = kwargs["additional_special_tokens"]
+        self.extra_special_tokens = kwargs["additional_special_tokens"]
+
+    def convert_tokens_to_ids(self, token: str) -> int:
+        return 50047 - int(token.removeprefix("<extra_id_").removesuffix(">"))
 
     def encode(self, text: str) -> list[int]:
         return [*[ord(character) for character in text], 1]
@@ -287,12 +291,34 @@ class EnViT5Tests(unittest.TestCase):
         self.assertEqual(tokenizer.pad_token_id, fixture["pad_token_id"])
         self.assertEqual(tokenizer.eos_token_id, fixture["eos_token_id"])
         self.assertEqual(tokenizer.unk_token, fixture["unk_token"])
-        self.assertEqual(tokenizer.additional_special_tokens, fixture["additional_special_tokens"])
+        self.assertEqual(
+            {token: tokenizer.convert_tokens_to_ids(token) for token in fixture["additional_special_tokens"]},
+            fixture["extra_special_token_ids"],
+        )
         for probe, expected_ids in fixture["probes"].items():
             with self.subTest(probe=probe):
                 self.assertEqual(tokenizer.encode(probe), expected_ids)
                 self.assertEqual(tokenizer.encode(probe), tokenizer.encode(probe))
                 self.assertEqual(tokenizer.decode(expected_ids, skip_special_tokens=True), probe)
+
+    def test_v5_tokenizer_validation_uses_extra_special_tokens_without_v4_attribute(self) -> None:
+        fixture = json.loads(TOKENIZER_FIXTURE_PATH.read_text(encoding="utf-8"))
+
+        class V5Tokenizer:
+            pad_token = fixture["pad_token"]
+            pad_token_id = fixture["pad_token_id"]
+            eos_token = fixture["eos_token"]
+            eos_token_id = fixture["eos_token_id"]
+            unk_token = fixture["unk_token"]
+            extra_special_tokens = fixture["additional_special_tokens"]
+
+            @staticmethod
+            def convert_tokens_to_ids(token: str) -> int:
+                return fixture["extra_special_token_ids"][token]
+
+        tokenizer = V5Tokenizer()
+        self.assertFalse(hasattr(tokenizer, "additional_special_tokens"))
+        _validate_tokenizer(tokenizer)
 
     def test_loading_is_lazy_and_result_is_deterministic(self) -> None:
         translator, factory = fake_translator()

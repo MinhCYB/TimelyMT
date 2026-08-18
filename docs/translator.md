@@ -74,11 +74,11 @@ request `cpu` or `cuda`, and an unavailable requested CUDA device is an error.
 Importing `timelymt.translator` does not load model weights. The tokenizer and
 model are loaded lazily on first inference or runtime inspection.
 
-Transformers 4.57.6 successfully ran this frozen EnViT5 integration. In local
-verification, Transformers 5.14.1 produced a T5 tokenizer incompatibility.
-This is a verified TimelyMT compatibility constraint for the frozen M1
-translator, not a universal claim about T5 models; TimelyMT therefore requires
-`transformers>=4.57.6,<5.0.0`.
+The direct pinned `tokenizer.json` path intentionally bypasses AutoTokenizer.
+Its validator accepts the Transformers-v5 `extra_special_tokens` API and
+checks every pinned `<extra_id_N>` token against its exact ID, preserving the
+known-good v4 probe input IDs. TimelyMT does not downgrade PyTorch or
+Transformers globally for this frozen translator.
 
 The configured maximum input is 512 tokenizer tokens including the model-specific
 `en: ` prefix and special tokens. Tokenization explicitly disables truncation.

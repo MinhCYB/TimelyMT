@@ -167,3 +167,22 @@ class P3CheckpointingTests(unittest.TestCase):
         for index, cell in enumerate(notebook["cells"]):
             if cell["cell_type"] == "code":
                 compile("".join(cell["source"]), f"notebook-cell-{index}", "exec")
+
+    def test_p3_lab_notebook_is_safe_and_structurally_ordered(self):
+        notebook = json.loads((Path(__file__).parents[2] / "notebooks/kaggle-p3-global-lab.ipynb").read_text(encoding="utf-8"))
+        self.assertEqual(notebook["nbformat"], 4)
+        rendered = "\n".join("".join(cell["source"]) for cell in notebook["cells"])
+        self.assertIn("STOP BEFORE TEST", rendered)
+        self.assertLess(rendered.index("ENVIT5 SMOKE TEST"), rendered.index("SINGLE DEV ROLLOUT"))
+        self.assertIn("require_smoke_pass()", rendered)
+        self.assertNotIn("--split test", rendered)
+        for flag in (
+            "RUN_ENVIT5_SMOKE", "RUN_TRAIN_P3", "FORCE_RETRAIN_P3", "PUBLISH_P3_CHECKPOINT",
+            "RUN_SINGLE_DEV_ROLLOUT", "RUN_EMPTY_CONTEXT_ROLLOUT", "RUN_FULL_DEV_ROLLOUT", "RUN_DEV_EVALUATION",
+        ):
+            self.assertIn(f"{flag} = False", rendered)
+        for index, cell in enumerate(notebook["cells"]):
+            self.assertIsNone(cell.get("execution_count"), f"cell {index} has execution count")
+            self.assertEqual(cell.get("outputs", []), [], f"cell {index} has embedded outputs")
+            if cell["cell_type"] == "code":
+                compile("".join(cell["source"]), f"p3-lab-cell-{index}", "exec")
