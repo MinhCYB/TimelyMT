@@ -12,6 +12,12 @@ The fixed 1547-dimensional order is: current source 384, previous committed sour
 
 P3 joins persisted V1 supervision through the existing explicit `talk_id` and `split` fields. One prepared embedding is built per talk and reused across its rows and all streaming decisions. Missing pools and talk/split mismatches fail; valid empty pools are supported.
 
+## Execution Backend
+
+Model semantics are unchanged; execution backend is accelerated. P3 resolves its independent `runtime.encoder_device` and `runtime.policy_device` values as `cuda` when available and `cpu` otherwise. The pinned frozen MiniLM remains FP32, in evaluation mode with gradients disabled, and encodes exact-text cache misses in batches. Cache values and the final 1547-dimensional P3 feature matrix remain `float32`.
+
+P3 first gathers all eligible prepared-source and TRAIN causal texts, deduplicates them by the existing exact cache identity, materializes cache misses in encoder batches, then reuses those values to build one prepared-global-v0 embedding per talk and the feature matrix. Sources are never concatenated. CUDA changes can produce ordinary floating-point differences from CPU; numerical bitwise equivalence is not claimed.
+
 ## Commands
 
 All commands below are researcher-operated and were **not executed** for this task.

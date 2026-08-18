@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 import torch
@@ -15,9 +16,11 @@ from timelymt.research.policy import NUMERIC_FEATURES
 from timelymt.research.policy_v2 import EmbeddingCache, NumericScaler, V2MLP, input_dimension
 from timelymt.research.policy_p3_global import (
     P3_INPUT_DIMENSION, P3_VARIANT, PreparedGlobalEmbedding, build_p3_feature_matrix,
-    build_prepared_global_embedding, checkpoint_payload, load_matching_pool, make_p3_checkpoint_metadata,
-    p3_feature_vector, save_p3_checkpoint, validate_p3_checkpoint_metadata, validate_pool_identity,
+    build_prepared_global_embedding, checkpoint_payload, load_matching_pool, load_p3_checkpoint, make_p3_checkpoint_metadata,
+    p3_feature_vector, prepare_p3_text_embeddings, save_p3_checkpoint, train_p3_global_policy,
+    validate_p3_checkpoint_metadata, validate_pool_identity,
 )
+from timelymt.research.policy_p3_global_runner import p3_runtime
 
 
 class FakeEncoder:
@@ -109,6 +112,81 @@ class P3FeatureTests(unittest.TestCase):
             np.testing.assert_array_equal(matrix[0, 1152:1536], prepared_a.embedding)
             np.testing.assert_array_equal(matrix[1, 1152:1536], prepared_b.embedding)
             self.assertEqual([row["label"] for row in rows], ["LISTEN", "COMMIT"])
+
+    def test_batched_preparation_reuses_exact_cache_entries(self):
+        with tempfile.TemporaryDirectory() as directory:
+            encoder = FakeEncoder(); cache = EmbeddingCache(Path(directory), encoder)
+            rows = [{"talk_id": "a", "split": "train", "label": "LISTEN", "causal": state()}, {"talk_id": "a", "split": "train", "label": "COMMIT", "causal": state()}]
+            stats = prepare_p3_text_embeddings(rows, [pool("a", sources=[source("s", "current")])], cache)
+            self.assertEqual(stats["unique_texts"], 3)
+            self.assertEqual(stats["cache_misses"], 3)
+            self.assertEqual(len(encoder.calls), 1)
+            second = prepare_p3_text_embeddings(rows, [pool("a", sources=[source("s", "current")])], cache)
+            self.assertEqual(second["cache_hits"], 3)
+            self.assertEqual(len(encoder.calls), 1)
+
+    def test_batched_encoder_output_is_float32_384d(self):
+        encoder = FakeEncoder()
+        values = encoder.encode(["one", "two"])
+        self.assertEqual(values.shape, (2, 384))
+        self.assertEqual(values.dtype, np.float32)
+
+
+class P3RuntimeTests(unittest.TestCase):
+    def _config(self, directory, runtime):
+        path = Path(directory) / "p3.json"
+        path.write_text(json.dumps({"runtime": runtime}), encoding="utf-8")
+        return path
+
+    def test_auto_and_explicit_cpu_resolution(self):
+        with tempfile.TemporaryDirectory() as directory:
+            self.assertEqual(p3_runtime(self._config(directory, {"encoder_device": "cpu", "policy_device": "cpu", "encoder_batch_size": 8}))["encoder_device"].type, "cpu")
+            with patch("timelymt.research.policy_p3_global_runner.torch.cuda.is_available", return_value=False):
+                runtime = p3_runtime(self._config(directory, {"encoder_device": "auto", "policy_device": "auto", "encoder_batch_size": 8}))
+            self.assertEqual((runtime["encoder_device"].type, runtime["policy_device"].type), ("cpu", "cpu"))
+
+    def test_explicit_cuda_fails_when_unavailable(self):
+        with tempfile.TemporaryDirectory() as directory, patch("timelymt.research.policy_p3_global_runner.torch.cuda.is_available", return_value=False):
+            with self.assertRaisesRegex(RuntimeError, "explicitly requested"):
+                p3_runtime(self._config(directory, {"encoder_device": "cuda", "policy_device": "cpu"}))
+
+    def test_synthetic_training_uses_selected_cpu_device_and_portable_checkpoint(self):
+        with tempfile.TemporaryDirectory() as directory:
+            encoder = FakeEncoder(); cache = EmbeddingCache(Path(directory) / "cache", encoder)
+            prepared = PreparedGlobalEmbedding("a", "train", (), (), np.zeros(384, dtype=np.float32))
+            rows = [{"talk_id": "a", "split": "train", "label": "LISTEN", "causal": state()}, {"talk_id": "a", "split": "train", "label": "COMMIT", "causal": state(2)}]
+            policy, _ = train_p3_global_policy(rows, {"a": prepared}, cache, epochs=1, batch_size=2, device="cpu")
+            self.assertEqual(next(policy.model.parameters()).device.type, "cpu")
+            payload = checkpoint_payload(policy)
+            self.assertTrue(all(tensor.device.type == "cpu" and tensor.dtype == torch.float32 for tensor in payload["model_state_dict"].values()))
+            restored = V2MLP(P3_INPUT_DIMENSION); restored.load_state_dict(payload["model_state_dict"], strict=True)
+            manifest = Path(directory) / "manifest.json"; manifest.write_text("{}", encoding="utf-8")
+            checkpoint = Path(directory) / "p3.pt"; digest = save_p3_checkpoint(checkpoint, policy)
+            metadata = make_p3_checkpoint_metadata(checkpoint_hash=digest, prepared_manifest=manifest, train_talk_ids=["a"], training={"label_counts": {"LISTEN": 1, "COMMIT": 1}, "positive_weight": 1.0}, scaler=policy.scaler)
+            metadata_path = Path(directory) / "p3.json"; metadata_path.write_text(json.dumps(metadata), encoding="utf-8")
+            loaded = load_p3_checkpoint(checkpoint, metadata_path, cache, prepared, manifest_path=manifest, device="cpu")
+            self.assertEqual(next(loaded.model.parameters()).device.type, "cpu")
+
+    @unittest.skipUnless(torch.cuda.is_available(), "CUDA is unavailable")
+    def test_cuda_synthetic_training_uses_cuda(self):
+        with tempfile.TemporaryDirectory() as directory:
+            encoder = FakeEncoder(); cache = EmbeddingCache(Path(directory) / "cache", encoder)
+            prepared = PreparedGlobalEmbedding("a", "train", (), (), np.zeros(384, dtype=np.float32))
+            rows = [{"talk_id": "a", "split": "train", "label": "LISTEN", "causal": state()}, {"talk_id": "a", "split": "train", "label": "COMMIT", "causal": state(2)}]
+            policy, _ = train_p3_global_policy(rows, {"a": prepared}, cache, epochs=1, batch_size=2, device="cuda")
+            self.assertEqual(next(policy.model.parameters()).device.type, "cuda")
+
+    @unittest.skipUnless(torch.cuda.is_available(), "CUDA is unavailable")
+    def test_cpu_cuda_mlp_outputs_match_within_tolerance(self):
+        torch.manual_seed(20260809)
+        cpu_model = V2MLP(P3_INPUT_DIMENSION).eval()
+        cuda_model = V2MLP(P3_INPUT_DIMENSION).eval().to("cuda")
+        cuda_model.load_state_dict(cpu_model.state_dict())
+        values = torch.randn(3, P3_INPUT_DIMENSION, dtype=torch.float32)
+        with torch.inference_mode():
+            expected = cpu_model(values)
+            actual = cuda_model(values.to("cuda")).cpu()
+        torch.testing.assert_close(actual, expected, rtol=1e-5, atol=1e-6)
 
 
 class P3CheckpointTests(unittest.TestCase):

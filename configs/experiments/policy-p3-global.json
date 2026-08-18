@@ -4,6 +4,7 @@
   "prepared_context_manifest": "data/prepared_context/manifest.json",
   "prepared_representation_version": "prepared-global-v0",
   "encoder": {"model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2", "revision": "e62509716f15c5fd03a6fd3156a4bc5e43f83f26", "pooling": "attention-mask-mean-l2-v1", "expected_dimension": 384},
+  "runtime": {"encoder_device": "auto", "policy_device": "auto", "encoder_batch_size": 256},
   "feature_ordering": ["current_source_embedding", "previous_committed_source_embedding", "previous_generated_target_embedding", "prepared_global_embedding", "scaled_numeric_features"],
   "mlp_architecture": ["Linear(input,256)", "GELU", "Dropout(0.20)", "Linear(256,64)", "GELU", "Dropout(0.10)", "Linear(64,1)"],
   "training": {"optimizer": "AdamW", "learning_rate": 0.001, "weight_decay": 0.0001, "batch_size": 256, "epochs": 20, "seed": 20260809, "loss": "BCEWithLogitsLoss(pos_weight=TRAIN_LISTEN/TRAIN_COMMIT)"},

@@ -229,12 +229,13 @@ class FrozenMiniLMEncoder:
 
     def __init__(
         self, *, device: str | torch.device = "cpu", dtype: str = "float32", batch_size: int = 256,
+        allow_cuda_float32: bool = False,
     ) -> None:
         from transformers import AutoModel, AutoTokenizer
 
         self.device = torch.device(device)
         expected_dtype = "float16" if self.device.type == "cuda" else "float32"
-        if dtype != expected_dtype:
+        if dtype != expected_dtype and not (self.device.type == "cuda" and dtype == "float32" and allow_cuda_float32):
             raise ValueError(f"MiniLM {self.device.type} requires {expected_dtype}, not {dtype}")
         self.dtype = dtype
         self.batch_size = batch_size
@@ -262,7 +263,7 @@ class FrozenMiniLMEncoder:
         if not texts:
             return np.empty((0, self.dimension), dtype=np.float32)
         batches: list[np.ndarray] = []
-        with torch.no_grad():
+        with torch.inference_mode():
             for start in range(0, len(texts), self.batch_size):
                 encoded = self.tokenizer(
                     list(texts[start : start + self.batch_size]), padding=True, truncation=True,

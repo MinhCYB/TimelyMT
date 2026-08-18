@@ -41,7 +41,10 @@ def utc_now() -> str:
 
 
 def config_fingerprint(path: Path) -> str:
-    return stable_fingerprint(json.loads(path.read_text(encoding="utf-8")))
+    config = json.loads(path.read_text(encoding="utf-8"))
+    # Runtime controls execution placement only; they do not identify P3 semantics.
+    config.pop("runtime", None)
+    return stable_fingerprint(config)
 
 
 def repository_identity(root: Path) -> dict[str, str | bool]:

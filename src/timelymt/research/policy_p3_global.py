@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 import json
 from pathlib import Path
-from typing import Any, Mapping, Sequence
+from typing import Any, Callable, Mapping, Sequence
 
 import numpy as np
 import torch
@@ -114,6 +114,22 @@ def build_prepared_global_embedding(pool: PreparedContextPool, encoder: Any, cac
     )
 
 
+def prepare_p3_text_embeddings(rows: Sequence[Mapping[str, Any]], pools: Sequence[PreparedContextPool], cache: EmbeddingCache) -> dict[str, int]:
+    """Materialize every exact P3 text identity once before feature construction."""
+    texts: list[str] = []
+    for pool in pools:
+        texts.extend(source.text for source in pool.eligible_sources())
+    for row in rows:
+        state = row["causal"]
+        validate_causal_state(state)
+        texts.extend((state["current_source_text"], state["previous_committed_source_text"], state["previous_committed_target_text"]))
+    unique = list(dict.fromkeys(text for text in texts if text != ""))
+    hits = sum(cache._read(text) is not None for text in unique)
+    cache.encode(unique)
+    batch_size = int(getattr(cache.encoder, "batch_size", len(unique) or 1))
+    return {"unique_texts": len(unique), "cache_hits": hits, "cache_misses": len(unique) - hits, "batches": (len(unique) - hits + batch_size - 1) // batch_size}
+
+
 def p3_feature_vector(state: Mapping[str, Any], prepared: PreparedGlobalEmbedding, cache: EmbeddingCache, scaler: NumericScaler) -> np.ndarray:
     validate_causal_state(state)
     if prepared.embedding.shape != (cache.dimension,) or prepared.embedding.dtype != np.float32:
@@ -132,6 +148,15 @@ def p3_feature_vector(state: Mapping[str, Any], prepared: PreparedGlobalEmbeddin
 
 
 def build_p3_feature_matrix(rows: Sequence[Mapping[str, Any]], prepared_by_talk: Mapping[str, PreparedGlobalEmbedding], cache: EmbeddingCache, scaler: NumericScaler) -> np.ndarray:
+    texts = [
+        text
+        for row in rows
+        for text in (
+            row["causal"]["current_source_text"], row["causal"]["previous_committed_source_text"], row["causal"]["previous_committed_target_text"],
+        )
+    ]
+    encoded = cache.encode(list(dict.fromkeys(texts)))
+    embeddings = dict(zip(dict.fromkeys(texts), encoded, strict=True))
     features = []
     for row in rows:
         talk_id = row.get("talk_id")
@@ -142,7 +167,16 @@ def build_p3_feature_matrix(rows: Sequence[Mapping[str, Any]], prepared_by_talk:
             raise RuntimeError(f"missing P3 prepared embedding for supervision talk: {talk_id}")
         if prepared.talk_id != talk_id or prepared.split != row.get("split"):
             raise RuntimeError(f"P3 prepared embedding identity mismatch for supervision talk: {talk_id}")
-        features.append(p3_feature_vector(row["causal"], prepared, cache, scaler))
+        state = row["causal"]
+        validate_causal_state(state)
+        feature = np.concatenate([
+            embeddings[state["current_source_text"]], embeddings[state["previous_committed_source_text"]],
+            embeddings[state["previous_committed_target_text"]], prepared.embedding,
+            scaler.transform(numeric_vector(state)[None, :])[0],
+        ]).astype(np.float32, copy=False)
+        if feature.shape != (P3_INPUT_DIMENSION,):
+            raise RuntimeError("P3_GLOBAL feature dimension mismatch")
+        features.append(feature)
     return np.stack(features).astype(np.float32, copy=False)
 
 
@@ -162,7 +196,7 @@ class P3GlobalPolicy:
             return float(torch.sigmoid(self.model(torch.from_numpy(features).to(self.device).unsqueeze(0)))[0].cpu())
 
 
-def train_p3_global_policy(rows: Sequence[Mapping[str, Any]], prepared_by_talk: Mapping[str, PreparedGlobalEmbedding], cache: EmbeddingCache, *, epochs: int = 20, batch_size: int = 256, device: str | torch.device = "cpu") -> tuple[P3GlobalPolicy, dict[str, Any]]:
+def train_p3_global_policy(rows: Sequence[Mapping[str, Any]], prepared_by_talk: Mapping[str, PreparedGlobalEmbedding], cache: EmbeddingCache, *, epochs: int = 20, batch_size: int = 256, device: str | torch.device = "cpu", progress: Callable[[int, int, float], None] | None = None) -> tuple[P3GlobalPolicy, dict[str, Any]]:
     if not rows or any(row.get("split") != "train" for row in rows):
         raise RuntimeError("P3_GLOBAL training accepts TRAIN supervision only")
     numeric = np.stack([numeric_vector(row["causal"]) for row in rows])
@@ -176,15 +210,23 @@ def train_p3_global_policy(rows: Sequence[Mapping[str, Any]], prepared_by_talk: 
     optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-4)
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=torch.tensor(weight, device=device))
     loader = torch.utils.data.DataLoader(torch.utils.data.TensorDataset(torch.from_numpy(features), torch.from_numpy(labels)), batch_size=batch_size, shuffle=True, generator=torch.Generator().manual_seed(20260809))
-    for _ in range(epochs):
+    history = []
+    for epoch in range(epochs):
         model.train()
+        total_loss, seen = 0.0, 0
         for batch_features, batch_labels in loader:
             optimizer.zero_grad(set_to_none=True)
             loss = criterion(model(batch_features.to(device)), batch_labels.to(device))
             loss.backward()
             optimizer.step()
+            total_loss += float(loss.detach().cpu()) * len(batch_labels)
+            seen += len(batch_labels)
+        epoch_loss = total_loss / seen
+        history.append({"epoch": epoch + 1, "train_loss": epoch_loss})
+        if progress is not None:
+            progress(epoch + 1, epochs, epoch_loss)
     first = prepared_by_talk[rows[0]["talk_id"]]
-    return P3GlobalPolicy(model, scaler, cache, first, torch.device(device)), {"label_counts": counts, "positive_weight": weight}
+    return P3GlobalPolicy(model, scaler, cache, first, torch.device(device)), {"label_counts": counts, "positive_weight": weight, "training_history": history}
 
 
 def prepared_manifest_fingerprint(path: Path) -> str:
@@ -202,8 +244,8 @@ def save_p3_checkpoint(path: Path, policy: P3GlobalPolicy) -> str:
     return sha256_file(path)
 
 
-def make_p3_checkpoint_metadata(*, checkpoint_hash: str, prepared_manifest: Path, train_talk_ids: Sequence[str], training: Mapping[str, Any], scaler: NumericScaler) -> dict[str, Any]:
-    return {"variant": P3_VARIANT, "input_dimension": P3_INPUT_DIMENSION,
+def make_p3_checkpoint_metadata(*, checkpoint_hash: str, prepared_manifest: Path, train_talk_ids: Sequence[str], training: Mapping[str, Any], scaler: NumericScaler, runtime: Mapping[str, Any] | None = None) -> dict[str, Any]:
+    metadata = {"variant": P3_VARIANT, "input_dimension": P3_INPUT_DIMENSION,
             "prepared_context_schema_version": "prepared-context-v0", "prepared_representation_version": PREPARED_REPRESENTATION_VERSION,
             "prepared_context_manifest_fingerprint": prepared_manifest_fingerprint(prepared_manifest),
             "encoder_model_id": ENCODER_MODEL_ID, "encoder_revision": ENCODER_REVISION, "pooling_version": POOLING_VERSION,
@@ -213,6 +255,9 @@ def make_p3_checkpoint_metadata(*, checkpoint_hash: str, prepared_manifest: Path
             "mlp_architecture": ["Linear(input,256)", "GELU", "Dropout(0.20)", "Linear(256,64)", "GELU", "Dropout(0.10)", "Linear(64,1)"],
             "training_hyperparameters": {"optimizer": "AdamW", "learning_rate": 1e-3, "weight_decay": 1e-4, "batch_size": 256, "epochs": 20, "seed": 20260809, "weighted_bce": "TRAIN_LISTEN/TRAIN_COMMIT"},
             "label_counts": dict(training["label_counts"]), "positive_weight": training["positive_weight"]}
+    if runtime is not None:
+        metadata["runtime"] = dict(runtime)
+    return metadata
 
 
 def validate_p3_checkpoint_metadata(metadata: Mapping[str, Any], payload: Mapping[str, Any], *, manifest_path: Path, cache: EmbeddingCache) -> None:
