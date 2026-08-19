@@ -120,11 +120,38 @@ def inspect_p3_checkpoint() -> None:
     print(json.dumps(json.loads(path.read_text(encoding="utf-8")), indent=2, sort_keys=True))
 
 
-def rollout_p3(split: str, thresholds: Sequence[float], *, talk_id: str | None = None, batch_size: int = 1) -> None:
+def _strategy(threshold: float, prepared_context_mode: str) -> str:
+    return f"p3_global_{threshold:.2f}" if prepared_context_mode == "real" else f"p3_global_zeroctx_{threshold:.2f}"
+
+
+def attach_prepared_context_provenance(record: dict[str, Any], prepared: Any, prepared_context_mode: str) -> None:
+    """Record source eligibility separately from the vector injected into P3."""
+    provenance = prepared.provenance(prepared_context_mode)
+    record["prepared_context"] = provenance
+    record["prepared_context_mode"] = prepared_context_mode
+    record["prepared_context_effective_embedding_norm"] = provenance["prepared_context_effective_embedding_norm"]
+
+
+def rollout_p3(split: str, thresholds: Sequence[float], *, talk_id: str | None = None, batch_size: int = 1,
+               prepared_context_mode: str = "real", encoder_device: str | None = None,
+               encoder_dtype: str = "float32", policy_device: str | None = None,
+               policy_dtype: str = "float32", translator_device: str = "cuda",
+               translator_dtype: str = "float16", trace_output: Path | None = None) -> None:
     if split not in {"train", "dev"} or batch_size != 1:
         raise RuntimeError("P3_GLOBAL rollout permits TRAIN/DEV only and requires translator batch size 1")
+    if trace_output is not None:
+        if split != "dev":
+            raise RuntimeError("P3 demo traces permit DEV only")
+        if talk_id is None:
+            raise RuntimeError("P3 demo traces require exactly one --talk-id")
+        if len(thresholds) != 1:
+            raise RuntimeError("P3 demo traces require exactly one threshold")
     if any(threshold not in THRESHOLDS for threshold in thresholds):
         raise RuntimeError("P3_GLOBAL threshold is outside the frozen grid")
+    if prepared_context_mode not in {"real", "zero"}:
+        raise ValueError("P3_GLOBAL prepared context mode must be real or zero")
+    if encoder_dtype != "float32" or policy_dtype != "float32" or translator_dtype != "float16":
+        raise RuntimeError("P3_GLOBAL rollout requires float32 encoder/policy and float16 translator")
     from .cli import _manifests, _runtime_talk, _translator
     _, split_manifest = _manifests()
     talks = list(split_manifest["splits"][split])
@@ -132,18 +159,64 @@ def rollout_p3(split: str, thresholds: Sequence[float], *, talk_id: str | None =
         if talk_id not in talks:
             raise ValueError(f"talk {talk_id} does not belong to {split}")
         talks = [talk_id]
-    encoder, cache = _encoder_cache()
-    _, provider = _translator(batch_size, device="cuda")
+    runtime = p3_runtime()
+    if encoder_device is not None:
+        runtime["encoder_device"] = torch.device(encoder_device)
+    encoder, cache = _encoder_cache(runtime)
+    _, provider = _translator(batch_size, device=translator_device)
     metadata_path = P3_CHECKPOINTS / "P3_GLOBAL.metadata.json"
     for selected_id in talks:
         prepared = build_prepared_global_embedding(load_matching_pool(PREPARED_ROOT, talk_id=selected_id, split=split), encoder, cache)
-        policy = load_p3_checkpoint(P3_CHECKPOINTS / "P3_GLOBAL.pt", metadata_path, cache, prepared, manifest_path=PREPARED_MANIFEST)
+        policy = load_p3_checkpoint(
+            P3_CHECKPOINTS / "P3_GLOBAL.pt", metadata_path, cache, prepared,
+            # Existing canonical P3 rollout loaded inference policy on CPU.
+            manifest_path=PREPARED_MANIFEST, device=policy_device or "cpu",
+            prepared_context_mode=prepared_context_mode,
+        )
         for threshold in thresholds:
-            strategy = f"p3_global_{threshold:.2f}"
+            strategy = _strategy(threshold, prepared_context_mode)
             talk = _runtime_talk(selected_id, split_manifest)
-            record = prediction_record(strategy, talk, learned_rollout(talk, provider, policy, threshold))
-            record["prepared_context"] = prepared.provenance()
-            atomic_json(P3_ROOT / "predictions" / split / strategy / f"{selected_id}.json", record)
+            events: list[dict[str, Any]] = []
+            trace_sink = (lambda event: events.append(dict(event))) if trace_output is not None else None
+            commits = learned_rollout(talk, provider, policy, threshold, trace_sink)
+            record = prediction_record(strategy, talk, commits)
+            attach_prepared_context_provenance(record, prepared, prepared_context_mode)
+            if trace_output is None:
+                atomic_json(P3_ROOT / "predictions" / split / strategy / f"{selected_id}.json", record)
+            else:
+                metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+                trace_commits = [event for event in events if event["decision"] == "COMMIT"]
+                if len(trace_commits) != len(commits):
+                    raise RuntimeError("P3 trace commit events do not match canonical commits")
+                for event, commit in zip(trace_commits, commits):
+                    if (
+                        event["candidate_source_start"], event["candidate_source_end"],
+                        event["committed_target_text"], event["observation_ms"], event["decision_reason"],
+                    ) != (
+                        commit.source_start, commit.source_end, commit.translated_text,
+                        commit.observation_emit_ms, commit.reason,
+                    ):
+                        raise RuntimeError("P3 trace commit event differs from canonical commit")
+                trace = {
+                    "artifact_version": "demo-policy-trace-v1",
+                    "talk_id": talk.talk_id,
+                    "split": talk.split,
+                    "strategy": strategy,
+                    "threshold": threshold,
+                    "prepared_context_mode": prepared_context_mode,
+                    "checkpoint_sha256": metadata["checkpoint_sha256"],
+                    "prepared_context": prepared.provenance(prepared_context_mode),
+                    "source_token_count": len(talk.tokens),
+                    "source_final_emit_ms": talk.tokens[-1].emit_ms,
+                    "source_stream": {
+                        "source_token_count": len(talk.tokens),
+                        "source_final_emit_ms": talk.tokens[-1].emit_ms,
+                        "clock": "simulated_source_emit_ms",
+                        "observation_key": "source_token_end",
+                    },
+                    "events": events,
+                }
+                atomic_json(trace_output, trace)
 
 
 def evaluate_p3(strategies: Sequence[str] | None = None) -> None:
@@ -151,6 +224,9 @@ def evaluate_p3(strategies: Sequence[str] | None = None) -> None:
     from .cli import _talk_paths
     from timelymt.data.canonical.core import load_canonical_talk
     selected = list(strategies or [f"p3_global_{threshold:.2f}" for threshold in THRESHOLDS])
+    zero_context = [strategy.startswith("p3_global_zeroctx_") for strategy in selected]
+    if any(zero_context) and not all(zero_context):
+        raise RuntimeError("P3 evaluation cannot mix real- and zero-context strategies")
     result = {}
     for strategy in selected:
         records = [json.loads(path.read_text(encoding="utf-8")) for path in sorted((P3_ROOT / "predictions/dev" / strategy).glob("*.json"))]
@@ -158,4 +234,5 @@ def evaluate_p3(strategies: Sequence[str] | None = None) -> None:
             raise RuntimeError(f"no P3_GLOBAL DEV predictions for {strategy}")
         references = {record["talk_id"]: " ".join(segment["text"] for segment in load_canonical_talk(_talk_paths()[record["talk_id"]])["target_reference"]["segments"]) for record in records}
         result[strategy] = {**quality_metrics(records, references), **latency_metrics(records, references)}
-    atomic_json(P3_ROOT / "metrics/dev/all.json", result)
+    output = P3_ROOT / "metrics/dev/all-zeroctx.json" if all(zero_context) else P3_ROOT / "metrics/dev/all.json"
+    atomic_json(output, result)

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="950" viewBox="0 0 1600 950" role="img" aria-labelledby="title desc">
+  <title id="title">P0, P1, P2, and P3 policy feature evolution</title>
+  <desc id="desc">Four progressively richer policy representations, from current source and numeric features in P0 to prepared global context in P3_GLOBAL.</desc>
+  <defs>
+    <style>
+      text{font-family:Arial,"Segoe UI",sans-serif;fill:#17232c}.title{font-size:38px;font-weight:700}.sub{font-size:19px;fill:#5d6b75}.head{font-size:27px;font-weight:700}.total{font-size:23px;font-weight:700}.label{font-size:19px;font-weight:700}.small{font-size:16px;fill:#53616b}.card{fill:#fff;stroke:#b8c4ca;stroke-width:2.5}.embed{fill:#edf6f5;stroke:#087b73;stroke-width:2}.history{fill:#f3f0f8;stroke:#68478f;stroke-width:2}.numeric{fill:#eef1f3;stroke:#64747e;stroke-width:2}.prepared{fill:#fff4df;stroke:#a66b00;stroke-width:2.5}.arrow{fill:none;stroke:#7b8b94;stroke-width:3;marker-end:url(#arrow)}.branch{fill:none;stroke:#a66b00;stroke-width:3;marker-end:url(#amber)}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0l10 5-10 5z" fill="#7b8b94"/></marker>
+    <marker id="amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0l10 5-10 5z" fill="#a66b00"/></marker>
+  </defs>
+  <rect width="1600" height="950" fill="#fff"/>
+  <text x="70" y="70" class="title">Policy feature evolution</text>
+  <text x="70" y="105" class="sub">Progressively richer causal policy representations; no superiority is implied</text>
+
+  <rect x="70" y="145" width="450" height="72" rx="12" class="embed"/>
+  <text x="295" y="178" text-anchor="middle" class="label">Frozen multilingual MiniLM</text>
+  <text x="295" y="202" text-anchor="middle" class="small">384-dimensional embedding per text field</text>
+  <path d="M520 181H610" class="arrow"/>
+  <rect x="610" y="145" width="420" height="72" rx="12" class="card"/>
+  <text x="820" y="178" text-anchor="middle" class="label">Learned policy</text>
+  <text x="820" y="202" text-anchor="middle" class="small">LISTEN / COMMIT probability</text>
+  <rect x="1080" y="145" width="450" height="72" rx="12" class="card"/>
+  <text x="1305" y="178" text-anchor="middle" class="label">Frozen source-only EnViT5</text>
+  <text x="1305" y="202" text-anchor="middle" class="small">Prepared context never enters translator</text>
+
+  <g transform="translate(70 275)">
+    <rect width="330" height="555" rx="16" class="card"/>
+    <rect width="330" height="78" rx="16" fill="#eef5f5"/><path d="M0 62h330" stroke="#087b73" stroke-width="3"/>
+    <text x="28" y="44" class="head">P0</text><text x="302" y="43" text-anchor="end" class="total">395-d</text>
+    <rect x="25" y="110" width="280" height="105" rx="10" class="embed"/>
+    <text x="165" y="151" text-anchor="middle" class="label">Current source</text><text x="165" y="180" text-anchor="middle" class="small">embedding · 384</text>
+    <text x="165" y="245" text-anchor="middle" class="head" font-size="22">+</text>
+    <rect x="25" y="275" width="280" height="105" rx="10" class="numeric"/>
+    <text x="165" y="316" text-anchor="middle" class="label">Numeric features</text><text x="165" y="345" text-anchor="middle" class="small">causal state · 11</text>
+    <path d="M165 380v75" class="arrow"/>
+    <rect x="65" y="455" width="200" height="62" rx="31" fill="#f3f6f7" stroke="#7b8b94" stroke-width="2"/>
+    <text x="165" y="494" text-anchor="middle" class="label">Policy only</text>
+  </g>
+
+  <path d="M410 555h35" class="arrow"/>
+  <g transform="translate(430 275)">
+    <rect width="330" height="555" rx="16" class="card"/>
+    <rect width="330" height="78" rx="16" fill="#f2eff7"/><path d="M0 62h330" stroke="#68478f" stroke-width="3"/>
+    <text x="28" y="44" class="head">P1</text><text x="302" y="43" text-anchor="end" class="total">779-d</text>
+    <rect x="25" y="102" width="280" height="78" rx="10" class="embed"/>
+    <text x="165" y="135" text-anchor="middle" class="label">Current source · 384</text>
+    <text x="165" y="202" text-anchor="middle" class="label">+</text>
+    <rect x="25" y="220" width="280" height="92" rx="10" class="history"/>
+    <text x="165" y="256" text-anchor="middle" class="label">Previous committed source</text><text x="165" y="284" text-anchor="middle" class="small">embedding · 384</text>
+    <text x="165" y="339" text-anchor="middle" class="label">+</text>
+    <rect x="25" y="357" width="280" height="78" rx="10" class="numeric"/>
+    <text x="165" y="404" text-anchor="middle" class="label">Numeric features · 11</text>
+    <path d="M165 435v45" class="arrow"/>
+    <rect x="65" y="480" width="200" height="50" rx="25" fill="#f3f6f7" stroke="#7b8b94" stroke-width="2"/>
+    <text x="165" y="512" text-anchor="middle" class="label">Policy only</text>
+  </g>
+
+  <path d="M770 555h35" class="arrow"/>
+  <g transform="translate(790 275)">
+    <rect width="330" height="555" rx="16" class="card"/>
+    <rect width="330" height="78" rx="16" fill="#f2eff7"/><path d="M0 62h330" stroke="#68478f" stroke-width="3"/>
+    <text x="28" y="44" class="head">P2</text><text x="302" y="43" text-anchor="end" class="total">1163-d</text>
+    <rect x="25" y="94" width="280" height="67" rx="10" class="embed"/><text x="165" y="135" text-anchor="middle" class="label">Current source · 384</text>
+    <text x="165" y="185" text-anchor="middle" class="label">+</text>
+    <rect x="25" y="198" width="280" height="67" rx="10" class="history"/><text x="165" y="239" text-anchor="middle" class="label">Previous source · 384</text>
+    <text x="165" y="289" text-anchor="middle" class="label">+</text>
+    <rect x="25" y="302" width="280" height="82" rx="10" class="history"/>
+    <text x="165" y="334" text-anchor="middle" class="label">Previous generated target</text><text x="165" y="362" text-anchor="middle" class="small">embedding · 384</text>
+    <text x="165" y="408" text-anchor="middle" class="label">+</text>
+    <rect x="25" y="422" width="280" height="62" rx="10" class="numeric"/><text x="165" y="461" text-anchor="middle" class="label">Numeric · 11</text>
+    <path d="M165 484v18" class="arrow"/><text x="165" y="531" text-anchor="middle" class="small">policy representation</text>
+  </g>
+
+  <path d="M1130 555h35" class="arrow"/>
+  <g transform="translate(1150 275)">
+    <rect width="380" height="555" rx="16" class="card"/>
+    <rect width="380" height="78" rx="16" fill="#fff4df"/><path d="M0 62h380" stroke="#a66b00" stroke-width="3"/>
+    <text x="28" y="44" class="head">P3_GLOBAL</text><text x="352" y="43" text-anchor="end" class="total">1547-d</text>
+    <rect x="30" y="94" width="320" height="61" rx="10" class="embed"/><text x="190" y="132" text-anchor="middle" class="label">Current source · 384</text>
+    <rect x="30" y="171" width="320" height="61" rx="10" class="history"/><text x="190" y="209" text-anchor="middle" class="label">Previous source · 384</text>
+    <rect x="30" y="248" width="320" height="72" rx="10" class="history"/><text x="190" y="277" text-anchor="middle" class="label">Previous generated target</text><text x="190" y="302" text-anchor="middle" class="small">384</text>
+    <rect x="30" y="336" width="320" height="78" rx="10" class="prepared"/>
+    <text x="190" y="369" text-anchor="middle" class="label">Prepared global context</text><text x="190" y="397" text-anchor="middle" class="small">embedding · 384 · policy only</text>
+    <rect x="30" y="430" width="320" height="61" rx="10" class="numeric"/><text x="190" y="468" text-anchor="middle" class="label">Numeric features · 11</text>
+    <text x="190" y="526" text-anchor="middle" class="small">new MLP trained from scratch</text>
+  </g>
+
+  <rect x="1165" y="225" width="350" height="42" rx="9" class="prepared"/>
+  <text x="1340" y="252" text-anchor="middle" class="small" fill="#8a5a00">Prepared context · policy-side input only</text>
+  <path d="M1515 246h42v398h-27" class="branch"/>
+  <text x="800" y="895" text-anchor="middle" class="sub">Each added field enters the learned policy representation; EnViT5 remains frozen and source-only.</text>
+</svg>

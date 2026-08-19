@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1100" viewBox="0 0 1800 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Direct policy divergence and downstream source-buffer cascade</title>
+  <desc id="desc">Two-panel controlled example. At event 131, identical source and candidate translation produce a REAL commit and ZERO listen. At event 132, the shared incoming token enters different uncommitted source spans.</desc>
+  <defs>
+    <style>
+      text{font-family:Arial,"Segoe UI",sans-serif;fill:#17232c}.title{font-size:38px;font-weight:700}.sub{font-size:19px;fill:#5d6b75}.panelTitle{font-size:27px;font-weight:700}.head{font-size:23px;font-weight:700}.label{font-size:19px;font-weight:700}.body{font-size:17px}.small{font-size:16px;fill:#53616b}.mono{font-family:Consolas,"Courier New",monospace}.panel{fill:#fbfcfc;stroke:#b8c4ca;stroke-width:2.5}.shared{fill:#fff;stroke:#87969f;stroke-width:2}.real{fill:#edf6f5;stroke:#087b73;stroke-width:3}.zero{fill:#f3f0f8;stroke:#68478f;stroke-width:3}.commit{fill:#e8f5ef;stroke:#05734e;stroke-width:2.5}.listen{fill:#fff4df;stroke:#a66b00;stroke-width:2.5}.wait{fill:#eef1f3;stroke:#53616b;stroke-width:2.5}.annotation{fill:#fffaf0;stroke:#d0a954;stroke-width:2}.chip{fill:#fff;stroke:#b9c5cb;stroke-width:1.5}.latest{fill:#ffe8a8;stroke:#a66b00;stroke-width:2}.arrow{fill:none;stroke:#087b73;stroke-width:4;marker-end:url(#arrow)}.thinArrow{fill:none;stroke:#657680;stroke-width:2.5;marker-end:url(#gray)}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0l10 5-10 5z" fill="#087b73"/></marker>
+    <marker id="gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0l10 5-10 5z" fill="#657680"/></marker>
+  </defs>
+  <rect width="1800" height="1100" fill="#fff"/>
+  <text x="70" y="66" class="title">Direct policy divergence → downstream cascade</text>
+  <text x="70" y="101" class="sub">Controlled descriptive case · Sims DEV · threshold 0.60</text>
+
+  <rect x="55" y="135" width="810" height="900" rx="16" class="panel"/>
+  <text x="90" y="185" class="panelTitle">(a) Event 131 · 00:53</text>
+  <text x="830" y="185" text-anchor="end" class="small">direct same-span comparison</text>
+
+  <rect x="90" y="220" width="740" height="104" rx="11" class="shared"/>
+  <text x="115" y="251" class="small">SAME CURRENT UNCOMMITTED SOURCE · span 124–131</text>
+  <text x="115" y="286" class="body mono">renewable energy Electrify everything else</text>
+  <text x="115" y="311" class="body mono">Deploy solutions that</text>
+
+  <rect x="90" y="342" width="740" height="116" rx="11" class="shared"/>
+  <text x="115" y="373" class="small">SAME CANDIDATE TRANSLATION</text>
+  <text x="115" y="410" class="body">Năng lượng tái tạo Điện khí hoá mọi thứ khác</text>
+  <text x="115" y="438" class="body">Triển khai các giải pháp đó</text>
+
+  <rect x="90" y="485" width="350" height="240" rx="13" class="real"/>
+  <text x="265" y="525" text-anchor="middle" class="head" fill="#087b73">REAL_CONTEXT</text>
+  <text x="265" y="582" text-anchor="middle" class="small">p(COMMIT)</text>
+  <text x="265" y="630" text-anchor="middle" class="panelTitle mono">0.631034</text>
+  <rect x="155" y="660" width="220" height="46" rx="23" class="commit"/>
+  <text x="265" y="691" text-anchor="middle" class="label" fill="#05734e">COMMIT</text>
+
+  <rect x="480" y="485" width="350" height="240" rx="13" class="zero"/>
+  <text x="655" y="525" text-anchor="middle" class="head" fill="#68478f">ZERO_CONTEXT</text>
+  <text x="655" y="582" text-anchor="middle" class="small">p(COMMIT)</text>
+  <text x="655" y="630" text-anchor="middle" class="panelTitle mono">0.575424</text>
+  <rect x="545" y="660" width="220" height="46" rx="23" class="listen"/>
+  <text x="655" y="691" text-anchor="middle" class="label" fill="#8a5a00">LISTEN</text>
+
+  <line x1="145" y1="755" x2="785" y2="755" stroke="#87969f" stroke-width="4"/>
+  <line x1="529" y1="742" x2="529" y2="768" stroke="#17232c" stroke-width="4"/>
+  <text x="529" y="794" text-anchor="middle" class="small">threshold = 0.60</text>
+  <text x="460" y="840" text-anchor="middle" class="head mono">Δp = +0.055609</text>
+
+  <rect x="90" y="875" width="740" height="112" rx="11" class="annotation"/>
+  <text x="460" y="916" text-anchor="middle" class="head">Same span, same translation.</text>
+  <text x="460" y="951" text-anchor="middle" class="body">Only the Prepared context policy intervention differs.</text>
+  <text x="460" y="976" text-anchor="middle" class="small">This illustrates policy sensitivity, not better translation.</text>
+
+  <rect x="935" y="135" width="810" height="900" rx="16" class="panel"/>
+  <text x="970" y="185" class="panelTitle">(b) Event 132</text>
+  <text x="1710" y="185" text-anchor="end" class="small">independent-buffer cascade</text>
+
+  <rect x="970" y="220" width="740" height="94" rx="11" class="shared"/>
+  <text x="1340" y="251" text-anchor="middle" class="small">SHARED INCOMING SOURCE TOKEN</text>
+  <text x="1340" y="292" text-anchor="middle" class="panelTitle mono">“are”</text>
+
+  <rect x="970" y="354" width="740" height="222" rx="13" class="real"/>
+  <text x="1000" y="394" class="head" fill="#087b73">REAL_CONTEXT · span 132–132</text>
+  <rect x="1000" y="425" width="90" height="46" rx="7" class="latest"/><text x="1045" y="455" text-anchor="middle" class="label mono">are</text>
+  <rect x="1455" y="425" width="220" height="48" rx="24" class="wait"/><text x="1565" y="457" text-anchor="middle" class="label">WAIT</text>
+  <text x="1000" y="515" class="body">Event 131 COMMIT reset the Current uncommitted source.</text>
+  <text x="1000" y="545" class="small">One buffered token: translator and policy are not evaluated.</text>
+
+  <rect x="970" y="610" width="740" height="240" rx="13" class="zero"/>
+  <text x="1000" y="650" class="head" fill="#68478f">ZERO_CONTEXT · span 124–132</text>
+  <g transform="translate(1000 680)">
+    <rect x="0" y="0" width="105" height="42" rx="6" class="chip"/><text x="52" y="27" text-anchor="middle" class="small mono">renewable</text>
+    <rect x="115" y="0" width="85" height="42" rx="6" class="chip"/><text x="157" y="27" text-anchor="middle" class="small mono">energy</text>
+    <text x="225" y="29" class="head">…</text>
+    <rect x="270" y="0" width="70" height="42" rx="6" class="chip"/><text x="305" y="27" text-anchor="middle" class="small mono">that</text>
+    <rect x="350" y="0" width="70" height="42" rx="6" class="latest"/><text x="385" y="27" text-anchor="middle" class="small mono">are</text>
+  </g>
+  <rect x="1455" y="680" width="220" height="48" rx="24" class="listen"/><text x="1565" y="712" text-anchor="middle" class="label">LISTEN</text>
+  <text x="1000" y="775" class="body">The earlier span remains open and continues accumulating.</text>
+  <text x="1000" y="806" class="small">Nine buffered tokens produce a new Candidate translation.</text>
+
+  <rect x="970" y="883" width="740" height="105" rx="11" class="annotation"/>
+  <text x="1340" y="920" text-anchor="middle" class="head">Earlier COMMIT timing changes the future source boundary.</text>
+  <text x="1340" y="951" text-anchor="middle" class="body">Later translation differences follow from different source spans,</text>
+  <text x="1340" y="977" text-anchor="middle" class="small">not direct Prepared context conditioning of EnViT5.</text>
+
+  <path d="M375 706c80 105 210 148 390 170 170 20 200-100 205-375" class="arrow"/>
+  <rect x="760" y="452" width="250" height="62" rx="10" fill="#fff" stroke="#087b73" stroke-width="2"/>
+  <text x="885" y="478" text-anchor="middle" class="small">COMMIT causes reset</text>
+  <text x="885" y="502" text-anchor="middle" class="small">at next observation</text>
+</svg>

@@ -20,7 +20,7 @@ from timelymt.research.policy_p3_global import (
     p3_feature_vector, prepare_p3_text_embeddings, save_p3_checkpoint, train_p3_global_policy,
     validate_p3_checkpoint_metadata, validate_pool_identity,
 )
-from timelymt.research.policy_p3_global_runner import p3_runtime
+from timelymt.research.policy_p3_global_runner import _strategy, attach_prepared_context_provenance, p3_runtime
 
 
 class FakeEncoder:
@@ -131,6 +131,43 @@ class P3FeatureTests(unittest.TestCase):
         self.assertEqual(values.shape, (2, 384))
         self.assertEqual(values.dtype, np.float32)
 
+    def test_zero_mode_replaces_only_prepared_block_and_default_is_real(self):
+        with tempfile.TemporaryDirectory() as directory:
+            cache = EmbeddingCache(Path(directory), FakeEncoder())
+            scaler = NumericScaler((0.0,) * 11, (1.0,) * 11)
+            prepared = PreparedGlobalEmbedding("context", "dev", ("source",), ("sha256:" + "0" * 64,), np.full(384, 3.0, dtype=np.float32))
+            default = p3_feature_vector(state(), prepared, cache, scaler)
+            real = p3_feature_vector(state(), prepared, cache, scaler, prepared_context_mode="real")
+            zero = p3_feature_vector(state(), prepared, cache, scaler, prepared_context_mode="zero")
+            self.assertEqual(default.shape, (1547,))
+            self.assertEqual(default.dtype, np.float32)
+            np.testing.assert_array_equal(default, real)
+            np.testing.assert_array_equal(default[:1152], zero[:1152])
+            np.testing.assert_array_equal(default[1536:], zero[1536:])
+            np.testing.assert_array_equal(zero[1152:1536], np.zeros(384, dtype=np.float32))
+            self.assertFalse(np.array_equal(default[1152:1536], zero[1152:1536]))
+
+    def test_empty_context_is_exactly_invariant_between_modes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            cache = EmbeddingCache(Path(directory), FakeEncoder())
+            scaler = NumericScaler((0.0,) * 11, (1.0,) * 11)
+            prepared = PreparedGlobalEmbedding("empty", "dev", (), (), np.zeros(384, dtype=np.float32))
+            self.assertEqual(prepared.embedding_norm, 0.0)
+            np.testing.assert_array_equal(prepared.effective_embedding("real"), prepared.effective_embedding("zero"))
+            np.testing.assert_array_equal(
+                p3_feature_vector(state(), prepared, cache, scaler, prepared_context_mode="real"),
+                p3_feature_vector(state(), prepared, cache, scaler, prepared_context_mode="zero"),
+            )
+
+    def test_context_provenance_distinguishes_eligible_source_from_zero_injection(self):
+        prepared = PreparedGlobalEmbedding("context", "dev", ("source",), ("sha256:" + "0" * 64,), np.full(384, 0.5, dtype=np.float32))
+        real, zero = prepared.provenance("real"), prepared.provenance("zero")
+        self.assertTrue(zero["has_eligible_context"])
+        self.assertEqual(zero["eligible_source_ids"], ["source"])
+        self.assertGreater(real["prepared_context_effective_embedding_norm"], 0.0)
+        self.assertEqual(zero["prepared_context_effective_embedding_norm"], 0.0)
+        self.assertEqual(zero["prepared_context_mode"], "zero")
+
 
 class P3RuntimeTests(unittest.TestCase):
     def _config(self, directory, runtime):
@@ -211,6 +248,36 @@ class P3CheckpointTests(unittest.TestCase):
             altered = dict(metadata); altered["prepared_context_manifest_fingerprint"] = "wrong"
             with self.assertRaises(RuntimeError):
                 validate_p3_checkpoint_metadata(altered, payload, manifest_path=manifest, cache=cache)
+
+    def test_loading_zero_mode_does_not_change_checkpoint_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); manifest = root / "manifest.json"; manifest.write_text("{}", encoding="utf-8")
+            cache = EmbeddingCache(root / "cache", FakeEncoder())
+            prepared = PreparedGlobalEmbedding("talk", "train", (), (), np.zeros(384, dtype=np.float32))
+            from timelymt.research.policy_p3_global import P3GlobalPolicy
+            policy = P3GlobalPolicy(V2MLP(P3_INPUT_DIMENSION), NumericScaler((0.0,) * 11, (1.0,) * 11), cache, prepared, torch.device("cpu"))
+            checkpoint = root / "model.pt"; digest = save_p3_checkpoint(checkpoint, policy)
+            metadata = make_p3_checkpoint_metadata(checkpoint_hash=digest, prepared_manifest=manifest, train_talk_ids=["talk"], training={"label_counts": {"LISTEN": 1, "COMMIT": 1}, "positive_weight": 1.0}, scaler=policy.scaler)
+            metadata_path = root / "model.json"; metadata_path.write_text(json.dumps(metadata), encoding="utf-8")
+            before = checkpoint.read_bytes()
+            loaded = load_p3_checkpoint(checkpoint, metadata_path, cache, prepared, manifest_path=manifest, prepared_context_mode="zero")
+            self.assertEqual(loaded.prepared_context_mode, "zero")
+            self.assertEqual(checkpoint.read_bytes(), before)
+
+
+class P3AblationNamingTests(unittest.TestCase):
+    def test_real_preserves_canonical_strategy_and_zero_is_isolated(self):
+        self.assertEqual(_strategy(0.50, "real"), "p3_global_0.50")
+        self.assertEqual(_strategy(0.50, "zero"), "p3_global_zeroctx_0.50")
+
+    def test_prediction_artifact_provenance_records_zero_condition(self):
+        prepared = PreparedGlobalEmbedding("context", "dev", ("source",), ("sha256:" + "0" * 64,), np.ones(384, dtype=np.float32))
+        record = {}
+        attach_prepared_context_provenance(record, prepared, "zero")
+        self.assertEqual(record["prepared_context_mode"], "zero")
+        self.assertEqual(record["prepared_context_effective_embedding_norm"], 0.0)
+        self.assertEqual(record["prepared_context"]["eligible_source_ids"], ["source"])
+        self.assertTrue(record["prepared_context"]["has_eligible_context"])
 
 
 class CompatibilityTests(unittest.TestCase):

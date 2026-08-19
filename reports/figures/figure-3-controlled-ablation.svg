@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Controlled REAL_CONTEXT versus ZERO_CONTEXT ablation</title>
+  <desc id="desc">Experimental design holding checkpoint, stream, threshold, translator, and input shape constant while replacing only the prepared context dimensions with exact zeros.</desc>
+  <defs>
+    <style>
+      text{font-family:Arial,"Segoe UI",sans-serif;fill:#17232c}.title{font-size:38px;font-weight:700}.sub{font-size:19px;fill:#5d6b75}.head{font-size:26px;font-weight:700}.label{font-size:20px;font-weight:700}.small{font-size:17px;fill:#53616b}.mono{font-family:Consolas,"Courier New",monospace}.same{fill:#f4f7f8;stroke:#87969f;stroke-width:2}.real{fill:#edf6f5;stroke:#087b73;stroke-width:3}.zero{fill:#f3f0f8;stroke:#68478f;stroke-width:3}.intervention{fill:#fff4df;stroke:#a66b00;stroke-width:3}.clock{fill:#fff;stroke:#17232c;stroke-width:2.5}.arrow{fill:none;stroke:#657680;stroke-width:3;marker-end:url(#arrow)}.realArrow{fill:none;stroke:#087b73;stroke-width:3;marker-end:url(#realArrow)}.zeroArrow{fill:none;stroke:#68478f;stroke-width:3;marker-end:url(#zeroArrow)}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0l10 5-10 5z" fill="#657680"/></marker>
+    <marker id="realArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0l10 5-10 5z" fill="#087b73"/></marker>
+    <marker id="zeroArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0l10 5-10 5z" fill="#68478f"/></marker>
+  </defs>
+  <rect width="1600" height="1000" fill="#fff"/>
+  <text x="70" y="68" class="title">Controlled prepared-context ablation</text>
+  <text x="70" y="104" class="sub">Same trained policy and streaming conditions; one isolated inference-time intervention</text>
+
+  <rect x="130" y="145" width="1340" height="155" rx="15" class="same"/>
+  <text x="800" y="182" text-anchor="middle" class="head">HELD CONSTANT</text>
+  <g class="label" text-anchor="middle">
+    <text x="300" y="235">Same P3_GLOBAL checkpoint</text>
+    <text x="550" y="268">Same source stream</text>
+    <text x="800" y="235">Same threshold</text>
+    <text x="1050" y="268">Same EnViT5</text>
+    <text x="1300" y="235">Same 1547-d input shape</text>
+  </g>
+  <path d="M800 300v45" class="arrow"/>
+
+  <rect x="560" y="345" width="480" height="104" rx="14" class="intervention"/>
+  <text x="800" y="381" text-anchor="middle" class="head">ONLY INTERVENTION</text>
+  <text x="800" y="417" text-anchor="middle" class="label mono">prepared dimensions [1152:1536]</text>
+
+  <path d="M650 449v45H405v28" class="realArrow"/>
+  <path d="M950 449v45h245v28" class="zeroArrow"/>
+
+  <g transform="translate(105 522)">
+    <rect width="600" height="280" rx="16" class="real"/>
+    <text x="300" y="48" text-anchor="middle" class="head" fill="#087b73">REAL_CONTEXT</text>
+    <rect x="45" y="78" width="510" height="84" rx="10" fill="#fff" stroke="#087b73" stroke-width="2"/>
+    <text x="300" y="112" text-anchor="middle" class="label">prepared-global vector</text>
+    <text x="300" y="143" text-anchor="middle" class="label mono">||context|| = 1.0</text>
+    <text x="300" y="200" text-anchor="middle" class="label">Independent policy session</text>
+    <text x="300" y="235" text-anchor="middle" class="small">own commits · own open buffer · own causal history</text>
+    <text x="300" y="264" text-anchor="middle" class="small">p(COMMIT) → LISTEN / COMMIT</text>
+  </g>
+  <g transform="translate(895 522)">
+    <rect width="600" height="280" rx="16" class="zero"/>
+    <text x="300" y="48" text-anchor="middle" class="head" fill="#68478f">ZERO_CONTEXT</text>
+    <rect x="45" y="78" width="510" height="84" rx="10" fill="#fff" stroke="#68478f" stroke-width="2"/>
+    <text x="300" y="112" text-anchor="middle" class="label">exact float32 zeros</text>
+    <text x="300" y="143" text-anchor="middle" class="label mono">||context|| = 0.0</text>
+    <text x="300" y="200" text-anchor="middle" class="label">Independent policy session</text>
+    <text x="300" y="235" text-anchor="middle" class="small">own commits · own open buffer · own causal history</text>
+    <text x="300" y="264" text-anchor="middle" class="small">p(COMMIT) → LISTEN / COMMIT</text>
+  </g>
+
+  <path d="M405 802v65h790v-65" fill="none" stroke="#657680" stroke-width="3"/>
+  <path d="M800 867v20" class="arrow"/>
+  <rect x="400" y="887" width="800" height="70" rx="35" class="clock"/>
+  <text x="800" y="930" text-anchor="middle" class="label">Synchronized on the shared source observation clock</text>
+
+  <rect x="215" y="825" width="1170" height="46" rx="8" fill="#fffaf0" stroke="#d6b56f" stroke-width="2"/>
+  <text x="800" y="855" text-anchor="middle" class="small">Eligible prepared source remains in provenance in BOTH conditions; ZERO disables only its policy embedding.</text>
+</svg>

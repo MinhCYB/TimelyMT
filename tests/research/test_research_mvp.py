@@ -4,6 +4,7 @@ import unittest
 import json
 from pathlib import Path
 import tempfile
+from unittest.mock import patch
 
 from timelymt.data.translation_artifacts import RuntimeSourceToken, RuntimeTalk, TranslationHypothesis
 from timelymt.research.evaluation import average_lagging, latency_metrics, quality_metrics
@@ -14,6 +15,9 @@ from timelymt.research.streaming import (
     select_dev_configuration,
 )
 from timelymt.research.cli import _validate_pseudo_talk_file, train
+from timelymt.research.cli import main as cli_main
+from timelymt.research.policy_p3_global_runner import rollout_p3
+from scripts.validate_demo_trace import validate as validate_demo_trace
 
 
 def talk(count: int, emits: list[int] | None = None, split: str = "train") -> RuntimeTalk:
@@ -48,6 +52,16 @@ class ThresholdPolicy:
         return self.probability
 
 
+class SequencePolicy(ThresholdPolicy):
+    def __init__(self, probabilities: list[float]) -> None:
+        super().__init__(0.0)
+        self.probabilities = probabilities
+
+    def predict_commit_probability(self, state):
+        self.states.append(state)
+        return self.probabilities[len(self.states) - 1]
+
+
 class StreamingTests(unittest.TestCase):
     def test_fixed_n_boundaries_and_remainder(self):
         commits = fixed_n(talk(10), Provider(), 4)
@@ -80,6 +94,101 @@ class StreamingTests(unittest.TestCase):
         record = prediction_record("fixed_n_4", runtime, commits)
         self.assertEqual(record["prediction"], "xin chao ban")
         self.assertNotIn("reference", record)
+
+    def test_trace_is_observability_only_and_causal(self):
+        runtime = talk(5)
+        provider_off, provider_on = Provider(), Provider()
+        policy_off, policy_on = SequencePolicy([0.1, 0.9]), SequencePolicy([0.1, 0.9])
+        without_trace = learned_rollout(runtime, provider_off, policy_off, 0.5)
+        events = []
+        with_trace = learned_rollout(runtime, provider_on, policy_on, 0.5, events.append)
+        self.assertEqual(with_trace, without_trace)
+        self.assertEqual(provider_on.calls, provider_off.calls)
+        self.assertEqual(len(policy_on.states), len(policy_off.states))
+        self.assertEqual([event["event_index"] for event in events], list(range(5)))
+        self.assertEqual([event["source_token_end"] for event in events], list(range(5)))
+        self.assertEqual([event["observation_ms"] for event in events], [0, 500, 1000, 1500, 2000])
+        waits = events[:3]
+        self.assertTrue(all(event["decision"] == "WAIT" for event in waits))
+        self.assertTrue(all(event["candidate_translation"] is None and event["p_commit"] is None and event["numeric_features"] is None for event in waits))
+        self.assertNotIn((0, 0), provider_on.calls)
+        self.assertEqual(len(policy_on.states), 2)
+        listen, commit = events[3:]
+        self.assertEqual((listen["decision"], listen["decision_reason"]), ("LISTEN", "below_threshold"))
+        self.assertIsNotNone(listen["candidate_translation"])
+        self.assertLess(listen["p_commit"], listen["threshold"])
+        self.assertEqual((commit["decision"], commit["decision_reason"]), ("COMMIT", "policy"))
+        self.assertGreaterEqual(commit["p_commit"], commit["threshold"])
+        numeric_names = set(commit["numeric_features"])
+        self.assertEqual(len(numeric_names), 11)
+        self.assertTrue(all(event["candidate_source_end"] == event["source_token_end"] for event in events))
+        self.assertTrue(all(f"w{event['source_token_end'] + 1}" not in event["candidate_source_text"].split() for event in events if event["source_token_end"] + 1 < 5))
+        trace_commits = [event for event in events if event["decision"] == "COMMIT"]
+        self.assertEqual(len(trace_commits), len(with_trace))
+        for event, commit_record in zip(trace_commits, with_trace):
+            self.assertEqual((event["candidate_source_start"], event["candidate_source_end"]), (commit_record.source_start, commit_record.source_end))
+            self.assertEqual(event["committed_target_text"], commit_record.translated_text)
+            self.assertEqual(event["observation_ms"], commit_record.observation_emit_ms)
+            self.assertEqual(event["decision_reason"], commit_record.reason)
+
+    def test_trace_represents_short_talk_end_and_max_length(self):
+        short_events = []
+        short_commits = learned_rollout(talk(5), Provider(), ThresholdPolicy(1.0), 0.5, short_events.append)
+        self.assertEqual([event["event_index"] for event in short_events], list(range(5)))
+        self.assertEqual((short_events[-1]["decision"], short_events[-1]["decision_reason"], short_events[-1]["candidate_source_start"]), ("COMMIT", "talk_end", 4))
+        self.assertEqual(short_events[-1]["committed_target_text"], short_commits[-1].translated_text)
+        max_events = []
+        learned_rollout(talk(49), Provider(), ThresholdPolicy(0.1), 0.5, max_events.append)
+        maximum = max_events[47]
+        self.assertEqual((maximum["decision"], maximum["decision_reason"], maximum["is_forced"]), ("COMMIT", "max_length", True))
+        self.assertEqual(maximum["p_commit"], 0.1)
+
+    def test_trace_source_clock_is_independent_of_policy_decisions(self):
+        real_events, zero_events = [], []
+        learned_rollout(talk(9), Provider(), ThresholdPolicy(1.0), 0.5, real_events.append)
+        learned_rollout(talk(9), Provider(), ThresholdPolicy(0.0), 0.5, zero_events.append)
+        self.assertEqual(
+            [(event["event_index"], event["source_token_end"], event["observation_ms"]) for event in real_events],
+            [(event["event_index"], event["source_token_end"], event["observation_ms"]) for event in zero_events],
+        )
+
+    def test_read_only_trace_validator_accepts_synthetic_trace(self):
+        events = []
+        runtime = talk(5, split="dev")
+        learned_rollout(runtime, Provider(), SequencePolicy([0.1, 0.9]), 0.5, events.append)
+        validate_demo_trace({
+            "artifact_version": "demo-policy-trace-v1", "talk_id": runtime.talk_id, "split": "dev",
+            "strategy": "p3_global_0.50", "threshold": 0.5, "prepared_context_mode": "zero",
+            "checkpoint_sha256": "synthetic", "source_token_count": len(runtime.tokens),
+            "source_final_emit_ms": runtime.tokens[-1].emit_ms,
+            "prepared_context": {"prepared_context_effective_embedding_norm": 0.0},
+            "events": events,
+        })
+
+
+class P3TraceCliTests(unittest.TestCase):
+    def test_trace_rollout_constraints_are_checked_before_model_loading(self):
+        output = Path("trace.json")
+        for split, thresholds, talk_id, pattern in (
+            ("train", [0.60], "talk", "DEV only"),
+            ("test", [0.60], "talk", "permits TRAIN/DEV"),
+            ("dev", [0.60], None, "talk-id"),
+            ("dev", [0.50, 0.60], "talk", "one threshold"),
+        ):
+            with self.subTest(split=split, thresholds=thresholds, talk_id=talk_id):
+                with self.assertRaisesRegex(RuntimeError, pattern):
+                    rollout_p3(split, thresholds, talk_id=talk_id, trace_output=output)
+
+    def test_trace_output_is_optional_and_cli_validates_before_rollout(self):
+        with patch("timelymt.research.policy_p3_global_runner.rollout_p3") as rollout:
+            cli_main(["rollout-p3", "--split", "dev", "--talk-id", "talk", "--thresholds", "0.60"])
+        self.assertIsNone(rollout.call_args.kwargs["trace_output"])
+        with self.assertRaises(SystemExit):
+            cli_main(["rollout-p3", "--split", "test", "--talk-id", "talk", "--thresholds", "0.60", "--trace-output", "trace.json"])
+        with self.assertRaises(SystemExit):
+            cli_main(["rollout-p3", "--split", "dev", "--thresholds", "0.60", "--trace-output", "trace.json"])
+        with self.assertRaises(SystemExit):
+            cli_main(["rollout-p3", "--split", "dev", "--talk-id", "talk", "--thresholds", "0.50", "0.60", "--trace-output", "trace.json"])
 
 
 class PseudoAndFeatureTests(unittest.TestCase):

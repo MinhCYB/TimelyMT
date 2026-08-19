@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">TimelyMT streaming pipeline</title>
+  <desc id="desc">Causal flow from an incoming source token through buffering, frozen source-only EnViT5 translation, policy inference, and LISTEN or irreversible COMMIT decisions.</desc>
+  <defs>
+    <style>
+      text{font-family:Arial,"Segoe UI",sans-serif;fill:#17232c}.title{font-size:38px;font-weight:700}.sub{font-size:19px;fill:#5d6b75}.label{font-size:23px;font-weight:700}.small{font-size:18px;fill:#53616b}.tiny{font-size:16px;fill:#53616b}.mono{font-family:Consolas,"Courier New",monospace}.box{fill:#fff;stroke:#aebbc3;stroke-width:2.5}.shared{fill:#f4f7f8;stroke:#7f909a}.translator{fill:#edf6f5;stroke:#087b73}.policy{fill:#f2eff7;stroke:#68478f}.wait{fill:#eef1f3;stroke:#53616b}.listen{fill:#fff4df;stroke:#a66b00}.commit{fill:#e8f5ef;stroke:#05734e}.note{fill:#fbfcfc;stroke:#cbd5da;stroke-width:2}.arrow{fill:none;stroke:#60717b;stroke-width:3;marker-end:url(#arrow)}.return{fill:none;stroke:#a66b00;stroke-width:3;stroke-dasharray:9 7;marker-end:url(#amber)}.force{fill:none;stroke:#05734e;stroke-width:2.5;stroke-dasharray:8 6;marker-end:url(#green)}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0l10 5-10 5z" fill="#60717b"/></marker>
+    <marker id="amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0l10 5-10 5z" fill="#a66b00"/></marker>
+    <marker id="green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0l10 5-10 5z" fill="#05734e"/></marker>
+  </defs>
+  <rect width="1600" height="1100" fill="#fff"/>
+  <text x="80" y="70" class="title">TimelyMT streaming pipeline</text>
+  <text x="80" y="105" class="sub">Causal source-only translation with learned irreversible commitment timing</text>
+
+  <rect x="510" y="140" width="580" height="72" rx="12" class="box shared"/>
+  <text x="800" y="185" text-anchor="middle" class="label">Incoming source token</text>
+  <path d="M800 212v38" class="arrow"/>
+  <rect x="510" y="250" width="580" height="80" rx="12" class="box shared"/>
+  <text x="800" y="285" text-anchor="middle" class="label">Current uncommitted source</text>
+  <text x="800" y="313" text-anchor="middle" class="small">buffer since the previous COMMIT</text>
+  <path d="M800 330v35" class="arrow"/>
+
+  <path d="M800 365l150 72-150 72-150-72z" class="box shared"/>
+  <text x="800" y="430" text-anchor="middle" class="label">&lt; 4 tokens?</text>
+  <text x="650" y="414" text-anchor="end" class="small">yes</text>
+  <path d="M650 437H395" class="arrow"/>
+  <rect x="105" y="397" width="290" height="80" rx="12" class="wait" stroke-width="2.5"/>
+  <text x="250" y="432" text-anchor="middle" class="label">WAIT</text>
+  <text x="250" y="459" text-anchor="middle" class="tiny">no translator or policy inference</text>
+  <text x="965" y="414" class="small">no</text>
+  <path d="M950 437h170v70" class="arrow"/>
+
+  <rect x="1040" y="507" width="450" height="94" rx="12" class="translator" stroke-width="3"/>
+  <text x="1265" y="545" text-anchor="middle" class="label">Frozen source-only EnViT5</text>
+  <text x="1265" y="575" text-anchor="middle" class="small">prepared context does not enter translator</text>
+  <path d="M1265 601v44" class="arrow"/>
+  <rect x="1040" y="645" width="450" height="82" rx="12" class="translator" stroke-width="2.5"/>
+  <text x="1265" y="681" text-anchor="middle" class="label">Candidate translation</text>
+  <text x="1265" y="708" text-anchor="middle" class="small">Vietnamese hypothesis for current span</text>
+  <path d="M1040 686H890" class="arrow"/>
+
+  <rect x="530" y="641" width="360" height="90" rx="12" class="policy" stroke-width="3"/>
+  <text x="710" y="678" text-anchor="middle" class="label">Causal policy state</text>
+  <text x="710" y="707" text-anchor="middle" class="small">candidate, history, numeric features</text>
+  <path d="M710 731v42" class="arrow"/>
+  <rect x="530" y="773" width="360" height="74" rx="12" class="policy" stroke-width="3"/>
+  <text x="710" y="819" text-anchor="middle" class="label mono">p(COMMIT)</text>
+  <path d="M710 847v36" class="arrow"/>
+  <path d="M710 883l128 60-128 60-128-60z" class="policy" stroke-width="3"/>
+  <text x="710" y="937" text-anchor="middle" class="label">threshold</text>
+
+  <text x="575" y="929" text-anchor="end" class="small">below</text>
+  <path d="M582 943H395" class="arrow"/>
+  <rect x="105" y="902" width="290" height="82" rx="12" class="listen" stroke-width="3"/>
+  <text x="250" y="938" text-anchor="middle" class="label">LISTEN</text>
+  <text x="250" y="966" text-anchor="middle" class="small">retain source buffer</text>
+  <path d="M250 902V780H470V290h40" class="return"/>
+
+  <text x="845" y="929" class="small">at / above</text>
+  <path d="M838 943h202" class="arrow"/>
+  <rect x="1040" y="897" width="450" height="92" rx="12" class="commit" stroke-width="3"/>
+  <text x="1265" y="934" text-anchor="middle" class="label">COMMIT</text>
+  <text x="1265" y="963" text-anchor="middle" class="small">irreversible target unit</text>
+  <path d="M1265 989v39H800v-18" class="arrow"/>
+  <text x="1028" y="1056" text-anchor="middle" class="small">start a new source buffer</text>
+
+  <rect x="80" y="515" width="370" height="154" rx="10" class="note"/>
+  <text x="105" y="550" class="label" font-size="20">Forced commitment</text>
+  <text x="105" y="586" class="small">• 48-token maximum may force COMMIT</text>
+  <text x="105" y="620" class="small">• talk end flushes residual source</text>
+  <text x="105" y="650" class="tiny">including a span shorter than 4 tokens</text>
+  <path d="M450 592H1010v351h30" class="force"/>
+
+  <rect x="1040" y="765" width="450" height="70" rx="10" class="note"/>
+  <text x="1265" y="794" text-anchor="middle" class="small">Policy-side Prepared context is introduced in P3.</text>
+  <text x="1265" y="820" text-anchor="middle" class="tiny">See Figure 3 for the controlled intervention.</text>
+</svg>

@@ -1,0 +1,1305 @@
+{
+  "scope": "DEV only; read-only existing artifacts",
+  "talks": [
+    "ted-jeff-dean-ai-smart",
+    "ted-luis-von-ahn-crowdsourcing",
+    "ted-sims-witherspoon-ai-climate"
+  ],
+  "context_coverage": [
+    {
+      "talk_id": "ted-jeff-dean-ai-smart",
+      "has_prepared_context": false,
+      "eligible_source_ids": [],
+      "prepared_embedding_norm": 0.0
+    },
+    {
+      "talk_id": "ted-luis-von-ahn-crowdsourcing",
+      "has_prepared_context": false,
+      "eligible_source_ids": [],
+      "prepared_embedding_norm": 0.0
+    },
+    {
+      "talk_id": "ted-sims-witherspoon-ai-climate",
+      "has_prepared_context": true,
+      "eligible_source_ids": [
+        "deepmind-wind-energy-2019-lead"
+      ],
+      "prepared_embedding_norm": 1.0
+    }
+  ],
+  "p3": {
+    "0.30": {
+      "strategy": "p3_global_0.30",
+      "official_metrics": {
+        "BLEU": 25.211545207485425,
+        "chrF2": 61.95923809896677,
+        "token_level_average_lagging": -1.2448261923095463,
+        "token_level_length_adaptive_average_lagging": 2.6261753413698643,
+        "number_of_commits": 2033.0,
+        "commits_per_100_source_tokens": 24.367733429222103,
+        "forced_commit_rate": 0.000983767830791933,
+        "mean_commit_observation_position": 1511.4058042302017,
+        "mean_simulated_source_clock_duration_ms": 1243.7683226758486,
+        "mean_first_commit_simulated_source_clock_latency_ms": 1154.6666666666667,
+        "mean_first_commit_source_tokens": 4,
+        "mean_source_tokens_per_unit": 4.103787506148549,
+        "median_source_tokens_per_unit": 4
+      },
+      "derived_commit_behavior": {
+        "commit_count": 2033,
+        "mean_source_tokens_per_commit": 4.103787506148549,
+        "median_source_tokens_per_commit": 4,
+        "q1_source_tokens_per_commit": 4.0,
+        "q3_source_tokens_per_commit": 4.0,
+        "min_source_tokens_per_commit": 2,
+        "max_source_tokens_per_commit": 34,
+        "four_token_fraction": 0.9714707329070339,
+        "four_to_five_token_fraction": 0.9813084112149533,
+        "at_least_eight_token_fraction": 0.008362026561731432,
+        "policy_commits": 2031,
+        "talk_end_commits": 2,
+        "other_forced_commits": 0,
+        "reason_counts": {
+          "policy": 2031,
+          "talk_end": 2
+        },
+        "mean_commit_interval_ms": 1642.2344827586207,
+        "median_commit_interval_ms": 1581.0,
+        "spans_contiguous": true,
+        "source_coverage_complete": true
+      }
+    },
+    "0.40": {
+      "strategy": "p3_global_0.40",
+      "official_metrics": {
+        "BLEU": 25.08546517195171,
+        "chrF2": 61.70409349053819,
+        "token_level_average_lagging": 0.4254165571759937,
+        "token_level_length_adaptive_average_lagging": 9.80818976615714,
+        "number_of_commits": 1997.0,
+        "commits_per_100_source_tokens": 23.93623396859643,
+        "forced_commit_rate": 0.000500751126690035,
+        "mean_commit_observation_position": 1513.3224837255884,
+        "mean_simulated_source_clock_duration_ms": 1274.1447170756135,
+        "mean_first_commit_simulated_source_clock_latency_ms": 1154.6666666666667,
+        "mean_first_commit_source_tokens": 4,
+        "mean_source_tokens_per_unit": 4.177766649974963,
+        "median_source_tokens_per_unit": 4
+      },
+      "derived_commit_behavior": {
+        "commit_count": 1997,
+        "mean_source_tokens_per_commit": 4.177766649974963,
+        "median_source_tokens_per_commit": 4,
+        "q1_source_tokens_per_commit": 4.0,
+        "q3_source_tokens_per_commit": 4.0,
+        "min_source_tokens_per_commit": 3,
+        "max_source_tokens_per_commit": 26,
+        "four_token_fraction": 0.9549323985978968,
+        "four_to_five_token_fraction": 0.971457185778668,
+        "at_least_eight_token_fraction": 0.017526289434151226,
+        "policy_commits": 1996,
+        "talk_end_commits": 1,
+        "other_forced_commits": 0,
+        "reason_counts": {
+          "policy": 1996,
+          "talk_end": 1
+        },
+        "mean_commit_interval_ms": 1671.8836509528585,
+        "median_commit_interval_ms": 1598.5,
+        "spans_contiguous": true,
+        "source_coverage_complete": true
+      }
+    },
+    "0.50": {
+      "strategy": "p3_global_0.50",
+      "official_metrics": {
+        "BLEU": 25.649193408068562,
+        "chrF2": 61.9232027927194,
+        "token_level_average_lagging": 7.542013221688983,
+        "token_level_length_adaptive_average_lagging": 23.539266076614346,
+        "number_of_commits": 1859.0,
+        "commits_per_100_source_tokens": 22.28215270286468,
+        "forced_commit_rate": 0.0010758472296933835,
+        "mean_commit_observation_position": 1515.393222162453,
+        "mean_simulated_source_clock_duration_ms": 1389.9795589026357,
+        "mean_first_commit_simulated_source_clock_latency_ms": 1154.6666666666667,
+        "mean_first_commit_source_tokens": 4,
+        "mean_source_tokens_per_unit": 4.487896718665949,
+        "median_source_tokens_per_unit": 4
+      },
+      "derived_commit_behavior": {
+        "commit_count": 1859,
+        "mean_source_tokens_per_commit": 4.487896718665949,
+        "median_source_tokens_per_commit": 4,
+        "q1_source_tokens_per_commit": 4.0,
+        "q3_source_tokens_per_commit": 4.0,
+        "min_source_tokens_per_commit": 2,
+        "max_source_tokens_per_commit": 44,
+        "four_token_fraction": 0.9241527703066165,
+        "four_to_five_token_fraction": 0.9478214093598709,
+        "at_least_eight_token_fraction": 0.03388918773534158,
+        "policy_commits": 1857,
+        "talk_end_commits": 2,
+        "other_forced_commits": 0,
+        "reason_counts": {
+          "policy": 1857,
+          "talk_end": 2
+        },
+        "mean_commit_interval_ms": 1796.1939655172414,
+        "median_commit_interval_ms": 1606.0,
+        "spans_contiguous": true,
+        "source_coverage_complete": true
+      }
+    },
+    "0.60": {
+      "strategy": "p3_global_0.60",
+      "official_metrics": {
+        "BLEU": 26.09557742736208,
+        "chrF2": 61.28909159970656,
+        "token_level_average_lagging": 0.7699748883387197,
+        "token_level_length_adaptive_average_lagging": 48.545167374633905,
+        "number_of_commits": 1542.0,
+        "commits_per_100_source_tokens": 18.482560230133046,
+        "forced_commit_rate": 0.009727626459143969,
+        "mean_commit_observation_position": 1524.254215304799,
+        "mean_simulated_source_clock_duration_ms": 1755.4267185473411,
+        "mean_first_commit_simulated_source_clock_latency_ms": 1154.6666666666667,
+        "mean_first_commit_source_tokens": 4,
+        "mean_source_tokens_per_unit": 5.410505836575876,
+        "median_source_tokens_per_unit": 4.0
+      },
+      "derived_commit_behavior": {
+        "commit_count": 1542,
+        "mean_source_tokens_per_commit": 5.410505836575876,
+        "median_source_tokens_per_commit": 4.0,
+        "q1_source_tokens_per_commit": 4.0,
+        "q3_source_tokens_per_commit": 4.0,
+        "min_source_tokens_per_commit": 3,
+        "max_source_tokens_per_commit": 48,
+        "four_token_fraction": 0.8664072632944229,
+        "four_to_five_token_fraction": 0.893644617380026,
+        "at_least_eight_token_fraction": 0.07846952010376135,
+        "policy_commits": 1527,
+        "talk_end_commits": 3,
+        "other_forced_commits": 12,
+        "reason_counts": {
+          "max_length": 12,
+          "policy": 1527,
+          "talk_end": 3
+        },
+        "mean_commit_interval_ms": 2166.1702404158546,
+        "median_commit_interval_ms": 1633,
+        "spans_contiguous": true,
+        "source_coverage_complete": true
+      }
+    },
+    "0.70": {
+      "strategy": "p3_global_0.70",
+      "official_metrics": {
+        "BLEU": 28.32219629554391,
+        "chrF2": 61.97746973737286,
+        "token_level_average_lagging": 19.15511826486469,
+        "token_level_length_adaptive_average_lagging": 80.24541729912269,
+        "number_of_commits": 1005.0,
+        "commits_per_100_source_tokens": 12.046026609133405,
+        "forced_commit_rate": 0.07064676616915423,
+        "mean_commit_observation_position": 1496.7512437810944,
+        "mean_simulated_source_clock_duration_ms": 2926.2179104477614,
+        "mean_first_commit_simulated_source_clock_latency_ms": 1154.6666666666667,
+        "mean_first_commit_source_tokens": 4,
+        "mean_source_tokens_per_unit": 8.301492537313433,
+        "median_source_tokens_per_unit": 4
+      },
+      "derived_commit_behavior": {
+        "commit_count": 1005,
+        "mean_source_tokens_per_commit": 8.301492537313433,
+        "median_source_tokens_per_commit": 4,
+        "q1_source_tokens_per_commit": 4.0,
+        "q3_source_tokens_per_commit": 4.0,
+        "min_source_tokens_per_commit": 1,
+        "max_source_tokens_per_commit": 48,
+        "four_token_fraction": 0.7751243781094528,
+        "four_to_five_token_fraction": 0.8079601990049752,
+        "at_least_eight_token_fraction": 0.1572139303482587,
+        "policy_commits": 934,
+        "talk_end_commits": 3,
+        "other_forced_commits": 68,
+        "reason_counts": {
+          "max_length": 68,
+          "policy": 934,
+          "talk_end": 3
+        },
+        "mean_commit_interval_ms": 3327.081836327345,
+        "median_commit_interval_ms": 1700.0,
+        "spans_contiguous": true,
+        "source_coverage_complete": true
+      }
+    }
+  },
+  "p2": {
+    "0.30": {
+      "strategy": "v2_P2_0.30",
+      "official_metrics": {
+        "BLEU": 25.366136492464335,
+        "chrF2": 61.40380275863478,
+        "token_level_average_lagging": -6.13971719599003,
+        "token_level_length_adaptive_average_lagging": 15.256484570891015,
+        "number_of_commits": 1913.0,
+        "commits_per_100_source_tokens": 22.92940189380319,
+        "forced_commit_rate": 0.0010454783063251437,
+        "mean_commit_observation_position": 1480.9409304756925,
+        "mean_simulated_source_clock_duration_ms": 1348.9048614741243,
+        "mean_first_commit_simulated_source_clock_latency_ms": 1154.6666666666667,
+        "mean_first_commit_source_tokens": 4,
+        "mean_source_tokens_per_unit": 4.361212754835337,
+        "median_source_tokens_per_unit": 4
+      },
+      "derived_commit_behavior": {
+        "commit_count": 1913,
+        "mean_source_tokens_per_commit": 4.361212754835337,
+        "median_source_tokens_per_commit": 4,
+        "q1_source_tokens_per_commit": 4.0,
+        "q3_source_tokens_per_commit": 4.0,
+        "min_source_tokens_per_commit": 2,
+        "max_source_tokens_per_commit": 39,
+        "four_token_fraction": 0.9372713016204913,
+        "four_to_five_token_fraction": 0.9607945635128071,
+        "at_least_eight_token_fraction": 0.023523261892315735,
+        "policy_commits": 1911,
+        "talk_end_commits": 2,
+        "other_forced_commits": 0,
+        "reason_counts": {
+          "policy": 1911,
+          "talk_end": 2
+        },
+        "mean_commit_interval_ms": 1745.4115183246074,
+        "median_commit_interval_ms": 1600.0,
+        "spans_contiguous": true,
+        "source_coverage_complete": true
+      }
+    },
+    "0.40": {
+      "strategy": "v2_P2_0.40",
+      "official_metrics": {
+        "BLEU": 25.161558627850564,
+        "chrF2": 61.17448271066026,
+        "token_level_average_lagging": -17.890124746755454,
+        "token_level_length_adaptive_average_lagging": 17.41181187160085,
+        "number_of_commits": 1727.0,
+        "commits_per_100_source_tokens": 20.699988013903873,
+        "forced_commit_rate": 0.0017371163867979154,
+        "mean_commit_observation_position": 1462.5836711059642,
+        "mean_simulated_source_clock_duration_ms": 1535.5234510712219,
+        "mean_first_commit_simulated_source_clock_latency_ms": 4564.666666666667,
+        "mean_first_commit_source_tokens": 12.666666666666666,
+        "mean_source_tokens_per_unit": 4.830920671685003,
+        "median_source_tokens_per_unit": 4
+      },
+      "derived_commit_behavior": {
+        "commit_count": 1727,
+        "mean_source_tokens_per_commit": 4.830920671685003,
+        "median_source_tokens_per_commit": 4,
+        "q1_source_tokens_per_commit": 4.0,
+        "q3_source_tokens_per_commit": 4.0,
+        "min_source_tokens_per_commit": 1,
+        "max_source_tokens_per_commit": 43,
+        "four_token_fraction": 0.8674001158077591,
+        "four_to_five_token_fraction": 0.9015634047481181,
+        "at_least_eight_token_fraction": 0.06079907353792704,
+        "policy_commits": 1724,
+        "talk_end_commits": 3,
+        "other_forced_commits": 0,
+        "reason_counts": {
+          "policy": 1724,
+          "talk_end": 3
+        },
+        "mean_commit_interval_ms": 1927.7877030162413,
+        "median_commit_interval_ms": 1639.0,
+        "spans_contiguous": true,
+        "source_coverage_complete": true
+      }
+    },
+    "0.50": {
+      "strategy": "v2_P2_0.50",
+      "official_metrics": {
+        "BLEU": 25.99316780830467,
+        "chrF2": 61.45529837476683,
+        "token_level_average_lagging": -19.41714949602802,
+        "token_level_length_adaptive_average_lagging": 19.5890847244183,
+        "number_of_commits": 1474.0,
+        "commits_per_100_source_tokens": 17.66750569339566,
+        "forced_commit_rate": 0.0027137042062415195,
+        "mean_commit_observation_position": 1443.7672998643147,
+        "mean_simulated_source_clock_duration_ms": 1868.1709633649932,
+        "mean_first_commit_simulated_source_clock_latency_ms": 4564.666666666667,
+        "mean_first_commit_source_tokens": 12.666666666666666,
+        "mean_source_tokens_per_unit": 5.66010854816825,
+        "median_source_tokens_per_unit": 4.0
+      },
+      "derived_commit_behavior": {
+        "commit_count": 1474,
+        "mean_source_tokens_per_commit": 5.66010854816825,
+        "median_source_tokens_per_commit": 4.0,
+        "q1_source_tokens_per_commit": 4.0,
+        "q3_source_tokens_per_commit": 4.0,
+        "min_source_tokens_per_commit": 1,
+        "max_source_tokens_per_commit": 48,
+        "four_token_fraction": 0.7971506105834464,
+        "four_to_five_token_fraction": 0.8405698778833107,
+        "at_least_eight_token_fraction": 0.12008141112618724,
+        "policy_commits": 1470,
+        "talk_end_commits": 3,
+        "other_forced_commits": 1,
+        "reason_counts": {
+          "max_length": 1,
+          "policy": 1470,
+          "talk_end": 3
+        },
+        "mean_commit_interval_ms": 2259.3514615907548,
+        "median_commit_interval_ms": 1671,
+        "spans_contiguous": true,
+        "source_coverage_complete": true
+      }
+    },
+    "0.60": {
+      "strategy": "v2_P2_0.60",
+      "official_metrics": {
+        "BLEU": 27.749713944355275,
+        "chrF2": 62.06398282369552,
+        "token_level_average_lagging": 0.41202481758880366,
+        "token_level_length_adaptive_average_lagging": 82.29525150394238,
+        "number_of_commits": 1031.0,
+        "commits_per_100_source_tokens": 12.357665108474169,
+        "forced_commit_rate": 0.006789524733268671,
+        "mean_commit_observation_position": 1451.290979631426,
+        "mean_simulated_source_clock_duration_ms": 2846.375363724539,
+        "mean_first_commit_simulated_source_clock_latency_ms": 4564.666666666667,
+        "mean_first_commit_source_tokens": 12.666666666666666,
+        "mean_source_tokens_per_unit": 8.092143549951503,
+        "median_source_tokens_per_unit": 4
+      },
+      "derived_commit_behavior": {
+        "commit_count": 1031,
+        "mean_source_tokens_per_commit": 8.092143549951503,
+        "median_source_tokens_per_commit": 4,
+        "q1_source_tokens_per_commit": 4.0,
+        "q3_source_tokens_per_commit": 6.0,
+        "min_source_tokens_per_commit": 3,
+        "max_source_tokens_per_commit": 48,
+        "four_token_fraction": 0.6818622696411252,
+        "four_to_five_token_fraction": 0.7225994180407371,
+        "at_least_eight_token_fraction": 0.22502424830261883,
+        "policy_commits": 1024,
+        "talk_end_commits": 3,
+        "other_forced_commits": 4,
+        "reason_counts": {
+          "max_length": 4,
+          "policy": 1024,
+          "talk_end": 3
+        },
+        "mean_commit_interval_ms": 3232.9824902723735,
+        "median_commit_interval_ms": 1751.5,
+        "spans_contiguous": true,
+        "source_coverage_complete": true
+      }
+    },
+    "0.70": {
+      "strategy": "v2_P2_0.70",
+      "official_metrics": {
+        "BLEU": 30.03812824535548,
+        "chrF2": 62.739942327150054,
+        "token_level_average_lagging": -6.427385806932805,
+        "token_level_length_adaptive_average_lagging": 66.23194806574296,
+        "number_of_commits": 659.0,
+        "commits_per_100_source_tokens": 7.898837348675537,
+        "forced_commit_rate": 0.08497723823975721,
+        "mean_commit_observation_position": 1434.2124430955994,
+        "mean_simulated_source_clock_duration_ms": 4676.361153262519,
+        "mean_first_commit_simulated_source_clock_latency_ms": 7817,
+        "mean_first_commit_source_tokens": 20.333333333333332,
+        "mean_source_tokens_per_unit": 12.660091047040972,
+        "median_source_tokens_per_unit": 4
+      },
+      "derived_commit_behavior": {
+        "commit_count": 659,
+        "mean_source_tokens_per_commit": 12.660091047040972,
+        "median_source_tokens_per_commit": 4,
+        "q1_source_tokens_per_commit": 4.0,
+        "q3_source_tokens_per_commit": 15.0,
+        "min_source_tokens_per_commit": 4,
+        "max_source_tokens_per_commit": 48,
+        "four_token_fraction": 0.5417298937784522,
+        "four_to_five_token_fraction": 0.5857359635811836,
+        "at_least_eight_token_fraction": 0.3581183611532625,
+        "policy_commits": 603,
+        "talk_end_commits": 3,
+        "other_forced_commits": 53,
+        "reason_counts": {
+          "max_length": 53,
+          "policy": 603,
+          "talk_end": 3
+        },
+        "mean_commit_interval_ms": 5051.446646341464,
+        "median_commit_interval_ms": 2056.5,
+        "spans_contiguous": true,
+        "source_coverage_complete": true
+      }
+    }
+  },
+  "same_threshold_delta_p3_minus_p2": {
+    "0.30": {
+      "BLEU": -0.15459128497890973,
+      "chrF2": 0.5554353403319894,
+      "AL": 4.894891003680483,
+      "LAAL": -12.630309229521151,
+      "commit_count": 120.0
+    },
+    "0.40": {
+      "BLEU": -0.07609345589885308,
+      "chrF2": 0.5296107798779346,
+      "AL": 18.315541303931447,
+      "LAAL": -7.60362210544371,
+      "commit_count": 270.0
+    },
+    "0.50": {
+      "BLEU": -0.3439744002361067,
+      "chrF2": 0.46790441795256754,
+      "AL": 26.959162717717003,
+      "LAAL": 3.950181352196047,
+      "commit_count": 385.0
+    },
+    "0.60": {
+      "BLEU": -1.6541365169931943,
+      "chrF2": -0.7748912239889592,
+      "AL": 0.3579500707499161,
+      "LAAL": -33.750084129308476,
+      "commit_count": 511.0
+    },
+    "0.70": {
+      "BLEU": -1.7159319498115693,
+      "chrF2": -0.7624725897771967,
+      "AL": 25.582504071797494,
+      "LAAL": 14.013469233379737,
+      "commit_count": 346.0
+    }
+  },
+  "per_talk": {
+    "p3": {
+      "0.30": {
+        "ted-jeff-dean-ai-smart": {
+          "commit_count": 831,
+          "mean_source_tokens_per_commit": 4.086642599277979,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 3,
+          "max_source_tokens_per_commit": 34,
+          "four_token_fraction": 0.9807460890493381,
+          "four_to_five_token_fraction": 0.9843561973525873,
+          "at_least_eight_token_fraction": 0.006016847172081829,
+          "reason_counts": {
+            "policy": 830,
+            "talk_end": 1
+          },
+          "policy_commits": 830,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1635.0602409638554,
+          "median_commit_interval_ms": 1571.0,
+          "source_tokens": 3396,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "commit_count": 790,
+          "mean_source_tokens_per_commit": 4.124050632911392,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 2,
+          "max_source_tokens_per_commit": 24,
+          "four_token_fraction": 0.9658227848101266,
+          "four_to_five_token_fraction": 0.9810126582278481,
+          "at_least_eight_token_fraction": 0.008860759493670886,
+          "reason_counts": {
+            "policy": 789,
+            "talk_end": 1
+          },
+          "policy_commits": 789,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1650.1749049429657,
+          "median_commit_interval_ms": 1600,
+          "source_tokens": 3258,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "commit_count": 412,
+          "mean_source_tokens_per_commit": 4.099514563106796,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 11,
+          "four_token_fraction": 0.9635922330097088,
+          "four_to_five_token_fraction": 0.9757281553398058,
+          "at_least_eight_token_fraction": 0.012135922330097087,
+          "reason_counts": {
+            "policy": 412
+          },
+          "policy_commits": 412,
+          "talk_end_commits": 0,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1641.4793187347932,
+          "median_commit_interval_ms": 1572,
+          "source_tokens": 1689,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        }
+      },
+      "0.40": {
+        "ted-jeff-dean-ai-smart": {
+          "commit_count": 822,
+          "mean_source_tokens_per_commit": 4.131386861313868,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 15,
+          "four_token_fraction": 0.9647201946472019,
+          "four_to_five_token_fraction": 0.9817518248175182,
+          "at_least_eight_token_fraction": 0.014598540145985401,
+          "reason_counts": {
+            "policy": 822
+          },
+          "policy_commits": 822,
+          "talk_end_commits": 0,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1652.9841656516444,
+          "median_commit_interval_ms": 1600,
+          "source_tokens": 3396,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "commit_count": 780,
+          "mean_source_tokens_per_commit": 4.176923076923077,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 26,
+          "four_token_fraction": 0.9551282051282052,
+          "four_to_five_token_fraction": 0.9705128205128205,
+          "at_least_eight_token_fraction": 0.014102564102564103,
+          "reason_counts": {
+            "policy": 780
+          },
+          "policy_commits": 780,
+          "talk_end_commits": 0,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1671.3581514762516,
+          "median_commit_interval_ms": 1591,
+          "source_tokens": 3258,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "commit_count": 395,
+          "mean_source_tokens_per_commit": 4.275949367088607,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 3,
+          "max_source_tokens_per_commit": 22,
+          "four_token_fraction": 0.9341772151898734,
+          "four_to_five_token_fraction": 0.9518987341772152,
+          "at_least_eight_token_fraction": 0.030379746835443037,
+          "reason_counts": {
+            "policy": 394,
+            "talk_end": 1
+          },
+          "policy_commits": 394,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1712.3045685279187,
+          "median_commit_interval_ms": 1600.0,
+          "source_tokens": 1689,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        }
+      },
+      "0.50": {
+        "ted-jeff-dean-ai-smart": {
+          "commit_count": 787,
+          "mean_source_tokens_per_commit": 4.315120711562897,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 44,
+          "four_token_fraction": 0.9453621346886912,
+          "four_to_five_token_fraction": 0.9644218551461246,
+          "at_least_eight_token_fraction": 0.025412960609911054,
+          "reason_counts": {
+            "policy": 787
+          },
+          "policy_commits": 787,
+          "talk_end_commits": 0,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1726.590330788804,
+          "median_commit_interval_ms": 1582.0,
+          "source_tokens": 3396,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "commit_count": 713,
+          "mean_source_tokens_per_commit": 4.5694249649368865,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 2,
+          "max_source_tokens_per_commit": 41,
+          "four_token_fraction": 0.9172510518934082,
+          "four_to_five_token_fraction": 0.9396914446002805,
+          "at_least_eight_token_fraction": 0.03927068723702665,
+          "reason_counts": {
+            "policy": 712,
+            "talk_end": 1
+          },
+          "policy_commits": 712,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1828.6348314606741,
+          "median_commit_interval_ms": 1633.0,
+          "source_tokens": 3258,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "commit_count": 359,
+          "mean_source_tokens_per_commit": 4.704735376044568,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 3,
+          "max_source_tokens_per_commit": 39,
+          "four_token_fraction": 0.8913649025069638,
+          "four_to_five_token_fraction": 0.9275766016713092,
+          "at_least_eight_token_fraction": 0.04178272980501393,
+          "reason_counts": {
+            "policy": 358,
+            "talk_end": 1
+          },
+          "policy_commits": 358,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1884.491620111732,
+          "median_commit_interval_ms": 1610.5,
+          "source_tokens": 1689,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        }
+      },
+      "0.60": {
+        "ted-jeff-dean-ai-smart": {
+          "commit_count": 646,
+          "mean_source_tokens_per_commit": 5.256965944272446,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 3,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.891640866873065,
+          "four_to_five_token_fraction": 0.9055727554179567,
+          "at_least_eight_token_fraction": 0.07120743034055728,
+          "reason_counts": {
+            "max_length": 4,
+            "policy": 641,
+            "talk_end": 1
+          },
+          "policy_commits": 641,
+          "talk_end_commits": 1,
+          "other_forced_commits": 4,
+          "mean_commit_interval_ms": 2104.031007751938,
+          "median_commit_interval_ms": 1617,
+          "source_tokens": 3396,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "commit_count": 578,
+          "mean_source_tokens_per_commit": 5.6366782006920415,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.8494809688581315,
+          "four_to_five_token_fraction": 0.884083044982699,
+          "at_least_eight_token_fraction": 0.0847750865051903,
+          "reason_counts": {
+            "max_length": 5,
+            "policy": 572,
+            "talk_end": 1
+          },
+          "policy_commits": 572,
+          "talk_end_commits": 1,
+          "other_forced_commits": 5,
+          "mean_commit_interval_ms": 2256.4783362218373,
+          "median_commit_interval_ms": 1649,
+          "source_tokens": 3258,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "commit_count": 318,
+          "mean_source_tokens_per_commit": 5.311320754716981,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 3,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.8459119496855346,
+          "four_to_five_token_fraction": 0.8867924528301887,
+          "at_least_eight_token_fraction": 0.08176100628930817,
+          "reason_counts": {
+            "max_length": 3,
+            "policy": 314,
+            "talk_end": 1
+          },
+          "policy_commits": 314,
+          "talk_end_commits": 1,
+          "other_forced_commits": 3,
+          "mean_commit_interval_ms": 2128.2271293375393,
+          "median_commit_interval_ms": 1611,
+          "source_tokens": 1689,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        }
+      },
+      "0.70": {
+        "ted-jeff-dean-ai-smart": {
+          "commit_count": 435,
+          "mean_source_tokens_per_commit": 7.8068965517241375,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 2,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.8045977011494253,
+          "four_to_five_token_fraction": 0.8229885057471265,
+          "at_least_eight_token_fraction": 0.14022988505747128,
+          "reason_counts": {
+            "max_length": 27,
+            "policy": 407,
+            "talk_end": 1
+          },
+          "policy_commits": 407,
+          "talk_end_commits": 1,
+          "other_forced_commits": 27,
+          "mean_commit_interval_ms": 3126.958525345622,
+          "median_commit_interval_ms": 1685.0,
+          "source_tokens": 3396,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "commit_count": 344,
+          "mean_source_tokens_per_commit": 9.470930232558139,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.752906976744186,
+          "four_to_five_token_fraction": 0.7848837209302325,
+          "at_least_eight_token_fraction": 0.18604651162790697,
+          "reason_counts": {
+            "max_length": 29,
+            "policy": 314,
+            "talk_end": 1
+          },
+          "policy_commits": 314,
+          "talk_end_commits": 1,
+          "other_forced_commits": 29,
+          "mean_commit_interval_ms": 3795.883381924198,
+          "median_commit_interval_ms": 1741,
+          "source_tokens": 3258,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "commit_count": 226,
+          "mean_source_tokens_per_commit": 7.4734513274336285,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 1,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.7522123893805309,
+          "four_to_five_token_fraction": 0.8141592920353983,
+          "at_least_eight_token_fraction": 0.14601769911504425,
+          "reason_counts": {
+            "max_length": 12,
+            "policy": 213,
+            "talk_end": 1
+          },
+          "policy_commits": 213,
+          "talk_end_commits": 1,
+          "other_forced_commits": 12,
+          "mean_commit_interval_ms": 2998.4355555555558,
+          "median_commit_interval_ms": 1698,
+          "source_tokens": 1689,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        }
+      }
+    },
+    "p2": {
+      "0.30": {
+        "ted-jeff-dean-ai-smart": {
+          "commit_count": 780,
+          "mean_source_tokens_per_commit": 4.3538461538461535,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 2,
+          "max_source_tokens_per_commit": 36,
+          "four_token_fraction": 0.9423076923076923,
+          "four_to_five_token_fraction": 0.9705128205128205,
+          "at_least_eight_token_fraction": 0.020512820512820513,
+          "reason_counts": {
+            "policy": 779,
+            "talk_end": 1
+          },
+          "policy_commits": 779,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1742.1052631578948,
+          "median_commit_interval_ms": 1583,
+          "source_tokens": 3396,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "commit_count": 735,
+          "mean_source_tokens_per_commit": 4.43265306122449,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 39,
+          "four_token_fraction": 0.927891156462585,
+          "four_to_five_token_fraction": 0.9482993197278912,
+          "at_least_eight_token_fraction": 0.029931972789115645,
+          "reason_counts": {
+            "policy": 734,
+            "talk_end": 1
+          },
+          "policy_commits": 734,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1773.8256130790191,
+          "median_commit_interval_ms": 1600.0,
+          "source_tokens": 3258,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "commit_count": 398,
+          "mean_source_tokens_per_commit": 4.243718592964824,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 28,
+          "four_token_fraction": 0.9447236180904522,
+          "four_to_five_token_fraction": 0.964824120603015,
+          "at_least_eight_token_fraction": 0.017587939698492462,
+          "reason_counts": {
+            "policy": 398
+          },
+          "policy_commits": 398,
+          "talk_end_commits": 0,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1699.3652392947104,
+          "median_commit_interval_ms": 1600,
+          "source_tokens": 1689,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        }
+      },
+      "0.40": {
+        "ted-jeff-dean-ai-smart": {
+          "commit_count": 696,
+          "mean_source_tokens_per_commit": 4.879310344827586,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 43,
+          "four_token_fraction": 0.8591954022988506,
+          "four_to_five_token_fraction": 0.8994252873563219,
+          "at_least_eight_token_fraction": 0.05747126436781609,
+          "reason_counts": {
+            "policy": 695,
+            "talk_end": 1
+          },
+          "policy_commits": 695,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1952.6618705035971,
+          "median_commit_interval_ms": 1660,
+          "source_tokens": 3396,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "commit_count": 669,
+          "mean_source_tokens_per_commit": 4.869955156950673,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 1,
+          "max_source_tokens_per_commit": 36,
+          "four_token_fraction": 0.8654708520179372,
+          "four_to_five_token_fraction": 0.8923766816143498,
+          "at_least_eight_token_fraction": 0.07174887892376682,
+          "reason_counts": {
+            "policy": 668,
+            "talk_end": 1
+          },
+          "policy_commits": 668,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1933.7694610778442,
+          "median_commit_interval_ms": 1635.0,
+          "source_tokens": 3258,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "commit_count": 362,
+          "mean_source_tokens_per_commit": 4.665745856353591,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 35,
+          "four_token_fraction": 0.8867403314917127,
+          "four_to_five_token_fraction": 0.9226519337016574,
+          "at_least_eight_token_fraction": 0.04696132596685083,
+          "reason_counts": {
+            "policy": 361,
+            "talk_end": 1
+          },
+          "policy_commits": 361,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 1868.8310249307478,
+          "median_commit_interval_ms": 1611,
+          "source_tokens": 1689,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        }
+      },
+      "0.50": {
+        "ted-jeff-dean-ai-smart": {
+          "commit_count": 573,
+          "mean_source_tokens_per_commit": 5.9267015706806285,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 1,
+          "max_source_tokens_per_commit": 46,
+          "four_token_fraction": 0.7713787085514834,
+          "four_to_five_token_fraction": 0.8115183246073299,
+          "at_least_eight_token_fraction": 0.1431064572425829,
+          "reason_counts": {
+            "policy": 572,
+            "talk_end": 1
+          },
+          "policy_commits": 572,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 2372.5524475524476,
+          "median_commit_interval_ms": 1689.0,
+          "source_tokens": 3396,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "commit_count": 581,
+          "mean_source_tokens_per_commit": 5.607573149741825,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.8037865748709122,
+          "four_to_five_token_fraction": 0.8519793459552496,
+          "at_least_eight_token_fraction": 0.11015490533562823,
+          "reason_counts": {
+            "max_length": 1,
+            "policy": 579,
+            "talk_end": 1
+          },
+          "policy_commits": 579,
+          "talk_end_commits": 1,
+          "other_forced_commits": 1,
+          "mean_commit_interval_ms": 2227.1689655172413,
+          "median_commit_interval_ms": 1649.5,
+          "source_tokens": 3258,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "commit_count": 320,
+          "mean_source_tokens_per_commit": 5.278125,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 38,
+          "four_token_fraction": 0.83125,
+          "four_to_five_token_fraction": 0.871875,
+          "at_least_eight_token_fraction": 0.096875,
+          "reason_counts": {
+            "policy": 319,
+            "talk_end": 1
+          },
+          "policy_commits": 319,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 2114.884012539185,
+          "median_commit_interval_ms": 1671,
+          "source_tokens": 1689,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        }
+      },
+      "0.60": {
+        "ted-jeff-dean-ai-smart": {
+          "commit_count": 388,
+          "mean_source_tokens_per_commit": 8.75257731958763,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 8.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.6417525773195877,
+          "four_to_five_token_fraction": 0.6804123711340206,
+          "at_least_eight_token_fraction": 0.2551546391752577,
+          "reason_counts": {
+            "max_length": 3,
+            "policy": 384,
+            "talk_end": 1
+          },
+          "policy_commits": 384,
+          "talk_end_commits": 1,
+          "other_forced_commits": 3,
+          "mean_commit_interval_ms": 3506.71834625323,
+          "median_commit_interval_ms": 1768,
+          "source_tokens": 3396,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "commit_count": 408,
+          "mean_source_tokens_per_commit": 7.985294117647059,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 6.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.678921568627451,
+          "four_to_five_token_fraction": 0.7230392156862745,
+          "at_least_eight_token_fraction": 0.23284313725490197,
+          "reason_counts": {
+            "max_length": 1,
+            "policy": 406,
+            "talk_end": 1
+          },
+          "policy_commits": 406,
+          "talk_end_commits": 1,
+          "other_forced_commits": 1,
+          "mean_commit_interval_ms": 3173.8525798525798,
+          "median_commit_interval_ms": 1746,
+          "source_tokens": 3258,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "commit_count": 235,
+          "mean_source_tokens_per_commit": 7.187234042553191,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 4.0,
+          "min_source_tokens_per_commit": 3,
+          "max_source_tokens_per_commit": 46,
+          "four_token_fraction": 0.7531914893617021,
+          "four_to_five_token_fraction": 0.7914893617021277,
+          "at_least_eight_token_fraction": 0.16170212765957448,
+          "reason_counts": {
+            "policy": 234,
+            "talk_end": 1
+          },
+          "policy_commits": 234,
+          "talk_end_commits": 1,
+          "other_forced_commits": 0,
+          "mean_commit_interval_ms": 2883.1111111111113,
+          "median_commit_interval_ms": 1725.0,
+          "source_tokens": 1689,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        }
+      },
+      "0.70": {
+        "ted-jeff-dean-ai-smart": {
+          "commit_count": 200,
+          "mean_source_tokens_per_commit": 16.98,
+          "median_source_tokens_per_commit": 5.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 34.25,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.46,
+          "four_to_five_token_fraction": 0.51,
+          "at_least_eight_token_fraction": 0.45,
+          "reason_counts": {
+            "max_length": 32,
+            "policy": 167,
+            "talk_end": 1
+          },
+          "policy_commits": 167,
+          "talk_end_commits": 1,
+          "other_forced_commits": 32,
+          "mean_commit_interval_ms": 6819.597989949749,
+          "median_commit_interval_ms": 2344,
+          "source_tokens": 3396,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "commit_count": 299,
+          "mean_source_tokens_per_commit": 10.896321070234114,
+          "median_source_tokens_per_commit": 4,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 14.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.5652173913043478,
+          "four_to_five_token_fraction": 0.5986622073578596,
+          "at_least_eight_token_fraction": 0.3411371237458194,
+          "reason_counts": {
+            "max_length": 10,
+            "policy": 288,
+            "talk_end": 1
+          },
+          "policy_commits": 288,
+          "talk_end_commits": 1,
+          "other_forced_commits": 10,
+          "mean_commit_interval_ms": 4334.758389261745,
+          "median_commit_interval_ms": 2020.5,
+          "source_tokens": 3258,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "commit_count": 160,
+          "mean_source_tokens_per_commit": 10.55625,
+          "median_source_tokens_per_commit": 4.0,
+          "q1_source_tokens_per_commit": 4.0,
+          "q3_source_tokens_per_commit": 9.0,
+          "min_source_tokens_per_commit": 4,
+          "max_source_tokens_per_commit": 48,
+          "four_token_fraction": 0.6,
+          "four_to_five_token_fraction": 0.65625,
+          "at_least_eight_token_fraction": 0.275,
+          "reason_counts": {
+            "max_length": 11,
+            "policy": 148,
+            "talk_end": 1
+          },
+          "policy_commits": 148,
+          "talk_end_commits": 1,
+          "other_forced_commits": 11,
+          "mean_commit_interval_ms": 4181.704402515723,
+          "median_commit_interval_ms": 1854,
+          "source_tokens": 1689,
+          "spans_contiguous": true,
+          "source_coverage_complete": true
+        }
+      }
+    }
+  },
+  "integrity": {
+    "anomalies": [],
+    "expected_prediction_artifacts": 30,
+    "found_relevant_prediction_artifacts": 30,
+    "p3_prediction_artifacts": 15,
+    "p2_prediction_artifacts": 15,
+    "all_spans_contiguous_and_complete": true,
+    "artifact_versions": {
+      "p3": "1.0.0",
+      "p2": "1.0.0"
+    }
+  },
+  "pareto": {
+    "criteria": "Higher BLEU and chrF2; lower AL and LAAL; strong dominance requires no worse value on all four and strict improvement on at least one.",
+    "strongly_dominated": [
+      "P3 0.40",
+      "P3 0.70",
+      "P2 0.60"
+    ],
+    "not_strongly_dominated": [
+      "P3 0.30",
+      "P3 0.50",
+      "P3 0.60",
+      "P2 0.30",
+      "P2 0.40",
+      "P2 0.50",
+      "P2 0.70"
+    ]
+  },
+  "vs_frozen_v2_p2_0_50": {
+    "0.30": {
+      "BLEU": -0.7816226008192437,
+      "chrF2": 0.5039397241999382,
+      "AL": 18.172323303718475,
+      "LAAL": -16.962909383048434,
+      "commit_count": 559.0
+    },
+    "0.40": {
+      "BLEU": -0.9077026363529583,
+      "chrF2": 0.24879511577135816,
+      "AL": 19.842566053204013,
+      "LAAL": -9.78089495826116,
+      "commit_count": 523.0
+    },
+    "0.50": {
+      "BLEU": -0.3439744002361067,
+      "chrF2": 0.46790441795256754,
+      "AL": 26.959162717717003,
+      "LAAL": 3.950181352196047,
+      "commit_count": 385.0
+    },
+    "0.60": {
+      "BLEU": 0.1024096190574113,
+      "chrF2": -0.16620677506027448,
+      "AL": 20.18712438436674,
+      "LAAL": 28.956082650215606,
+      "commit_count": 68.0
+    },
+    "0.70": {
+      "BLEU": 2.329028487239242,
+      "chrF2": 0.5221713626060236,
+      "AL": 38.572267760892714,
+      "LAAL": 60.65633257470439,
+      "commit_count": -469.0
+    }
+  }
+}

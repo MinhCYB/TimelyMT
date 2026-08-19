@@ -1,0 +1,4339 @@
+{
+  "talk_id": "ted-sims-witherspoon-ai-climate",
+  "threshold": 0.6,
+  "pair_integrity": {
+    "synchronized": true,
+    "talk_id": "ted-sims-witherspoon-ai-climate",
+    "threshold": 0.6,
+    "checkpoint_sha256": "ccf829fdb7ab521cc12c299583efa7222c965440b1257ddfb35e03ddd7bcadb9",
+    "source_token_count": 1689,
+    "source_final_emit_ms": 675600,
+    "event_count": 1689,
+    "source_timeline_fields": [
+      "event_index",
+      "source_token_end",
+      "observation_ms"
+    ]
+  },
+  "summary": {
+    "identical_decisions": 1200,
+    "differing_decisions": 489
+  },
+  "divergence_statistics": {
+    "relation_counts": {
+      "DIFFERENT_COMMIT_BOUNDARY": 137,
+      "OTHER_DIFFERENCE": 759,
+      "REAL_COMMIT_ZERO_LISTEN": 47,
+      "REAL_LISTEN_ZERO_COMMIT": 23,
+      "SAME_COMMIT": 34,
+      "SAME_LISTEN": 176,
+      "SAME_WAIT": 513
+    },
+    "real_commit_zero_listen": 47,
+    "real_listen_zero_commit": 23,
+    "first_divergence": {
+      "event_index": 131,
+      "observation_ms": 53000,
+      "source_token_end": 131,
+      "relation": "REAL_COMMIT_ZERO_LISTEN",
+      "delta_p_commit": 0.05560910701751709,
+      "absolute_delta_p_commit": 0.05560910701751709,
+      "real": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.6310335397720337,
+        "candidate_source_start": 124,
+        "candidate_source_end": 131,
+        "candidate_source_text": "renewable energy Electrify everything else Deploy solutions that",
+        "candidate_translation": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó",
+        "committed_target_text": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó"
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.5754244327545166,
+        "candidate_source_start": 124,
+        "candidate_source_end": 131,
+        "candidate_source_text": "renewable energy Electrify everything else Deploy solutions that",
+        "candidate_translation": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó",
+        "committed_target_text": null
+      }
+    },
+    "last_divergence": {
+      "event_index": 1687,
+      "observation_ms": 675035,
+      "source_token_end": 1687,
+      "relation": "OTHER_DIFFERENCE",
+      "delta_p_commit": null,
+      "absolute_delta_p_commit": null,
+      "real": {
+        "decision": "WAIT",
+        "decision_reason": "min_source_tokens",
+        "p_commit": null,
+        "candidate_source_start": 1686,
+        "candidate_source_end": 1687,
+        "candidate_source_text": "Cheers and",
+        "candidate_translation": null,
+        "committed_target_text": null
+      },
+      "zero": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.9391217231750488,
+        "candidate_source_start": 1684,
+        "candidate_source_end": 1687,
+        "candidate_source_text": "Thank you Cheers and",
+        "candidate_translation": "Cảm ơn bạn Cheers và",
+        "committed_target_text": "Cảm ơn bạn Cheers và"
+      }
+    },
+    "divergence_regions": [
+      {
+        "start_event_index": 131,
+        "end_event_index": 139,
+        "length": 9
+      },
+      {
+        "start_event_index": 142,
+        "end_event_index": 143,
+        "length": 2
+      },
+      {
+        "start_event_index": 146,
+        "end_event_index": 147,
+        "length": 2
+      },
+      {
+        "start_event_index": 150,
+        "end_event_index": 151,
+        "length": 2
+      },
+      {
+        "start_event_index": 154,
+        "end_event_index": 155,
+        "length": 2
+      },
+      {
+        "start_event_index": 158,
+        "end_event_index": 159,
+        "length": 2
+      },
+      {
+        "start_event_index": 162,
+        "end_event_index": 166,
+        "length": 5
+      },
+      {
+        "start_event_index": 169,
+        "end_event_index": 177,
+        "length": 9
+      },
+      {
+        "start_event_index": 180,
+        "end_event_index": 180,
+        "length": 1
+      },
+      {
+        "start_event_index": 385,
+        "end_event_index": 387,
+        "length": 3
+      },
+      {
+        "start_event_index": 389,
+        "end_event_index": 389,
+        "length": 1
+      },
+      {
+        "start_event_index": 391,
+        "end_event_index": 391,
+        "length": 1
+      },
+      {
+        "start_event_index": 393,
+        "end_event_index": 393,
+        "length": 1
+      },
+      {
+        "start_event_index": 395,
+        "end_event_index": 396,
+        "length": 2
+      },
+      {
+        "start_event_index": 410,
+        "end_event_index": 413,
+        "length": 4
+      },
+      {
+        "start_event_index": 431,
+        "end_event_index": 434,
+        "length": 4
+      },
+      {
+        "start_event_index": 450,
+        "end_event_index": 457,
+        "length": 8
+      },
+      {
+        "start_event_index": 537,
+        "end_event_index": 551,
+        "length": 15
+      },
+      {
+        "start_event_index": 553,
+        "end_event_index": 553,
+        "length": 1
+      },
+      {
+        "start_event_index": 555,
+        "end_event_index": 555,
+        "length": 1
+      },
+      {
+        "start_event_index": 557,
+        "end_event_index": 558,
+        "length": 2
+      },
+      {
+        "start_event_index": 567,
+        "end_event_index": 574,
+        "length": 8
+      },
+      {
+        "start_event_index": 576,
+        "end_event_index": 599,
+        "length": 24
+      },
+      {
+        "start_event_index": 601,
+        "end_event_index": 605,
+        "length": 5
+      },
+      {
+        "start_event_index": 608,
+        "end_event_index": 609,
+        "length": 2
+      },
+      {
+        "start_event_index": 612,
+        "end_event_index": 613,
+        "length": 2
+      },
+      {
+        "start_event_index": 616,
+        "end_event_index": 616,
+        "length": 1
+      },
+      {
+        "start_event_index": 619,
+        "end_event_index": 622,
+        "length": 4
+      },
+      {
+        "start_event_index": 733,
+        "end_event_index": 746,
+        "length": 14
+      },
+      {
+        "start_event_index": 748,
+        "end_event_index": 748,
+        "length": 1
+      },
+      {
+        "start_event_index": 750,
+        "end_event_index": 750,
+        "length": 1
+      },
+      {
+        "start_event_index": 752,
+        "end_event_index": 752,
+        "length": 1
+      },
+      {
+        "start_event_index": 754,
+        "end_event_index": 754,
+        "length": 1
+      },
+      {
+        "start_event_index": 756,
+        "end_event_index": 762,
+        "length": 7
+      },
+      {
+        "start_event_index": 765,
+        "end_event_index": 766,
+        "length": 2
+      },
+      {
+        "start_event_index": 769,
+        "end_event_index": 769,
+        "length": 1
+      },
+      {
+        "start_event_index": 802,
+        "end_event_index": 807,
+        "length": 6
+      },
+      {
+        "start_event_index": 810,
+        "end_event_index": 811,
+        "length": 2
+      },
+      {
+        "start_event_index": 814,
+        "end_event_index": 815,
+        "length": 2
+      },
+      {
+        "start_event_index": 818,
+        "end_event_index": 819,
+        "length": 2
+      },
+      {
+        "start_event_index": 822,
+        "end_event_index": 823,
+        "length": 2
+      },
+      {
+        "start_event_index": 826,
+        "end_event_index": 827,
+        "length": 2
+      },
+      {
+        "start_event_index": 830,
+        "end_event_index": 831,
+        "length": 2
+      },
+      {
+        "start_event_index": 834,
+        "end_event_index": 837,
+        "length": 4
+      },
+      {
+        "start_event_index": 857,
+        "end_event_index": 868,
+        "length": 12
+      },
+      {
+        "start_event_index": 904,
+        "end_event_index": 911,
+        "length": 8
+      },
+      {
+        "start_event_index": 933,
+        "end_event_index": 940,
+        "length": 8
+      },
+      {
+        "start_event_index": 956,
+        "end_event_index": 984,
+        "length": 29
+      },
+      {
+        "start_event_index": 987,
+        "end_event_index": 988,
+        "length": 2
+      },
+      {
+        "start_event_index": 991,
+        "end_event_index": 992,
+        "length": 2
+      },
+      {
+        "start_event_index": 995,
+        "end_event_index": 996,
+        "length": 2
+      },
+      {
+        "start_event_index": 999,
+        "end_event_index": 999,
+        "length": 1
+      },
+      {
+        "start_event_index": 1003,
+        "end_event_index": 1018,
+        "length": 16
+      },
+      {
+        "start_event_index": 1020,
+        "end_event_index": 1027,
+        "length": 8
+      },
+      {
+        "start_event_index": 1030,
+        "end_event_index": 1041,
+        "length": 12
+      },
+      {
+        "start_event_index": 1062,
+        "end_event_index": 1063,
+        "length": 2
+      },
+      {
+        "start_event_index": 1066,
+        "end_event_index": 1067,
+        "length": 2
+      },
+      {
+        "start_event_index": 1070,
+        "end_event_index": 1071,
+        "length": 2
+      },
+      {
+        "start_event_index": 1074,
+        "end_event_index": 1075,
+        "length": 2
+      },
+      {
+        "start_event_index": 1078,
+        "end_event_index": 1079,
+        "length": 2
+      },
+      {
+        "start_event_index": 1082,
+        "end_event_index": 1083,
+        "length": 2
+      },
+      {
+        "start_event_index": 1086,
+        "end_event_index": 1087,
+        "length": 2
+      },
+      {
+        "start_event_index": 1090,
+        "end_event_index": 1091,
+        "length": 2
+      },
+      {
+        "start_event_index": 1094,
+        "end_event_index": 1097,
+        "length": 4
+      },
+      {
+        "start_event_index": 1108,
+        "end_event_index": 1111,
+        "length": 4
+      },
+      {
+        "start_event_index": 1115,
+        "end_event_index": 1119,
+        "length": 5
+      },
+      {
+        "start_event_index": 1122,
+        "end_event_index": 1125,
+        "length": 4
+      },
+      {
+        "start_event_index": 1127,
+        "end_event_index": 1127,
+        "length": 1
+      },
+      {
+        "start_event_index": 1129,
+        "end_event_index": 1129,
+        "length": 1
+      },
+      {
+        "start_event_index": 1131,
+        "end_event_index": 1131,
+        "length": 1
+      },
+      {
+        "start_event_index": 1133,
+        "end_event_index": 1133,
+        "length": 1
+      },
+      {
+        "start_event_index": 1135,
+        "end_event_index": 1135,
+        "length": 1
+      },
+      {
+        "start_event_index": 1137,
+        "end_event_index": 1137,
+        "length": 1
+      },
+      {
+        "start_event_index": 1139,
+        "end_event_index": 1140,
+        "length": 2
+      },
+      {
+        "start_event_index": 1158,
+        "end_event_index": 1159,
+        "length": 2
+      },
+      {
+        "start_event_index": 1162,
+        "end_event_index": 1163,
+        "length": 2
+      },
+      {
+        "start_event_index": 1166,
+        "end_event_index": 1167,
+        "length": 2
+      },
+      {
+        "start_event_index": 1170,
+        "end_event_index": 1171,
+        "length": 2
+      },
+      {
+        "start_event_index": 1174,
+        "end_event_index": 1175,
+        "length": 2
+      },
+      {
+        "start_event_index": 1178,
+        "end_event_index": 1179,
+        "length": 2
+      },
+      {
+        "start_event_index": 1182,
+        "end_event_index": 1183,
+        "length": 2
+      },
+      {
+        "start_event_index": 1186,
+        "end_event_index": 1190,
+        "length": 5
+      },
+      {
+        "start_event_index": 1193,
+        "end_event_index": 1194,
+        "length": 2
+      },
+      {
+        "start_event_index": 1197,
+        "end_event_index": 1198,
+        "length": 2
+      },
+      {
+        "start_event_index": 1201,
+        "end_event_index": 1202,
+        "length": 2
+      },
+      {
+        "start_event_index": 1205,
+        "end_event_index": 1206,
+        "length": 2
+      },
+      {
+        "start_event_index": 1209,
+        "end_event_index": 1210,
+        "length": 2
+      },
+      {
+        "start_event_index": 1213,
+        "end_event_index": 1214,
+        "length": 2
+      },
+      {
+        "start_event_index": 1217,
+        "end_event_index": 1218,
+        "length": 2
+      },
+      {
+        "start_event_index": 1221,
+        "end_event_index": 1222,
+        "length": 2
+      },
+      {
+        "start_event_index": 1225,
+        "end_event_index": 1225,
+        "length": 1
+      },
+      {
+        "start_event_index": 1246,
+        "end_event_index": 1248,
+        "length": 3
+      },
+      {
+        "start_event_index": 1250,
+        "end_event_index": 1251,
+        "length": 2
+      },
+      {
+        "start_event_index": 1269,
+        "end_event_index": 1276,
+        "length": 8
+      },
+      {
+        "start_event_index": 1287,
+        "end_event_index": 1290,
+        "length": 4
+      },
+      {
+        "start_event_index": 1390,
+        "end_event_index": 1391,
+        "length": 2
+      },
+      {
+        "start_event_index": 1394,
+        "end_event_index": 1395,
+        "length": 2
+      },
+      {
+        "start_event_index": 1398,
+        "end_event_index": 1399,
+        "length": 2
+      },
+      {
+        "start_event_index": 1402,
+        "end_event_index": 1404,
+        "length": 3
+      },
+      {
+        "start_event_index": 1406,
+        "end_event_index": 1406,
+        "length": 1
+      },
+      {
+        "start_event_index": 1408,
+        "end_event_index": 1408,
+        "length": 1
+      },
+      {
+        "start_event_index": 1410,
+        "end_event_index": 1410,
+        "length": 1
+      },
+      {
+        "start_event_index": 1412,
+        "end_event_index": 1412,
+        "length": 1
+      },
+      {
+        "start_event_index": 1414,
+        "end_event_index": 1414,
+        "length": 1
+      },
+      {
+        "start_event_index": 1416,
+        "end_event_index": 1416,
+        "length": 1
+      },
+      {
+        "start_event_index": 1418,
+        "end_event_index": 1418,
+        "length": 1
+      },
+      {
+        "start_event_index": 1420,
+        "end_event_index": 1420,
+        "length": 1
+      },
+      {
+        "start_event_index": 1422,
+        "end_event_index": 1422,
+        "length": 1
+      },
+      {
+        "start_event_index": 1424,
+        "end_event_index": 1426,
+        "length": 3
+      },
+      {
+        "start_event_index": 1429,
+        "end_event_index": 1432,
+        "length": 4
+      },
+      {
+        "start_event_index": 1440,
+        "end_event_index": 1446,
+        "length": 7
+      },
+      {
+        "start_event_index": 1448,
+        "end_event_index": 1448,
+        "length": 1
+      },
+      {
+        "start_event_index": 1450,
+        "end_event_index": 1452,
+        "length": 3
+      },
+      {
+        "start_event_index": 1455,
+        "end_event_index": 1463,
+        "length": 9
+      },
+      {
+        "start_event_index": 1517,
+        "end_event_index": 1520,
+        "length": 4
+      },
+      {
+        "start_event_index": 1550,
+        "end_event_index": 1551,
+        "length": 2
+      },
+      {
+        "start_event_index": 1554,
+        "end_event_index": 1554,
+        "length": 1
+      },
+      {
+        "start_event_index": 1558,
+        "end_event_index": 1560,
+        "length": 3
+      },
+      {
+        "start_event_index": 1562,
+        "end_event_index": 1562,
+        "length": 1
+      },
+      {
+        "start_event_index": 1564,
+        "end_event_index": 1564,
+        "length": 1
+      },
+      {
+        "start_event_index": 1566,
+        "end_event_index": 1566,
+        "length": 1
+      },
+      {
+        "start_event_index": 1568,
+        "end_event_index": 1568,
+        "length": 1
+      },
+      {
+        "start_event_index": 1570,
+        "end_event_index": 1570,
+        "length": 1
+      },
+      {
+        "start_event_index": 1572,
+        "end_event_index": 1572,
+        "length": 1
+      },
+      {
+        "start_event_index": 1574,
+        "end_event_index": 1574,
+        "length": 1
+      },
+      {
+        "start_event_index": 1576,
+        "end_event_index": 1576,
+        "length": 1
+      },
+      {
+        "start_event_index": 1578,
+        "end_event_index": 1578,
+        "length": 1
+      },
+      {
+        "start_event_index": 1580,
+        "end_event_index": 1580,
+        "length": 1
+      },
+      {
+        "start_event_index": 1582,
+        "end_event_index": 1584,
+        "length": 3
+      },
+      {
+        "start_event_index": 1587,
+        "end_event_index": 1588,
+        "length": 2
+      },
+      {
+        "start_event_index": 1591,
+        "end_event_index": 1592,
+        "length": 2
+      },
+      {
+        "start_event_index": 1595,
+        "end_event_index": 1596,
+        "length": 2
+      },
+      {
+        "start_event_index": 1599,
+        "end_event_index": 1599,
+        "length": 1
+      },
+      {
+        "start_event_index": 1601,
+        "end_event_index": 1606,
+        "length": 6
+      },
+      {
+        "start_event_index": 1609,
+        "end_event_index": 1610,
+        "length": 2
+      },
+      {
+        "start_event_index": 1613,
+        "end_event_index": 1614,
+        "length": 2
+      },
+      {
+        "start_event_index": 1617,
+        "end_event_index": 1618,
+        "length": 2
+      },
+      {
+        "start_event_index": 1621,
+        "end_event_index": 1622,
+        "length": 2
+      },
+      {
+        "start_event_index": 1625,
+        "end_event_index": 1626,
+        "length": 2
+      },
+      {
+        "start_event_index": 1629,
+        "end_event_index": 1630,
+        "length": 2
+      },
+      {
+        "start_event_index": 1633,
+        "end_event_index": 1634,
+        "length": 2
+      },
+      {
+        "start_event_index": 1637,
+        "end_event_index": 1638,
+        "length": 2
+      },
+      {
+        "start_event_index": 1641,
+        "end_event_index": 1642,
+        "length": 2
+      },
+      {
+        "start_event_index": 1645,
+        "end_event_index": 1646,
+        "length": 2
+      },
+      {
+        "start_event_index": 1649,
+        "end_event_index": 1650,
+        "length": 2
+      },
+      {
+        "start_event_index": 1653,
+        "end_event_index": 1654,
+        "length": 2
+      },
+      {
+        "start_event_index": 1657,
+        "end_event_index": 1658,
+        "length": 2
+      },
+      {
+        "start_event_index": 1661,
+        "end_event_index": 1662,
+        "length": 2
+      },
+      {
+        "start_event_index": 1665,
+        "end_event_index": 1667,
+        "length": 3
+      },
+      {
+        "start_event_index": 1669,
+        "end_event_index": 1669,
+        "length": 1
+      },
+      {
+        "start_event_index": 1671,
+        "end_event_index": 1671,
+        "length": 1
+      },
+      {
+        "start_event_index": 1673,
+        "end_event_index": 1673,
+        "length": 1
+      },
+      {
+        "start_event_index": 1675,
+        "end_event_index": 1675,
+        "length": 1
+      },
+      {
+        "start_event_index": 1677,
+        "end_event_index": 1677,
+        "length": 1
+      },
+      {
+        "start_event_index": 1679,
+        "end_event_index": 1679,
+        "length": 1
+      },
+      {
+        "start_event_index": 1681,
+        "end_event_index": 1681,
+        "length": 1
+      },
+      {
+        "start_event_index": 1683,
+        "end_event_index": 1683,
+        "length": 1
+      },
+      {
+        "start_event_index": 1685,
+        "end_event_index": 1685,
+        "length": 1
+      },
+      {
+        "start_event_index": 1687,
+        "end_event_index": 1687,
+        "length": 1
+      }
+    ],
+    "longest_divergence_region": {
+      "start_event_index": 956,
+      "end_event_index": 984,
+      "length": 29
+    }
+  },
+  "probability_differences": {
+    "paired_probability_events": 556,
+    "mean_absolute_delta": 0.12597970974551778,
+    "median_absolute_delta": 0.014456301927566528,
+    "max_absolute_delta": 0.9293821301404819,
+    "max_absolute_delta_event": {
+      "event_index": 584,
+      "observation_ms": 233025,
+      "source_token_end": 584,
+      "relation": "REAL_LISTEN_ZERO_COMMIT",
+      "delta_p_commit": -0.9293821301404819,
+      "absolute_delta_p_commit": 0.9293821301404819,
+      "real": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 5.51706136775465e-07,
+        "candidate_source_start": 554,
+        "candidate_source_end": 584,
+        "candidate_source_text": "spoke to domain experts we found out everything we could about the problem Our team which is a mix of research scientists engineers a product manager a program manager and an",
+        "candidate_translation": "Chúng tôi đã tìm ra mọi thứ có thể về vấn đề Nhóm của chúng tôi là sự kết hợp của các nhà nghiên cứu khoa học kỹ sư quản lý sản phẩm quản lý chương trình và",
+        "committed_target_text": null
+      },
+      "zero": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.9293826818466187,
+        "candidate_source_start": 581,
+        "candidate_source_end": 584,
+        "candidate_source_text": "program manager and an",
+        "candidate_translation": "trình quản lý chương trình và một",
+        "committed_target_text": "trình quản lý chương trình và một"
+      }
+    },
+    "differing_decision_events": [
+      {
+        "event_index": 131,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.05560910701751709,
+        "absolute_delta_p_commit": 0.05560910701751709
+      },
+      {
+        "event_index": 132,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 133,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 134,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 135,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.8379747162343847,
+        "absolute_delta_p_commit": 0.8379747162343847
+      },
+      {
+        "event_index": 136,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 137,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 138,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 139,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 142,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 143,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 146,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 147,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 150,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 151,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 154,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 155,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 158,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 159,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 162,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 163,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 164,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 165,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 166,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 169,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 170,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 171,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 172,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 173,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.8159883395223915,
+        "absolute_delta_p_commit": 0.8159883395223915
+      },
+      {
+        "event_index": 174,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 175,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 176,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 177,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 180,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 385,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.01528710126876831,
+        "absolute_delta_p_commit": 0.01528710126876831
+      },
+      {
+        "event_index": 386,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 387,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 389,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 391,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 393,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 395,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 396,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 410,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.06659549474716187,
+        "absolute_delta_p_commit": 0.06659549474716187
+      },
+      {
+        "event_index": 411,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 412,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 413,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 431,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.6235639956468155,
+        "absolute_delta_p_commit": 0.6235639956468155
+      },
+      {
+        "event_index": 432,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 433,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 434,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 450,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.5377651900053024,
+        "absolute_delta_p_commit": 0.5377651900053024
+      },
+      {
+        "event_index": 451,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 452,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 453,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 454,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.5403151363134384,
+        "absolute_delta_p_commit": 0.5403151363134384
+      },
+      {
+        "event_index": 455,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 456,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 457,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 537,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.02359539270401001,
+        "absolute_delta_p_commit": 0.02359539270401001
+      },
+      {
+        "event_index": 538,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 539,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 540,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 541,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.7730195686960997,
+        "absolute_delta_p_commit": 0.7730195686960997
+      },
+      {
+        "event_index": 542,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 543,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 544,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 545,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.4707792103290558,
+        "absolute_delta_p_commit": 0.4707792103290558
+      },
+      {
+        "event_index": 546,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 547,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 548,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 549,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.2697254419326782,
+        "absolute_delta_p_commit": 0.2697254419326782
+      },
+      {
+        "event_index": 550,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 551,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 553,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 555,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 557,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 558,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 567,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.06085556745529175,
+        "absolute_delta_p_commit": 0.06085556745529175
+      },
+      {
+        "event_index": 568,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 569,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 570,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 571,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.8574892690583908,
+        "absolute_delta_p_commit": 0.8574892690583908
+      },
+      {
+        "event_index": 572,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 573,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 574,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 576,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.6240610491731786,
+        "absolute_delta_p_commit": 0.6240610491731786
+      },
+      {
+        "event_index": 577,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 578,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 579,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 580,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.8516366160638427,
+        "absolute_delta_p_commit": 0.8516366160638427
+      },
+      {
+        "event_index": 581,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 582,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 583,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 584,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.9293821301404819,
+        "absolute_delta_p_commit": 0.9293821301404819
+      },
+      {
+        "event_index": 585,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 586,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 587,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 588,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.9018560755375802,
+        "absolute_delta_p_commit": 0.9018560755375802
+      },
+      {
+        "event_index": 589,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 590,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 591,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 592,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.7564495800099849,
+        "absolute_delta_p_commit": 0.7564495800099849
+      },
+      {
+        "event_index": 593,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 594,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 595,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 596,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.7470372228654014,
+        "absolute_delta_p_commit": 0.7470372228654014
+      },
+      {
+        "event_index": 597,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 598,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 599,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 601,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": -0.31612155376933515,
+        "absolute_delta_p_commit": 0.31612155376933515
+      },
+      {
+        "event_index": 602,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 603,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 604,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 605,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 608,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 609,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 612,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 613,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 616,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 619,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.4939988702535629,
+        "absolute_delta_p_commit": 0.4939988702535629
+      },
+      {
+        "event_index": 620,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 621,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 622,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 733,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.03589034080505371,
+        "absolute_delta_p_commit": 0.03589034080505371
+      },
+      {
+        "event_index": 734,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 735,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 736,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 737,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.8122232665773481,
+        "absolute_delta_p_commit": 0.8122232665773481
+      },
+      {
+        "event_index": 738,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 739,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 740,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 741,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.6639456152915955,
+        "absolute_delta_p_commit": 0.6639456152915955
+      },
+      {
+        "event_index": 742,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 743,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 744,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 745,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 746,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 748,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 750,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 752,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 754,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 756,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 757,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 758,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 759,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 760,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 761,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.7960464003899688,
+        "absolute_delta_p_commit": 0.7960464003899688
+      },
+      {
+        "event_index": 762,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 765,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 766,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 769,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 802,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.036776065826416016,
+        "absolute_delta_p_commit": 0.036776065826416016
+      },
+      {
+        "event_index": 803,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 804,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 805,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 806,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.08589732646942139,
+        "absolute_delta_p_commit": 0.08589732646942139
+      },
+      {
+        "event_index": 807,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 810,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 811,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 814,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 815,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 818,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 819,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 822,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 823,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 826,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 827,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 830,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 831,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 834,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 835,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 836,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 837,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 857,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.6151096476241946,
+        "absolute_delta_p_commit": 0.6151096476241946
+      },
+      {
+        "event_index": 858,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 859,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 860,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 861,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.7789294250636658,
+        "absolute_delta_p_commit": 0.7789294250636658
+      },
+      {
+        "event_index": 862,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 863,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 864,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 865,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.8953594868071377,
+        "absolute_delta_p_commit": 0.8953594868071377
+      },
+      {
+        "event_index": 866,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 867,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 868,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 904,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.04228031635284424,
+        "absolute_delta_p_commit": 0.04228031635284424
+      },
+      {
+        "event_index": 905,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 906,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 907,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 908,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.7535969887767351,
+        "absolute_delta_p_commit": 0.7535969887767351
+      },
+      {
+        "event_index": 909,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 910,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 911,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 933,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.0006151721609057859,
+        "absolute_delta_p_commit": 0.0006151721609057859
+      },
+      {
+        "event_index": 934,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 935,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 936,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 937,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.709266011096588,
+        "absolute_delta_p_commit": 0.709266011096588
+      },
+      {
+        "event_index": 938,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 939,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 940,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 956,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.00037206883976637073,
+        "absolute_delta_p_commit": 0.00037206883976637073
+      },
+      {
+        "event_index": 957,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 958,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 959,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 960,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.8086161806006942,
+        "absolute_delta_p_commit": 0.8086161806006942
+      },
+      {
+        "event_index": 961,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 962,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 963,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 964,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.6895774505746886,
+        "absolute_delta_p_commit": 0.6895774505746886
+      },
+      {
+        "event_index": 965,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 966,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 967,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 968,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.884553854132264,
+        "absolute_delta_p_commit": 0.884553854132264
+      },
+      {
+        "event_index": 969,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 970,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 971,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 972,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.33115482330322266,
+        "absolute_delta_p_commit": 0.33115482330322266
+      },
+      {
+        "event_index": 973,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 974,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 975,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 976,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.7723698577756295,
+        "absolute_delta_p_commit": 0.7723698577756295
+      },
+      {
+        "event_index": 977,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 978,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 979,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 980,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.8747999081097078,
+        "absolute_delta_p_commit": 0.8747999081097078
+      },
+      {
+        "event_index": 981,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 982,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 983,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 984,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 987,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 988,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 991,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 992,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 995,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 996,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 999,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1003,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.3368320167064667,
+        "absolute_delta_p_commit": 0.3368320167064667
+      },
+      {
+        "event_index": 1004,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1005,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1006,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1007,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.1594855785369873,
+        "absolute_delta_p_commit": 0.1594855785369873
+      },
+      {
+        "event_index": 1008,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1009,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1010,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1011,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.8810392322484404,
+        "absolute_delta_p_commit": 0.8810392322484404
+      },
+      {
+        "event_index": 1012,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1013,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1014,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1015,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.807560958426393,
+        "absolute_delta_p_commit": 0.807560958426393
+      },
+      {
+        "event_index": 1016,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1017,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1018,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1020,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.6982405944174843,
+        "absolute_delta_p_commit": 0.6982405944174843
+      },
+      {
+        "event_index": 1021,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1022,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1023,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1024,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.1831299066543579,
+        "absolute_delta_p_commit": 0.1831299066543579
+      },
+      {
+        "event_index": 1025,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1026,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1027,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1030,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.045293569564819336,
+        "absolute_delta_p_commit": 0.045293569564819336
+      },
+      {
+        "event_index": 1031,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1032,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1033,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1034,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.8225688881975657,
+        "absolute_delta_p_commit": 0.8225688881975657
+      },
+      {
+        "event_index": 1035,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1036,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1037,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1038,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.08337569236755371,
+        "absolute_delta_p_commit": 0.08337569236755371
+      },
+      {
+        "event_index": 1039,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1040,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1041,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1062,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.0353924036026001,
+        "absolute_delta_p_commit": 0.0353924036026001
+      },
+      {
+        "event_index": 1063,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1066,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1067,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1070,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1071,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1074,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1075,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1078,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1079,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1082,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1083,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1086,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1087,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1090,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1091,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1094,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1095,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1096,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1097,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1108,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.6718853645810441,
+        "absolute_delta_p_commit": 0.6718853645810441
+      },
+      {
+        "event_index": 1109,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1110,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1111,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1115,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.10801243782043457,
+        "absolute_delta_p_commit": 0.10801243782043457
+      },
+      {
+        "event_index": 1116,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1117,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1118,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1119,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1122,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1123,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.5586172491312027,
+        "absolute_delta_p_commit": 0.5586172491312027
+      },
+      {
+        "event_index": 1124,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1125,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1127,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1129,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1131,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1133,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1135,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1137,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1139,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1140,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1158,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.05514043569564819,
+        "absolute_delta_p_commit": 0.05514043569564819
+      },
+      {
+        "event_index": 1159,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1162,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1163,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1166,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1167,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1170,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1171,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1174,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1175,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1178,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1179,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1182,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1183,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1186,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1187,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1188,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1189,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1190,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1193,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1194,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1197,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1198,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1201,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1202,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1205,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1206,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1209,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1210,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1213,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1214,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1217,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1218,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1221,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1222,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1225,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1246,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.03812766075134277,
+        "absolute_delta_p_commit": 0.03812766075134277
+      },
+      {
+        "event_index": 1247,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1248,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1250,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1251,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1269,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.05693495273590088,
+        "absolute_delta_p_commit": 0.05693495273590088
+      },
+      {
+        "event_index": 1270,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1271,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1272,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1273,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.8868061984426276,
+        "absolute_delta_p_commit": 0.8868061984426276
+      },
+      {
+        "event_index": 1274,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1275,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1276,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1287,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.1989143192768097,
+        "absolute_delta_p_commit": 0.1989143192768097
+      },
+      {
+        "event_index": 1288,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1289,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1290,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1390,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.053183555603027344,
+        "absolute_delta_p_commit": 0.053183555603027344
+      },
+      {
+        "event_index": 1391,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1394,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1395,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1398,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1399,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1402,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1403,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1404,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1406,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1408,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1410,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1412,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1414,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1416,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1418,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1420,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1422,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1424,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1425,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1426,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1429,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1430,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1431,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1432,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1440,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.2853827178478241,
+        "absolute_delta_p_commit": 0.2853827178478241
+      },
+      {
+        "event_index": 1441,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1442,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1443,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1444,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.8961276919580996,
+        "absolute_delta_p_commit": 0.8961276919580996
+      },
+      {
+        "event_index": 1445,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1446,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1448,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1450,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1451,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1452,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1455,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1456,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.20173770189285278,
+        "absolute_delta_p_commit": 0.20173770189285278
+      },
+      {
+        "event_index": 1457,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1458,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1459,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1460,
+        "relation": "REAL_LISTEN_ZERO_COMMIT",
+        "delta_p_commit": -0.8593504565134253,
+        "absolute_delta_p_commit": 0.8593504565134253
+      },
+      {
+        "event_index": 1461,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1462,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1463,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1517,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.05428069829940796,
+        "absolute_delta_p_commit": 0.05428069829940796
+      },
+      {
+        "event_index": 1518,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1519,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1520,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1550,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.033016741275787354,
+        "absolute_delta_p_commit": 0.033016741275787354
+      },
+      {
+        "event_index": 1551,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1554,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1558,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.6418578260127106,
+        "absolute_delta_p_commit": 0.6418578260127106
+      },
+      {
+        "event_index": 1559,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1560,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1562,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1564,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1566,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1568,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1570,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1572,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1574,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1576,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1578,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1580,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1582,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1583,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1584,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1587,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1588,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1591,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1592,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1595,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1596,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1599,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1601,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.6065740856391528,
+        "absolute_delta_p_commit": 0.6065740856391528
+      },
+      {
+        "event_index": 1602,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1603,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1604,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1605,
+        "relation": "REAL_COMMIT_ZERO_LISTEN",
+        "delta_p_commit": 0.4578101634979248,
+        "absolute_delta_p_commit": 0.4578101634979248
+      },
+      {
+        "event_index": 1606,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1609,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1610,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1613,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1614,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1617,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1618,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1621,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1622,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1625,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1626,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1629,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1630,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1633,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1634,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1637,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1638,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1641,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1642,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1645,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1646,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1649,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1650,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1653,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1654,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1657,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1658,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1661,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1662,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1665,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1666,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1667,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1669,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1671,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1673,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1675,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1677,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1679,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1681,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1683,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1685,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      },
+      {
+        "event_index": 1687,
+        "relation": "OTHER_DIFFERENCE",
+        "delta_p_commit": null,
+        "absolute_delta_p_commit": null
+      }
+    ],
+    "max_differing_decision_delta_event": {
+      "event_index": 584,
+      "observation_ms": 233025,
+      "source_token_end": 584,
+      "relation": "REAL_LISTEN_ZERO_COMMIT",
+      "delta_p_commit": -0.9293821301404819,
+      "absolute_delta_p_commit": 0.9293821301404819,
+      "real": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 5.51706136775465e-07,
+        "candidate_source_start": 554,
+        "candidate_source_end": 584,
+        "candidate_source_text": "spoke to domain experts we found out everything we could about the problem Our team which is a mix of research scientists engineers a product manager a program manager and an",
+        "candidate_translation": "Chúng tôi đã tìm ra mọi thứ có thể về vấn đề Nhóm của chúng tôi là sự kết hợp của các nhà nghiên cứu khoa học kỹ sư quản lý sản phẩm quản lý chương trình và",
+        "committed_target_text": null
+      },
+      "zero": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.9293826818466187,
+        "candidate_source_start": 581,
+        "candidate_source_end": 584,
+        "candidate_source_text": "program manager and an",
+        "candidate_translation": "trình quản lý chương trình và một",
+        "committed_target_text": "trình quản lý chương trình và một"
+      }
+    }
+  },
+  "commit_timeline": {
+    "real": {
+      "total_commits": 318,
+      "first_commit_ms": 952,
+      "last_commit_ms": 675600,
+      "mean_commit_interval_ms": 2128.2271293375393
+    },
+    "zero": {
+      "total_commits": 299,
+      "first_commit_ms": 952,
+      "last_commit_ms": 675600,
+      "mean_commit_interval_ms": 2263.9194630872485
+    },
+    "first_real_commit_zero_listen": {
+      "event_index": 131,
+      "observation_ms": 53000,
+      "source_token_end": 131,
+      "relation": "REAL_COMMIT_ZERO_LISTEN",
+      "delta_p_commit": 0.05560910701751709,
+      "absolute_delta_p_commit": 0.05560910701751709,
+      "real": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.6310335397720337,
+        "candidate_source_start": 124,
+        "candidate_source_end": 131,
+        "candidate_source_text": "renewable energy Electrify everything else Deploy solutions that",
+        "candidate_translation": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó",
+        "committed_target_text": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó"
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.5754244327545166,
+        "candidate_source_start": 124,
+        "candidate_source_end": 131,
+        "candidate_source_text": "renewable energy Electrify everything else Deploy solutions that",
+        "candidate_translation": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó",
+        "committed_target_text": null
+      }
+    },
+    "first_real_listen_zero_commit": {
+      "event_index": 410,
+      "observation_ms": 164573,
+      "source_token_end": 410,
+      "relation": "REAL_LISTEN_ZERO_COMMIT",
+      "delta_p_commit": -0.06659549474716187,
+      "absolute_delta_p_commit": 0.06659549474716187,
+      "real": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.5737241506576538,
+        "candidate_source_start": 398,
+        "candidate_source_end": 410,
+        "candidate_source_text": "this is hugely problematic Renewables can't be 100 percent reliably scheduled Now unfortunately",
+        "candidate_translation": "Bây giờ không may là",
+        "committed_target_text": null
+      },
+      "zero": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.6403196454048157,
+        "candidate_source_start": 398,
+        "candidate_source_end": 410,
+        "candidate_source_text": "this is hugely problematic Renewables can't be 100 percent reliably scheduled Now unfortunately",
+        "candidate_translation": "Bây giờ không may là",
+        "committed_target_text": "Bây giờ không may là"
+      }
+    },
+    "first_different_commit_boundary": {
+      "event_index": 181,
+      "observation_ms": 72430,
+      "source_token_end": 181,
+      "relation": "DIFFERENT_COMMIT_BOUNDARY",
+      "delta_p_commit": 0.21746104955673218,
+      "absolute_delta_p_commit": 0.21746104955673218,
+      "real": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.8460745215415955,
+        "candidate_source_start": 178,
+        "candidate_source_end": 181,
+        "candidate_source_text": "to consider How we",
+        "candidate_translation": "để xem xét cách chúng ta",
+        "committed_target_text": "để xem xét cách chúng ta"
+      },
+      "zero": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.6286134719848633,
+        "candidate_source_start": 177,
+        "candidate_source_end": 181,
+        "candidate_source_text": "have to consider How we",
+        "candidate_translation": "Phải xem xét làm thế nào chúng ta",
+        "committed_target_text": "Phải xem xét làm thế nào chúng ta"
+      }
+    },
+    "first_later_same_non_wait_event": {
+      "event_index": 225,
+      "observation_ms": 90165,
+      "source_token_end": 225,
+      "relation": "SAME_LISTEN",
+      "delta_p_commit": 0.013153314590454102,
+      "absolute_delta_p_commit": 0.013153314590454102,
+      "real": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.5543712973594666,
+        "candidate_source_start": 222,
+        "candidate_source_end": 225,
+        "candidate_source_text": "no single answer I'm",
+        "candidate_translation": "không có câu trả lời duy nhất tôi",
+        "committed_target_text": null
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.5412179827690125,
+        "candidate_source_start": 222,
+        "candidate_source_end": 225,
+        "candidate_source_text": "no single answer I'm",
+        "candidate_translation": "không có câu trả lời duy nhất tôi",
+        "committed_target_text": null
+      }
+    }
+  },
+  "candidate_translation_cascades": {
+    "same_span_policy_divergence_count": 14,
+    "first_same_span_policy_divergence": {
+      "event_index": 131,
+      "observation_ms": 53000,
+      "source_token_end": 131,
+      "relation": "REAL_COMMIT_ZERO_LISTEN",
+      "delta_p_commit": 0.05560910701751709,
+      "absolute_delta_p_commit": 0.05560910701751709,
+      "real": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.6310335397720337,
+        "candidate_source_start": 124,
+        "candidate_source_end": 131,
+        "candidate_source_text": "renewable energy Electrify everything else Deploy solutions that",
+        "candidate_translation": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó",
+        "committed_target_text": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó"
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.5754244327545166,
+        "candidate_source_start": 124,
+        "candidate_source_end": 131,
+        "candidate_source_text": "renewable energy Electrify everything else Deploy solutions that",
+        "candidate_translation": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó",
+        "committed_target_text": null
+      }
+    },
+    "different_candidate_boundary_count": 829,
+    "first_different_candidate_boundary": {
+      "event_index": 132,
+      "observation_ms": 53221,
+      "source_token_end": 132,
+      "relation": "OTHER_DIFFERENCE",
+      "delta_p_commit": null,
+      "absolute_delta_p_commit": null,
+      "real": {
+        "decision": "WAIT",
+        "decision_reason": "min_source_tokens",
+        "p_commit": null,
+        "candidate_source_start": 132,
+        "candidate_source_end": 132,
+        "candidate_source_text": "are",
+        "candidate_translation": null,
+        "committed_target_text": null
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.00019641511607915163,
+        "candidate_source_start": 124,
+        "candidate_source_end": 132,
+        "candidate_source_text": "renewable energy Electrify everything else Deploy solutions that are",
+        "candidate_translation": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp là",
+        "committed_target_text": null
+      }
+    },
+    "different_translation_after_boundary_count": 626,
+    "first_translation_difference_after_boundary": {
+      "event_index": 132,
+      "observation_ms": 53221,
+      "source_token_end": 132,
+      "relation": "OTHER_DIFFERENCE",
+      "delta_p_commit": null,
+      "absolute_delta_p_commit": null,
+      "real": {
+        "decision": "WAIT",
+        "decision_reason": "min_source_tokens",
+        "p_commit": null,
+        "candidate_source_start": 132,
+        "candidate_source_end": 132,
+        "candidate_source_text": "are",
+        "candidate_translation": null,
+        "committed_target_text": null
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.00019641511607915163,
+        "candidate_source_start": 124,
+        "candidate_source_end": 132,
+        "candidate_source_text": "renewable energy Electrify everything else Deploy solutions that are",
+        "candidate_translation": "Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp là",
+        "committed_target_text": null
+      }
+    }
+  },
+  "top_demo_moments": [
+    {
+      "event_index": 584,
+      "observation_ms": 233025,
+      "source_token_end": 584,
+      "relation": "REAL_LISTEN_ZERO_COMMIT",
+      "delta_p_commit": -0.9293821301404819,
+      "absolute_delta_p_commit": 0.9293821301404819,
+      "real": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 5.51706136775465e-07,
+        "candidate_source_start": 554,
+        "candidate_source_end": 584,
+        "candidate_source_text": "spoke to domain experts we found out everything we could about the problem Our team which is a mix of research scientists engineers a product manager a program manager and an",
+        "candidate_translation": "Chúng tôi đã tìm ra mọi thứ có thể về vấn đề Nhóm của chúng tôi là sự kết hợp của các nhà nghiên cứu khoa học kỹ sư quản lý sản phẩm quản lý chương trình và",
+        "committed_target_text": null
+      },
+      "zero": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.9293826818466187,
+        "candidate_source_start": 581,
+        "candidate_source_end": 584,
+        "candidate_source_text": "program manager and an",
+        "candidate_translation": "trình quản lý chương trình và một",
+        "committed_target_text": "trình quản lý chương trình và một"
+      }
+    },
+    {
+      "event_index": 588,
+      "observation_ms": 234848,
+      "source_token_end": 588,
+      "relation": "REAL_LISTEN_ZERO_COMMIT",
+      "delta_p_commit": -0.9018560755375802,
+      "absolute_delta_p_commit": 0.9018560755375802,
+      "real": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 1.062142473529093e-06,
+        "candidate_source_start": 554,
+        "candidate_source_end": 588,
+        "candidate_source_text": "spoke to domain experts we found out everything we could about the problem Our team which is a mix of research scientists engineers a product manager a program manager and an impact analyst decided that",
+        "candidate_translation": "Chúng tôi đã tìm ra mọi thứ có thể về vấn đề Nhóm của chúng tôi gồm các nhà nghiên cứu khoa học kỹ sư quản lý sản phẩm quản lý chương trình và nhà phân tích tác động đã quyết định rằng",
+        "committed_target_text": null
+      },
+      "zero": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.9018571376800537,
+        "candidate_source_start": 585,
+        "candidate_source_end": 588,
+        "candidate_source_text": "impact analyst decided that",
+        "candidate_translation": "nhà phân tích tác động quyết định rằng",
+        "committed_target_text": "nhà phân tích tác động quyết định rằng"
+      }
+    },
+    {
+      "event_index": 1444,
+      "observation_ms": 577877,
+      "source_token_end": 1444,
+      "relation": "REAL_COMMIT_ZERO_LISTEN",
+      "delta_p_commit": 0.8961276919580996,
+      "absolute_delta_p_commit": 0.8961276919580996,
+      "real": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.8997530341148376,
+        "candidate_source_start": 1441,
+        "candidate_source_end": 1444,
+        "candidate_source_text": "innovation in AI for",
+        "candidate_translation": "đổi mới trong AI cho",
+        "committed_target_text": "đổi mới trong AI cho"
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.003625342156738043,
+        "candidate_source_start": 1430,
+        "candidate_source_end": 1444,
+        "candidate_source_text": "climate-critical datasets Access to these datasets would unblock crucial research and innovation in AI for",
+        "candidate_translation": "Truy cập vào các bộ dữ liệu quan trọng về khí hậu Việc truy cập vào các bộ dữ liệu này sẽ mở khóa các nghiên cứu và đổi mới quan trọng trong AI cho",
+        "committed_target_text": null
+      }
+    },
+    {
+      "event_index": 865,
+      "observation_ms": 345448,
+      "source_token_end": 865,
+      "relation": "REAL_LISTEN_ZERO_COMMIT",
+      "delta_p_commit": -0.8953594868071377,
+      "absolute_delta_p_commit": 0.8953594868071377,
+      "real": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.004190891515463591,
+        "candidate_source_start": 832,
+        "candidate_source_end": 865,
+        "candidate_source_text": "it's not every wind-farm manager that wants to let a bunch of AI researchers test on their multimillion or multibillion-dollar systems But the thing is in order to prove that AI works we have",
+        "candidate_translation": "không phải tất cả các quản lý trang trại gió đều muốn để một nhóm các nhà nghiên cứu AI kiểm tra hệ thống trị giá hàng triệu hoặc hàng triệu đô la của họ nhưng để chứng minh rằng AI hoạt động chúng ta có",
+        "committed_target_text": null
+      },
+      "zero": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.8995503783226013,
+        "candidate_source_start": 862,
+        "candidate_source_end": 865,
+        "candidate_source_text": "AI works we have",
+        "candidate_translation": "AI hoạt động như chúng ta có",
+        "committed_target_text": "AI hoạt động như chúng ta có"
+      }
+    },
+    {
+      "event_index": 1273,
+      "observation_ms": 510100,
+      "source_token_end": 1273,
+      "relation": "REAL_COMMIT_ZERO_LISTEN",
+      "delta_p_commit": 0.8868061984426276,
+      "absolute_delta_p_commit": 0.8868061984426276,
+      "real": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.8868118524551392,
+        "candidate_source_start": 1270,
+        "candidate_source_end": 1273,
+        "candidate_source_text": "we're not going to",
+        "candidate_translation": "Chúng ta sẽ không",
+        "committed_target_text": "Chúng ta sẽ không"
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 5.654012511513429e-06,
+        "candidate_source_start": 1265,
+        "candidate_source_end": 1273,
+        "candidate_source_text": "energy but scientists and technologists we're not going to",
+        "candidate_translation": "Năng lượng nhưng các nhà khoa học và kỹ thuật chúng ta sẽ không",
+        "committed_target_text": null
+      }
+    },
+    {
+      "event_index": 968,
+      "observation_ms": 387113,
+      "source_token_end": 968,
+      "relation": "REAL_COMMIT_ZERO_LISTEN",
+      "delta_p_commit": 0.884553854132264,
+      "absolute_delta_p_commit": 0.884553854132264,
+      "real": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.8845568299293518,
+        "candidate_source_start": 965,
+        "candidate_source_end": 968,
+        "candidate_source_text": "component of AI for",
+        "candidate_translation": "thành phần của AI cho",
+        "committed_target_text": "thành phần của AI cho"
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 2.9757970878563356e-06,
+        "candidate_source_start": 938,
+        "candidate_source_end": 968,
+        "candidate_source_text": "wind-farm operators They also lent us an expert team to advise on metrics and benchmarks and to share the data that we needed This is another critical component of AI for",
+        "candidate_translation": "Các nhà điều hành nông trại gió Họ cũng cho chúng tôi một đội ngũ chuyên gia để tư vấn về các số liệu và điểm chuẩn và chia sẻ dữ liệu mà chúng tôi cần Đây là một thành phần quan trọng khác của AI cho",
+        "committed_target_text": null
+      }
+    },
+    {
+      "event_index": 1011,
+      "observation_ms": 405310,
+      "source_token_end": 1011,
+      "relation": "REAL_COMMIT_ZERO_LISTEN",
+      "delta_p_commit": 0.8810392322484404,
+      "absolute_delta_p_commit": 0.8810392322484404,
+      "real": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.8812969923019409,
+        "candidate_source_start": 1008,
+        "candidate_source_end": 1011,
+        "candidate_source_text": "better that AI performance",
+        "candidate_translation": "tốt hơn là hiệu suất AI",
+        "committed_target_text": "tốt hơn là hiệu suất AI"
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 0.0002577600535005331,
+        "candidate_source_start": 996,
+        "candidate_source_end": 1011,
+        "candidate_source_text": "what quantifiable metrics to use to measure AI performance and how much better that AI performance",
+        "candidate_translation": "những số liệu định lượng được để sử dụng để đo lường hiệu suất AI và hiệu suất AI tốt hơn bao nhiêu",
+        "committed_target_text": null
+      }
+    },
+    {
+      "event_index": 980,
+      "observation_ms": 392468,
+      "source_token_end": 980,
+      "relation": "REAL_COMMIT_ZERO_LISTEN",
+      "delta_p_commit": 0.8747999081097078,
+      "absolute_delta_p_commit": 0.8747999081097078,
+      "real": {
+        "decision": "COMMIT",
+        "decision_reason": "policy",
+        "p_commit": 0.8748472929000854,
+        "candidate_source_start": 977,
+        "candidate_source_end": 980,
+        "candidate_source_text": "that can tell you",
+        "candidate_translation": "có thể cho bạn biết",
+        "committed_target_text": "có thể cho bạn biết"
+      },
+      "zero": {
+        "decision": "LISTEN",
+        "decision_reason": "below_threshold",
+        "p_commit": 4.738479037769139e-05,
+        "candidate_source_start": 938,
+        "candidate_source_end": 980,
+        "candidate_source_text": "wind-farm operators They also lent us an expert team to advise on metrics and benchmarks and to share the data that we needed This is another critical component of AI for the real-world deployments Working with a domain-expert team that can tell you",
+        "candidate_translation": "Các nhà điều hành wind-farm Họ cũng cho chúng tôi mượn một nhóm chuyên gia để tư vấn về các số liệu và điểm chuẩn và chia sẻ dữ liệu mà chúng tôi cần Đây là một thành phần quan trọng khác của AI cho các triển khai thực tế Làm việc với một nhóm chuyên gia tên miền có thể cho bạn biết",
+        "committed_target_text": null
+      }
+    }
+  ],
+  "interpretation_guardrails": [
+    "REAL and ZERO use the same P3 checkpoint.",
+    "Prepared context affects the policy only.",
+    "A different commit can alter future candidate spans, causing later candidate translations to differ indirectly.",
+    "Candidate-translation differences after boundary divergence are downstream consequences, not direct context injection into EnViT5.",
+    "This trace is an illustrative controlled DEV case, not general evidence of superiority."
+  ]
+}

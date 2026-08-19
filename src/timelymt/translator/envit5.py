@@ -29,6 +29,11 @@ _TOKENIZER_EXPECTED_IDS = {"pad_token_id": 0, "eos_token_id": 1}
 _TOKENIZER_EXTRA_TOKEN_IDS = {
     f"<extra_id_{index}>": 50047 - index for index in range(48)
 }
+_TOKENIZER_PROBES = {
+    "en: A tiny synthetic English string.": [1055, 49804, 14, 13487, 32774, 7581, 16645, 49774, 1],
+    "en: Machine learning can boost wind energy.": [1055, 49804, 8666, 5215, 446, 11664, 9754, 5066, 49774, 1],
+    "en: artificial intelligence": [1055, 49804, 20190, 14703, 1],
+}
 
 
 @dataclass(frozen=True)
@@ -236,6 +241,7 @@ class EnViT5Translator(Translator):
             model_inputs,
             add_special_tokens=True,
             truncation=False,
+            return_token_type_ids=False,
         )["input_ids"]
         for token_ids in model_token_ids:
             if len(token_ids) > self.config.max_input_tokens:
@@ -248,6 +254,7 @@ class EnViT5Translator(Translator):
             source_texts,
             add_special_tokens=True,
             truncation=False,
+            return_token_type_ids=False,
         )["input_ids"]
         encoded = runtime.tokenizer(
             model_inputs,
@@ -255,6 +262,7 @@ class EnViT5Translator(Translator):
             padding=True,
             truncation=False,
             return_tensors="pt",
+            return_token_type_ids=False,
         )
         encoded = {name: tensor.to(runtime.device) for name, tensor in encoded.items()}
         with runtime.torch.inference_mode():
@@ -268,6 +276,7 @@ class EnViT5Translator(Translator):
             hypotheses,
             add_special_tokens=True,
             truncation=False,
+            return_token_type_ids=False,
         )["input_ids"]
 
         results: list[TranslationResult] = []
@@ -363,6 +372,7 @@ def _load_tokenizer(config: EnViT5Config, *, transformers: Any, huggingface_hub:
         **revision_args,
     )
     tokenizer = transformers.PreTrainedTokenizerFast(tokenizer_file=tokenizer_file, **_TOKENIZER_SPECIAL_TOKENS)
+    tokenizer.model_input_names = ["input_ids", "attention_mask"]
     _validate_tokenizer(tokenizer)
     return tokenizer
 
@@ -376,18 +386,27 @@ def tokenizer_diagnostics(config: EnViT5Config) -> Mapping[str, Any]:
     except ImportError as error:
         raise RuntimeError("EnViT5 tokenizer diagnostics require transformers and huggingface_hub") from error
     tokenizer = _load_tokenizer(config, transformers=transformers, huggingface_hub=huggingface_hub)
+    special_token_apis = tuple(
+        attribute
+        for attribute in ("extra_special_tokens", "additional_special_tokens")
+        if hasattr(tokenizer, attribute)
+    )
+    observed_tokens = getattr(tokenizer, special_token_apis[0], ()) if special_token_apis else ()
     return {
+        "transformers_version": getattr(transformers, "__version__", "unknown"),
+        "tokenizer_backend_class": f"{type(tokenizer).__module__}.{type(tokenizer).__qualname__}",
+        "available_special_token_apis": special_token_apis,
+        "observed_special_token_count": len(observed_tokens),
         "pad_token": tokenizer.pad_token,
         "pad_token_id": tokenizer.pad_token_id,
         "eos_token": tokenizer.eos_token,
         "eos_token_id": tokenizer.eos_token_id,
         "unk_token": tokenizer.unk_token,
-        "extra_special_token_count": len(tokenizer.extra_special_tokens),
     }
 
 
 def _validate_tokenizer(tokenizer: Any) -> None:
-    """Reject tokenizer artifacts that do not retain EnViT5's pinned special tokens."""
+    """Reject tokenizers that differ from EnViT5's frozen semantic contract."""
 
     for attribute, expected in _TOKENIZER_EXPECTED_IDS.items():
         if getattr(tokenizer, attribute) != expected:
@@ -396,10 +415,11 @@ def _validate_tokenizer(tokenizer: Any) -> None:
         expected = _TOKENIZER_SPECIAL_TOKENS[attribute]
         if getattr(tokenizer, attribute) != expected:
             raise RuntimeError(f"pinned EnViT5 tokenizer has unexpected {attribute}: {getattr(tokenizer, attribute)!r}")
-    actual_extra_tokens = tokenizer.extra_special_tokens
-    if set(actual_extra_tokens) != set(_TOKENIZER_EXTRA_TOKEN_IDS):
-        raise RuntimeError("pinned EnViT5 tokenizer has unexpected extra_special_tokens")
     for token, expected_id in _TOKENIZER_EXTRA_TOKEN_IDS.items():
         actual_id = tokenizer.convert_tokens_to_ids(token)
         if actual_id != expected_id:
             raise RuntimeError(f"pinned EnViT5 tokenizer has unexpected ID for {token}: {actual_id!r}")
+    for probe, expected_ids in _TOKENIZER_PROBES.items():
+        actual_ids = tokenizer.encode(probe)
+        if actual_ids != expected_ids:
+            raise RuntimeError(f"pinned EnViT5 tokenizer has unexpected input_ids for probe {probe!r}: {actual_ids!r}")

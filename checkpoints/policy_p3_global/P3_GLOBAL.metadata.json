@@ -1,0 +1,71 @@
+{
+  "checkpoint_sha256": "ccf829fdb7ab521cc12c299583efa7222c965440b1257ddfb35e03ddd7bcadb9",
+  "embedding_dimension": 384,
+  "encoder_model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "encoder_revision": "e62509716f15c5fd03a6fd3156a4bc5e43f83f26",
+  "input_dimension": 1547,
+  "label_counts": {
+    "COMMIT": 2943,
+    "LISTEN": 19075
+  },
+  "mlp_architecture": [
+    "Linear(input,256)",
+    "GELU",
+    "Dropout(0.20)",
+    "Linear(256,64)",
+    "GELU",
+    "Dropout(0.10)",
+    "Linear(64,1)"
+  ],
+  "numeric_feature_ordering": [
+    "source_buffer_token_count",
+    "source_buffer_character_count",
+    "source_clock_elapsed_ms",
+    "current_target_token_count",
+    "previous_target_token_count",
+    "target_token_count_delta",
+    "previous_current_lcp_ratio",
+    "previous_current_change_ratio",
+    "prior_committed_unit_count",
+    "previous_committed_source_tokens",
+    "previous_committed_target_tokens"
+  ],
+  "numeric_scaler_fingerprint": "82f8c0bba22f7429981c4cedd07a738b2fd6f1940a5460376534de2af0bf810d",
+  "numeric_scaler_fit_split": "train",
+  "pooling_version": "attention-mask-mean-l2-v1",
+  "positive_weight": 6.481481481481482,
+  "prepared_context_manifest_fingerprint": "d9b910afd1941873826065bcf6e343be28cd850d339b356457daadbde60ad2eb",
+  "prepared_context_schema_version": "prepared-context-v0",
+  "prepared_representation_version": "prepared-global-v0",
+  "runtime": {
+    "cuda_available": true,
+    "cuda_device_name": "Tesla T4",
+    "encoder_device_used": "cuda",
+    "policy_device_used": "cuda",
+    "torch_version": "2.10.0+cu128"
+  },
+  "train_talk_ids": [
+    "ted-alona-fyshe-ai-understand",
+    "ted-andrew-ng-ai-opportunities",
+    "ted-chris-urmson-self-driving-cars",
+    "ted-greg-brockman-chatgpt-potential",
+    "ted-joseph-redmon-computer-vision",
+    "ted-kai-fu-lee-ai-humanity",
+    "ted-ken-goldberg-robots",
+    "ted-kevin-slavin-algorithms",
+    "ted-maurice-conti-intuitive-ai",
+    "ted-sal-khan-ai-education",
+    "ted-stuart-russell-safe-ai",
+    "ted-yejin-choi-ai-smart-stupid"
+  ],
+  "training_hyperparameters": {
+    "batch_size": 256,
+    "epochs": 20,
+    "learning_rate": 0.001,
+    "optimizer": "AdamW",
+    "seed": 20260809,
+    "weight_decay": 0.0001,
+    "weighted_bce": "TRAIN_LISTEN/TRAIN_COMMIT"
+  },
+  "variant": "P3_GLOBAL"
+}

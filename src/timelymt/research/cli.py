@@ -604,12 +604,14 @@ def main(argv: Sequence[str] | None = None) -> None:
     parser.add_argument("--include-selected", action="store_true")
     parser.add_argument("--source", type=Path)
     parser.add_argument("--thresholds", nargs="*", type=float)
-    parser.add_argument("--encoder-device", choices=("cpu", "cuda"), default="cpu")
-    parser.add_argument("--encoder-dtype", choices=("float32", "float16"), default="float32")
-    parser.add_argument("--policy-device", choices=("cpu", "cuda"), default="cpu")
-    parser.add_argument("--policy-dtype", choices=("float32", "float16"), default="float32")
-    parser.add_argument("--translator-device", choices=("cpu", "cuda"), default="cuda")
-    parser.add_argument("--translator-dtype", choices=("float32", "float16"), default="float16")
+    parser.add_argument("--encoder-device", choices=("cpu", "cuda"))
+    parser.add_argument("--encoder-dtype", choices=("float32", "float16"))
+    parser.add_argument("--policy-device", choices=("cpu", "cuda"))
+    parser.add_argument("--policy-dtype", choices=("float32", "float16"))
+    parser.add_argument("--translator-device", choices=("cpu", "cuda"))
+    parser.add_argument("--translator-dtype", choices=("float32", "float16"))
+    parser.add_argument("--prepared-context-mode", choices=("real", "zero"), default="real")
+    parser.add_argument("--trace-output", type=Path)
     args = parser.parse_args(argv)
     if args.stage in {"train-v2", "rollout-v2", "evaluate-v2", "compare-v2", "select-v2", "freeze-v2", "validate-p3", "inspect-p3", "train-p3", "inspect-p3-checkpoint", "rollout-p3", "evaluate-p3"} and args.split == "test":
         parser.error("Policy V2 forbids --split test")
@@ -630,8 +632,22 @@ def main(argv: Sequence[str] | None = None) -> None:
     elif args.stage == "rollout-p3":
         if args.split not in {"train", "dev"}:
             parser.error("rollout-p3 requires --split train|dev")
+        if args.trace_output is not None:
+            if args.split != "dev":
+                parser.error("rollout-p3 --trace-output permits DEV only")
+            if args.talk_id is None:
+                parser.error("rollout-p3 --trace-output requires --talk-id TALK_ID")
+            if len(args.thresholds or THRESHOLDS) != 1:
+                parser.error("rollout-p3 --trace-output requires exactly one --thresholds value")
         from .policy_p3_global_runner import rollout_p3
-        rollout_p3(args.split, args.thresholds or THRESHOLDS, talk_id=args.talk_id, batch_size=args.batch_size)
+        rollout_p3(
+            args.split, args.thresholds or THRESHOLDS, talk_id=args.talk_id, batch_size=args.batch_size,
+            prepared_context_mode=args.prepared_context_mode, encoder_device=args.encoder_device,
+            encoder_dtype=args.encoder_dtype or "float32", policy_device=args.policy_device,
+            policy_dtype=args.policy_dtype or "float32", translator_device=args.translator_device or "cuda",
+            translator_dtype=args.translator_dtype or "float16",
+            trace_output=args.trace_output,
+        )
     elif args.stage == "evaluate-p3":
         if args.split not in {None, "dev"}:
             parser.error("evaluate-p3 supports DEV only")
@@ -647,8 +663,8 @@ def main(argv: Sequence[str] | None = None) -> None:
             parser.error("train-v2 requires --variant P0|P1|P2")
         from .policy_v2_runner import train_v2
         train_v2(
-            args.variant, args.pseudo_labels, encoder_device=args.encoder_device,
-            encoder_dtype=args.encoder_dtype, policy_device=args.policy_device, policy_dtype=args.policy_dtype,
+            args.variant, args.pseudo_labels, encoder_device=args.encoder_device or "cpu",
+            encoder_dtype=args.encoder_dtype or "float32", policy_device=args.policy_device or "cpu", policy_dtype=args.policy_dtype or "float32",
         )
     elif args.stage == "rollout-v2":
         if args.variant is None:
@@ -656,9 +672,9 @@ def main(argv: Sequence[str] | None = None) -> None:
         from .policy_v2_runner import rollout_v2
         rollout_v2(
             args.variant, args.thresholds or THRESHOLDS, args.batch_size,
-            encoder_device=args.encoder_device, encoder_dtype=args.encoder_dtype,
-            policy_device=args.policy_device, policy_dtype=args.policy_dtype,
-            translator_device=args.translator_device, translator_dtype=args.translator_dtype,
+            encoder_device=args.encoder_device or "cpu", encoder_dtype=args.encoder_dtype or "float32",
+            policy_device=args.policy_device or "cpu", policy_dtype=args.policy_dtype or "float32",
+            translator_device=args.translator_device or "cuda", translator_dtype=args.translator_dtype or "float16",
         )
     elif args.stage == "evaluate-v2":
         from .policy_v2_runner import evaluate_v2

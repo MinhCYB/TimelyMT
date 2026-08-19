@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TimelyMT Research Demo</title>
+    <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="error-panel" class="error-panel" hidden role="alert" aria-live="assertive"></section>
+    <section id="app" hidden>
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">TimelyMT / controlled DEV illustration</p>
+          <h1>Context-Aware Streaming Translation <span>Controlled P3 Ablation</span></h1>
+          <p id="talk-meta" class="subtitle"></p>
+        </div>
+        <div class="clock-block">
+          <span class="label">Shared source clock</span>
+          <strong id="clock">00:00.000</strong>
+          <span id="event-meta" class="muted"></span>
+        </div>
+      </header>
+
+      <section class="controls" aria-label="Playback controls">
+        <button id="reset" type="button">Reset</button>
+        <button id="previous" type="button" aria-label="Step backward">&#9664; Step</button>
+        <button id="play" type="button">Play</button>
+        <button id="next" type="button" aria-label="Step forward">Step &#9654;</button>
+        <button id="presentation-toggle" type="button" aria-pressed="false">Presentation mode</button>
+        <span class="control-label">Speed</span>
+        <div id="speed-controls" class="button-group" aria-label="Playback speed">
+          <button type="button" data-speed="0.5">0.5x</button>
+          <button type="button" data-speed="1" class="active">1x</button>
+          <button type="button" data-speed="2">2x</button>
+           <button type="button" data-speed="4">4x</button>
+           <button type="button" data-speed="8">8x</button>
+         </div>
+         <label class="pause-toggle"><input id="pause-on-divergence" type="checkbox"> Pause on policy divergence</label>
+        <label class="bookmark-label" for="bookmark">Jump to difference</label>
+        <select id="bookmark"></select>
+        <button id="previous-difference" type="button">Previous differing decision</button>
+        <button id="next-difference" type="button">Next differing decision</button>
+        <span class="shortcut-hint" title="Space: play/pause | Left/Right: step | N/P: differing decision | B: bookmarks | R: reset | D: toggle pause on divergence">Shortcuts: Space, &larr;/&rarr;, N/P, B, R, D</span>
+      </section>
+
+      <section class="workspace">
+        <article class="panel source-panel">
+          <div class="panel-heading"><p class="eyebrow">Common input</p><h2>Incoming Source</h2></div>
+          <section id="incoming-token" class="incoming-token" aria-live="polite"></section>
+          <p class="muted source-intro">Shared observed English text. Future source tokens are hidden.</p>
+          <div id="source-stream" class="source-stream" aria-live="polite"></div>
+          <dl class="mini-facts">
+            <div><dt>Observation</dt><dd id="source-observation"></dd></div>
+            <div><dt>Candidate ranges</dt><dd id="candidate-ranges"></dd></div>
+          </dl>
+        </article>
+
+        <section class="comparison" aria-label="Policy comparison">
+          <p class="flow-hint">Source arrives &rarr; Uncommitted buffer &rarr; Translate &rarr; Policy &rarr; LISTEN / COMMIT</p>
+          <div id="divergence-band" class="divergence-band"></div>
+          <div id="span-band" class="span-band"></div>
+          <div class="policy-grid">
+            <article id="real-card" class="policy-card"></article>
+            <article id="zero-card" class="policy-card"></article>
+          </div>
+          <aside id="first-divergence-note" class="education-note" hidden>
+            <strong>First divergence: a policy timing difference</strong>
+            <p>Same source. Same candidate translation. Same P3 checkpoint. Same threshold.</p>
+            <p>Only the prepared-context policy input differs. REAL crosses 0.60 and commits. ZERO remains below 0.60 and listens.</p>
+          </aside>
+        </section>
+
+        <aside class="panel knowledge-panel">
+          <div class="panel-heading"><p class="eyebrow">Provenance / policy input</p><h2>Prepared Knowledge</h2></div>
+          <div id="knowledge-content"></div>
+        </aside>
+      </section>
+
+      <section class="panel timeline-panel">
+        <div class="timeline-header"><div><p class="eyebrow">Irreversible output</p><h2>Committed Translation</h2><p class="muted output-note">Once emitted, target output remains committed in this replay.</p></div><p id="commit-counts" class="muted"></p></div>
+        <div id="commit-timeline" class="commit-timeline" aria-label="Shared source-clock commit timeline"></div>
+        <div class="commit-output-grid">
+          <section><h3>REAL committed Vietnamese output</h3><div id="real-commits" class="committed-units"></div></section>
+          <section><h3>ZERO committed Vietnamese output</h3><div id="zero-commits" class="committed-units"></div></section>
+        </div>
+      </section>
+
+      <section class="panel features-panel">
+        <button id="features-toggle" class="disclosure" type="button" aria-expanded="false">Show causal features</button>
+        <div id="features-content" hidden></div>
+      </section>
+
+      <footer class="guardrails">
+        <strong>Research guardrails.</strong> Controlled DEV illustration. REAL and ZERO use the same P3 checkpoint. Prepared context affects the policy only. Different commit decisions can change later candidate source spans, causing downstream translation differences. This demo does not establish general quality superiority.
+      </footer>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

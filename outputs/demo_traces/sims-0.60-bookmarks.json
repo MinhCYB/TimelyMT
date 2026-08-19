@@ -1,0 +1,48 @@
+{
+  "talk_id": "ted-sims-witherspoon-ai-climate",
+  "threshold": 0.6,
+  "bookmarks": [
+    {
+      "id": "first-divergence",
+      "event_index": 131,
+      "observation_ms": 53000,
+      "label": "First policy divergence",
+      "description": "First synchronized event with different REAL and ZERO policy decisions."
+    },
+    {
+      "id": "max-probability-gap",
+      "event_index": 584,
+      "observation_ms": 233025,
+      "label": "Largest decision-divergence probability gap",
+      "description": "Differing decision with the largest absolute REAL-minus-ZERO commit probability gap."
+    },
+    {
+      "id": "real-commit-zero-listen",
+      "event_index": 131,
+      "observation_ms": 53000,
+      "label": "REAL commits while ZERO listens",
+      "description": "Clear threshold-straddling policy difference."
+    },
+    {
+      "id": "real-listen-zero-commit",
+      "event_index": 410,
+      "observation_ms": 164573,
+      "label": "ZERO commits while REAL listens",
+      "description": "Clear threshold-straddling policy difference."
+    },
+    {
+      "id": "commit-boundary-cascade",
+      "event_index": 181,
+      "observation_ms": 72430,
+      "label": "Downstream commit-boundary cascade",
+      "description": "Both policies commit but their earlier choices yield different candidate boundaries."
+    },
+    {
+      "id": "late-talk-divergence",
+      "event_index": 1687,
+      "observation_ms": 675035,
+      "label": "Late-talk policy divergence",
+      "description": "Late non-forced policy difference, useful for showing the effect persists beyond the opening."
+    }
+  ]
+}

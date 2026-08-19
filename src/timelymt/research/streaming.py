@@ -247,6 +247,7 @@ def learned_rollout(
     provider: HypothesisProvider,
     policy: CommitPolicy,
     threshold: float,
+    trace_sink: Callable[[Mapping[str, Any]], None] | None = None,
 ) -> list[Commit]:
     commits: list[Commit] = []
     start = 0
@@ -254,6 +255,27 @@ def learned_rollout(
     for end in range(len(talk.tokens)):
         count = end - start + 1
         if count < MIN_SOURCE_TOKENS:
+            # The final short residual is represented by the existing fallback commit below.
+            if trace_sink is not None and end != len(talk.tokens) - 1:
+                trace_sink({
+                    "event_index": end,
+                    "observation_ms": talk.tokens[end].emit_ms,
+                    "source_token_end": end,
+                    "candidate_source_start": start,
+                    "candidate_source_end": end,
+                    "candidate_source_text": " ".join(token.text for token in talk.tokens[start : end + 1]),
+                    "candidate_translation": None,
+                    "previous_candidate_translation": None,
+                    "p_commit": None,
+                    "threshold": threshold,
+                    "decision": "WAIT",
+                    "decision_reason": "min_source_tokens",
+                    "is_forced": False,
+                    "committed_unit_index": None,
+                    "committed_source_text": None,
+                    "committed_target_text": None,
+                    "numeric_features": None,
+                })
             continue
         hypothesis = provider(talk, start, end)
         state = causal_state(talk, start, end, hypothesis.translated_text, previous_hypothesis, commits)
@@ -261,6 +283,26 @@ def learned_rollout(
         reason = "max_length" if count >= MAX_SOURCE_TOKENS else "policy" if probability >= threshold else None
         if end == len(talk.tokens) - 1 and reason is None:
             reason = "talk_end"
+        if trace_sink is not None:
+            trace_sink({
+                "event_index": end,
+                "observation_ms": talk.tokens[end].emit_ms,
+                "source_token_end": end,
+                "candidate_source_start": start,
+                "candidate_source_end": end,
+                "candidate_source_text": state["current_source_text"],
+                "candidate_translation": hypothesis.translated_text,
+                "previous_candidate_translation": previous_hypothesis or None,
+                "p_commit": probability,
+                "threshold": threshold,
+                "decision": "COMMIT" if reason else "LISTEN",
+                "decision_reason": reason or "below_threshold",
+                "is_forced": reason in {"max_length", "talk_end"},
+                "committed_unit_index": len(commits) if reason else None,
+                "committed_source_text": state["current_source_text"] if reason else None,
+                "committed_target_text": hypothesis.translated_text if reason else None,
+                "numeric_features": dict(state["numeric"]),
+            })
         if reason:
             commits.append(_commit(talk, start, end, hypothesis, reason, probability, state["numeric"]))
             start, previous_hypothesis = end + 1, ""
@@ -271,6 +313,26 @@ def learned_rollout(
         hypothesis = provider(talk, start, end)
         state = causal_state(talk, start, end, hypothesis.translated_text, previous_hypothesis, commits)
         probability = policy.predict_commit_probability(state)
+        if trace_sink is not None:
+            trace_sink({
+                "event_index": end,
+                "observation_ms": talk.tokens[end].emit_ms,
+                "source_token_end": end,
+                "candidate_source_start": start,
+                "candidate_source_end": end,
+                "candidate_source_text": state["current_source_text"],
+                "candidate_translation": hypothesis.translated_text,
+                "previous_candidate_translation": previous_hypothesis or None,
+                "p_commit": probability,
+                "threshold": threshold,
+                "decision": "COMMIT",
+                "decision_reason": "talk_end",
+                "is_forced": True,
+                "committed_unit_index": len(commits),
+                "committed_source_text": state["current_source_text"],
+                "committed_target_text": hypothesis.translated_text,
+                "numeric_features": dict(state["numeric"]),
+            })
         commits.append(_commit(talk, start, end, hypothesis, "talk_end", probability, state["numeric"]))
     return commits
 

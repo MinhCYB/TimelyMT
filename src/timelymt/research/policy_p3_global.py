@@ -30,6 +30,7 @@ P3_FEATURE_ORDER = (
     "scaled_numeric_features",
 )
 P3_INPUT_DIMENSION = EXPECTED_EMBEDDING_DIMENSION * 4 + len(NUMERIC_FEATURES)
+PREPARED_CONTEXT_MODES = frozenset({"real", "zero"})
 
 
 @dataclass(frozen=True)
@@ -57,7 +58,15 @@ class PreparedGlobalEmbedding:
     def embedding_norm(self) -> float:
         return float(np.linalg.norm(self.embedding))
 
-    def provenance(self) -> dict[str, Any]:
+    def effective_embedding(self, mode: str = "real") -> np.ndarray:
+        if mode not in PREPARED_CONTEXT_MODES:
+            raise ValueError(f"unsupported prepared context mode: {mode}")
+        if mode == "real":
+            return self.embedding
+        return np.zeros(EXPECTED_EMBEDDING_DIMENSION, dtype=np.float32)
+
+    def provenance(self, mode: str = "real") -> dict[str, Any]:
+        effective = self.effective_embedding(mode)
         return {
             "talk_id": self.talk_id, "split": self.split,
             "eligible_source_ids": list(self.eligible_source_ids),
@@ -65,6 +74,8 @@ class PreparedGlobalEmbedding:
             "source_count": self.source_count, "representation_version": self.representation_version,
             "embedding_dimension": self.embedding_dimension, "embedding_norm": self.embedding_norm,
             "has_eligible_context": self.has_eligible_context,
+            "prepared_context_mode": mode,
+            "prepared_context_effective_embedding_norm": float(np.linalg.norm(effective)),
         }
 
 
@@ -130,7 +141,7 @@ def prepare_p3_text_embeddings(rows: Sequence[Mapping[str, Any]], pools: Sequenc
     return {"unique_texts": len(unique), "cache_hits": hits, "cache_misses": len(unique) - hits, "batches": (len(unique) - hits + batch_size - 1) // batch_size}
 
 
-def p3_feature_vector(state: Mapping[str, Any], prepared: PreparedGlobalEmbedding, cache: EmbeddingCache, scaler: NumericScaler) -> np.ndarray:
+def p3_feature_vector(state: Mapping[str, Any], prepared: PreparedGlobalEmbedding, cache: EmbeddingCache, scaler: NumericScaler, *, prepared_context_mode: str = "real") -> np.ndarray:
     validate_causal_state(state)
     if prepared.embedding.shape != (cache.dimension,) or prepared.embedding.dtype != np.float32:
         raise RuntimeError("invalid P3 prepared embedding")
@@ -138,8 +149,9 @@ def p3_feature_vector(state: Mapping[str, Any], prepared: PreparedGlobalEmbeddin
         state["current_source_text"], state["previous_committed_source_text"],
         state["previous_committed_target_text"],
     )
+    effective_prepared = prepared.effective_embedding(prepared_context_mode)
     feature = np.concatenate([
-        *(cache.encode([text])[0] for text in texts), prepared.embedding,
+        *(cache.encode([text])[0] for text in texts), effective_prepared,
         scaler.transform(numeric_vector(state)[None, :])[0],
     ]).astype(np.float32, copy=False)
     if feature.shape != (P3_INPUT_DIMENSION,):
@@ -187,11 +199,15 @@ class P3GlobalPolicy:
     cache: EmbeddingCache
     prepared: PreparedGlobalEmbedding
     device: torch.device
+    prepared_context_mode: str = "real"
     variant: str = P3_VARIANT
 
     def predict_commit_probability(self, state: Mapping[str, Any]) -> float:
         self.model.eval()
-        features = p3_feature_vector(state, self.prepared, self.cache, self.scaler)
+        features = p3_feature_vector(
+            state, self.prepared, self.cache, self.scaler,
+            prepared_context_mode=self.prepared_context_mode,
+        )
         with torch.no_grad():
             return float(torch.sigmoid(self.model(torch.from_numpy(features).to(self.device).unsqueeze(0)))[0].cpu())
 
@@ -284,7 +300,7 @@ def validate_p3_checkpoint_metadata(metadata: Mapping[str, Any], payload: Mappin
         raise RuntimeError("P3_GLOBAL checkpoint MLP architecture mismatch") from error
 
 
-def load_p3_checkpoint(path: Path, metadata_path: Path, cache: EmbeddingCache, prepared: PreparedGlobalEmbedding, *, manifest_path: Path, device: str | torch.device = "cpu") -> P3GlobalPolicy:
+def load_p3_checkpoint(path: Path, metadata_path: Path, cache: EmbeddingCache, prepared: PreparedGlobalEmbedding, *, manifest_path: Path, device: str | torch.device = "cpu", prepared_context_mode: str = "real") -> P3GlobalPolicy:
     metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
     if metadata.get("checkpoint_sha256") != sha256_file(path):
         raise RuntimeError("P3_GLOBAL checkpoint SHA-256 mismatch")
@@ -295,4 +311,6 @@ def load_p3_checkpoint(path: Path, metadata_path: Path, cache: EmbeddingCache, p
     model = V2MLP(P3_INPUT_DIMENSION)
     model.load_state_dict(payload["model_state_dict"], strict=True)
     model.eval().to(device)
-    return P3GlobalPolicy(model, scaler, cache, prepared, torch.device(device))
+    if prepared_context_mode not in PREPARED_CONTEXT_MODES:
+        raise ValueError(f"unsupported prepared context mode: {prepared_context_mode}")
+    return P3GlobalPolicy(model, scaler, cache, prepared, torch.device(device), prepared_context_mode=prepared_context_mode)

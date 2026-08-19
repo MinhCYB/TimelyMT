@@ -1,0 +1,475 @@
+{
+  "scope": "DEV only; read-only real-versus-zero P3 inference ablation",
+  "thresholds": {
+    "0.30": {
+      "aggregate_delta_real_minus_zero": {
+        "BLEU": -0.03410842165231287,
+        "chrF2": -0.01608481892754554,
+        "token_level_average_lagging": -2.2925346894202883,
+        "token_level_length_adaptive_average_lagging": -2.2935644849865766,
+        "number_of_commits": 2.0
+      },
+      "per_talk": {
+        "ted-jeff-dean-ai-smart": {
+          "has_eligible_context": false,
+          "eligible_source_ids": [],
+          "real_embedding_norm": 0.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": true,
+          "real_commit_behavior": {
+            "commit_count": 831,
+            "mean_source_tokens_per_commit": 4.086642599277979,
+            "four_token_fraction": 0.9807460890493381,
+            "four_to_five_token_fraction": 0.9843561973525873,
+            "long_commit_fraction": 0.006016847172081829,
+            "forced_max_length_commits": 0
+          },
+          "zero_commit_behavior": {
+            "commit_count": 831,
+            "mean_source_tokens_per_commit": 4.086642599277979,
+            "four_token_fraction": 0.9807460890493381,
+            "four_to_five_token_fraction": 0.9843561973525873,
+            "long_commit_fraction": 0.006016847172081829,
+            "forced_max_length_commits": 0
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.0,
+            "chrF2": 0.0
+          }
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "has_eligible_context": false,
+          "eligible_source_ids": [],
+          "real_embedding_norm": 0.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": true,
+          "real_commit_behavior": {
+            "commit_count": 790,
+            "mean_source_tokens_per_commit": 4.124050632911392,
+            "four_token_fraction": 0.9658227848101266,
+            "four_to_five_token_fraction": 0.9810126582278481,
+            "long_commit_fraction": 0.008860759493670886,
+            "forced_max_length_commits": 0
+          },
+          "zero_commit_behavior": {
+            "commit_count": 790,
+            "mean_source_tokens_per_commit": 4.124050632911392,
+            "four_token_fraction": 0.9658227848101266,
+            "four_to_five_token_fraction": 0.9810126582278481,
+            "long_commit_fraction": 0.008860759493670886,
+            "forced_max_length_commits": 0
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.0,
+            "chrF2": 0.0
+          }
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "has_eligible_context": true,
+          "eligible_source_ids": [
+            "deepmind-wind-energy-2019-lead"
+          ],
+          "real_embedding_norm": 1.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": null,
+          "real_commit_behavior": {
+            "commit_count": 412,
+            "mean_source_tokens_per_commit": 4.099514563106796,
+            "four_token_fraction": 0.9635922330097088,
+            "four_to_five_token_fraction": 0.9757281553398058,
+            "long_commit_fraction": 0.012135922330097087,
+            "forced_max_length_commits": 0
+          },
+          "zero_commit_behavior": {
+            "commit_count": 410,
+            "mean_source_tokens_per_commit": 4.119512195121951,
+            "four_token_fraction": 0.9609756097560975,
+            "four_to_five_token_fraction": 0.973170731707317,
+            "long_commit_fraction": 0.014634146341463415,
+            "forced_max_length_commits": 0
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": -0.14843843333745355,
+            "chrF2": -0.07241152966955156
+          }
+        }
+      }
+    },
+    "0.40": {
+      "aggregate_delta_real_minus_zero": {
+        "BLEU": -0.006755306942032746,
+        "chrF2": -0.06510820120464444,
+        "token_level_average_lagging": 2.225767891882306,
+        "token_level_length_adaptive_average_lagging": 2.215755150352045,
+        "number_of_commits": 8.0
+      },
+      "per_talk": {
+        "ted-jeff-dean-ai-smart": {
+          "has_eligible_context": false,
+          "eligible_source_ids": [],
+          "real_embedding_norm": 0.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": true,
+          "real_commit_behavior": {
+            "commit_count": 822,
+            "mean_source_tokens_per_commit": 4.131386861313868,
+            "four_token_fraction": 0.9647201946472019,
+            "four_to_five_token_fraction": 0.9817518248175182,
+            "long_commit_fraction": 0.014598540145985401,
+            "forced_max_length_commits": 0
+          },
+          "zero_commit_behavior": {
+            "commit_count": 822,
+            "mean_source_tokens_per_commit": 4.131386861313868,
+            "four_token_fraction": 0.9647201946472019,
+            "four_to_five_token_fraction": 0.9817518248175182,
+            "long_commit_fraction": 0.014598540145985401,
+            "forced_max_length_commits": 0
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.0,
+            "chrF2": 0.0
+          }
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "has_eligible_context": false,
+          "eligible_source_ids": [],
+          "real_embedding_norm": 0.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": true,
+          "real_commit_behavior": {
+            "commit_count": 780,
+            "mean_source_tokens_per_commit": 4.176923076923077,
+            "four_token_fraction": 0.9551282051282052,
+            "four_to_five_token_fraction": 0.9705128205128205,
+            "long_commit_fraction": 0.014102564102564103,
+            "forced_max_length_commits": 0
+          },
+          "zero_commit_behavior": {
+            "commit_count": 780,
+            "mean_source_tokens_per_commit": 4.176923076923077,
+            "four_token_fraction": 0.9551282051282052,
+            "four_to_five_token_fraction": 0.9705128205128205,
+            "long_commit_fraction": 0.014102564102564103,
+            "forced_max_length_commits": 0
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.0,
+            "chrF2": 0.0
+          }
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "has_eligible_context": true,
+          "eligible_source_ids": [
+            "deepmind-wind-energy-2019-lead"
+          ],
+          "real_embedding_norm": 1.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": null,
+          "real_commit_behavior": {
+            "commit_count": 395,
+            "mean_source_tokens_per_commit": 4.275949367088607,
+            "four_token_fraction": 0.9341772151898734,
+            "four_to_five_token_fraction": 0.9518987341772152,
+            "long_commit_fraction": 0.030379746835443037,
+            "forced_max_length_commits": 0
+          },
+          "zero_commit_behavior": {
+            "commit_count": 387,
+            "mean_source_tokens_per_commit": 4.364341085271318,
+            "four_token_fraction": 0.9328165374677002,
+            "four_to_five_token_fraction": 0.9664082687338501,
+            "long_commit_fraction": 0.023255813953488372,
+            "forced_max_length_commits": 1
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": -0.038248662917226284,
+            "chrF2": -0.2921607738559828
+          }
+        }
+      }
+    },
+    "0.50": {
+      "aggregate_delta_real_minus_zero": {
+        "BLEU": -0.21584038976881104,
+        "chrF2": 0.0367939172285503,
+        "token_level_average_lagging": 0.514070037868132,
+        "token_level_length_adaptive_average_lagging": -2.071715247379725,
+        "number_of_commits": 18.0
+      },
+      "per_talk": {
+        "ted-jeff-dean-ai-smart": {
+          "has_eligible_context": false,
+          "eligible_source_ids": [],
+          "real_embedding_norm": 0.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": true,
+          "real_commit_behavior": {
+            "commit_count": 787,
+            "mean_source_tokens_per_commit": 4.315120711562897,
+            "four_token_fraction": 0.9453621346886912,
+            "four_to_five_token_fraction": 0.9644218551461246,
+            "long_commit_fraction": 0.025412960609911054,
+            "forced_max_length_commits": 0
+          },
+          "zero_commit_behavior": {
+            "commit_count": 787,
+            "mean_source_tokens_per_commit": 4.315120711562897,
+            "four_token_fraction": 0.9453621346886912,
+            "four_to_five_token_fraction": 0.9644218551461246,
+            "long_commit_fraction": 0.025412960609911054,
+            "forced_max_length_commits": 0
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.0,
+            "chrF2": 0.0
+          }
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "has_eligible_context": false,
+          "eligible_source_ids": [],
+          "real_embedding_norm": 0.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": true,
+          "real_commit_behavior": {
+            "commit_count": 713,
+            "mean_source_tokens_per_commit": 4.5694249649368865,
+            "four_token_fraction": 0.9172510518934082,
+            "four_to_five_token_fraction": 0.9396914446002805,
+            "long_commit_fraction": 0.03927068723702665,
+            "forced_max_length_commits": 0
+          },
+          "zero_commit_behavior": {
+            "commit_count": 713,
+            "mean_source_tokens_per_commit": 4.5694249649368865,
+            "four_token_fraction": 0.9172510518934082,
+            "four_to_five_token_fraction": 0.9396914446002805,
+            "long_commit_fraction": 0.03927068723702665,
+            "forced_max_length_commits": 0
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.0,
+            "chrF2": 0.0
+          }
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "has_eligible_context": true,
+          "eligible_source_ids": [
+            "deepmind-wind-energy-2019-lead"
+          ],
+          "real_embedding_norm": 1.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": null,
+          "real_commit_behavior": {
+            "commit_count": 359,
+            "mean_source_tokens_per_commit": 4.704735376044568,
+            "four_token_fraction": 0.8913649025069638,
+            "four_to_five_token_fraction": 0.9275766016713092,
+            "long_commit_fraction": 0.04178272980501393,
+            "forced_max_length_commits": 0
+          },
+          "zero_commit_behavior": {
+            "commit_count": 341,
+            "mean_source_tokens_per_commit": 4.9530791788856305,
+            "four_token_fraction": 0.8797653958944281,
+            "four_to_five_token_fraction": 0.9208211143695014,
+            "long_commit_fraction": 0.05571847507331378,
+            "forced_max_length_commits": 1
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": -0.9333803640170686,
+            "chrF2": 0.17198909064151735
+          }
+        }
+      }
+    },
+    "0.60": {
+      "aggregate_delta_real_minus_zero": {
+        "BLEU": 0.20559834855723125,
+        "chrF2": 0.1372359708105435,
+        "token_level_average_lagging": 0.38037014008490583,
+        "token_level_length_adaptive_average_lagging": -2.604842470167384,
+        "number_of_commits": 19.0
+      },
+      "per_talk": {
+        "ted-jeff-dean-ai-smart": {
+          "has_eligible_context": false,
+          "eligible_source_ids": [],
+          "real_embedding_norm": 0.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": true,
+          "real_commit_behavior": {
+            "commit_count": 646,
+            "mean_source_tokens_per_commit": 5.256965944272446,
+            "four_token_fraction": 0.891640866873065,
+            "four_to_five_token_fraction": 0.9055727554179567,
+            "long_commit_fraction": 0.07120743034055728,
+            "forced_max_length_commits": 4
+          },
+          "zero_commit_behavior": {
+            "commit_count": 646,
+            "mean_source_tokens_per_commit": 5.256965944272446,
+            "four_token_fraction": 0.891640866873065,
+            "four_to_five_token_fraction": 0.9055727554179567,
+            "long_commit_fraction": 0.07120743034055728,
+            "forced_max_length_commits": 4
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.0,
+            "chrF2": 0.0
+          }
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "has_eligible_context": false,
+          "eligible_source_ids": [],
+          "real_embedding_norm": 0.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": true,
+          "real_commit_behavior": {
+            "commit_count": 578,
+            "mean_source_tokens_per_commit": 5.6366782006920415,
+            "four_token_fraction": 0.8494809688581315,
+            "four_to_five_token_fraction": 0.884083044982699,
+            "long_commit_fraction": 0.0847750865051903,
+            "forced_max_length_commits": 5
+          },
+          "zero_commit_behavior": {
+            "commit_count": 578,
+            "mean_source_tokens_per_commit": 5.6366782006920415,
+            "four_token_fraction": 0.8494809688581315,
+            "four_to_five_token_fraction": 0.884083044982699,
+            "long_commit_fraction": 0.0847750865051903,
+            "forced_max_length_commits": 5
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.0,
+            "chrF2": 0.0
+          }
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "has_eligible_context": true,
+          "eligible_source_ids": [
+            "deepmind-wind-energy-2019-lead"
+          ],
+          "real_embedding_norm": 1.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": null,
+          "real_commit_behavior": {
+            "commit_count": 318,
+            "mean_source_tokens_per_commit": 5.311320754716981,
+            "four_token_fraction": 0.8459119496855346,
+            "four_to_five_token_fraction": 0.8867924528301887,
+            "long_commit_fraction": 0.08176100628930817,
+            "forced_max_length_commits": 3
+          },
+          "zero_commit_behavior": {
+            "commit_count": 299,
+            "mean_source_tokens_per_commit": 5.648829431438127,
+            "four_token_fraction": 0.8093645484949833,
+            "four_to_five_token_fraction": 0.8662207357859532,
+            "long_commit_fraction": 0.10033444816053512,
+            "forced_max_length_commits": 3
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.9485854949461405,
+            "chrF2": 0.6291176449752811
+          }
+        }
+      }
+    },
+    "0.70": {
+      "aggregate_delta_real_minus_zero": {
+        "BLEU": -0.43609641925849374,
+        "chrF2": -0.07648944675045044,
+        "token_level_average_lagging": -3.877238553069489,
+        "token_level_length_adaptive_average_lagging": -9.82120723285098,
+        "number_of_commits": 44.0
+      },
+      "per_talk": {
+        "ted-jeff-dean-ai-smart": {
+          "has_eligible_context": false,
+          "eligible_source_ids": [],
+          "real_embedding_norm": 0.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": true,
+          "real_commit_behavior": {
+            "commit_count": 435,
+            "mean_source_tokens_per_commit": 7.8068965517241375,
+            "four_token_fraction": 0.8045977011494253,
+            "four_to_five_token_fraction": 0.8229885057471265,
+            "long_commit_fraction": 0.14022988505747128,
+            "forced_max_length_commits": 27
+          },
+          "zero_commit_behavior": {
+            "commit_count": 435,
+            "mean_source_tokens_per_commit": 7.8068965517241375,
+            "four_token_fraction": 0.8045977011494253,
+            "four_to_five_token_fraction": 0.8229885057471265,
+            "long_commit_fraction": 0.14022988505747128,
+            "forced_max_length_commits": 27
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.0,
+            "chrF2": 0.0
+          }
+        },
+        "ted-luis-von-ahn-crowdsourcing": {
+          "has_eligible_context": false,
+          "eligible_source_ids": [],
+          "real_embedding_norm": 0.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": true,
+          "real_commit_behavior": {
+            "commit_count": 344,
+            "mean_source_tokens_per_commit": 9.470930232558139,
+            "four_token_fraction": 0.752906976744186,
+            "four_to_five_token_fraction": 0.7848837209302325,
+            "long_commit_fraction": 0.18604651162790697,
+            "forced_max_length_commits": 29
+          },
+          "zero_commit_behavior": {
+            "commit_count": 344,
+            "mean_source_tokens_per_commit": 9.470930232558139,
+            "four_token_fraction": 0.752906976744186,
+            "four_to_five_token_fraction": 0.7848837209302325,
+            "long_commit_fraction": 0.18604651162790697,
+            "forced_max_length_commits": 29
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": 0.0,
+            "chrF2": 0.0
+          }
+        },
+        "ted-sims-witherspoon-ai-climate": {
+          "has_eligible_context": true,
+          "eligible_source_ids": [
+            "deepmind-wind-energy-2019-lead"
+          ],
+          "real_embedding_norm": 1.0,
+          "zero_effective_embedding_norm": 0.0,
+          "empty_context_artifacts_identical_except_condition": null,
+          "real_commit_behavior": {
+            "commit_count": 226,
+            "mean_source_tokens_per_commit": 7.4734513274336285,
+            "four_token_fraction": 0.7522123893805309,
+            "four_to_five_token_fraction": 0.8141592920353983,
+            "long_commit_fraction": 0.14601769911504425,
+            "forced_max_length_commits": 12
+          },
+          "zero_commit_behavior": {
+            "commit_count": 182,
+            "mean_source_tokens_per_commit": 9.280219780219781,
+            "four_token_fraction": 0.7362637362637363,
+            "four_to_five_token_fraction": 0.7802197802197802,
+            "long_commit_fraction": 0.1978021978021978,
+            "forced_max_length_commits": 15
+          },
+          "quality_delta_real_minus_zero": {
+            "BLEU": -1.9935067891654477,
+            "chrF2": -0.3298925916812365
+          }
+        }
+      }
+    }
+  }
+}
