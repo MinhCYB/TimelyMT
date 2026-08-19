@@ -1,0 +1,279 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese,english]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\definecolor{TimelyBlue}{HTML}{173B57}
+\definecolor{TimelyTeal}{HTML}{168C8C}
+\definecolor{TimelyLight}{HTML}{EEF4F5}
+\definecolor{TimelyGray}{HTML}{4B5563}
+
+\setbeamercolor{normal text}{fg=TimelyGray,bg=white}
+\setbeamercolor{structure}{fg=TimelyTeal}
+\setbeamercolor{frametitle}{fg=white,bg=TimelyBlue}
+\setbeamercolor{title}{fg=TimelyBlue}
+\setbeamercolor{subtitle}{fg=TimelyGray}
+\setbeamercolor{block title}{fg=white,bg=TimelyTeal}
+\setbeamercolor{block body}{fg=TimelyGray,bg=TimelyLight}
+\setbeamercolor{alerted text}{fg=TimelyTeal}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\color{TimelyTeal}\small$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{TimelyTeal}\scriptsize$\bullet$}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.86\paperwidth,ht=2.7ex,dp=1.2ex,leftskip=1em]{author in head/foot}%
+      \color{TimelyGray}\scriptsize TimelyMT \hspace{0.5em}|\hspace{0.5em} Policy quyết định thời điểm dịch
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.14\paperwidth,ht=2.7ex,dp=1.2ex,center]{date in head/foot}%
+      \color{TimelyBlue}\scriptsize\insertframenumber/10
+    \end{beamercolorbox}%
+  }%
+}
+\setbeamertemplate{headline}{}
+\setbeamersize{text margin left=0.7cm,text margin right=0.7cm}
+
+\newcommand{\slidefigure}[2][]{%
+  \IfFileExists{figures/#2}{%
+    \includegraphics[#1]{figures/#2}%
+  }{%
+    \includegraphics[#1]{../figures/#2}%
+  }%
+}
+\newcommand{\contextreal}{\texttt{REAL\_CONTEXT}}
+\newcommand{\contextzero}{\texttt{ZERO\_CONTEXT}}
+
+\title{Nghiên cứu mô hình quyết định thời điểm dịch\\
+cho hệ thống dịch cabin tự động Anh--Việt\\
+với độ trễ thấp}
+\subtitle{Môn: Xử lý ngôn ngữ tự nhiên}
+\author{Sinh viên: Đặng Quang Minh \quad | \quad MSSV: 24022397}
+\date{\url{https://github.com/MinhCYB/TimelyMT}}
+
+\begin{document}
+
+% 1. Title
+\begin{frame}[plain]
+  \titlepage
+  \vspace{-0.8em}
+  \begin{center}
+    \color{TimelyTeal}\rule{0.62\textwidth}{1.2pt}
+  \end{center}
+\end{frame}
+
+% 2. Problem
+\begin{frame}{Bài toán: khi nào nên phát hành bản dịch?}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.59\textwidth}
+      \begin{itemize}
+        \setlength\itemsep{0.8em}
+        \item Dịch theo luồng chỉ quan sát từng phần của câu nguồn.
+        \item Policy phải quyết định \textbf{chờ thêm} hay \textbf{COMMIT} ngay.
+        \item Một khi đã \textbf{COMMIT}, phần dịch đó không thể sửa lại.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.37\textwidth}
+      \begin{block}{Mục tiêu dài hạn}
+        Dịch cabin tự động Anh--Việt với độ trễ thấp.
+      \end{block}
+      \vspace{0.4em}
+      \small\textbf{Phạm vi hiện tại:} policy trên luồng token và đồng hồ mô phỏng; chưa phải hệ thống speech-to-speech end-to-end.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 3. Pipeline
+\begin{frame}{TimelyMT pipeline}
+  \begin{center}
+    \slidefigure[width=0.97\textwidth,height=0.75\textheight,keepaspectratio]{figure-1-streaming-pipeline.png}
+  \end{center}
+  \vspace{-0.7em}
+  \centering EnViT5 tạo bản dịch ứng viên; \alert{policy quyết định khi nào bản dịch đó nên được phát hành}.
+\end{frame}
+
+% 4. Policy evolution
+\begin{frame}{Quá trình mở rộng thông tin đầu vào của policy}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.72\textwidth}
+      \centering
+      \slidefigure[width=\textwidth,height=0.76\textheight,keepaspectratio]{figure-2-policy-feature-evolution.png}
+    \end{column}
+    \begin{column}{0.25\textwidth}
+      \small
+      \begin{itemize}
+        \setlength\itemsep{0.8em}
+        \item \textbf{V1}: các đặc trưng số cơ bản
+        \item \textbf{V2}: thêm thông tin ngữ nghĩa và lịch sử
+        \item \textbf{P3}: thêm prepared context
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 5. Prepared context
+\begin{frame}{Prepared context: thông tin có sẵn trước bài nói}
+  \centering\small\textbf{Không sử dụng transcript hoặc bản dịch tham chiếu.}
+  \vspace{0.5em}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.53\textwidth}
+      \begin{block}{Nguồn ngữ cảnh}
+      \begin{itemize}
+        \setlength\itemsep{0.55em}
+        \item Bài báo
+        \item Trang dự án
+        \item Tài liệu nền đã có trước bài nói
+      \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \vspace{0.15em}
+      \begin{center}
+        \Large Prepared context
+
+        \vspace{0.35em}
+        \color{TimelyTeal}$\Downarrow$
+
+        \vspace{0.35em}
+        \color{TimelyGray}\textbf{policy}
+
+      \end{center}
+    \end{column}
+  \end{columns}
+  \vfill
+  \centering\alert{Prepared context chỉ được đưa vào policy, không đi trực tiếp vào EnViT5.}
+\end{frame}
+
+% 6. Why controlled ablation
+\begin{frame}{Vì sao cần controlled ablation?}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \begin{block}{So sánh P3--P2}
+        P3 và P2 được huấn luyện riêng, nên chênh lệch giữa hai mô hình có thể đến từ nhiều yếu tố khác nhau.
+
+        \vspace{0.5em}
+        So sánh P3--P2 không thể cô lập riêng ảnh hưởng của prepared context.
+      \end{block}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{block}{Cách kiểm tra}
+        Để kiểm tra ảnh hưởng của context, ta giữ nguyên checkpoint P3 và toàn bộ điều kiện rollout, chỉ thay phần prepared context.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 7. Controlled ablation
+\begin{frame}{\contextreal{} vs \contextzero{}}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.68\textwidth}
+      \centering
+      \slidefigure[width=\textwidth,height=0.73\textheight,keepaspectratio]{figure-3-controlled-ablation.png}
+    \end{column}
+    \begin{column}{0.29\textwidth}
+      \begin{block}{Chỉ thay đổi}
+        \centering\small prepared-context dimensions
+
+        \vspace{0.2em}
+        \Large\texttt{[1152:1536]}
+      \end{block}
+      \vspace{0.6em}
+      \scriptsize
+      \textbf{Giữ nguyên:} checkpoint P3, dòng nguồn, ngưỡng quyết định và EnViT5.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 8. Main result
+\begin{frame}{Prepared context làm thay đổi COMMIT, nhưng chưa cho thấy lợi ích ổn định}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \begin{block}{Trên lưới năm ngưỡng}
+        REAL và ZERO tạo số lượng \textbf{COMMIT} khác nhau ở cả năm ngưỡng.
+      \end{block}
+      \small
+      Tuy nhiên, BLEU, chrF2 và các chỉ số độ trễ không cải thiện nhất quán.
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \centering
+      \textbf{Sims 0.60: một trường hợp mô tả}
+
+      \vspace{0.4em}
+      \begin{tabular}{>{\raggedright\arraybackslash}p{0.45\linewidth}r}
+        \toprule
+        Chỉ số & Giá trị \\
+        \midrule
+        $\Delta$ BLEU & $+0.95$ \\
+        $\Delta$ chrF2 & $+0.63$ \\
+        $\Delta$ COMMIT & $+19$ \\
+        \bottomrule
+      \end{tabular}
+
+      \vspace{0.3em}
+      \scriptsize REAL/ZERO commits: 318 vs 299
+    \end{column}
+  \end{columns}
+  \vfill
+  \begin{alertblock}{Giới hạn kết luận}
+    \texttt{prepared-global-v0} có ảnh hưởng đến policy, nhưng chưa chứng minh cải thiện ổn định về chất lượng hoặc độ trễ.
+  \end{alertblock}
+\end{frame}
+
+% 9. Divergence cascade
+\begin{frame}{Event 131--132: một quyết định COMMIT làm thay đổi luồng xử lý về sau}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.57\textwidth}
+      \centering
+      \slidefigure[width=\textwidth,height=0.69\textheight,keepaspectratio]{figure-4-divergence-cascade.png}
+    \end{column}
+    \begin{column}{0.40\textwidth}
+      \scriptsize
+      \textbf{Event 131}
+      \begin{itemize}
+        \item Cùng đoạn nguồn, cùng bản dịch ứng viên.
+        \item REAL: $p = 0.631034$ $\rightarrow$ COMMIT.
+        \item ZERO: $p = 0.575424$ $\rightarrow$ LISTEN.
+      \end{itemize}
+      \vspace{0.25em}
+      \textbf{Event 132}
+      \begin{itemize}
+        \item Hai phiên bắt đầu có buffer khác nhau.
+        \item Từ đây, EnViT5 có thể nhận các đoạn nguồn khác nhau.
+      \end{itemize}
+      \vspace{0.25em}
+      \alert{Context làm thay đổi thời điểm COMMIT; đây không phải bằng chứng về chất lượng dịch tốt hơn.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 10. Demo and conclusion
+\begin{frame}{Demo và kết luận}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \centering
+      \slidefigure[width=\textwidth,height=0.61\textheight,keepaspectratio]{figure-5-interactive-demo.png}
+
+      \vspace{0.2em}
+      \scriptsize Demo phát lại trace đã lưu để quan sát quá trình phân kỳ giữa REAL và ZERO.
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \small
+      \begin{itemize}
+        \setlength\itemsep{0.45em}
+        \item TimelyMT tách mô hình dịch khỏi policy quyết định thời điểm phát hành.
+        \item Prepared context có thể làm thay đổi quyết định COMMIT của P3 trong thí nghiệm có kiểm soát.
+        \item \texttt{prepared-global-v0} chưa cho thấy cải thiện ổn định về chất lượng và độ trễ.
+        \item Hệ thống hiện vẫn là mô hình nghiên cứu trên luồng token.
+        \item \textbf{TEST chưa được đánh giá.}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

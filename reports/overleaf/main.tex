@@ -1,15 +1,14 @@
-\documentclass[12pt,a4paper,oneside]{report}
+\documentclass[11pt,a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T5]{fontenc}
-\usepackage[vietnamese,english]{babel}
+\usepackage[english,vietnamese]{babel}
 \usepackage{lmodern}
-\usepackage[a4paper,margin=2.5cm,headheight=15pt]{geometry}
+\usepackage[a4paper,margin=2.35cm,headheight=14pt]{geometry}
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{longtable}
 \usepackage{array}
 \usepackage{caption}
 \usepackage{float}
@@ -17,14 +16,18 @@
 \usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{listings}
+\usepackage{needspace}
 \usepackage{xurl}
 \usepackage{xcolor}
 \usepackage[authoryear,round]{natbib}
 \usepackage{fancyhdr}
 \usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{tocloft}
 \usepackage{hyperref}
 
+\graphicspath{{figures/}{../figures/}}
 \hypersetup{
   colorlinks=true,
   linkcolor=black,
@@ -34,22 +37,43 @@
   pdfauthor={Đặng Quang Minh}
 }
 
-\captionsetup{font=small,labelfont=bf,justification=justified,singlelinecheck=false}
-\setlength{\parindent}{1.25cm}
-\setlength{\parskip}{0.25em}
-\linespread{1.18}
-\setlist{nosep,leftmargin=1.8em}
+\captionsetup{font=small,labelfont=bf,skip=4pt,justification=justified,singlelinecheck=false}
+\setlength{\parindent}{1.15cm}
+\setlength{\parskip}{0.12em}
+\setlength{\emergencystretch}{2em}
+\setstretch{1.12}
+\setlist{nosep,leftmargin=1.6em}
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
-\renewcommand{\arraystretch}{1.15}
+\setlength{\cftbeforesecskip}{2pt}
+\setlength{\cftbeforesubsecskip}{0pt}
+\renewcommand{\arraystretch}{1.08}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovedisplayskip}{7pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{7pt plus 2pt minus 2pt}
+\titleformat{\section}[block]
+  {\normalfont\bfseries\Large}
+  {\thesection}{0.7em}{}
+\titlespacing*{\section}{0pt}{2.2ex plus .6ex minus .3ex}{0.9ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.2ex plus .3ex minus .2ex}{.5ex}
+\titlespacing*{\subsubsection}{0pt}{1ex plus .2ex minus .2ex}{.35ex}
+\newcommand{\sectionbreak}{\Needspace{8\baselineskip}}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
 \newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\IfFileExists{references.bib}{}{%
+  \PackageError{timelymt-report}{Missing references.bib}{Upload references.bib beside main.tex, then clear cached files and recompile from scratch.}%
+}
 
 \addto\captionsvietnamese{%
   \renewcommand{\contentsname}{MỤC LỤC}%
-  \renewcommand{\listfigurename}{DANH MỤC HÌNH}%
-  \renewcommand{\listtablename}{DANH MỤC BẢNG}%
-  \renewcommand{\bibname}{TÀI LIỆU THAM KHẢO}%
+  \renewcommand{\refname}{TÀI LIỆU THAM KHẢO}%
   \renewcommand{\appendixname}{PHỤ LỤC}%
 }
 
@@ -65,52 +89,40 @@
   \renewcommand{\headrulewidth}{0pt}
 }
 
-\lstdefinestyle{reportcode}{
-  basicstyle=\ttfamily\small,
-  columns=fullflexible,
-  frame=single,
-  framerule=0.3pt,
-  breaklines=true,
-  showstringspaces=false,
-  keepspaces=true,
-  upquote=true,
-  xleftmargin=0.5em,
-  xrightmargin=0.5em
-}
-\lstset{style=reportcode}
-
-% The placeholder keeps figure numbering and captions intact if an upload is missing.
-\newcommand{\safeincludegraphics}[2][0.95\textwidth]{%
-  \IfFileExists{#2}{%
-    \includegraphics[width=#1]{#2}%
-  }{%
-    \fbox{\parbox[c][5cm][c]{0.9\textwidth}{\centering
-      Không tìm thấy tệp hình\\[0.5em]\path{#2}}}%
+% Use the Overleaf figure directory first and the repository directory locally.
+\newcommand{\reportfigure}[2][0.95\textwidth]{%
+  \IfFileExists{figures/#2}{\includegraphics[width=#1]{figures/#2}}{%
+    \IfFileExists{../figures/#2}{\includegraphics[width=#1]{../figures/#2}}{%
+      \fbox{\parbox[c][4cm][c]{0.9\textwidth}{\centering Không tìm thấy tệp hình\\[0.4em]\path{#2}}}%
+    }%
   }%
 }
 
 \begin{document}
 \selectlanguage{vietnamese}
 
+\hypersetup{pageanchor=false}
 \begin{titlepage}
   \thispagestyle{empty}
   \begin{center}
     {\large\bfseries ĐẠI HỌC QUỐC GIA HÀ NỘI\par}
-    \vspace{0.35em}
+    \vspace{0.3em}
     {\large\bfseries TRƯỜNG ĐẠI HỌC CÔNG NGHỆ\par}
 
-    \vspace{2.2cm}
+    \vspace{1.8cm}
     {\large\bfseries MÔN HỌC\par}
-    \vspace{0.35em}
+    \vspace{0.3em}
     {\Large\bfseries XỬ LÝ NGÔN NGỮ TỰ NHIÊN\par}
 
     \vfill
-    {\LARGE\bfseries
+    \begin{minipage}{0.94\textwidth}
+      \centering\LARGE\bfseries
       Nghiên cứu mô hình quyết định thời điểm dịch\par
-      \vspace{0.35em}
+      \vspace{0.3em}
       cho hệ thống dịch cabin tự động Anh--Việt\par
-      \vspace{0.35em}
-      với độ trễ thấp\par}
+      \vspace{0.3em}
+      với độ trễ thấp\par
+    \end{minipage}
     \vfill
 
     \begin{tabular}{@{}rl@{}}
@@ -124,289 +136,176 @@
     {\large Hà Nội, 2026\par}
   \end{center}
 \end{titlepage}
+\hypersetup{pageanchor=true}
 
 \pagenumbering{roman}
-\chapter*{TÓM TẮT}
-\addcontentsline{toc}{chapter}{TÓM TẮT}
+\section*{TÓM TẮT}
+\addcontentsline{toc}{section}{TÓM TẮT}
 
-TimelyMT nghiên cứu bài toán quyết định thời điểm phát hành bản dịch trong dịch máy theo luồng Anh--Việt cho các bài nói kỹ thuật. Mục tiêu dài hạn là một hệ thống dịch cabin tự động có độ trễ thấp; tuy nhiên, phạm vi thực nghiệm hiện tại chỉ tập trung vào thành phần policy điều khiển thời điểm LISTEN/COMMIT trên dòng token nguồn với đồng hồ quan sát mô phỏng. Mô hình EnViT5 cố định chỉ nhận phần nguồn chưa COMMIT để sinh bản dịch ứng viên, còn policy causal quyết định tiếp tục nghe hay phát hành một đơn vị dịch không thể sửa lại.
+TimelyMT nghiên cứu bài toán lựa chọn thời điểm phát hành bản dịch trong dịch máy theo luồng Anh--Việt cho các bài nói kỹ thuật. Khác với dịch ngoại tuyến, hệ thống theo luồng phải quyết định liệu nên tiếp tục LISTEN để thu nhận thêm ngữ cảnh hay COMMIT bản dịch hiện tại và chấp nhận rằng đầu ra đó không thể sửa lại. TimelyMT tách hai nhiệm vụ này thành hai thành phần: EnViT5 cố định sinh bản dịch ứng viên từ đoạn nguồn chưa COMMIT, còn một policy chỉ sử dụng thông tin đã quan sát để quyết định thời điểm phát hành.
 
-Nghiên cứu phát triển biểu diễn policy từ baseline causal V1 sang V2 sử dụng embedding ngữ nghĩa, rồi tới \texttt{P3\_GLOBAL} bổ sung ngữ cảnh chuẩn bị trước (prepared context) thực sự sẵn có trước bài nói. Biểu diễn \texttt{prepared-global-v0} mã hóa riêng từng nguồn hợp lệ bằng MiniLM, lấy trung bình đồng trọng số và chuẩn hóa L2; pool rỗng được biểu diễn bằng vector toàn số 0 chính xác. Dữ liệu tuân thủ phân chia theo talk và các điều kiện provenance nhằm ngăn rò rỉ từ transcript, bản dịch tham chiếu hoặc tập TEST được giữ kín.
+Mục tiêu ứng dụng dài hạn của dự án là hỗ trợ dịch cabin tự động Anh--Việt có độ trễ thấp. Tuy nhiên, phạm vi thực nghiệm hiện tại chỉ tập trung vào policy quyết định thời điểm trên chuỗi token nguồn và một đồng hồ quan sát mô phỏng. Hệ thống chưa triển khai đầu vào âm thanh, nhận dạng tiếng nói tự động (ASR), tổng hợp tiếng nói (TTS) hay đầu ra tiếng nói trực tiếp, vì vậy không được xem là một hệ thống dịch nói đầu-cuối hoàn chỉnh.
 
-So sánh P3 với P2 chỉ có ý nghĩa mô tả vì hai policy được huấn luyện riêng. Bằng chứng nhân quả trung tâm đến từ ablation có kiểm soát giữa \texttt{REAL\_CONTEXT} và \texttt{ZERO\_CONTEXT}: hai điều kiện dùng cùng checkpoint P3, cùng đầu vào ngoài context và cùng cơ chế streaming, chỉ thay lát prepared-context bằng vector không. Kết quả cho thấy prepared context gây ra thay đổi trong hành vi COMMIT của policy P3 đã huấn luyện. Tuy vậy, ảnh hưởng lên BLEU, chrF2, AL và LAAL đổi chiều theo ngưỡng; do đó \texttt{prepared-global-v0} chưa chứng minh được cải thiện chất lượng hoặc độ trễ ổn định, độc lập với ngưỡng. Trace theo từng quan sát và demo replay tĩnh giúp giải thích divergence trực tiếp tại event 131 cùng hiệu ứng dây chuyền lên biên đoạn nguồn ở các event sau mà không chạy mô hình.
+Quá trình phát triển policy bắt đầu từ baseline V1 đã được đóng băng, sau đó mở rộng sang V2 với embedding ngữ nghĩa và \texttt{P3\_GLOBAL} với ngữ cảnh được chuẩn bị từ tài liệu có sẵn trước bài nói. V2 là một thí nghiệm thăm dò trên DEV và không xác lập ưu thế chất lượng so với V1. P3 lại được huấn luyện riêng thay vì kế thừa trực tiếp P2, nên chênh lệch P3--P2 chỉ có giá trị mô tả và không thể cô lập ảnh hưởng của prepared context.
 
-\noindent\textbf{Từ khóa:} dịch máy đồng thời, dịch máy theo luồng, policy LISTEN/COMMIT, ngữ cảnh chuẩn bị trước, controlled ablation, dịch máy Anh--Việt.
+Bằng chứng nhân quả trung tâm đến từ ablation \texttt{REAL\_CONTEXT}--\texttt{ZERO\_CONTEXT}. Hai điều kiện sử dụng cùng checkpoint P3 và chỉ khác nhau ở lát đầu vào dành cho prepared context. Kết quả cho thấy thông tin chuẩn bị trước làm thay đổi hành vi COMMIT của policy đã huấn luyện. Event 131 minh họa sự thay đổi trực tiếp khi đoạn nguồn và bản dịch ứng viên vẫn giống nhau, còn event 132 cho thấy quyết định đó tạo ra hiệu ứng dây chuyền lên buffer và phân đoạn về sau. Tuy vậy, ảnh hưởng lên BLEU, chrF2, AL và LAAL thay đổi theo ngưỡng, nên \texttt{prepared-global-v0} chưa chứng minh được một cải thiện ổn định về chất lượng hoặc độ trễ. Trường hợp Sims 0.60 chỉ là một ví dụ mô tả giàu thông tin. Prepared context không đi trực tiếp vào EnViT5, và TEST chưa được đánh giá.
+
+\noindent\textbf{Từ khóa:} dịch máy đồng thời, dịch máy theo luồng, policy LISTEN/COMMIT, ngữ cảnh chuẩn bị trước, ablation có kiểm soát, dịch máy Anh--Việt.
 
 \clearpage
+\begingroup
+\small
+\setstretch{1.0}
 \tableofcontents
+\endgroup
 \clearpage
-\listoffigures
-\clearpage
-\listoftables
-\clearpage
-
 \pagenumbering{arabic}
 
-\chapter{GIỚI THIỆU}
+\section{GIỚI THIỆU VÀ CƠ SỞ NGHIÊN CỨU}
 
-\section{Bối cảnh bài toán}
-Dịch máy ngoại tuyến nhận toàn bộ câu hoặc văn bản nguồn trước khi sinh đầu ra. Ngược lại, dịch máy đồng thời và dịch máy theo luồng chỉ quan sát dần chuỗi nguồn, nên hệ thống phải vừa dịch vừa quyết định thời điểm phát hành đầu ra. Chờ thêm có thể cung cấp ngữ cảnh ngôn ngữ tốt hơn và làm ổn định giả thuyết, nhưng đồng thời tăng độ trễ; phát hành sớm làm giảm thời gian chờ nhưng có nguy cơ cố định một bản dịch dựa trên bằng chứng chưa đủ \citep{ma2019stacl,arivazhagan2019monotonic}.
+\subsection{Bối cảnh và bài toán}
+Dịch máy ngoại tuyến sử dụng toàn bộ nguồn trước khi tạo bản dịch cuối cùng, còn dịch máy đồng thời chỉ quan sát đầu vào từng phần theo thời gian. Hệ thống vì thế phải đánh đổi giữa việc chờ thêm ngữ cảnh và phát hành sớm: lựa chọn thứ nhất có thể làm giả thuyết ổn định hơn nhưng tăng độ trễ, trong khi lựa chọn thứ hai có nguy cơ dựa trên bằng chứng chưa đầy đủ \citep{ma2019stacl,arivazhagan2019monotonic}.
 
-Trong bối cảnh cabin, mục tiêu dài hạn của TimelyMT là hỗ trợ một hệ thống dịch cabin tự động Anh--Việt có độ trễ thấp. Báo cáo này không triển khai toàn bộ chuỗi speech-to-speech. Nhận dạng tiếng nói tự động (ASR), đầu vào âm thanh, tổng hợp tiếng nói (TTS) và đầu ra tiếng nói nằm ngoài phạm vi thực nghiệm. Dòng nguồn được đánh giá hiện nay là chuỗi token tiếng Anh với thời điểm xuất hiện theo một đồng hồ quan sát nguồn mô phỏng, không phải timestamp từ căn chỉnh âm thanh ở cấp từ.
+Bài toán trở nên khó hơn vì một đơn vị đã COMMIT sẽ trở thành đầu ra cố định, dù bản dịch ứng viên có thể tiếp tục thay đổi khi token mới xuất hiện. Một biên phát hành không phù hợp còn làm thay đổi đoạn nguồn được giữ lại, lịch sử policy và những đoạn Translator xử lý về sau.
 
-Nghiên cứu được thực hiện trong khuôn khổ môn Xử lý ngôn ngữ tự nhiên tại Trường Đại học Công nghệ -- Đại học Quốc gia Hà Nội.
+TimelyMT mô hình hóa vấn đề này bằng một policy lựa chọn LISTEN để chờ nguồn mới hoặc COMMIT để phát hành bản dịch ứng viên. Cách tách riêng quyết định thời điểm cho phép khảo sát hành vi phân đoạn trong khi giữ mô hình dịch không đổi.
 
-\section{Bài toán quyết định thời điểm dịch}
-Mỗi bản dịch ứng viên có thể thay đổi khi token nguồn mới đến, nhưng một đơn vị tiếng Việt đã COMMIT trở thành đầu ra không thể sửa lại. Quyết định biên không phù hợp có thể ảnh hưởng cả đoạn nguồn hiện tại, lịch sử policy và những bản dịch ứng viên ở phía sau. TimelyMT vì vậy tách bài toán thành hai thành phần: Translator cố định sinh bản dịch ứng viên và policy học máy quyết định khi nào LISTEN, khi nào COMMIT.
+\subsection{Mục tiêu và phạm vi}
+Về dài hạn, TimelyMT hướng tới dịch cabin tự động Anh--Việt có độ trễ thấp. Nghiên cứu hiện tại chỉ tập trung vào policy quyết định thời điểm; đầu vào âm thanh, ASR, TTS và đầu ra tiếng nói trực tiếp đều nằm ngoài phạm vi.
 
-\section{Mục tiêu và phạm vi nghiên cứu}
-Mục tiêu trực tiếp là xây dựng và phân tích một framework streaming causal trong đó policy kiểm soát thời điểm phát hành bản dịch; kiểm tra xem thông tin thực sự có trước bài nói có ảnh hưởng đến policy hay không; và làm cho hành vi đó quan sát được bằng replay trung thực. Nghiên cứu không huấn luyện lại EnViT5, không khẳng định đã xây dựng sản phẩm dịch cabin đầu-cuối và không đưa ra kết luận trên TEST.
+Mục tiêu trực tiếp là xây dựng một khung dịch theo luồng trong đó policy chỉ sử dụng thông tin đã quan sát, kiểm tra ảnh hưởng của ngữ cảnh có sẵn trước bài nói và giải thích ảnh hưởng đó bằng trace theo từng quan sát.
 
-\section{Câu hỏi nghiên cứu}
-\begin{table}[htbp]
+EnViT5 được giữ cố định; tham chiếu tiếng Việt chỉ phục vụ đánh giá. TEST chưa được sử dụng, nên mọi kết luận chỉ dựa trên TRAIN và DEV.
+
+\subsection{Dịch máy đồng thời và đánh đổi chất lượng--độ trễ}
+Các hướng prefix-to-prefix \citep{ma2019stacl} và monotonic infinite lookback attention \citep{arivazhagan2019monotonic} mô hình hóa quan hệ giữa đọc nguồn và sinh đích theo những cách khác nhau. TimelyMT không tái hiện các kiến trúc này mà kế thừa câu hỏi chung: hệ thống nên chờ bao nhiêu ngữ cảnh trước khi phát hành đầu ra?
+
+Đánh giá policy cần xem xét đồng thời chất lượng và độ trễ. BLEU và chrF2 lần lượt dùng n-gram ở cấp token và ký tự để so sánh với tham chiếu \citep{papineni2002bleu,popovic2015chrf}; AL đo mức trễ đọc trung bình, còn LAAL điều chỉnh thiên lệch do đầu ra quá dài \citep{ma2019stacl,papi2022laal}. Báo cáo trình bày bốn độ đo cùng nhau và giữ nguyên các giá trị đã lưu chính thức.
+
+Translator sử dụng checkpoint EnViT5 cho Anh--Việt \citep{ngo2022mtet}. V2 và P3 dùng MiniLM để tạo embedding câu theo hướng Sentence-BERT \citep{reimers2019sentencebert,wang2020minilm}. Các mô hình này là nền tảng cố định cho nghiên cứu policy, không phải đối tượng được huấn luyện lại.
+
+\subsection{Câu hỏi nghiên cứu}
+Từ bài toán và phạm vi trên, báo cáo đặt ra bốn câu hỏi:
+
+\begin{enumerate}[label=\textbf{RQ\arabic*:}]
+  \item Các đặc trưng ngữ cảnh phong phú hơn nhưng vẫn chỉ sử dụng thông tin đã quan sát ảnh hưởng thế nào đến hành vi COMMIT của policy?
+  \item Ngữ cảnh chuẩn bị trước có gây thay đổi quyết định policy hay không?
+  \item \texttt{prepared-global-v0} có đem lại lợi ích chất lượng--độ trễ ổn định hay không?
+  \item Làm thế nào để quan sát và giải thích hành vi COMMIT trong một quá trình dịch theo luồng?
+\end{enumerate}
+
+\subsection{Đóng góp chính}
+TimelyMT đóng góp một khung dịch theo luồng tách Translator khỏi policy quyết định thời điểm, cùng lộ trình biểu diễn từ V1 qua V2 đến \texttt{P3\_GLOBAL}. Prepared context được kiểm soát nguồn gốc và đánh giá bằng ablation cùng checkpoint. Trace theo từng quan sát và trình xem tĩnh làm rõ phân kỳ cùng hiệu ứng dây chuyền; bằng chứng chính là prepared context có thể thay đổi hành vi của policy P3 đã huấn luyện, không phải ưu thế chất lượng tổng quát.
+
+\section{KIẾN TRÚC HỆ THỐNG VÀ THIẾT KẾ THỰC NGHIỆM}
+
+\subsection{Tổng quan TimelyMT}
+Hình~\ref{fig:streaming-pipeline} trình bày luồng xử lý tổng thể. Token mới được thêm vào buffer nguồn chưa COMMIT; khi buffer đủ dài, EnViT5 sinh bản dịch ứng viên bằng greedy decoding và policy ước lượng $p(\mathrm{COMMIT})$. Translator không nhận tài liệu chuẩn bị trước, tham chiếu, alignment, nguồn tương lai hay nhãn policy.
+
+\begin{figure}[!htbp]
   \centering
-  \caption{Bốn câu hỏi nghiên cứu và phạm vi cần kiểm chứng.}
-  \label{tab:research-questions}
-  \begin{tabularx}{\textwidth}{@{}C{1.2cm}Y@{}}
-    \toprule
-    \textbf{Mã} & \textbf{Câu hỏi nghiên cứu} \\
-    \midrule
-    RQ1 & Việc bổ sung các đặc trưng ngữ cảnh causal phong phú hơn ảnh hưởng như thế nào đến hành vi COMMIT của policy? \\
-    RQ2 & Prepared context có gây ra thay đổi trong quyết định của policy hay không? \\
-    RQ3 & Biểu diễn \texttt{prepared-global-v0} hiện tại có mang lại lợi ích ổn định về chất lượng và độ trễ hay không? \\
-    RQ4 & Làm thế nào để quan sát và giải thích hành vi COMMIT trong một quá trình streaming causal? \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-Các câu hỏi trong Bảng~\ref{tab:research-questions} định hướng thiết kế thực nghiệm; bản thân chúng không phải là các khẳng định kết quả.
-
-\section{Đóng góp chính}
-Nghiên cứu đóng góp một framework dịch máy theo luồng causal tách Translator khỏi timing policy; một lộ trình biểu diễn policy từ V1, V2 tới \texttt{P3\_GLOBAL}; một pipeline prepared context có điều kiện provenance rõ ràng; một ablation cùng checkpoint để cô lập ảnh hưởng của context lên policy; và một trace theo từng quan sát cùng demo replay tĩnh để giải thích divergence. Đóng góp khoa học cốt lõi là bằng chứng rằng prepared context có thể thay đổi thời điểm COMMIT trong policy P3 đã huấn luyện, không phải bằng chứng về ưu thế chất lượng chung.
-
-\chapter{CƠ SỞ LÝ THUYẾT VÀ NGHIÊN CỨU LIÊN QUAN}
-
-\section{Dịch máy đồng thời và dịch máy theo luồng}
-Dịch máy đồng thời tạo đầu ra trong khi đầu vào vẫn đang được quan sát. Khung prefix-to-prefix của \citet{ma2019stacl} mô tả việc sinh đích từ các tiền tố nguồn và cho phép điều khiển độ trễ. Một hướng khác học quan hệ đọc--ghi mềm, chẳng hạn monotonic infinite lookback attention \citep{arivazhagan2019monotonic}. TimelyMT không tái hiện các kiến trúc này; dự án sử dụng chúng làm cơ sở khái niệm cho việc đánh đổi giữa ngữ cảnh quan sát được và thời điểm phát hành.
-
-\section{Bài toán đánh đổi giữa chất lượng và độ trễ}
-Chất lượng và độ trễ là hai mục tiêu liên quan nhưng không đồng nhất. Chờ lâu hơn thường làm tăng lượng thông tin nguồn, song không bảo đảm mọi độ đo chất lượng đều tăng đơn điệu; tương tự, số lần COMMIT không thay thế được một độ đo latency chính thức. Vì vậy báo cáo luôn trình bày BLEU, chrF2, AL và LAAL cùng nhau, đồng thời tránh chọn một ngưỡng chỉ từ một trường hợp thuận lợi.
-
-\section{Chính sách LISTEN/COMMIT}
-Policy của TimelyMT thực hiện quyết định nhị phân ở các trạng thái đủ điều kiện suy luận. LISTEN giữ vùng nguồn hiện tại mở để nhận thêm token. COMMIT cố định bản dịch ứng viên và khởi tạo một vùng nguồn mới. Cách đặt bài toán này nhấn mạnh tính không thể đảo ngược của biên dịch và cho phép giữ Translator không đổi trong khi khảo sát timing policy.
-
-\section{Mô hình dịch EnViT5}
-Translator sử dụng \texttt{VietAI/envit5-translation}, một checkpoint EnViT5 cho dịch Anh--Việt dựa trên công trình MTet \citep{ngo2022mtet}. Trong TimelyMT, mô hình được cố định, dùng greedy decoding xác định và chỉ nhận đoạn nguồn chưa COMMIT. Prepared context, tham chiếu đích, alignment, nguồn tương lai và nhãn policy không đi vào Translator.
-
-\section{Biểu diễn câu và MiniLM}
-V2 và P3 dùng \texttt{sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2}. Sentence-BERT cung cấp cách tạo embedding câu phù hợp cho so sánh và mô hình phía sau \citep{reimers2019sentencebert}; MiniLM sử dụng distillation self-attention để nén Transformer \citep{wang2020minilm}. Mỗi trường văn bản trong hệ thống được biểu diễn bằng vector 384 chiều thông qua attention-mask-aware mean pooling rồi chuẩn hóa L2.
-
-\section{Các độ đo đánh giá}
-BLEU đo mức trùng khớp n-gram giữa bản dịch hệ thống và tham chiếu, kèm brevity penalty \citep{papineni2002bleu}. chrF2 là F-score dựa trên character n-gram, đặt trọng số recall cao hơn precision và hữu ích khi đánh giá biến thể hình thái hoặc khác biệt token hóa \citep{popovic2015chrf}. Average Lagging (AL) mô tả mức trễ trung bình của quá trình đọc so với một tiến trình lý tưởng \citep{ma2019stacl}. Length-Adaptive Average Lagging (LAAL) điều chỉnh vấn đề hệ thống sinh quá dài có thể được tưởng thưởng sai trong phép đo độ trễ \citep{papi2022laal}. Các giá trị trong báo cáo là độ đo đã lưu chính thức ở cấp token; báo cáo không tính lại chúng.
-
-\chapter{KIẾN TRÚC HỆ THỐNG TIMELYMT}
-
-\section{Tổng quan hệ thống}
-TimelyMT nhận token nguồn theo thời gian, duy trì một buffer nguồn chưa COMMIT, sinh bản dịch ứng viên khi đủ độ dài và đưa trạng thái causal vào policy. Kiến trúc tổng thể được minh họa trong Hình~\ref{fig:streaming-pipeline}.
-
-\begin{figure}[htbp]
-  \centering
-  \safeincludegraphics{figures/figure-1-streaming-pipeline.png}
-  \caption{Pipeline causal của TimelyMT. EnViT5 chỉ dịch vùng nguồn chưa COMMIT, trong khi policy riêng biệt sử dụng trạng thái causal để quyết định WAIT, LISTEN hoặc COMMIT không thể đảo ngược.}
+  \reportfigure{figure-1-streaming-pipeline.png}
+  \caption{Luồng xử lý của TimelyMT. EnViT5 chỉ dịch vùng nguồn chưa COMMIT, trong khi policy riêng quyết định WAIT, LISTEN hoặc COMMIT một đơn vị đầu ra không thể sửa lại.}
   \label{fig:streaming-pipeline}
 \end{figure}
 
-\section{Luồng xử lý theo thời gian}
-Một policy session bắt đầu buffer ngay sau lần COMMIT gần nhất. Đồng hồ quan sát cho biết khi nào token nguồn được hệ thống nhìn thấy. Với ít hơn bốn token trong buffer, hệ thống chưa gọi Translator và chưa suy luận policy. Khi đủ điều kiện, EnViT5 sinh candidate, policy ước lượng $p(\mathrm{COMMIT})$, rồi ngưỡng chuyển xác suất thành LISTEN hoặc COMMIT.
+\subsection{Translator và policy thời điểm}
+Lớp bao ngoài Translator thêm tiền tố \texttt{en:}, chuẩn hóa đầu ra EnViT5 rồi chuyển bản dịch ứng viên cho policy. Policy chỉ sử dụng tiền tố nguồn đã thấy, bản dịch ứng viên, lịch sử COMMIT của phiên hiện tại và ngữ cảnh hợp lệ có trước bài nói. Prepared context vì vậy chỉ là đặc trưng của policy, không phải đầu vào trực tiếp của EnViT5.
 
-\begin{table}[htbp]
+\subsection{WAIT, LISTEN và COMMIT}
+Với ít hơn bốn token trong buffer, hệ thống WAIT, không gọi Translator và không tạo xác suất policy. Từ bốn token trở lên, EnViT5 sinh bản dịch ứng viên. Xác suất dưới ngưỡng dẫn tới LISTEN; xác suất bằng hoặc vượt ngưỡng dẫn tới COMMIT, cố định đơn vị đích và mở buffer mới.
+
+Hai quy tắc cưỡng bức bảo đảm rollout kết thúc hợp lệ: \texttt{max\_length} buộc COMMIT ở 48 token, còn \texttt{talk\_end} phát hành phần dư khi bài nói kết thúc, kể cả dưới bốn token. Artifact ghi rõ các lý do này để phân biệt với quyết định vượt ngưỡng.
+
+\subsection{Dữ liệu TRAIN/DEV/TEST}
+Việc phân chia được thực hiện ở cấp talk để các quan sát liên quan không vượt qua ranh giới thực nghiệm. Mọi tiền tố, giả thuyết, pseudo-label, context record và ví dụ policy đều kế thừa split gốc.
+
+TRAIN dùng để khớp policy và thống kê chuẩn hóa; DEV phục vụ lựa chọn biến thể, khảo sát ngưỡng, ablation và demo. TEST được giữ kín cho một lần đánh giá sau khi thiết kế ổn định; báo cáo không chứa kết quả hay lựa chọn nào dựa trên TEST.
+
+\subsection{Nguyên tắc nhân quả và kiểm soát rò rỉ}
+Policy chỉ sử dụng thông tin tồn tại tại thời điểm quyết định, không gồm nguồn tương lai, transcript hoàn chỉnh, alignment, tham chiếu hay TEST. Ràng buộc này bảo đảm LISTEN/COMMIT có thể được thực hiện trong một luồng trực tuyến giả định.
+
+V1 dùng mức ổn định của giả thuyết tương lai để tạo pseudo-label TRAIN/DEV, nhưng thông tin oracle này không đi vào policy khi rollout.
+
+Mỗi tài liệu chuẩn bị trước phải có thông tin nguồn gốc (provenance), cho biết nó tồn tại trước bài nói và không được tạo từ transcript hay tham chiếu. Metadata hỗ trợ kiểm soát rò rỉ trong phạm vi dự án, không tương đương một kiểm toán lịch sử độc lập.
+
+\subsection{Điều kiện hợp lệ của prepared context}
+Để bảo đảm prepared context thực sự có trước bài nói và không chứa rò rỉ, nguồn phải có \path{classification=SAFE_PRETALK_CONFIRMED}, \path{available_before_talk=true}, \path{transcript_used=false} và \path{reference_used=false}.
+
+Corpus có 12 pool TRAIN và 3 pool DEV, với tám nguồn hợp lệ trên năm talk TRAIN và một talk DEV. Talk DEV có context là \path{ted-sims-witherspoon-ai-climate}, đi kèm nguồn \path{deepmind-wind-energy-2019-lead}; Jeff và Luis có pool rỗng hợp lệ dùng làm kiểm soát.
+
+\section{QUÁ TRÌNH PHÁT TRIỂN POLICY}
+
+\subsection{V1 -- baseline theo nguyên tắc nhân quả}
+V1 là baseline xác lập Dataset v1 chia theo talk, EnViT5 chỉ nhận nguồn, 11 đặc trưng số và các quy tắc WAIT/LISTEN/COMMIT. Những thành phần này được giữ lại ở các giai đoạn sau.
+
+Pseudo-label được tạo bằng cách so sánh giả thuyết hiện tại với tối đa hai tiền tố tương lai. Mức ổn định chỉ dùng cho supervision TRAIN/DEV, không xuất hiện trong đầu vào rollout, và quy trình từ chối TEST. Cấu hình được chọn là \path{learned_P1_0.60}, stage \path{dev-frozen-complete}.
+
+Sau lựa chọn trên DEV, V1 được đóng băng. V2 và P3 tái sử dụng dữ liệu giám sát cùng quy tắc vận hành của V1 để tập trung vào cách biểu diễn trạng thái policy.
+
+\subsection{V2 -- policy ngữ nghĩa}
+V2 là mở rộng thăm dò, hậu nghiệm trên DEV nhằm khắc phục hạn chế ngữ nghĩa của biểu diễn thưa trong V1. Thí nghiệm tiếp tục sử dụng supervision V1 đã cố định.
+
+MiniLM cố định mã hóa mỗi trường văn bản thành embedding 384 chiều bằng mean pooling có xét attention mask và chuẩn hóa L2. Policy phi tuyến kết hợp các embedding với 11 đặc trưng số, trong khi Translator và ranh giới dữ liệu không thay đổi.
+
+\subsection{P0, P1 và P2}
+P0 chỉ biểu diễn đoạn nguồn chưa COMMIT; P1 thêm nguồn đã COMMIT gần nhất; P2 thêm phần đích đã sinh gần nhất. Ba biến thể vì thế cung cấp lượng lịch sử đã quan sát tăng dần.
+
+Mỗi trường có embedding 384 chiều, nên P2 gồm $384\times3+11=1163$ chiều. Hình~\ref{fig:feature-evolution} minh họa quá trình mở rộng tới prepared context trong P3.
+
+\begin{figure}[!htbp]
   \centering
-  \caption{Ngữ nghĩa runtime cố định của TimelyMT.}
-  \label{tab:runtime-semantics}
-  \begin{tabularx}{\textwidth}{@{}Y Y@{}}
-    \toprule
-    \textbf{Điều kiện} & \textbf{Hành vi runtime} \\
-    \midrule
-    Ít hơn 4 token nguồn ứng viên & WAIT; không gọi Translator và không suy luận policy. \\
-    Từ 4 token trở lên & Sinh candidate, dựng trạng thái causal và ước lượng $p(\mathrm{COMMIT})$. \\
-    $p(\mathrm{COMMIT})<$ ngưỡng & LISTEN; giữ và mở rộng buffer hiện tại. \\
-    $p(\mathrm{COMMIT})\geq$ ngưỡng & COMMIT, trừ khi có quy tắc cưỡng bức ưu tiên cao hơn. \\
-    Candidate đạt 48 token nguồn & Cưỡng bức COMMIT với lý do \texttt{max\_length}. \\
-    Bài nói kết thúc còn nguồn dư & Flush với lý do \texttt{talk\_end}, kể cả đoạn ngắn hơn 4 token. \\
-    Sau COMMIT & Cố định đơn vị đích và bắt đầu buffer nguồn mới. \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-\section{Thành phần Translator và Policy}
-Hai thành phần có biên trách nhiệm độc lập như Bảng~\ref{tab:translator-policy}. Wrapper của Translator thêm prefix điều khiển nội bộ \texttt{en:} ở bước tiền xử lý và chuẩn hóa giả thuyết sinh ra. Candidate sau chuẩn hóa mới được policy sử dụng.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Phân tách trách nhiệm giữa Translator và timing policy.}
-  \label{tab:translator-policy}
-  \begin{tabularx}{\textwidth}{@{}l Y Y@{}}
-    \toprule
-    \textbf{Thành phần} & \textbf{Trách nhiệm} & \textbf{Đầu vào bị loại trừ} \\
-    \midrule
-    Translator & EnViT5 cố định sinh candidate tiếng Việt bằng greedy decoding. & Prepared documents, tham chiếu, alignment, nguồn tương lai và nhãn policy. \\
-    Policy & Ước lượng khi candidate hiện tại đủ ổn định để COMMIT. & Nguồn tương lai, tham chiếu đích và thông tin TEST. \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-\section{Các trạng thái WAIT, LISTEN và COMMIT}
-WAIT biểu thị trạng thái chưa đủ bốn token và các trường xác suất, candidate cùng đặc trưng policy không được đánh giá. LISTEN chỉ xuất hiện sau suy luận và giữ buffer mở. COMMIT có thể do policy hoặc quy tắc cưỡng bức; đơn vị đã COMMIT trở thành lịch sử bất biến của session đó.
-
-\section{Các quy tắc COMMIT cưỡng bức}
-Hai quy tắc bảo đảm rollout luôn kết thúc hợp lệ. \texttt{max\_length} buộc COMMIT khi đoạn nguồn đạt 48 token; \texttt{talk\_end} flush phần còn lại ở cuối bài nói, kể cả khi không đủ bốn token để chạy policy. Các quyết định cưỡng bức được ghi rõ lý do thay vì bị diễn giải như một threshold crossing.
-
-\chapter{DỮ LIỆU VÀ NGUYÊN TẮC THỰC NGHIỆM}
-
-\section{Phân chia TRAIN, DEV và TEST}
-Phân chia được thực hiện ở cấp talk. Mọi prefix, giả thuyết, pseudo-label, context record và ví dụ policy dẫn xuất đều kế thừa split của talk gốc. Chia độc lập các quan sát dẫn xuất có thể đưa những phần liên quan của cùng một talk qua các biên thực nghiệm.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Vai trò của các split trong nghiên cứu đã hoàn thành.}
-  \label{tab:split-roles}
-  \begin{tabularx}{\textwidth}{@{}l Y@{}}
-    \toprule
-    \textbf{Split} & \textbf{Vai trò được phép} \\
-    \midrule
-    TRAIN & Khớp tham số policy và scaling số; xây dựng supervision upstream bất biến. \\
-    DEV & Khảo sát biến thể, kiểm tra hành vi theo ngưỡng, chạy ablation và xây dựng demo nghiên cứu. \\
-    TEST & Giữ kín cho một lần đánh giá sau khi thiết kế nghiên cứu đã ổn định và được cố định. \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-\section{Nguyên tắc causal}
-Tại mỗi quan sát, policy chỉ sử dụng tiền tố nguồn hiện có, candidate do Translator sinh từ buffer hiện tại, lịch sử COMMIT của chính session đó và prepared context đã có trước khi talk bắt đầu. Pseudo-label tương lai trong V1 là oracle dùng cho supervision TRAIN/DEV, không nằm trong feature causal khi rollout.
-
-\section{Kiểm soát rò rỉ dữ liệu}
-Tham chiếu tiếng Việt chỉ phục vụ đánh giá. Transcript hoàn chỉnh, alignment, glossary suy ra từ tham chiếu, nguồn tương lai và dữ liệu TEST không được đưa qua biên Translator hoặc policy. Mỗi prepared source phải có provenance được ghi nhận; điều này hỗ trợ điều kiện eligibility nhưng không được hiểu là một cuộc kiểm toán lịch sử độc lập đối với mọi công bố bên ngoài.
-
-\section{Điều kiện hợp lệ của prepared context}
-\begin{table}[htbp]
-  \centering
-  \caption{Bốn điều kiện bắt buộc để một prepared source được sử dụng.}
-  \label{tab:prepared-eligibility}
-  \begin{tabularx}{0.88\textwidth}{@{}Y l@{}}
-    \toprule
-    \textbf{Trường metadata} & \textbf{Giá trị bắt buộc} \\
-    \midrule
-    \texttt{classification} & \texttt{SAFE\_PRETALK\_CONFIRMED} \\
-    \texttt{available\_before\_talk} & \texttt{true} \\
-    \texttt{transcript\_used} & \texttt{false} \\
-    \texttt{reference\_used} & \texttt{false} \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-Corpus prepared context gồm 12 pool TRAIN và 3 pool DEV. Năm talk TRAIN và một talk DEV có context hợp lệ, tổng cộng tám nguồn. Talk DEV duy nhất có context là \path{ted-sims-witherspoon-ai-climate}, với nguồn chính thức \path{deepmind-wind-energy-2019-lead}. Hai talk Jeff và Luis có pool rỗng hợp lệ.
-
-\section{Bảo vệ tập TEST}
-TEST chưa được truy cập để đánh giá trong nghiên cứu policy và demo hiện tại. Báo cáo không chứa kết quả TEST, không suy ra kết luận held-out và không chọn ngưỡng từ TEST. Mọi artifact bằng chứng được sử dụng ở đây thuộc TRAIN hoặc DEV.
-
-\chapter{QUÁ TRÌNH PHÁT TRIỂN MÔ HÌNH QUYẾT ĐỊNH}
-
-\section{V1 -- baseline causal}
-V1 cố định Dataset v1 cùng split theo talk, Translator EnViT5 source-only, artifact dịch tiền tố causal, semantics streaming, đặc trưng số và các policy P0/P1/P2 bên cạnh baseline cố định và local agreement. Supervision so sánh giả thuyết hiện tại với tối đa hai giả thuyết tiền tố tương lai để tạo pseudo-label TRAIN/DEV; giá trị ổn định tương lai là oracle huấn luyện, không phải feature policy. Sinh pseudo-label từ chối TEST. Cấu hình học máy được chọn trong V1 là \texttt{learned\_P1\_0.60}, checkpoint stage \texttt{dev-frozen-complete}; V1 hiện được giữ frozen.
-
-\section{Động lực mở rộng biểu diễn policy}
-Biểu diễn thưa ở V1 cung cấp baseline vận hành nhưng hạn chế khả năng nắm bắt quan hệ ngữ nghĩa giữa buffer hiện tại và lịch sử. V2 kiểm tra tính khả thi của embedding đa ngôn ngữ cùng một MLP nhỏ, trong khi giữ nguyên schema causal và 11 đặc trưng số.
-
-\section{V2 -- semantic policy}
-V2 là mở rộng DEV thăm dò, post-hoc, sử dụng supervision V1 bất biến. Encoder MiniLM cố định sinh embedding 384 chiều cho từng trường văn bản. Attention-mask-aware mean pooling và chuẩn hóa L2 bảo đảm quy trình embedding nhất quán. V2 không thay đổi Translator và không định nghĩa lại semantics streaming.
-
-\section{Các biến thể P0, P1 và P2}
-\begin{table}[htbp]
-  \centering
-  \caption{Thông tin causal của các biến thể semantic policy V2.}
-  \label{tab:p0-p2-features}
-  \begin{tabularx}{\textwidth}{@{}l Y C{2.2cm}@{}}
-    \toprule
-    \textbf{Biến thể} & \textbf{Đầu vào văn bản ngữ nghĩa} & \textbf{Đầu vào số} \\
-    \midrule
-    P0 & Phần nguồn chưa COMMIT hiện tại & 11 \\
-    P1 & P0 cộng đoạn nguồn đã COMMIT gần nhất & 11 \\
-    P2 & P1 cộng phần đích đã sinh gần nhất & 11 \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-P2 có ba embedding 384 chiều và 11 đặc trưng số, tức $384\times3+11=1163$ chiều. Hình~\ref{fig:feature-evolution} đặt quá trình này trong lộ trình tới P3.
-
-\begin{figure}[htbp]
-  \centering
-  \safeincludegraphics{figures/figure-2-policy-feature-evolution.png}
-  \caption{Sự mở rộng thông tin policy từ P0 tới \texttt{P3\_GLOBAL}: P1/P2 thêm lịch sử causal, còn P3 thêm prepared context ở phía policy. EnViT5 vẫn cố định và source-only.}
+  \reportfigure{figure-2-policy-feature-evolution.png}
+  \caption{Sự mở rộng thông tin đầu vào của policy từ P0 tới \texttt{P3\_GLOBAL}. P1 và P2 lần lượt bổ sung lịch sử nguồn và đích đã quan sát, còn P3 thêm prepared context ở phía policy; EnViT5 vẫn được giữ cố định.}
   \label{fig:feature-evolution}
 \end{figure}
 
-\section{Kết quả và giới hạn của V2}
-Cấu hình V2 được chọn trong quy trình DEV lịch sử là \texttt{v2\_P2\_0.50}. Đây là hồ sơ của quá trình đã hoàn thành, không phải một ``mô hình thắng'' mới. So sánh DEV đầy đủ \textbf{không xác lập ưu thế chất lượng của V2 so với V1}. V2 chỉ chứng minh rằng một policy semantic và phi tuyến là khả thi về vận hành, đồng thời tạo nền biểu diễn cho thí nghiệm P3.
+\subsection{Kết quả và giới hạn của V2}
+Cấu hình được chọn của V2 là \path{v2_P2_0.50}, nhưng so sánh DEV không xác lập ưu thế chất lượng so với V1. Dù vậy, V2 xác nhận embedding đa ngôn ngữ và policy phi tuyến có thể được tích hợp mà vẫn tuân thủ ràng buộc thông tin, đồng thời tạo nền tảng cho P3.
 
-\chapter{NGỮ CẢNH CHUẨN BỊ TRƯỚC VÀ P3\_GLOBAL}
+\section{PREPARED CONTEXT VÀ P3\_GLOBAL}
 
-\section{Giả thuyết về prepared context}
-Một bài nói kỹ thuật có thể đi kèm bài báo, trang dự án, thông báo hoặc tài liệu nền đã xuất bản trước khi diễn ra. Giả thuyết của nghiên cứu là kiến thức đó có thể thay đổi mức tự tin của timing policy khi đánh giá candidate hiện tại. Giả thuyết không đặt prepared documents vào Translator và không giả định trước rằng chất lượng dịch sẽ tăng.
+\subsection{Giả thuyết prepared context}
+Bài báo, trang dự án hoặc tài liệu nền có thể tồn tại trước một bài nói kỹ thuật và cung cấp chủ đề, thuật ngữ liên quan. TimelyMT gọi phần thông tin hợp lệ này là prepared context và kiểm tra liệu nó có thay đổi mức tự tin COMMIT của policy hay không. Context chỉ đi vào policy; EnViT5 tiếp tục chỉ nhận đoạn nguồn hiện tại.
 
-\section{Biểu diễn prepared-global-v0}
-Với \texttt{prepared-global-v0}, hệ thống lọc nguồn bằng điều kiện ở Bảng~\ref{tab:prepared-eligibility}, sắp xếp theo \texttt{source\_id}, rồi mã hóa riêng từng nguồn bằng MiniLM đã pin. Nhiều nguồn được lấy trung bình đồng trọng số và chuẩn hóa L2; một nguồn dùng trực tiếp embedding đã chuẩn hóa của nguồn đó. Pool không có nguồn hợp lệ nhận đúng vector \texttt{float32} không 384 chiều. Vector không là một trạng thái thực nghiệm hợp lệ, không phải lỗi dữ liệu và không ngụ ý có context ẩn.
+\subsection{prepared-global-v0}
+\texttt{prepared-global-v0} tạo một vector cố định ở cấp talk trước khi streaming bắt đầu. Nguồn hợp lệ được sắp xếp theo \path{source_id} để quá trình có tính xác định.
 
-\section{Phạm vi dữ liệu prepared context}
-Coverage hiện tại rất hẹp: 12 pool TRAIN, 3 pool DEV, năm talk TRAIN và một talk DEV có nguồn hợp lệ, với tám nguồn tổng cộng. Chỉ Sims mang context trong DEV; vì vậy mọi ảnh hưởng không bằng không trong ablation tổng hợp đều bắt nguồn từ talk này. Điều kiện này giới hạn phạm vi khái quát hóa ngay cả khi can thiệp cùng checkpoint là hợp lệ.
+MiniLM mã hóa riêng từng nguồn. Nhiều nguồn được lấy trung bình đồng trọng số rồi chuẩn hóa L2; một nguồn dùng trực tiếp embedding đã chuẩn hóa. Biểu diễn global này không thay đổi theo từng quan sát.
 
-\section{Kiến trúc P3\_GLOBAL}
-\begin{table}[htbp]
+Pool rỗng dùng chính xác vector \texttt{float32} toàn số 0 có 384 chiều. Đây là biểu diễn hợp lệ cho trạng thái không có context, không phải dữ liệu thiếu, và tạo điều kiện cho kiểm soát Jeff/Luis.
+
+\subsection{Phạm vi corpus prepared context}
+Corpus chỉ có tám nguồn hợp lệ trên năm talk TRAIN và một talk DEV. Sims là talk DEV duy nhất có vector khác không, nên mọi chênh lệch khác không trong ablation tổng hợp đều bắt nguồn từ talk này.
+
+Biểu diễn global tĩnh không truy hồi theo quan sát hay học trọng số giữa nguồn, nên có thể làm loãng thông tin cục bộ. Hạn chế này tách biệt với câu hỏi liệu checkpoint P3 hiện tại có sử dụng lát context hay không.
+
+\subsection{Kiến trúc P3\_GLOBAL}
+\texttt{P3\_GLOBAL} thêm vào P2 một embedding prepared context 384 chiều. Cùng ba embedding cho nguồn hiện tại, nguồn đã COMMIT và đích đã sinh, cộng 11 đặc trưng số, đầu vào có tổng cộng 1547 chiều.
+
+Prepared context nằm tại \texttt{[1152:1536]}, còn đặc trưng số nằm tại \texttt{[1536:1547]}. Bố cục cố định cho phép ZERO chỉ thay đúng lát context mà giữ nguyên hình dạng đầu vào.
+
+MLP có cấu trúc \texttt{1547--256--64--1}, kích hoạt GELU và dropout 0.20, 0.10; đầu ra tạo $p(\mathrm{COMMIT})$.
+
+\subsection{Huấn luyện và checkpoint}
+Trong thí nghiệm này, P3 được huấn luyện từ đầu thay vì khởi tạo từ P2, đồng thời mở rộng đầu vào thêm 384 chiều cho prepared context. Dữ liệu giám sát TRAIN vẫn kế thừa nguyên trạng từ V1.
+
+Bảng~\ref{tab:p3-training} tóm tắt metadata huấn luyện; \texttt{pos\_weight} phản ánh sự mất cân bằng giữa LISTEN và COMMIT.
+
+\begin{table}[!htbp]
   \centering
-  \caption{Bố cục đầu vào cố định của \texttt{P3\_GLOBAL}.}
-  \label{tab:p3-input}
-  \begin{tabularx}{0.9\textwidth}{@{}Y r l@{}}
-    \toprule
-    \textbf{Thành phần} & \textbf{Số chiều} & \textbf{Khoảng chỉ số} \\
-    \midrule
-    Nguồn hiện tại & 384 & \texttt{[0:384]} \\
-    Nguồn đã COMMIT trước & 384 & \texttt{[384:768]} \\
-    Đích đã sinh trước & 384 & \texttt{[768:1152]} \\
-    Prepared global context & 384 & \texttt{[1152:1536]} \\
-    Đặc trưng số đã scale & 11 & \texttt{[1536:1547]} \\
-    \midrule
-    \textbf{Tổng} & \textbf{1547} & \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-Như vậy $384\times4+11=1547$. Prepared context chỉ ảnh hưởng policy; EnViT5 vẫn source-only. P3 dùng MLP:
-
-\begin{lstlisting}
-Linear(1547, 256)
-GELU
-Dropout(0.20)
-Linear(256, 64)
-GELU
-Dropout(0.10)
-Linear(64, 1)
-\end{lstlisting}
-
-\section{Huấn luyện policy P3\_GLOBAL}
-P3 được huấn luyện từ đầu vì checkpoint P2 không nhận thêm 384 chiều context. Việc huấn luyện sử dụng supervision TRAIN V1 bất biến, được tóm tắt trong Bảng~\ref{tab:p3-training}.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Các thông tin huấn luyện đã lưu của policy P3.}
+  \small
+  \caption{Thông tin huấn luyện đã lưu của policy P3.}
   \label{tab:p3-training}
-  \begin{tabularx}{0.86\textwidth}{@{}Y l@{}}
+  \begin{tabularx}{0.9\textwidth}{@{}L{0.38\textwidth}Y@{}}
     \toprule
-    \textbf{Thông tin} & \textbf{Giá trị} \\
+    \textbf{Tham số} & \textbf{Giá trị} \\
     \midrule
-    Số dòng & 22,018 \\
-    Nhãn LISTEN & 19,075 \\
-    Nhãn COMMIT & 2,943 \\
+    TRAIN rows & 22,018 \\
+    LISTEN & 19,075 \\
+    COMMIT & 2,943 \\
     \texttt{pos\_weight} & 6.481481481481482 \\
-    Optimizer & AdamW \\
+    Bộ tối ưu & AdamW \\
     Learning rate & 0.001 \\
     Weight decay & 0.0001 \\
     Batch size & 256 \\
@@ -417,16 +316,17 @@ P3 được huấn luyện từ đầu vì checkpoint P2 không nhận thêm 384
   \end{tabularx}
 \end{table}
 
-\section{Checkpoint và khả năng tái lập}
-Checkpoint được lưu tại \path{checkpoints/policy_p3_global/P3_GLOBAL.pt}. SHA-256 đầy đủ là \path{ccf829fdb7ab521cc12c299583efa7222c965440b1257ddfb35e03ddd7bcadb9}. Loader kiểm tra digest và metadata trước khi sử dụng; test checkpoint đã kiểm tra khôi phục bền vững, artifact upstream bắt buộc và tương thích suy luận sau khôi phục.
+Checkpoint là \path{checkpoints/policy_p3_global/P3_GLOBAL.pt}, với SHA-256 \path{ccf829fdb7ab521cc12c299583efa7222c965440b1257ddfb35e03ddd7bcadb9}.
 
-\chapter{KẾT QUẢ THỰC NGHIỆM TRÊN DEV}
+\section{KẾT QUẢ THỰC NGHIỆM TRÊN DEV}
 
-\section{Các độ đo đánh giá}
-Chương này dùng bốn độ đo đã trình bày ở Chương 2. BLEU và chrF2 phản ánh các khía cạnh khác nhau của chất lượng; AL và LAAL phản ánh latency ở cấp token. Giá trị được sao chép nguyên trạng từ aggregate artifact chính thức, không được tính lại cho báo cáo.
+\subsection{Metrics}
+BLEU và chrF2 đánh giá chất lượng, còn AL và LAAL mô tả độ trễ cấp token. Các bảng trình bày nguyên trạng cả bốn độ đo từ artifact chính thức, không tính lại.
 
-\section{Kết quả P3\_GLOBAL}
-\begin{table}[htbp]
+\subsection{Kết quả P3\_GLOBAL}
+Bảng~\ref{tab:p3-dev} trình bày P3 trên toàn bộ DEV tại năm ngưỡng $p(\mathrm{COMMIT})$, tương ứng với các điểm vận hành chất lượng--độ trễ khác nhau.
+
+\begin{table}[!htbp]
   \centering
   \caption{Kết quả P3 chính thức trên toàn bộ DEV theo ngưỡng.}
   \label{tab:p3-dev}
@@ -443,10 +343,12 @@ Chương này dùng bốn độ đo đã trình bày ở Chương 2. BLEU và ch
   \end{tabular}
 \end{table}
 
-AL và LAAL chính thức không đơn điệu theo ngưỡng, nên không thể suy latency chỉ từ số COMMIT hoặc độ dài đoạn trung bình. Bảng~\ref{tab:p3-dev} cần được đọc như một vector nhiều mục tiêu, không phải bảng xếp hạng một chiều.
+Các độ đo không biến đổi đơn điệu theo ngưỡng. BLEU cao nhất ở 0.70, nhưng AL và LAAL cũng cao hơn nhiều điểm khác; vì vậy bảng mô tả nhiều điểm vận hành chứ không xác lập một ngưỡng tốt nhất duy nhất.
 
-\section{So sánh mô tả P3 và P2}
-\begin{table}[htbp]
+\subsection{So sánh mô tả P3 và P2}
+Bảng~\ref{tab:p3-p2-deltas} báo cáo chênh lệch P3--P2 tại cùng ngưỡng. BLEU/chrF2 dương có lợi cho P3, còn AL/LAAL thấp hơn mới có lợi về độ trễ.
+
+\begin{table}[!htbp]
   \centering
   \caption{Chênh lệch cùng ngưỡng $\mathrm{P3}-\mathrm{P2}$ trên DEV.}
   \label{tab:p3-p2-deltas}
@@ -463,28 +365,25 @@ AL và LAAL chính thức không đơn điệu theo ngưỡng, nên không thể
   \end{tabular}
 \end{table}
 
-Chênh lệch chất lượng dương có lợi cho P3; AL hoặc LAAL thấp hơn mới có lợi theo các độ đo latency. Các chiều thay đổi hỗn hợp, không tạo ra một lợi thế P3 nhất quán trên cả chất lượng và latency.
+Các chiều thay đổi hỗn hợp: chrF2 có thể tăng khi BLEU giảm, còn AL và LAAL cũng không cùng hướng. Vì vậy, kết quả không hỗ trợ ưu thế chung của P3 so với P2.
 
-\section{Giới hạn của phép so sánh P3--P2}
-P3 được huấn luyện riêng từ đầu và có thêm chiều feature so với P2. Hai policy còn khác nhau trên Jeff và Luis dù prepared vector ở đó chính xác bằng không. Vì thế Bảng~\ref{tab:p3-p2-deltas} là so sánh mô tả giữa hai model, \textbf{không phải} ablation nhân quả của prepared context. Khác biệt có thể đến từ tham số mới, chiều đầu vào mới hoặc tương tác giữa chúng. Hạn chế này trực tiếp dẫn tới thiết kế cùng checkpoint ở Chương 8.
+\subsection{Vì sao P3--P2 không phải so sánh nhân quả}
+P3 được huấn luyện riêng và có thêm 384 chiều đầu vào, nên chênh lệch có thể đến từ tham số, kiến trúc hoặc tương tác giữa chúng. Hai policy còn khác nhau trên Jeff và Luis dù vector context bằng không. Do đó P3--P2 chỉ mang tính mô tả; Chương 6 dùng cùng checkpoint và chỉ can thiệp lát context để trả lời câu hỏi nhân quả.
 
-\chapter{THÍ NGHIỆM ABLATION CÓ KIỂM SOÁT}
+\section{CONTROLLED ABLATION VÀ PHÂN TÍCH HÀNH VI}
 
-\section{Thiết kế REAL\_CONTEXT và ZERO\_CONTEXT}
-Ablation so sánh hai rollout causal của cùng policy P3 đã huấn luyện. Hình~\ref{fig:controlled-ablation} minh họa can thiệp duy nhất trên lát prepared context.
+\subsection{REAL\_CONTEXT và ZERO\_CONTEXT}
+Vì P3 và P2 được huấn luyện riêng, so sánh giữa chúng không cô lập được prepared context. Ablation vì thế chạy hai rollout của cùng checkpoint P3 trên cùng dòng nguồn; mỗi rollout áp dụng policy tuần tự và giữ hệ quả của các quyết định trước.
 
-\begin{figure}[htbp]
-  \centering
-  \safeincludegraphics{figures/figure-3-controlled-ablation.png}
-  \caption{Thiết kế ablation \texttt{REAL\_CONTEXT} và \texttt{ZERO\_CONTEXT} với cùng checkpoint P3. ZERO chỉ thay lát prepared-global bằng vector không; hai session giữ lịch sử causal độc lập trên cùng đồng hồ nguồn.}
-  \label{fig:controlled-ablation}
-\end{figure}
+\texttt{REAL\_CONTEXT} dùng vector \texttt{prepared-global-v0}; \texttt{ZERO\_CONTEXT} chỉ thay các chiều \texttt{[1152:1536]} bằng vector \texttt{float32} toàn số 0. Kiến trúc 1547 chiều, MiniLM, 11 đặc trưng số, EnViT5, ngưỡng và dòng nguồn đều được giữ cố định.
 
-\begin{table}[htbp]
+Sau phân kỳ, mỗi phiên duy trì buffer và lịch sử COMMIT riêng. Chia sẻ lịch sử sẽ xóa mất hiệu ứng dây chuyền mà thí nghiệm cần đo.
+
+\begin{table}[!htbp]
   \centering
   \caption{Định nghĩa hai điều kiện trong ablation có kiểm soát.}
   \label{tab:ablation-definition}
-  \begin{tabularx}{\textwidth}{@{}l Y@{}}
+  \begin{tabularx}{0.94\textwidth}{@{}L{0.28\textwidth}Y@{}}
     \toprule
     \textbf{Điều kiện} & \textbf{Can thiệp} \\
     \midrule
@@ -494,22 +393,18 @@ Ablation so sánh hai rollout causal của cùng policy P3 đã huấn luyện. 
   \end{tabularx}
 \end{table}
 
-Checkpoint, dạng đầu vào 1547 chiều, MiniLM, 11 đặc trưng số, EnViT5, ngưỡng, chuỗi nguồn và cơ chế streaming đều được giữ cố định. Sau divergence, mỗi điều kiện phải duy trì COMMIT, buffer và lịch sử riêng; chia sẻ lịch sử sẽ xóa hậu quả causal của can thiệp.
-
-\section{Kiểm tra tính toàn vẹn bằng empty-context controls}
-Jeff và Luis vốn có prepared pool rỗng, nên effective vector ở REAL và ZERO đều là vector không. Trên toàn bộ lưới ngưỡng, prediction, số COMMIT và commit artifact của hai điều kiện giống hệt nhau cho cả hai talk. Invariance này cho thấy zero mode chỉ tác động lát context, không làm thay đổi machinery rollout khác.
-
-\section{Kết quả ablation tổng hợp}
-Mọi chênh lệch trong Bảng~\ref{tab:ablation-results} được định nghĩa là
-\[
-  \Delta = \mathrm{REAL\_CONTEXT} - \mathrm{ZERO\_CONTEXT}.
-\]
-Chất lượng dương có lợi cho REAL; AL/LAAL âm có lợi cho REAL; số COMMIT dương nghĩa là REAL COMMIT nhiều hơn.
-
-\begin{table}[htbp]
+\begin{figure}[!htbp]
   \centering
-  \caption{Kết quả ablation tổng hợp trên DEV; mọi giá trị là REAL trừ ZERO.}
+  \reportfigure{figure-3-controlled-ablation.png}
+  \caption{Thiết kế ablation \texttt{REAL\_CONTEXT}--\texttt{ZERO\_CONTEXT} với cùng checkpoint P3. Can thiệp duy nhất nằm ở lát prepared context. Sau khi quyết định phân kỳ, hai phiên tiếp tục với lịch sử riêng.}
+  \label{fig:controlled-ablation}
+\end{figure}
+
+\begin{table}[!htbp]
+  \centering
+  \caption{Kết quả tổng hợp của ablation có kiểm soát. Mọi $\Delta$ được tính bằng REAL trừ ZERO.}
   \label{tab:ablation-results}
+  \small
   \begin{tabular}{@{}rrrrrr@{}}
     \toprule
     \textbf{Ngưỡng} & $\Delta$ \textbf{BLEU} & $\Delta$ \textbf{chrF2} & $\Delta$ \textbf{AL} & $\Delta$ \textbf{LAAL} & $\Delta$ \textbf{COMMIT} \\
@@ -523,82 +418,57 @@ Chất lượng dương có lợi cho REAL; AL/LAAL âm có lợi cho REAL; số
   \end{tabular}
 \end{table}
 
-Do Jeff và Luis invariant, các chênh lệch tổng hợp bắt nguồn từ Sims. Chiều chất lượng thay đổi theo ngưỡng, trong khi REAL tạo nhiều COMMIT hơn ở mọi ngưỡng đã kiểm tra.
+BLEU/chrF2 dương có lợi cho REAL, AL/LAAL âm biểu thị độ trễ thấp hơn, và $\Delta$ COMMIT dương nghĩa là REAL phát hành nhiều đơn vị hơn.
 
-\section{Phân tích trường hợp Sims tại ngưỡng 0.60}
-Ở Sims 0.60, REAL đạt chênh lệch mô tả $+0.95$ BLEU và $+0.63$ chrF2, với 318 COMMIT so với 299 ở ZERO; mean source span tương ứng là 5.31 và 5.65 token. Đây là một trường hợp dương nhiều thông tin để quan sát cơ chế, nhưng chỉ thuộc một ngưỡng của một talk DEV có context. Ngưỡng 0.60 không được gọi là ngưỡng tốt nhất và kết quả này không xác lập ưu thế chung.
+\subsection{Kiểm soát tính toàn vẹn bằng ngữ cảnh rỗng}
+Jeff và Luis không có context hợp lệ, nên vector hiệu lực ở REAL và ZERO đều bằng không. Trên toàn bộ lưới ngưỡng, prediction, số COMMIT và artifact COMMIT giống hệt nhau ở cả hai talk. Tính bất biến này xác nhận chế độ ZERO không làm thay đổi cơ chế rollout khác.
 
-\section{Diễn giải khoa học}
-\begin{quote}
-\textbf{Prepared context gây ra thay đổi nhân quả trong hành vi COMMIT của policy P3 đã huấn luyện.}
-\end{quote}
-Kết luận được thiết kế cùng checkpoint và empty-context controls hỗ trợ. Tuy nhiên, kết luận mạnh hơn rằng \texttt{prepared-global-v0} đem lại ưu thế chất lượng hoặc latency bền vững là không được dữ liệu hỗ trợ. Hướng và độ lớn hiệu ứng phụ thuộc ngưỡng; ablation chỉ đặc trưng hóa việc sử dụng context ở thời điểm suy luận của một policy P3 và một biểu diễn global thô.
+\subsection{Kết quả ablation tổng hợp}
+Do Jeff và Luis bất biến, mọi chênh lệch khác không đều bắt nguồn từ Sims. REAL tạo nhiều COMMIT hơn ở cả năm ngưỡng, chứng tỏ context làm thay đổi phân đoạn của P3. Tuy nhiên, BLEU, chrF2, AL và LAAL đổi hướng theo ngưỡng, nên \texttt{prepared-global-v0} chưa chứng minh cải thiện chất lượng hoặc độ trễ ổn định.
 
-\chapter{PHÂN TÍCH HÀNH VI POLICY THEO THỜI GIAN}
+\subsection{Sims 0.60}
+Tại Sims 0.60, REAL có chênh lệch $+0.95$ BLEU và $+0.63$ chrF2, với 318 COMMIT so với 299 ở ZERO. Đây là trường hợp mô tả hữu ích để phân tích cơ chế, không phải ngưỡng tốt nhất hay bằng chứng về ưu thế chung.
 
-\section{Động lực xây dựng observation-level trace}
-Artifact rollout chuẩn lưu các span đã COMMIT, xác suất tại thời điểm COMMIT, lý do và prediction cuối, nhưng không lưu mọi quan sát LISTEN hoặc candidate trung gian. Một xác suất LISTEN bị thiếu không thể được suy ra từ record COMMIT sau đó. Vì vậy trace riêng được tạo theo kiểu append-only, mỗi incoming source observation tương ứng đúng một event.
+\subsection{Event 131 -- phân kỳ trực tiếp}
+Trace append-only ghi WAIT, LISTEN hoặc COMMIT ở từng quan sát. Cặp Sims 0.60 có cùng 1,689 event, checkpoint, đồng hồ nguồn và ngưỡng, nên có thể đối chiếu trực tiếp theo event.
 
-\section{Cấu trúc trace}
-\begin{table}[htbp]
+Trong cặp trace, 1,200 quyết định giống nhau và 489 khác nhau; có 47 event REAL COMMIT/ZERO LISTEN, 23 event theo chiều ngược lại và 159 vùng phân kỳ. Phân kỳ đầu tiên là event 131 tại 53,000 ms.
+
+\begin{table}[!htbp]
   \centering
-  \caption{Ba trạng thái runtime trong observation-level trace.}
-  \label{tab:trace-decisions}
-  \begin{tabularx}{\textwidth}{@{}l Y Y@{}}
-    \toprule
-    \textbf{Trạng thái} & \textbf{Ý nghĩa} & \textbf{Dữ liệu Translator/policy} \\
-    \midrule
-    WAIT & Buffer có ít hơn bốn token nguồn. & Không đánh giá; các giá trị liên quan là \texttt{null}. \\
-    LISTEN & Đã suy luận nhưng xác suất dưới ngưỡng. & Ghi candidate, xác suất và đặc trưng số. \\
-    COMMIT & Policy hoặc quy tắc cưỡng bức phát hành candidate. & Ghi candidate, xác suất, feature, lý do và đơn vị đã COMMIT. \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-Trace tái sử dụng candidate và xác suất đã sinh trong rollout, không chạy suy luận lặp để phục vụ quan sát. Embedding và toàn bộ vector 1547 chiều không được phơi bày mặc định.
-
-\section{Controlled trace Sims 0.60}
-Cặp trace có cùng checkpoint, 1,689 source event, cùng đồng hồ nguồn và ngưỡng 0.60. Không dùng heuristic alignment: mọi \texttt{event\_index}, \texttt{source\_token\_end} và \texttt{observation\_ms} phải bằng nhau.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Thống kê của cặp trace Sims 0.60.}
+  \caption{Thống kê chính của cặp trace Sims 0.60.}
   \label{tab:trace-statistics}
-  \begin{tabularx}{0.92\textwidth}{@{}Y r@{}}
+  \begin{tabularx}{0.88\textwidth}{@{}Y r@{}}
     \toprule
     \textbf{Thống kê} & \textbf{Giá trị} \\
     \midrule
-    Quyết định giống nhau & 1,200 / 1,689 (71.05\%) \\
-    Quyết định khác nhau & 489 / 1,689 (28.95\%) \\
+    Tổng số event & 1,689 \\
+    Quyết định giống nhau & 1,200 \\
+    Quyết định khác nhau & 489 \\
     REAL COMMIT / ZERO LISTEN & 47 \\
     REAL LISTEN / ZERO COMMIT & 23 \\
-    Divergence đầu tiên & Event 131, 53,000 ms (00:53) \\
-    Số vùng divergence & 159 \\
-    Vùng divergence liên tiếp dài nhất & Event 956--984, 29 event \\
-    Event có xác suất ở cả hai phía & 556 \\
-    Trung bình $|\Delta p|$ & 0.125980 \\
-    Trung vị $|\Delta p|$ & 0.014456 \\
-    Lớn nhất $|\Delta p|$ & 0.929382 tại event 584 (03:53) \\
+    Phân kỳ đầu tiên & Event 131, 53,000 ms \\
+    Số vùng phân kỳ & 159 \\
     \bottomrule
   \end{tabularx}
 \end{table}
 
-WAIT không có xác suất và không bao giờ được coi là xác suất bằng không.
+Event 131 là trường hợp phù hợp nhất để xác định ảnh hưởng trực tiếp của context vì phân đoạn nguồn chưa kịp thay đổi. Hai điều kiện sử dụng cùng checkpoint, cùng ngưỡng 0.60 và quan sát cùng đoạn nguồn. EnViT5 vì thế cũng tạo ra cùng một bản dịch ứng viên ở cả hai phía. Điểm khác biệt duy nhất trong đầu vào policy là vector prepared context.
 
-\section{Event 131 -- divergence trực tiếp}
-Event 131 là ví dụ sạch nhất vì hai policy vẫn có cùng candidate span và candidate translation tại quan sát này.
+Với REAL, policy cho $p(\mathrm{COMMIT})=0.631034$. Giá trị này vượt ngưỡng 0.60 nên quyết định là COMMIT. Với ZERO, xác suất là $0.575424$, nằm dưới ngưỡng nên policy tiếp tục LISTEN. Chênh lệch xác suất được lưu là $\Delta p=+0.055609$. Do đoạn nguồn và bản dịch ứng viên hoàn toàn giống nhau, event này chứng minh sự nhạy cảm ở thời điểm quyết định của policy. Nó không cung cấp bằng chứng rằng bản dịch của REAL có chất lượng cao hơn.
 
-\begin{table}[htbp]
+\begin{table}[!htbp]
   \centering
-  \caption{So sánh trực tiếp tại event 131, trước khi biên buffer phân kỳ.}
+  \caption{So sánh trực tiếp tại event 131 trước khi biên buffer phân kỳ.}
   \label{tab:event-131}
-  \begin{tabularx}{\textwidth}{@{}Y Y Y@{}}
+  \small
+  \begin{tabularx}{\textwidth}{@{}L{0.24\textwidth}Y Y@{}}
     \toprule
     \textbf{Trường} & \textbf{REAL\_CONTEXT} & \textbf{ZERO\_CONTEXT} \\
     \midrule
     Event và thời gian & 131 tại 00:53 & 131 tại 00:53 \\
-    Candidate source & \multicolumn{2}{p{0.66\textwidth}}{\texttt{renewable energy Electrify everything else Deploy solutions that}} \\
-    Candidate translation & \multicolumn{2}{p{0.66\textwidth}}{Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó} \\
+    Đoạn nguồn & \multicolumn{2}{L{0.68\textwidth}}{\texttt{renewable energy Electrify everything else Deploy solutions that}} \\
+    Bản dịch ứng viên & \multicolumn{2}{L{0.68\textwidth}}{Năng lượng tái tạo Điện khí hoá mọi thứ khác Triển khai các giải pháp đó} \\
     $p(\mathrm{COMMIT})$ & 0.631034 & 0.575424 \\
     Ngưỡng & 0.60 & 0.60 \\
     Quyết định & COMMIT & LISTEN \\
@@ -606,277 +476,166 @@ Event 131 là ví dụ sạch nhất vì hai policy vẫn có cùng candidate sp
   \end{tabularx}
 \end{table}
 
-Chênh lệch $\Delta p=\mathrm{REAL}-\mathrm{ZERO}=+0.055609$. REAL vượt ngưỡng 0.60 còn ZERO ở dưới ngưỡng. Vì source span và candidate translation giống nhau, event này cô lập thay đổi timing policy; không có cơ sở gọi candidate của REAL tốt hơn.
+\subsection{Event 132 -- hiệu ứng dây chuyền}
+Event 132 cho thấy một quyết định cục bộ có thể thay đổi trạng thái của luồng ngay ở quan sát kế tiếp. Cả REAL và ZERO đều nhận cùng token mới là \texttt{are}. Tuy nhiên, do REAL vừa COMMIT tại event 131, buffer của phiên này đã được đặt lại và chỉ chứa token 132. Một token chưa đạt mức tối thiểu bốn token, nên REAL ở trạng thái WAIT và không chạy Translator hay policy.
 
-\section{Event 132 -- hiệu ứng dây chuyền}
-Ngay quan sát sau, cả hai điều kiện nhận token \texttt{are}, nhưng COMMIT ở event 131 đã reset buffer REAL.
+ZERO không COMMIT ở event trước, vì vậy đoạn nguồn cũ vẫn được giữ trong buffer. Khi token 132 được thêm vào, buffer ZERO kéo dài từ token 124 đến 132 và có chín token. Trạng thái này đủ điều kiện suy luận, và quyết định được ghi là LISTEN. Bảng~\ref{tab:event-132} tóm tắt hai trạng thái phát sinh từ khác biệt ở event 131.
 
-\begin{table}[htbp]
+\begin{table}[!htbp]
   \centering
-  \caption{Cascade thực tế của buffer tại event 132.}
+  \caption{Hiệu ứng dây chuyền của buffer tại event 132.}
   \label{tab:event-132}
-  \begin{tabularx}{\textwidth}{@{}l l l Y@{}}
+  \begin{tabularx}{\textwidth}{@{}L{0.22\textwidth}L{0.15\textwidth}L{0.15\textwidth}Y@{}}
     \toprule
-    \textbf{Điều kiện} & \textbf{Span} & \textbf{Quyết định} & \textbf{Diễn giải} \\
+    \textbf{Điều kiện} & \textbf{Đoạn nguồn} & \textbf{Quyết định} & \textbf{Diễn giải} \\
     \midrule
-    \texttt{REAL\_CONTEXT} & 132--132 & WAIT & Commit trước đã reset candidate; một token chưa đủ mức suy luận tối thiểu. \\
-    \texttt{ZERO\_CONTEXT} & 124--132 & LISTEN & Span trước vẫn chưa COMMIT và nay chứa chín token. \\
+    \texttt{REAL\_CONTEXT} & 132--132 & WAIT & COMMIT trước đã đặt lại buffer; một token chưa đủ để suy luận. \\
+    \texttt{ZERO\_CONTEXT} & 124--132 & LISTEN & Đoạn trước chưa COMMIT và nay chứa chín token. \\
     \bottomrule
   \end{tabularx}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
   \centering
-  \safeincludegraphics{figures/figure-4-divergence-cascade.png}
-  \caption{Divergence tại event 131 và hiệu ứng dây chuyền tại event 132. Can thiệp context trước hết đổi quyết định policy; biên nguồn khác nhau sau đó khiến EnViT5 cố định nhận các span khác nhau.}
+  \reportfigure{figure-4-divergence-cascade.png}
+  \caption{Phân kỳ trực tiếp tại event 131 và hiệu ứng dây chuyền tại event 132. Quyết định của policy thay đổi trước. Các biên nguồn khác nhau sau đó khiến EnViT5 nhận những đoạn nguồn khác nhau.}
   \label{fig:divergence-cascade}
 \end{figure}
 
-\section{Ý nghĩa của downstream cascade}
-Trong toàn bộ cặp trace, 829 event có candidate-source start khác nhau; 626 event trong số đó cũng có candidate translation khác nhau. Cơ chế là:
-\[
-\begin{gathered}
-\text{prepared context}\rightarrow\text{timing policy thay đổi}\rightarrow
-\text{biên COMMIT thay đổi}\\
-\rightarrow\text{đoạn nguồn chưa COMMIT về sau thay đổi}
-\rightarrow\text{EnViT5 nhận source span khác}\rightarrow
-\text{candidate về sau có thể khác}.
-\end{gathered}
-\]
-Prepared context không đi trực tiếp vào EnViT5. Các khác biệt bản dịch về sau là hiệu ứng phân đoạn downstream, không phải direct context conditioning của Translator.
+\subsection{Diễn giải cơ chế}
+Event 131 cho thấy ảnh hưởng trực tiếp lên policy khi Translator vẫn có cùng đầu vào và đầu ra; event 132 cho thấy biên COMMIT khác tạo ra các buffer khác. Trên toàn trace, 829 event có điểm đầu đoạn nguồn khác nhau và 626 trong số đó cũng có bản dịch ứng viên khác. Đây là hiệu ứng phân đoạn về sau, không phải prepared context đi trực tiếp vào EnViT5.
 
-\chapter{HỆ THỐNG TRỰC QUAN HÓA VÀ DEMO}
+\begin{quote}
+\textbf{Prepared context gây ra thay đổi nhân quả trong hành vi COMMIT của policy P3 đã huấn luyện, nhưng chưa chứng minh ưu thế chất lượng hoặc độ trễ ổn định.}
+\end{quote}
 
-\section{Mục tiêu của hệ thống trực quan hóa}
-Demo là công cụ quan sát nghiên cứu cho cặp trace Sims 0.60. Nó replay hai JSON DEV đã sinh sẵn trong trình duyệt và không thực hiện model inference, rollout, huấn luyện, đánh giá hoặc tính lại ngưỡng.
+\section{HỆ THỐNG TRỰC QUAN HÓA VÀ DEMO}
 
-\section{Các thành phần giao diện}
-\begin{table}[htbp]
+\subsection{Mục tiêu}
+Demo là công cụ quan sát cặp trace Sims 0.60, giúp theo dõi cùng dòng nguồn trong hai phiên và nhận ra khi phân kỳ bắt đầu tạo hiệu ứng dây chuyền. Nó chỉ phát lại hai JSON DEV đã sinh sẵn, không thực thi mô hình, rollout, huấn luyện hay đánh giá. Timestamp thuộc đồng hồ mô phỏng, không phải căn chỉnh âm thanh theo từ.
+
+\subsection{Thành phần quan sát}
+Giao diện hiển thị dòng nguồn chung cùng hai buffer REAL/ZERO độc lập, bản dịch ứng viên, $p(\mathrm{COMMIT})$ và đầu ra đã cố định. WAIT được ghi là ``chưa đánh giá'' vì không có xác suất policy. Mọi thao tác chỉ điều hướng artifact đã lưu.
+
+\subsection{Replay controlled divergence}
+Hình~\ref{fig:interactive-demo} chụp event 131, nơi cùng đoạn nguồn và bản dịch ứng viên tạo xác suất ở hai phía của ngưỡng. Sau phân kỳ, dòng token vẫn dùng chung nhưng buffer được duy trì riêng. Trình xem vì vậy hỗ trợ diễn giải artifact, không phải giao diện dịch cabin trực tiếp.
+
+\begin{figure}[!htbp]
   \centering
-  \caption{Các thành phần có thể quan sát trong viewer.}
-  \label{tab:demo-observables}
-  \begin{tabularx}{\textwidth}{@{}Y Y@{}}
-    \toprule
-    \textbf{Khu vực} & \textbf{Thông tin hiển thị} \\
-    \midrule
-    Dòng nguồn chung & Incoming token, đồng hồ quan sát và phần nguồn đã thấy theo causal. \\
-    Hai policy card & Buffer REAL/ZERO độc lập, candidate, $p(\mathrm{COMMIT})$, ngưỡng và trạng thái. \\
-    Prepared knowledge & Provenance, eligibility, effective norm REAL 1.0 và ZERO 0.0. \\
-    Timeline COMMIT & Các đơn vị tiếng Việt không thể đảo ngược của từng policy trên cùng đồng hồ. \\
-    Điều hướng & Bookmark artifact, event khác biệt trước/sau và reset. \\
-    Chế độ xem & Research details và presentation mode. \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-\section{Cơ chế replay tự động}
-Playback sử dụng chênh lệch \texttt{observation\_ms} đã lưu, với các tốc độ 0.5x, 1x, 2x, 4x và 8x. Người dùng có thể step, reset hoặc bật pause on policy divergence. Mọi thao tác chỉ điều hướng artifact đã tải, không thay đổi xác suất hay quyết định.
-
-\section{Minh họa controlled divergence}
-Hình~\ref{fig:interactive-demo} chụp viewer tại divergence đầu tiên. Giao diện phân biệt incoming source token dùng chung với buffer chưa COMMIT độc lập, đồng thời hiển thị WAIT là ``not evaluated'' thay vì tạo xác suất giả.
-
-\begin{figure}[htbp]
-  \centering
-  \safeincludegraphics[0.98\textwidth]{figures/figure-5-interactive-demo.png}
-  \caption{Giao diện replay trace tại event 131, divergence đầu tiên của Sims 0.60. Viewer trình bày nguồn chung, hai buffer độc lập, xác suất COMMIT, prepared-context provenance và timeline đầu ra đã COMMIT.}
+  \reportfigure[0.86\textwidth]{figure-5-interactive-demo.png}
+  \caption{Giao diện phát lại trace tại event 131 của Sims 0.60. Dòng nguồn được dùng chung, trong khi hai buffer, xác suất COMMIT và timeline đầu ra được duy trì độc lập cho REAL và ZERO.}
   \label{fig:interactive-demo}
 \end{figure}
 
-Timestamp chỉ là thời điểm nguồn trở nên sẵn có trong đồng hồ mô phỏng. Demo là static research viewer, không phải sản phẩm dịch nói trực tiếp.
+\section{THẢO LUẬN, HẠN CHẾ VÀ HƯỚNG PHÁT TRIỂN}
 
-\chapter{THẢO LUẬN}
+\subsection{Trả lời các câu hỏi nghiên cứu}
+\textbf{RQ1: Các đặc trưng ngữ cảnh phong phú hơn ảnh hưởng thế nào đến hành vi COMMIT?} V2 cho thấy embedding ngữ nghĩa và lượng lịch sử tăng dần có thể làm thay đổi phân đoạn, nhưng kết quả DEV không xác lập ưu thế chất lượng so với V1. Bằng chứng hiện tại hỗ trợ tính khả thi của biểu diễn giàu hơn, không phải kết luận rằng nó luôn tốt hơn baseline.
 
-\section{Trả lời RQ1}
-Các đặc trưng causal phong phú hơn có thể được tích hợp vào learned policy và đi kèm thay đổi đáng kể về phân đoạn cùng timing. Tuy nhiên, V2 DEV không xác lập ưu thế chất lượng so với V1, còn P3--P2 bị nhiễu bởi huấn luyện riêng. Bằng chứng hiện tại hỗ trợ tính khả thi và khác biệt hành vi, không hỗ trợ một tuyên bố cải thiện tổng quát.
+\textbf{RQ2: Prepared context có gây ra thay đổi quyết định policy hay không?} Có, trong phạm vi checkpoint P3 đã huấn luyện. REAL/ZERO giữ mọi yếu tố ngoài context cố định, Jeff/Luis bất biến, còn event 131 cho thấy cùng đoạn nguồn và bản dịch ứng viên nhưng quyết định khác nhau. Thiết kế này hỗ trợ kết luận nhân quả ở cấp hành vi COMMIT.
 
-\section{Trả lời RQ2}
-Có, trong phạm vi checkpoint P3 đã huấn luyện. REAL/ZERO giữ model và mọi đầu vào ngoài prepared context cố định; empty-context Jeff/Luis invariant; và Sims có divergence cùng span tại event 131. Thiết kế này hỗ trợ kết luận nhân quả về hành vi COMMIT của policy.
+\textbf{RQ3: \texttt{prepared-global-v0} có đem lại lợi ích chất lượng--độ trễ ổn định hay không?} Chưa. BLEU, chrF2, AL và LAAL đổi hướng theo ngưỡng; Sims 0.60 chỉ là một trường hợp mô tả trên talk có context. Biểu diễn hiện tại cho thấy policy sử dụng context nhưng chưa đem lại cải thiện ổn định.
 
-\section{Trả lời RQ3}
-Không, đối với biểu diễn hiện tại và bằng chứng hiện có. Chiều BLEU, chrF2, AL và LAAL thay đổi theo ngưỡng. REAL tạo nhiều đoạn ngắn hơn trên Sims nhưng không cải thiện chất lượng hoặc latency một cách đồng đều. \texttt{prepared-global-v0} vì vậy chưa phải giải pháp bền vững, độc lập ngưỡng.
+\textbf{RQ4: Làm thế nào để quan sát và giải thích hành vi COMMIT?} Trace append-only lưu từng WAIT/LISTEN/COMMIT mà không suy dựng dữ liệu thiếu. Trình xem đồng bộ hai trace theo event và đồng hồ nguồn nhưng giữ buffer riêng, qua đó phân biệt thay đổi trực tiếp ở policy với hiệu ứng phân đoạn về sau.
 
-\section{Trả lời RQ4}
-Trace append-only theo từng quan sát ghi WAIT, LISTEN và COMMIT mà không tái dựng dữ liệu bị thiếu. Viewer tĩnh đồng bộ hai session trên cùng đồng hồ nguồn, cho phép quan sát cả divergence trực tiếp cùng span lẫn cascade biên nguồn về sau, đồng thời không chạy model trong giao diện.
+\subsection{Phạm vi của bằng chứng}
+Độ đo DEV mô tả kết quả đã lưu, còn thống kê trace mô tả hành vi trong artifact. Diễn giải nhân quả chỉ áp dụng cho can thiệp REAL/ZERO cùng checkpoint và ở cấp quyết định policy. Nó không khẳng định thay đổi ngữ nghĩa bản dịch hay hiệu năng của một hệ thống speech-to-speech hoàn chỉnh.
 
-\section{Phạm vi của bằng chứng}
-\begin{table}[htbp]
-  \centering
-  \caption{Ba lớp bằng chứng cần được giữ tách biệt khi diễn giải.}
-  \label{tab:evidence-boundaries}
-  \begin{tabularx}{\textwidth}{@{}Y Y Y@{}}
-    \toprule
-    \textbf{Lớp bằng chứng} & \textbf{Ví dụ} & \textbf{Diễn giải được phép} \\
-    \midrule
-    Số liệu lưu chính thức & BLEU, chrF2, AL, LAAL & Báo cáo nguyên trạng kết quả DEV đã hoàn thành. \\
-    Thống kê suy ra từ artifact & Số COMMIT, vùng divergence, chênh lệch xác suất & Mô tả hành vi có trong artifact đã được kiểm tra. \\
-    Diễn giải khoa học & Nhạy cảm nhân quả, thiếu ưu thế bền vững & Chỉ kết luận trong giới hạn thiết kế và coverage. \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
+\subsection{Hạn chế}
+Chỉ một trong ba talk DEV có context hợp lệ và corpus chỉ gồm tám nguồn, nên phạm vi khái quát còn hẹp. \texttt{prepared-global-v0} là trung bình global tĩnh, không truy hồi theo quan sát, còn P3 chưa được tối ưu riêng để sử dụng context ổn định. Hiệu ứng nhạy ngưỡng; demo chỉ phát lại artifact với thời gian mô phỏng, không có audio, ASR, TTS hay thực thi trực tuyến. TEST chưa được đánh giá.
 
-Khẳng định nhân quả thuộc policy behavior, không thuộc semantics bản dịch. Event 131 giữ candidate translation cố định; các candidate khác về sau phát sinh vì EnViT5 nhận source span khác sau divergence.
+\subsection{Hướng phát triển}
+Hướng tiếp theo là context cục bộ hoặc truy hồi theo quan sát, kết hợp mục tiêu huấn luyện khuyến khích sử dụng context phù hợp. Corpus cần thêm nguồn có provenance và nhiều talk có context để đánh giá qua chủ đề, ngưỡng. TEST chỉ nên được dùng một lần sau khi biểu diễn, huấn luyện và protocol đã cố định.
 
-\chapter{HẠN CHẾ VÀ HƯỚNG PHÁT TRIỂN}
+\section{KẾT LUẬN}
 
-\section{Hạn chế}
-Chỉ một trong ba talk DEV có prepared context hợp lệ và corpus chỉ có tám nguồn đủ điều kiện. \texttt{prepared-global-v0} là vector global tĩnh, lấy trung bình đồng trọng số nên có thể pha loãng thông tin cục bộ và không học mức quan trọng giữa các nguồn. P3 chưa được tối ưu hoặc regularize riêng để sử dụng context bền vững. DEV chỉ gồm ba talk; ảnh hưởng chất lượng và latency nhạy theo ngưỡng; ablation chỉ khảo sát inference-time reliance của một checkpoint.
+TimelyMT nghiên cứu thời điểm phát hành trong dịch máy theo luồng Anh--Việt bằng cách tách EnViT5 cố định khỏi policy LISTEN/COMMIT. Kiến trúc này cho phép phân tích riêng ảnh hưởng của trạng thái và phân đoạn, hướng tới dịch cabin tự động có độ trễ thấp.
 
-TEST vẫn chưa được đánh giá, do đó không có kết luận held-out. Demo chỉ replay artifact tĩnh, không có audio, ASR, TTS hay model execution. Timestamp quan sát là mô phỏng, không phải forced-aligned acoustic timing. Cuối cùng, BLEU, chrF2, AL và LAAL đo các khía cạnh khác nhau và có thể không đơn điệu, nên không một độ đo đơn lẻ nào mô tả đầy đủ policy.
+Ablation \texttt{REAL\_CONTEXT}--\texttt{ZERO\_CONTEXT} cùng checkpoint cho thấy prepared context gây thay đổi hành vi COMMIT của P3. Kiểm soát context rỗng và trace hỗ trợ kết luận này; context không đi trực tiếp vào EnViT5, còn khác biệt bản dịch về sau phát sinh từ biên nguồn đã thay đổi.
 
-\section{Hướng phát triển}
-Nghiên cứu tiếp theo nên ưu tiên context cục bộ hoặc retrieval theo quan sát thay cho một trung bình global; objective hoặc regularization context-aware để khuyến khích mức sử dụng context phù hợp; mở rộng nguồn pre-talk thật với provenance và kiểm soát leakage; thêm nhiều talk đánh giá có context; và calibration policy trên nhiều ngưỡng. TEST chỉ nên được đánh giá một lần sau khi biểu diễn, thiết kế huấn luyện và protocol đánh giá đã ổn định và được freeze. Hướng này ưu tiên giá trị thông tin thay vì retraining ngẫu nhiên.
+Tuy nhiên, \texttt{prepared-global-v0} chưa cải thiện chất lượng hoặc độ trễ ổn định qua ngưỡng; Sims 0.60 chỉ mang tính mô tả và TEST chưa được đánh giá. Kết quả định hướng cách chọn context và huấn luyện policy tốt hơn, không chứng minh một hệ thống dịch nói hoàn chỉnh hay ưu thế tổng quát.
 
-\chapter{KẾT LUẬN}
-
-TimelyMT cung cấp một framework dịch máy theo luồng causal trong đó EnViT5 source-only cố định sinh candidate và learned policy kiểm soát thời điểm LISTEN/COMMIT không thể đảo ngược. Sự tách biệt này cho phép nghiên cứu phân đoạn và timing mà không thay đổi Translator, đồng thời trace và viewer làm rõ hành vi theo từng quan sát.
-
-Trong can thiệp cùng checkpoint giữa \texttt{REAL\_CONTEXT} và \texttt{ZERO\_CONTEXT}, prepared context gây ra thay đổi nhân quả trong hành vi COMMIT của policy P3 đã huấn luyện. Invariance trên các talk có pool rỗng và divergence cùng candidate tại event 131 củng cố kết luận ở cấp policy; cascade event 132 giải thích vì sao các candidate về sau có thể khác dù EnViT5 không nhận context trực tiếp.
-
-Tuy nhiên, \texttt{prepared-global-v0} chưa chứng minh cải thiện chất lượng hoặc latency bền vững, độc lập ngưỡng. Bằng chứng dương Sims 0.60 chỉ mang tính mô tả trên một talk DEV có context và TEST chưa được đánh giá. Diễn giải đúng là genuine pre-talk context có thể ảnh hưởng commit timing trong policy đã huấn luyện, nhưng biểu diễn global hiện tại chưa phải một giải pháp robust để cải thiện chất lượng/độ trễ.
-
-\clearpage
+\FloatBarrier
+\Needspace{8\baselineskip}
 \phantomsection
-\addcontentsline{toc}{chapter}{TÀI LIỆU THAM KHẢO}
+\addcontentsline{toc}{section}{TÀI LIỆU THAM KHẢO}
+\nocite{arivazhagan2019monotonic,ma2019stacl,ngo2022mtet,papi2022laal,papineni2002bleu,popovic2015chrf,reimers2019sentencebert,wang2020minilm}
 \bibliographystyle{plainnat}
 \bibliography{references}
 
+\clearpage
 \appendix
 
-\chapter{CÁC ĐẶC TRƯNG SỐ CỦA POLICY}
-\begin{longtable}{@{}p{0.34\textwidth}p{0.61\textwidth}@{}}
-  \caption{Định nghĩa 11 đặc trưng số causal của policy.}\label{tab:numeric-features}\\
-  \toprule
-  \textbf{Feature} & \textbf{Định nghĩa} \\
-  \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Feature} & \textbf{Định nghĩa} \\
-  \midrule
-  \endhead
-  \bottomrule
-  \endfoot
-  \path{source_buffer_token_count} & Số token nguồn trong candidate span chưa COMMIT. \\
-  \path{source_buffer_character_count} & Số ký tự của span nguồn sau khi nối token bằng khoảng trắng. \\
-  \path{source_clock_elapsed_ms} & Emit time token cuối trừ emit time token đầu của candidate. \\
-  \path{current_target_token_count} & Số whitespace token của candidate translation hiện tại. \\
-  \path{previous_target_token_count} & Số token của candidate trước trên cùng open span; bằng không nếu chưa có. \\
-  \path{target_token_count_delta} & Số token candidate hiện tại trừ candidate trước. \\
-  \path{previous_current_lcp_ratio} & Độ dài longest common whitespace-token prefix chia độ dài candidate trước, mẫu số tối thiểu một. \\
-  \path{previous_current_change_ratio} & Một trừ sequence-matching ratio giữa token đích trước và hiện tại. \\
-  \path{prior_committed_unit_count} & Số đơn vị đích đã COMMIT trong session hiện tại. \\
-  \path{previous_committed_source_tokens} & Số token nguồn của đơn vị COMMIT gần nhất; bằng không trước COMMIT đầu. \\
-  \path{previous_committed_target_tokens} & Số token đích của đơn vị COMMIT gần nhất; bằng không trước COMMIT đầu. \\
-\end{longtable}
+\section{CÁC ĐẶC TRƯNG SỐ CỦA POLICY}
+V2 và P3 dùng 11 đặc trưng số về buffer, bản dịch ứng viên và lịch sử COMMIT. Các giá trị được chuẩn hóa bằng thống kê TRAIN; trạng thái WAIT dưới bốn token không xây dựng vector này.
 
-Các giá trị được scale bằng thống kê khớp trên TRAIN trước khi vào V2/P3. WAIT dưới bốn token không dựng hoặc phơi bày state này.
-
-\chapter{THÔNG TIN MÔ HÌNH VÀ CHECKPOINT}
-\begin{longtable}{@{}p{0.34\textwidth}p{0.61\textwidth}@{}}
-  \caption{Các identifier mô hình và checkpoint quan trọng.}\label{tab:model-identifiers}\\
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}L{0.37\textwidth}Y@{}}
   \toprule
-  \textbf{Artifact} & \textbf{Identifier} \\
+  \textbf{Đặc trưng} & \textbf{Định nghĩa} \\
   \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Artifact} & \textbf{Identifier} \\
-  \midrule
-  \endhead
+  \path{source_buffer_token_count} & Số token nguồn trong đoạn chưa COMMIT. \\
+  \path{source_buffer_character_count} & Số ký tự của đoạn nguồn sau khi nối token bằng khoảng trắng. \\
+  \path{source_clock_elapsed_ms} & Thời điểm token cuối trừ thời điểm token đầu của đoạn. \\
+  \path{current_target_token_count} & Số token phân tách bằng khoảng trắng của bản dịch ứng viên hiện tại. \\
+  \path{previous_target_token_count} & Số token của bản dịch ứng viên trước trên cùng đoạn mở; bằng 0 nếu chưa có. \\
+  \path{target_token_count_delta} & Số token đích hiện tại trừ số token đích trước. \\
+  \path{previous_current_lcp_ratio} & Độ dài tiền tố token chung dài nhất chia độ dài ứng viên trước, mẫu số tối thiểu 1. \\
+  \path{previous_current_change_ratio} & Một trừ tỉ lệ khớp chuỗi giữa token đích trước và hiện tại. \\
+  \path{prior_committed_unit_count} & Số đơn vị đích đã COMMIT trong session. \\
+  \path{previous_committed_source_tokens} & Số token nguồn của đơn vị COMMIT gần nhất; bằng 0 trước COMMIT đầu. \\
+  \path{previous_committed_target_tokens} & Số token đích của đơn vị COMMIT gần nhất; bằng 0 trước COMMIT đầu. \\
   \bottomrule
-  \endfoot
-  Translator & \path{VietAI/envit5-translation} \\
-  Translator revision & \path{840bc88104d5a4277af740eaedb024df8c3093e7} \\
-  Translator decoding & \path{do_sample=false}, \path{num_beams=1} \\
-  Semantic encoder & \path{sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2} \\
-  Encoder revision & \path{e62509716f15c5fd03a6fd3156a4bc5e43f83f26} \\
-  Pooling & \path{attention-mask-mean-l2-v1} \\
-  Embedding dimension & 384 \\
-  Prepared schema & \path{prepared-context-v0} \\
+\end{tabularx}
+\end{center}
+
+\section{THÔNG TIN MÔ HÌNH VÀ CHECKPOINT}
+Các định danh dưới đây xác định mô hình, policy và checkpoint được sử dụng trong báo cáo.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}L{0.30\textwidth}Y@{}}
+  \toprule
+  \textbf{Thành phần} & \textbf{Định danh} \\
+  \midrule
+  EnViT5 & \path{VietAI/envit5-translation} \\
+  EnViT5 revision & \path{840bc88104d5a4277af740eaedb024df8c3093e7} \\
+  MiniLM & \path{sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2} \\
+  MiniLM revision & \path{e62509716f15c5fd03a6fd3156a4bc5e43f83f26} \\
+  Chiều embedding & 384 \\
   Prepared representation & \path{prepared-global-v0} \\
-  V1 selection & \path{learned_P1_0.60} \\
-  V1 checkpoint stage & \path{dev-frozen-complete} \\
-  V2 selection & \path{v2_P2_0.50} \\
+  Policy V1 được chọn & \path{learned_P1_0.60}, stage \path{dev-frozen-complete} \\
+  Policy V2 được chọn & \path{v2_P2_0.50} \\
   P3 checkpoint & \path{checkpoints/policy_p3_global/P3_GLOBAL.pt} \\
   P3 SHA-256 & \path{ccf829fdb7ab521cc12c299583efa7222c965440b1257ddfb35e03ddd7bcadb9} \\
-\end{longtable}
-
-\chapter{CÁC NGƯỠNG THỰC NGHIỆM}
-Lưới DEV đã hoàn thành cho P2, P3 và ablation P3 REAL/ZERO gồm:
-\begin{lstlisting}
-0.30, 0.40, 0.50, 0.60, 0.70
-\end{lstlisting}
-Một COMMIT không cưỡng bức xảy ra khi $p(\mathrm{COMMIT})\geq\text{ngưỡng}$. Trường hợp 0.60 được dùng cho viewer vì là ví dụ controlled dương nhiều thông tin, không phải vì đã được xác lập là ngưỡng tốt nhất.
-
-\chapter{CẤU TRÚC DEMO TRACE}
-\begin{table}[htbp]
-  \centering
-  \caption{Các nhóm trường chính trong schema demo trace.}
-  \label{tab:trace-schema}
-  \begin{tabularx}{\textwidth}{@{}Y Y@{}}
-    \toprule
-    \textbf{Phạm vi} & \textbf{Trường chính} \\
-    \midrule
-    Run identity & Artifact version, run ID, talk ID, split, strategy, threshold, prepared mode, checkpoint SHA-256. \\
-    Source stream & Token count, final emit time, simulated source clock, observation key. \\
-    Prepared provenance & Representation, eligible source ID/checksum, eligibility, dimension, stored/effective norm, mode. \\
-    Observation identity & \path{event_index}, \path{observation_ms}, \path{source_token_end}. \\
-    Candidate state & Source start/end/text, candidate translation, previous candidate. \\
-    Decision state & \path{p_commit}, threshold, WAIT/LISTEN/COMMIT, reason, forced flag. \\
-    Commit state & Unit index, committed source text, committed target text. \\
-    Causal numeric state & 11 feature cho LISTEN/COMMIT; \texttt{null} cho WAIT. \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-Trace mặc định không chứa target reference, alignment, nguồn tương lai, oracle field, raw embedding hoặc toàn bộ policy input. REAL và ZERO đồng bộ theo event, source-token end và observation time, không theo commit index.
-
-\chapter{CÁC LỆNH TÁI LẬP KHÔNG TRUY CẬP TEST}
-Báo cáo dựa trên artifact đã hoàn thành; không cần train, rollout hay evaluate để tái lập phần trình bày. Các lệnh sau chỉ phục vụ viewer tĩnh, kiểm tra hai trace DEV có sẵn và test offline liên quan:
-\begin{lstlisting}[language={}]
-# Serve the static artifact viewer; no model execution.
-python -m http.server 8000
-# Open http://localhost:8000/demo/
-
-# Validate the two existing DEV trace documents.
-python scripts/validate_demo_trace.py outputs/demo_traces/sims-real-0.60.json
-python scripts/validate_demo_trace.py outputs/demo_traces/sims-zero-0.60.json
-
-# Focused offline tests.
-$env:PYTHONPATH='src'
-python -m unittest tests.research.test_compare_demo_traces tests.research.test_p3_checkpointing -v
-
-# Report-package diff hygiene.
-git diff --check -- reports/overleaf
-\end{lstlisting}
-Khi được gọi đúng như trên, các lệnh không truy cập TEST. TEST phải tiếp tục được giữ kín.
-
-\chapter{CÁC ARTIFACT CHÍNH CỦA DỰ ÁN}
-\begin{longtable}{@{}p{0.34\textwidth}p{0.61\textwidth}@{}}
-  \caption{Các đường dẫn artifact chính phục vụ báo cáo và khả năng kiểm tra.}\label{tab:artifact-paths}\\
-  \toprule
-  \textbf{Mục đích} & \textbf{Đường dẫn repository} \\
-  \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Mục đích} & \textbf{Đường dẫn repository} \\
-  \midrule
-  \endhead
   \bottomrule
-  \endfoot
-  Tổng hợp nghiên cứu dài & \path{docs/research-final-summary.md} \\
-  Tổng hợp ngắn & \path{docs/research-final-summary-short.md} \\
-  Hợp đồng trace & \path{docs/demo-trace-spec.md} \\
-  Hợp đồng demo UI & \path{docs/demo-ui-spec.md} \\
-  P3 sanity report & \path{reports/p3_global_sims_0.50_sanity.md} \\
-  Phân tích P3 DEV & \path{reports/p3_global_full_dev_analysis.md} \\
-  Controlled ablation & \path{reports/p3_prepared_context_ablation.md} \\
-  Phân tích trace Sims & \path{reports/demo_trace_sims_0.60_analysis.md} \\
-  Hướng dẫn demo & \path{demo/README.md} \\
-  Presentation walkthrough & \path{demo/PRESENTATION.md} \\
-  Cấu hình P3 & \path{configs/experiments/policy-p3-global.json} \\
-  Metadata checkpoint & \path{checkpoints/policy_p3_global/P3_GLOBAL.metadata.json} \\
-  Manifest prepared context & \path{data/prepared_context/manifest.json} \\
-  REAL trace & \path{outputs/demo_traces/sims-real-0.60.json} \\
-  ZERO trace & \path{outputs/demo_traces/sims-zero-0.60.json} \\
-  Demo bookmarks & \path{outputs/demo_traces/sims-0.60-bookmarks.json} \\
-\end{longtable}
+\end{tabularx}
+\end{center}
+
+Các lệnh tái lập và danh sách artifact chi tiết được cung cấp trong repository của dự án.
+
+\section{CẤU TRÚC TRACE}
+Trace append-only ghi một event cho mỗi quan sát nguồn. WAIT có các trường Translator/policy bằng \texttt{null}; LISTEN ghi bản dịch ứng viên, xác suất và đặc trưng số; COMMIT ghi thêm lý do cùng đơn vị đã phát hành.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}L{0.28\textwidth}Y@{}}
+  \toprule
+  \textbf{Nhóm} & \textbf{Trường chính} \\
+  \midrule
+  Nhận dạng run & Phiên bản artifact, run, talk, split, chiến lược, ngưỡng, prepared mode và checkpoint SHA-256. \\
+  Dòng nguồn & Số token, thời điểm cuối, đồng hồ mô phỏng và observation key. \\
+  Nguồn gốc context & Biểu diễn, source ID/checksum hợp lệ, số chiều, norm lưu và norm hiệu lực. \\
+  Quan sát & \path{event_index}, \path{observation_ms}, \path{source_token_end}. \\
+  Trạng thái ứng viên & Điểm đầu/cuối, văn bản nguồn, bản dịch ứng viên và ứng viên trước. \\
+  Quyết định & \path{p_commit}, ngưỡng, WAIT/LISTEN/COMMIT, lý do và cờ cưỡng bức. \\
+  COMMIT & Chỉ số đơn vị, nguồn và đích đã COMMIT. \\
+  Trạng thái số & 11 đặc trưng cho LISTEN/COMMIT; \texttt{null} cho WAIT. \\
+  \bottomrule
+\end{tabularx}
+\end{center}
+
+Trace không chứa tham chiếu, alignment, nguồn tương lai, oracle huấn luyện, embedding thô hay toàn bộ đầu vào policy. REAL và ZERO được đồng bộ theo event, điểm cuối token nguồn và thời gian quan sát, không theo chỉ số COMMIT.
 
 \end{document}
