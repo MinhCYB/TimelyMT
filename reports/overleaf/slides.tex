@@ -33,7 +33,7 @@
       \color{TimelyGray}\scriptsize TimelyMT \hspace{0.5em}|\hspace{0.5em} Policy quyết định thời điểm dịch
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=.14\paperwidth,ht=2.7ex,dp=1.2ex,center]{date in head/foot}%
-      \color{TimelyBlue}\scriptsize\insertframenumber/10
+      \color{TimelyBlue}\scriptsize\insertframenumber/\inserttotalframenumber
     \end{beamercolorbox}%
   }%
 }
@@ -84,92 +84,396 @@ với độ trễ thấp}
         Dịch cabin tự động Anh--Việt với độ trễ thấp.
       \end{block}
       \vspace{0.4em}
-      \small\textbf{Phạm vi hiện tại:} policy trên luồng token và đồng hồ mô phỏng; chưa phải hệ thống speech-to-speech end-to-end.
+       \small\textbf{Phạm vi hiện tại:} policy trên luồng token và đồng hồ mô phỏng; chưa phải hệ thống speech-to-speech end-to-end.
     \end{column}
   \end{columns}
 \end{frame}
 
 % 3. Pipeline
-\begin{frame}{TimelyMT pipeline}
+\begin{frame}{Luồng xử lý của TimelyMT}
   \begin{center}
     \slidefigure[width=0.97\textwidth,height=0.75\textheight,keepaspectratio]{figure-1-streaming-pipeline.png}
   \end{center}
   \vspace{-0.7em}
-  \centering EnViT5 tạo bản dịch ứng viên; \alert{policy quyết định khi nào bản dịch đó nên được phát hành}.
+  \centering EnViT5 tạo bản dịch ứng viên; \alert{policy quyết định khi nào bản dịch đó nên được dịch}.
 \end{frame}
 
-% 4. Policy evolution
-\begin{frame}{Quá trình mở rộng thông tin đầu vào của policy}
+% 4. Dataset and experimental protocol
+\begin{frame}{Dataset và thiết kế thực nghiệm}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.72\textwidth}
-      \centering
-      \slidefigure[width=\textwidth,height=0.76\textheight,keepaspectratio]{figure-2-policy-feature-evolution.png}
+    \begin{column}{0.235\textwidth}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em,center]{block body}
+        {\LARGE\bfseries\color{TimelyBlue}17}\par
+        \scriptsize bài TED
+      \end{beamercolorbox}
     \end{column}
-    \begin{column}{0.25\textwidth}
-      \small
-      \begin{itemize}
-        \setlength\itemsep{0.8em}
-        \item \textbf{V1}: các đặc trưng số cơ bản
-        \item \textbf{V2}: thêm thông tin ngữ nghĩa và lịch sử
-        \item \textbf{P3}: thêm prepared context
-      \end{itemize}
+    \begin{column}{0.235\textwidth}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em,center]{block body}
+        {\LARGE\bfseries\color{TimelyBlue}41.7K}\par
+        \scriptsize token nguồn tiếng Anh
+      \end{beamercolorbox}
+    \end{column}
+    \begin{column}{0.235\textwidth}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em,center]{block body}
+        {\LARGE\bfseries\color{TimelyBlue}278 phút}\par
+        \scriptsize 
+      \end{beamercolorbox}
+    \end{column}
+    \begin{column}{0.235\textwidth}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em,center]{block body}
+        {\LARGE\bfseries\color{TimelyBlue}12 / 3 / 2}\par
+        \scriptsize TRAIN / DEV / TEST
+      \end{beamercolorbox}
     \end{column}
   \end{columns}
-\end{frame}
 
-% 5. Prepared context
-\begin{frame}{Prepared context: thông tin có sẵn trước bài nói}
-  \centering\small\textbf{Không sử dụng transcript hoặc bản dịch tham chiếu.}
-  \vspace{0.5em}
+  \vspace{0.35em}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.53\textwidth}
-      \begin{block}{Nguồn ngữ cảnh}
-      \begin{itemize}
-        \setlength\itemsep{0.55em}
-        \item Bài báo
-        \item Trang dự án
-        \item Tài liệu nền đã có trước bài nói
-      \end{itemize}
+    \begin{column}{0.485\textwidth}
+      \begin{block}{PHÂN CHIA DỮ LIỆU}
+        \centering
+        \begin{tabular}{@{}>{\centering\arraybackslash}p{0.29\linewidth}>{\centering\arraybackslash}p{0.29\linewidth}>{\centering\arraybackslash}p{0.29\linewidth}@{}}
+          \textbf{TRAIN} & \textbf{DEV} & \textbf{TEST} \\
+          {\Large\color{TimelyBlue}\textbf{12}} & {\Large\color{TimelyBlue}\textbf{3}} & {\Large\color{TimelyBlue}\textbf{2}} \\
+          \scriptsize bài & \scriptsize bài & \scriptsize bài \\
+          \scriptsize huấn luyện policy & \scriptsize phân tích / lựa chọn & \scriptsize đánh giá sau khi cố định thiết kế
+        \end{tabular}
+
+        \vspace{0.4em}
+        \small\bfseries Chia theo toàn bài \;\textperiodcentered\; Theo người nói \;\textperiodcentered\; Không trùng người nói
       \end{block}
     \end{column}
-    \begin{column}{0.43\textwidth}
-      \vspace{0.15em}
-      \begin{center}
-        \Large Prepared context
+    \begin{column}{0.485\textwidth}
+      \begin{block}{MÔ PHỎNG STREAMING}
+        \centering\small
+        Transcript tiếng Anh từ TED
 
-        \vspace{0.35em}
-        \color{TimelyTeal}$\Downarrow$
+        \vspace{-0.15em}
+        {\color{TimelyTeal}$\downarrow$}\par
+        Luồng token từ vựng
 
-        \vspace{0.35em}
-        \color{TimelyGray}\textbf{policy}
+        \vspace{-0.15em}
+        {\color{TimelyTeal}$\downarrow$}\par
+        \textbf{đồng hồ nguồn mô phỏng} \;\alert{(2,5 token / giây)}
 
-      \end{center}
+        \vspace{-0.15em}
+        {\color{TimelyTeal}$\downarrow$}\par
+        \textbf{WAIT / LISTEN / COMMIT}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15em}
+  \centering\scriptsize
+  \textbf{Bản tham chiếu tiếng Việt} $\rightarrow$ chỉ dùng để căn chỉnh và đánh giá\par
+  \vspace{0.15em}
+  22.018 trạng thái TRAIN $\neq$ 22.018 bài nói độc lập
+\end{frame}
+
+% 5. Research journey
+\begin{frame}{Hành trình nghiên cứu: V1 $\rightarrow$ V2 $\rightarrow$ P3\_GLOBAL}
+  \vspace{0.1em}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.30\textwidth}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em,center]{block body}
+        {\Large\bfseries\color{TimelyBlue}V1}\par
+        \vspace{0.15em}\textbf{\small Thiết lập baseline nhân quả}\par
+        \vspace{0.3em}{\scriptsize\color{TimelyGray}TF-IDF + 11 đặc trưng số}\par
+        \vspace{0.3em}\rule{0.8\linewidth}{0.4pt}\par
+        \vspace{0.3em}{\bfseries\color{TimelyTeal}Kết quả}\par
+        \vspace{0.15em}\textbf{\footnotesize P1 @ 0.60}\;{\scriptsize được chọn trên DEV}\par
+        \vspace{0.3em}{\scriptsize Xác lập pipeline causal\par WAIT / LISTEN / COMMIT}
+      \end{beamercolorbox}
+    \end{column}
+    \begin{column}{0.04\textwidth}
+      \vspace{4.2em}\centering\color{TimelyTeal}$\rightarrow$
+    \end{column}
+    \begin{column}{0.30\textwidth}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em,center]{block body}
+        {\Large\bfseries\color{TimelyBlue}V2}\par
+        \vspace{0.15em}\textbf{\small Mở rộng biểu diễn}\par
+        \vspace{0.3em}{\scriptsize\color{TimelyGray}MiniLM + lịch sử nguồn / đích đã quan sát}\par
+        \vspace{0.3em}\rule{0.8\linewidth}{0.4pt}\par
+        \vspace{0.3em}{\bfseries\color{TimelyTeal}Kết quả}\par
+        \vspace{0.15em}\textbf{\footnotesize P2 @ 0.50}\;{\scriptsize được chọn trong V2}\par
+        \vspace{0.3em}{\scriptsize\bfseries\color{TimelyTeal}DEV không xác lập\par ưu thế chất lượng so với V1}
+      \end{beamercolorbox}
+    \end{column}
+    \begin{column}{0.04\textwidth}
+      \vspace{4.2em}\centering\color{TimelyTeal}$\rightarrow$
+    \end{column}
+    \begin{column}{0.30\textwidth}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em,center]{block body}
+        {\Large\bfseries\color{TimelyBlue}P3\_GLOBAL}\par
+        \vspace{0.15em}\textbf{\small Kiểm tra prepared context}\par
+        \vspace{0.3em}{\scriptsize\color{TimelyGray}+ 384 chiều prepared context}\par
+        \vspace{0.3em}\rule{0.8\linewidth}{0.4pt}\par
+        \vspace{0.3em}{\bfseries\color{TimelyTeal}Kết quả}\par
+        \vspace{0.15em}\textbf{\footnotesize REAL / ZERO}\;{\scriptsize làm thay đổi COMMIT}\par
+        \vspace{0.3em}{\scriptsize Lợi ích chất lượng / độ trễ\par chưa ổn định}
+      \end{beamercolorbox}
     \end{column}
   \end{columns}
   \vfill
-  \centering\alert{Prepared context chỉ được đưa vào policy, không đi trực tiếp vào EnViT5.}
+  \centering\footnotesize\color{TimelyGray}
+  Mỗi giai đoạn mở rộng một câu hỏi nghiên cứu; phiên bản sau không mặc định tốt hơn phiên bản trước.
 \end{frame}
 
-% 6. Why controlled ablation
-\begin{frame}{Vì sao cần controlled ablation?}
+% 6. V1 causal baseline
+\begin{frame}{V1 --- baseline nhân quả}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.46\textwidth}
-      \begin{block}{So sánh P3--P2}
-        P3 và P2 được huấn luyện riêng, nên chênh lệch giữa hai mô hình có thể đến từ nhiều yếu tố khác nhau.
-
-        \vspace{0.5em}
-        So sánh P3--P2 không thể cô lập riêng ảnh hưởng của prepared context.
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Biểu diễn}
+        \scriptsize
+        Biểu diễn văn bản \textbf{TF--IDF} unigram/bigram\par
+        \vspace{0.2em}
+        \textbf{11 đặc trưng số} theo nguyên tắc nhân quả\par
+        \vspace{0.2em}
+        Logistic regression có cân bằng lớp
       \end{block}
+      \vspace{0.25em}
+      \scriptsize
+      \begin{tabular}{@{}>{\bfseries}p{0.10\linewidth}p{0.84\linewidth}@{}}
+        P0 & nguồn hiện tại \\[0.25em]
+        P1 & nguồn hiện tại\\
+           & + nguồn đã COMMIT trước đó \\[0.25em]
+        P2 & nguồn hiện tại\\
+           & + nguồn đã COMMIT trước đó\\
+           & + đích đã sinh và COMMIT trước đó
+      \end{tabular}
+      \vspace{0.5em}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em,center]{block body}
+        Cấu hình V1 được chọn: \textbf{\texttt{learned\_P1\_0.60}}\par
+        \scriptsize được chọn trên DEV; không phải khẳng định tối ưu toàn cục
+      \end{beamercolorbox}
     \end{column}
     \begin{column}{0.49\textwidth}
-      \begin{block}{Cách kiểm tra}
-        Để kiểm tra ảnh hưởng của context, ta giữ nguyên checkpoint P3 và toàn bộ điều kiện rollout, chỉ thay phần prepared context.
+      \begin{block}{Quy tắc khi chạy: WAIT / LISTEN / COMMIT}
+        \scriptsize
+        \begin{tabular}{@{}>{\bfseries}p{0.32\linewidth}p{0.61\linewidth}@{}}
+          $<4$ token nguồn & WAIT; không gọi EnViT5; không tính xác suất policy \\[0.45em]
+          $\geq4$ token nguồn & EnViT5 tạo ứng viên + policy ra quyết định \\[0.45em]
+          48 token nguồn & COMMIT cưỡng bức \\[0.45em]
+          cuối bài nói & phần nguồn còn lại được COMMIT.
+        \end{tabular}
       \end{block}
+      \vspace{0.55em}
+      \begin{beamercolorbox}[rounded=true,sep=0.55em,center]{block body}
+        \textbf{Phần đã COMMIT không thể sửa lại.}
+      \end{beamercolorbox}
     \end{column}
   \end{columns}
 \end{frame}
 
-% 7. Controlled ablation
+% 7. V1 supervision
+\begin{frame}{V1 --- tạo dữ liệu giám sát LISTEN / COMMIT}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.58\textwidth}
+      \begin{block}{TẠO NHÃN NGOẠI TUYẾN}
+        \centering\scriptsize
+        bản dịch ứng viên hiện tại $h_t$\par
+        \vspace{-0.15em}{\color{TimelyTeal}$\downarrow$}\par
+        ứng viên sau khi thêm 1 token nguồn\par
+        \vspace{-0.15em}{\color{TimelyTeal}$\downarrow$}\par
+        ứng viên sau khi thêm 2 token nguồn\par
+        \vspace{-0.15em}{\color{TimelyTeal}$\downarrow$}\par
+        độ ổn định khi nhìn thêm tương lai\par
+        \vspace{-0.15em}{\color{TimelyTeal}$\downarrow$}\par
+        \textbf{pseudo-label LISTEN / COMMIT}
+      \end{block}
+      \vspace{0.25em}
+      \centering\scriptsize
+      $\displaystyle \mathit{future\_stability\_ratio}
+        = \frac{\operatorname{LCP}(h_t,h_{t+1},h_{t+2})}{\operatorname{len}(h_t)}$
+
+      \vspace{0.35em}
+      $\text{độ ổn định}\geq \text{threshold} \Rightarrow \textbf{COMMIT}$
+      \quad ngược lại $\Rightarrow \textbf{LISTEN}$
+    \end{column}
+    \begin{column}{0.39\textwidth}
+      \begin{alertblock}{Ranh giới nhân quả}
+        \scriptsize
+        \textbf{TẠO NHÃN NGOẠI TUYẾN}\par
+        có thể dùng ứng viên tương lai $+1$ / $+2$
+
+        \vspace{0.55em}
+        \textbf{KHI CHẠY TRỰC TUYẾN}\par
+        chỉ dùng thông tin đã quan sát
+      \end{alertblock}
+      \scriptsize
+      \begin{itemize}
+        \setlength\itemsep{0.25em}
+        \item Nhìn trước tối đa: \textbf{2 lần cập nhật token nguồn}.
+        \item Thông tin tương lai chỉ dùng để tạo nhãn giám sát TRAIN / DEV ngoại tuyến.
+        \item Thông tin tương lai không bao giờ đi vào đầu vào policy khi chạy.
+        \item \textbf{Không tạo pseudo-label cho TEST.}
+      \end{itemize}
+      \vspace{0.15em}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em,center]{block body}
+        \textbf{22.018 trạng thái policy TRAIN}\par
+        \vspace{0.15em}
+        \textbf{19.075 LISTEN}\quad |\quad \textbf{2.943 COMMIT}\par
+        \vspace{0.2em}
+        \scriptsize Tín hiệu oracle chỉ dùng khi huấn luyện
+      \end{beamercolorbox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 8. V2 semantic policy
+\begin{frame}{V2 --- policy ngữ nghĩa}
+  \small
+  V1 dùng biểu diễn từ vựng thưa. V2 thử nghiệm biểu diễn ngữ nghĩa phong phú hơn, nhưng vẫn giữ \textbf{ranh giới nhân quả khi chạy} và \textbf{cùng dữ liệu giám sát của V1}.
+  \vspace{0.35em}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.54\textwidth}
+      \begin{block}{Các biến thể mở rộng dần}
+        \scriptsize
+        \begin{tabular}{@{}>{\bfseries}p{0.07\linewidth}p{0.58\linewidth}>{\raggedleft\arraybackslash}p{0.24\linewidth}@{}}
+          P0 & embedding nguồn hiện tại & $384+11=395$ \\
+          \addlinespace[0.25em]
+          P1 & \shortstack[l]{nguồn hiện tại +\\nguồn đã COMMIT trước đó} & $2\times384+11=779$ \\
+          \addlinespace[0.25em]
+          P2 & \shortstack[l]{nguồn hiện tại +\\nguồn đã COMMIT trước đó +\\đích đã sinh trước đó} & $3\times384+11=1163$
+        \end{tabular}
+      \end{block}
+      \scriptsize
+      \textbf{Bộ mã hóa:} \texttt{sentence-transformers/}\par
+      \texttt{paraphrase-multilingual-MiniLM-L12-v2}\par
+      được cố định, embedding 384 chiều
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \begin{beamercolorbox}[rounded=true,sep=0.55em,center]{block body}
+        \textbf{Policy:} MLP phi tuyến\par
+        \vspace{0.4em}
+        Cấu hình V2 được chọn:\par
+        \textbf{\texttt{v2\_P2\_0.50}}
+      \end{beamercolorbox}
+      \vspace{0.45em}
+      \begin{alertblock}{Kết quả trên DEV}
+        \centering\bfseries DEV KHÔNG xác lập ưu thế về chất lượng của V2 so với V1.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+  \vfill
+  \centering\scriptsize
+  V2 cho thấy có thể dùng biểu diễn ngữ nghĩa và lịch sử nguồn/đích đã quan sát\par
+  mà vẫn giữ ranh giới nhân quả, đồng thời tạo nền biểu diễn để mở rộng sang P3.
+\end{frame}
+
+% 9. P3_GLOBAL
+\begin{frame}{P3\_GLOBAL --- prepared context trước bài nói}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      \begin{block}{Đầu vào policy: 1547 chiều}
+        \scriptsize
+        \begin{tabular}{@{}rl@{}}
+          384 & nguồn hiện tại \\
+          + 384 & nguồn đã COMMIT trước đó \\
+          + 384 & đích đã sinh trước đó \\
+          + 384 & prepared context \\
+          + 11 & đặc trưng số \\
+          \midrule
+          1547 & tổng
+        \end{tabular}
+      \end{block}
+      \scriptsize
+      \textbf{Prepared context chỉ được đưa vào policy.}\par
+      EnViT5 vẫn được cố định, chỉ nhận nguồn và không nhận prepared context.
+      \vspace{0.45em}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em,center]{block body}
+        \textbf{MLP:} $1547 \rightarrow 256 \rightarrow 64 \rightarrow 1$\par
+        \scriptsize GELU; dropout 0.20 / 0.10; đầu ra $p(\mathrm{COMMIT})$
+      \end{beamercolorbox}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{alertblock}{Huấn luyện từ đầu}
+        \scriptsize P3 không khởi tạo từ V2 P2. P3 tái sử dụng:
+        \begin{itemize}
+          \item cùng 22.018 dòng dữ liệu giám sát TRAIN của V1;
+          \item cùng 11 định nghĩa đặc trưng số;
+          \item cùng quy trình EnViT5 cố định để tạo bản dịch ứng viên.
+        \end{itemize}
+      \end{alertblock}
+      \centering\small
+      \textbf{P3 $-$ P2 chỉ mang tính mô tả, không phải ablation sạch để cô lập ảnh hưởng của prepared context.}
+    \end{column}
+  \end{columns}
+  \vfill
+  \begin{beamercolorbox}[rounded=true,sep=0.5em,center]{block title}
+    \textbf{Thông tin có trước bài nói có thể làm thay đổi thời điểm COMMIT không?}
+  \end{beamercolorbox}
+\end{frame}
+
+% 10. Prepared-context provenance
+\begin{frame}{Prepared context: nguồn gốc và kiểm soát rò rỉ}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.34\textwidth}
+      \begin{block}{Có sẵn trước bài nói}
+        \small
+        \begin{itemize}
+          \setlength\itemsep{0.35em}
+          \item Bài báo
+          \item Trang dự án
+          \item Tài liệu nền
+        \end{itemize}
+      \end{block}
+      \scriptsize\textbf{Không dùng} transcript hoặc bản dịch tham chiếu.
+    \end{column}
+    \begin{column}{0.35\textwidth}
+      \begin{block}{Điều kiện hợp lệ}
+        \scriptsize\ttfamily
+        SAFE\_PRETALK\_CONFIRMED\par
+        available\_before\_talk = true\par
+        transcript\_used = false\par
+        reference\_used = false
+      \end{block}
+    \end{column}
+    \begin{column}{0.27\textwidth}
+      \begin{beamercolorbox}[rounded=true,sep=0.45em]{block body}
+        \scriptsize
+        \textbf{Phạm vi dữ liệu}\par
+        12 pool TRAIN\par
+        3 pool DEV\par
+        8 nguồn hợp lệ\par
+        5 bài TRAIN có context khác 0\par
+        1 bài DEV có context khác 0
+      \end{beamercolorbox}
+    \end{column}
+  \end{columns}
+  \vspace{0.55em}
+  \begin{beamercolorbox}[rounded=true,sep=0.55em,center]{block body}
+    \textbf{DEV:} Sims = context thực \quad | \quad Jeff / Luis = đối chứng context rỗng
+  \end{beamercolorbox}
+  \vfill
+  \centering\alert{Prepared context chỉ đi vào policy, không bao giờ đi vào EnViT5.}
+\end{frame}
+
+% 11. Why controlled ablation
+\begin{frame}{Vì sao cần ablation có kiểm soát?}
+  \begin{columns}[c,onlytextwidth]
+    \begin{column}{0.44\textwidth}
+      \begin{block}{So sánh trực tiếp P3--P2}
+        \small P3 và P2 được huấn luyện riêng. Chênh lệch có thể đến từ quá trình huấn luyện, kiến trúc và prepared context.
+        \vspace{0.45em}
+
+        Vì vậy, \textbf{P3--P2 không cô lập riêng ảnh hưởng của prepared context}.
+      \end{block}
+    \end{column}
+    \begin{column}{0.08\textwidth}
+      \centering\Large\color{TimelyTeal}$\Longrightarrow$
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{block}{Câu hỏi nhân quả hẹp hơn}
+        \small Với \textbf{cùng một P3 checkpoint} và cùng rollout, quyết định COMMIT có đổi khi chỉ lát prepared context bị loại bỏ?
+      \end{block}
+    \end{column}
+  \end{columns}
+  \vfill
+  \centering\small Đây là lý do cần thí nghiệm \contextreal{} / \contextzero{}.
+\end{frame}
+
+% 12. Controlled ablation
 \begin{frame}{\contextreal{} vs \contextzero{}}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.68\textwidth}
@@ -178,33 +482,88 @@ với độ trễ thấp}
     \end{column}
     \begin{column}{0.29\textwidth}
       \begin{block}{Chỉ thay đổi}
-        \centering\small prepared-context dimensions
+        \centering\small lát prepared context
 
         \vspace{0.2em}
         \Large\texttt{[1152:1536]}
       \end{block}
-      \vspace{0.6em}
+      \vspace{0.45em}
       \scriptsize
-      \textbf{Giữ nguyên:} checkpoint P3, dòng nguồn, ngưỡng quyết định và EnViT5.
+      \textbf{Giữ nguyên:}
+      \begin{itemize}
+        \item P3 checkpoint
+        \item luồng nguồn
+        \item ngưỡng
+        \item EnViT5
+      \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
 
-% 8. Main result
-\begin{frame}{Prepared context làm thay đổi COMMIT, nhưng chưa cho thấy lợi ích ổn định}
+% 13. Evaluation metrics
+\begin{frame}{Các chỉ số đánh giá: chất lượng và độ trễ}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.485\textwidth}
+      \begin{block}{CHẤT LƯỢNG DỊCH}
+        \scriptsize
+        \textbf{\normalsize BLEU $\uparrow$}\par
+        \vspace{0.1em}
+        Độ trùng khớp $n$-gram giữa bản dịch hệ thống và reference (càng cao càng tốt).\par
+        \vspace{0.15em}
+        \textit{Lưu ý:} Có brevity penalty để hạn chế bản dịch quá ngắn.
+
+        \vspace{0.45em}
+        \textbf{\normalsize chrF2 $\uparrow$}\par
+        \vspace{0.1em}
+        F-score trên character $n$-gram; $\beta = 2$ nên nhấn mạnh recall (càng cao càng tốt).\par
+        \vspace{0.15em}
+        \textit{Đặc điểm:} Nhạy với mức độ giống nhau ở cấp ký tự, ít phụ thuộc tách từ hơn BLEU.
+      \end{block}
+    \end{column}
+    \begin{column}{0.485\textwidth}
+      \begin{block}{ĐỘ TRỄ / HÀNH VI POLICY}
+        \scriptsize
+        \textbf{\normalsize AL $\downarrow$ \textnormal{(Average Lagging)}}\par
+        \vspace{0.1em}
+        Đo policy trung bình đi sau source bao nhiêu theo vị trí source token (càng thấp càng ít trễ).\par
+        \vspace{0.15em}
+        \textit{Lưu ý:} AL âm $\neq$ ``độ trễ thời gian âm''; đây là giá trị tương đối so với ideal policy.
+
+        \vspace{0.35em}
+        \textbf{\normalsize LAAL $\downarrow$ \textnormal{(Length-Adaptive AL)}}\par
+        \vspace{0.1em}
+        Biến thể của AL có hiệu chỉnh theo độ dài output, giảm khả năng hệ thống được ``thưởng'' do khác biệt độ dài.
+
+        \vspace{0.35em}
+        \textbf{\normalsize COMMIT}\par
+        \vspace{0.1em}
+        Số đơn vị dịch được policy phát hành không thể sửa lại. Phản ánh cách policy phân đoạn và phát hành bản dịch; nhiều hay ít không tự động tốt hơn.
+      \end{block}
+    \end{column}
+  \end{columns}
+  \vfill
+  \centering\scriptsize\color{TimelyGray}
+  \textbf{Lưu ý:} Latency trong nghiên cứu này được tính trên vị trí lexical source token / simulated source clock, không phải acoustic latency thực.
+\end{frame}
+
+% 14. DEV result
+\begin{frame}{Kết quả DEV: prepared context thay đổi COMMIT, lợi ích chưa ổn định}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.47\textwidth}
       \begin{block}{Trên lưới năm ngưỡng}
         REAL và ZERO tạo số lượng \textbf{COMMIT} khác nhau ở cả năm ngưỡng.
       \end{block}
       \small
+      Đây là bằng chứng nhân quả rằng prepared context có thể thay đổi hành vi COMMIT của P3 đã huấn luyện.
+      \vspace{0.35em}
+
       Tuy nhiên, BLEU, chrF2 và các chỉ số độ trễ không cải thiện nhất quán.
     \end{column}
     \begin{column}{0.49\textwidth}
       \centering
       \textbf{Sims 0.60: một trường hợp mô tả}
 
-      \vspace{0.4em}
+      \vspace{0.35em}
       \begin{tabular}{>{\raggedright\arraybackslash}p{0.45\linewidth}r}
         \toprule
         Chỉ số & Giá trị \\
@@ -215,20 +574,81 @@ với độ trễ thấp}
         \bottomrule
       \end{tabular}
 
-      \vspace{0.3em}
-      \scriptsize REAL/ZERO commits: 318 vs 299
+      \vspace{0.25em}
+      \scriptsize Số COMMIT REAL/ZERO: 318 vs 299\par
+      \alert{Mô tả, không phải ngưỡng tối ưu.}
     \end{column}
   \end{columns}
   \vfill
   \begin{alertblock}{Giới hạn kết luận}
-    \texttt{prepared-global-v0} có ảnh hưởng đến policy, nhưng chưa chứng minh cải thiện ổn định về chất lượng hoặc độ trễ.
+    \texttt{prepared-global-v0} chưa chứng minh cải thiện ổn định về chất lượng hoặc độ trễ.
   \end{alertblock}
-  \vspace{-0.2em}
-  \centering\scriptsize Held-out TEST: chất lượng giảm so với DEV; không chọn lại ngưỡng từ TEST.
 \end{frame}
 
-% 9. Divergence cascade
-\begin{frame}{Event 131--132: một quyết định COMMIT làm thay đổi luồng xử lý về sau}
+% 15. Held-out TEST
+\begin{frame}{TEST: kiểm tra sau khi cố định thiết kế}
+  \begin{beamercolorbox}[rounded=true,sep=0.25em,center]{block body}
+    \scriptsize
+    \textbf{2 TEST talks} \;\textperiodcentered\; Mở đúng một lần sau freeze \;\textperiodcentered\; Không tuning sau TEST \;\textperiodcentered\; Không chọn lại model / threshold\par
+    \tiny\color{TimelyGray}P3 TEST = \contextzero{} vì không có approved prepared-context pool cho TEST.
+  \end{beamercolorbox}
+  \vspace{0.15em}
+
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.485\textwidth}
+      \begin{block}{So sánh V1 / V2 được chọn}
+        \centering\scriptsize
+        \begin{tabular}{lcccc}
+          \toprule
+          Cấu hình & BLEU & chrF2 & AL & LAAL \\
+          \midrule
+          V1 P1 @ 0.60 & 23.38 & 56.29 & 1.22 & 41.26 \\
+          V2 P2 @ 0.50 & 21.05 & 55.34 & -0.07 & 40.15 \\
+          \bottomrule
+        \end{tabular}
+
+        \vspace{0.2em}
+        {\bfseries\color{TimelyTeal}V1 $-$ V2 trên TEST: $+2.32$ BLEU \quad $+0.96$ chrF2}
+      \end{block}
+      \vspace{0.1em}
+      \scriptsize
+      \begin{itemize}
+        \setlength\itemsep{0.15em}
+        \item V1 selected $>$ V2 selected về chất lượng trên TEST ($+2.32$ BLEU / $+0.96$ chrF2).
+        \item Chất lượng TEST của các cấu hình thấp hơn các giá trị DEV tương ứng.
+      \end{itemize}
+    \end{column}
+
+    \begin{column}{0.485\textwidth}
+      \begin{block}{Lưới ngưỡng P3 \contextzero{}}
+        \centering\scriptsize
+        \begin{tabular}{ccccc}
+          \toprule
+          Ngưỡng & BLEU & chrF2 & AL & LAAL \\
+          \midrule
+          0.30 & 19.26 & 55.38 & 10.55 & 13.59 \\
+          0.40 & 19.25 & 55.47 & 7.36 & 16.98 \\
+          0.50 & 21.98 & 56.71 & 13.69 & 20.38 \\
+          0.60 & 20.57 & 55.11 & 18.01 & 55.35 \\
+          0.70 & 22.79 & 55.61 & 25.09 & 56.61 \\
+          \bottomrule
+        \end{tabular}
+      \end{block}
+      \vspace{0.1em}
+      \scriptsize
+      \begin{itemize}
+        \setlength\itemsep{0.15em}
+        \item P3 vẫn thể hiện trade-off theo threshold, nhưng TEST không đánh giá lợi ích prepared context vì P3 chỉ chạy \contextzero{}.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+  \vfill
+  \centering\scriptsize\color{TimelyGray}
+\end{frame}
+
+% 16. Divergence cascade
+\begin{frame}{Event 131--132: từ một COMMIT đến phân kỳ về sau}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.57\textwidth}
       \centering
@@ -245,34 +665,36 @@ với độ trễ thấp}
       \vspace{0.25em}
       \textbf{Event 132}
       \begin{itemize}
-        \item Hai phiên bắt đầu có buffer khác nhau.
+        \item Hai phiên bắt đầu có bộ đệm khác nhau.
         \item Từ đây, EnViT5 có thể nhận các đoạn nguồn khác nhau.
       \end{itemize}
       \vspace{0.25em}
-      \alert{Context làm thay đổi thời điểm COMMIT; đây không phải bằng chứng về chất lượng dịch tốt hơn.}
+      \alert{Prepared context làm thay đổi thời điểm COMMIT; đây không phải bằng chứng về chất lượng dịch tốt hơn.}
     \end{column}
   \end{columns}
 \end{frame}
 
-% 10. Demo and conclusion
+% 17. Demo and conclusion
 \begin{frame}{Demo và kết luận}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.48\textwidth}
       \centering
-      \slidefigure[width=\textwidth,height=0.61\textheight,keepaspectratio]{figure-5-interactive-demo.png}
+      \slidefigure[width=\textwidth,height=0.55\textheight,keepaspectratio]{figure-5-interactive-demo.png}
 
-      \vspace{0.2em}
-      \scriptsize Demo phát lại trace đã lưu để quan sát quá trình phân kỳ giữa REAL và ZERO.
+      \vspace{0.3em}
+      \scriptsize\textbf{Trace replay từ causal streaming rollout}\par
+      \vspace{0.15em}
+      \tiny\color{TimelyGray}Demo phát lại trace của một causal streaming rollout để quan sát quá trình phân kỳ giữa REAL và ZERO.
     \end{column}
     \begin{column}{0.49\textwidth}
-      \small
+      \footnotesize
       \begin{itemize}
-        \setlength\itemsep{0.45em}
-        \item TimelyMT tách mô hình dịch khỏi policy quyết định thời điểm phát hành.
-        \item Prepared context có thể làm thay đổi quyết định COMMIT của P3 trong thí nghiệm có kiểm soát.
-        \item \texttt{prepared-global-v0} chưa cho thấy cải thiện ổn định về chất lượng và độ trễ.
-        \item Hệ thống hiện vẫn là mô hình nghiên cứu trên luồng token.
-        \item \textbf{TEST đã được mở một lần sau freeze; không tuning sau TEST.}
+        \setlength\itemsep{0.25em}
+        \item \textbf{V1:} Thiết lập baseline nhân quả, xác lập ranh giới và ngữ nghĩa WAIT / LISTEN / COMMIT.
+        \item \textbf{V2:} Mở rộng biểu diễn ngữ nghĩa và lịch sử đã quan sát; DEV không xác lập ưu thế chất lượng so với V1.
+        \item \textbf{P3:} Đặt câu hỏi nghiên cứu về prepared context; REAL/ZERO làm thay đổi COMMIT nhưng lợi ích chất lượng / độ trễ chưa ổn định.
+        \item \textbf{Hệ thống:} Mô hình nghiên cứu trên luồng token, chưa phải hệ thống speech-to-speech end-to-end.
+        \item \textbf{TEST:} Mở một lần duy nhất sau khi cố định thiết kế; không điều chỉnh lại theo TEST.
       \end{itemize}
     \end{column}
   \end{columns}
