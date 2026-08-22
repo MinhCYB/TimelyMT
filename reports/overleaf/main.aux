@@ -1,0 +1,117 @@
+\relax 
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\@nameuse{bbl@beforestart}
+\catcode `"\active 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\babel@aux{vietnamese}{}
+\babel@aux{vietnamese}{}
+\@writefile{toc}{\contentsline {section}{TÓM TẮT}{i}{Doc-Start}\protected@file@percent }
+\citation{ma2019stacl,arivazhagan2019monotonic}
+\citation{ma2019stacl}
+\citation{arivazhagan2019monotonic}
+\citation{papineni2002bleu,popovic2015chrf}
+\citation{ma2019stacl,papi2022laal}
+\citation{ngo2022mtet}
+\citation{reimers2019sentencebert,wang2020minilm}
+\@writefile{toc}{\contentsline {section}{\numberline {1}GIỚI THIỆU VÀ CƠ SỞ NGHIÊN CỨU}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Bối cảnh và bài toán}{1}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Mục tiêu và phạm vi}{1}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Dịch máy đồng thời và đánh đổi chất lượng--độ trễ}{1}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Câu hỏi nghiên cứu}{1}{subsection.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Đóng góp chính}{2}{subsection.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}KIẾN TRÚC HỆ THỐNG VÀ THIẾT KẾ THỰC NGHIỆM}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Tổng quan TimelyMT}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Luồng xử lý của TimelyMT. EnViT5 chỉ dịch vùng nguồn chưa COMMIT, trong khi policy riêng quyết định WAIT, LISTEN hoặc COMMIT một đơn vị đầu ra không thể sửa lại.}}{2}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:streaming-pipeline}{{2.1}{2}{Luồng xử lý của TimelyMT. EnViT5 chỉ dịch vùng nguồn chưa COMMIT, trong khi policy riêng quyết định WAIT, LISTEN hoặc COMMIT một đơn vị đầu ra không thể sửa lại}{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Translator và policy thời điểm}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}WAIT, LISTEN và COMMIT}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Dữ liệu TRAIN/DEV/TEST}{3}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Nguyên tắc nhân quả và kiểm soát rò rỉ}{3}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Điều kiện hợp lệ của prepared context}{3}{subsection.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}QUÁ TRÌNH PHÁT TRIỂN POLICY}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}V1 -- baseline theo nguyên tắc nhân quả}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}V2 -- policy ngữ nghĩa}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}P0, P1 và P2}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Sự mở rộng thông tin đầu vào của policy từ P0 tới \texttt  {P3\_GLOBAL}. P1 và P2 lần lượt bổ sung lịch sử nguồn và đích đã quan sát, còn P3 thêm prepared context ở phía policy; EnViT5 vẫn được giữ cố định.}}{4}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:feature-evolution}{{3.1}{4}{Sự mở rộng thông tin đầu vào của policy từ P0 tới \texttt {P3\_GLOBAL}. P1 và P2 lần lượt bổ sung lịch sử nguồn và đích đã quan sát, còn P3 thêm prepared context ở phía policy; EnViT5 vẫn được giữ cố định}{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Kết quả và giới hạn của V2}{4}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}PREPARED CONTEXT VÀ P3\_GLOBAL}{4}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Giả thuyết prepared context}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}prepared-global-v0}{5}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Phạm vi corpus prepared context}{5}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Kiến trúc P3\_GLOBAL}{5}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Huấn luyện và checkpoint}{5}{subsection.4.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Thông tin huấn luyện đã lưu của policy P3.}}{5}{table.caption.3}\protected@file@percent }
+\newlabel{tab:p3-training}{{4.1}{5}{Thông tin huấn luyện đã lưu của policy P3}{table.caption.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}KẾT QUẢ THỰC NGHIỆM}{6}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Metrics}{6}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Kết quả P3\_GLOBAL}{6}{subsection.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Kết quả P3 chính thức trên toàn bộ DEV theo ngưỡng.}}{6}{table.caption.4}\protected@file@percent }
+\newlabel{tab:p3-dev}{{5.1}{6}{Kết quả P3 chính thức trên toàn bộ DEV theo ngưỡng}{table.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}So sánh mô tả P3 và P2}{6}{subsection.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Chênh lệch cùng ngưỡng $\mathrm  {P3}-\mathrm  {P2}$ trên DEV.}}{6}{table.caption.5}\protected@file@percent }
+\newlabel{tab:p3-p2-deltas}{{5.2}{6}{Chênh lệch cùng ngưỡng $\mathrm {P3}-\mathrm {P2}$ trên DEV}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Vì sao P3--P2 không phải so sánh nhân quả}{6}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Đánh giá cuối cùng trên TEST}{6}{subsection.5.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Kết quả đánh giá cuối cùng trên TEST sau khi thiết kế đã cố định.}}{7}{table.caption.6}\protected@file@percent }
+\newlabel{tab:final-test}{{5.3}{7}{Kết quả đánh giá cuối cùng trên TEST sau khi thiết kế đã cố định}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}CONTROLLED ABLATION VÀ PHÂN TÍCH HÀNH VI}{7}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}REAL\_CONTEXT và ZERO\_CONTEXT}{7}{subsection.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Định nghĩa hai điều kiện trong ablation có kiểm soát.}}{7}{table.caption.7}\protected@file@percent }
+\newlabel{tab:ablation-definition}{{6.1}{7}{Định nghĩa hai điều kiện trong ablation có kiểm soát}{table.caption.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces Kết quả tổng hợp của ablation có kiểm soát. Mọi $\Delta $ được tính bằng REAL trừ ZERO.}}{7}{table.caption.9}\protected@file@percent }
+\newlabel{tab:ablation-results}{{6.2}{7}{Kết quả tổng hợp của ablation có kiểm soát. Mọi $\Delta $ được tính bằng REAL trừ ZERO}{table.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Kiểm soát tính toàn vẹn bằng ngữ cảnh rỗng}{7}{subsection.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Thiết kế ablation \texttt  {REAL\_CONTEXT}--\texttt  {ZERO\_CONTEXT} với cùng checkpoint P3. Can thiệp duy nhất nằm ở lát prepared context. Sau khi quyết định phân kỳ, hai phiên tiếp tục với lịch sử riêng.}}{8}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:controlled-ablation}{{6.1}{8}{Thiết kế ablation \texttt {REAL\_CONTEXT}--\texttt {ZERO\_CONTEXT} với cùng checkpoint P3. Can thiệp duy nhất nằm ở lát prepared context. Sau khi quyết định phân kỳ, hai phiên tiếp tục với lịch sử riêng}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Kết quả ablation tổng hợp}{8}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Sims 0.60}{8}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Event 131 -- phân kỳ trực tiếp}{8}{subsection.6.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.3}{\ignorespaces Thống kê chính của cặp trace Sims 0.60.}}{9}{table.caption.10}\protected@file@percent }
+\newlabel{tab:trace-statistics}{{6.3}{9}{Thống kê chính của cặp trace Sims 0.60}{table.caption.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.4}{\ignorespaces So sánh trực tiếp tại event 131 trước khi biên buffer phân kỳ.}}{9}{table.caption.11}\protected@file@percent }
+\newlabel{tab:event-131}{{6.4}{9}{So sánh trực tiếp tại event 131 trước khi biên buffer phân kỳ}{table.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Event 132 -- hiệu ứng dây chuyền}{9}{subsection.6.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.5}{\ignorespaces Hiệu ứng dây chuyền của buffer tại event 132.}}{9}{table.caption.12}\protected@file@percent }
+\newlabel{tab:event-132}{{6.5}{9}{Hiệu ứng dây chuyền của buffer tại event 132}{table.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Diễn giải cơ chế}{9}{subsection.6.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Phân kỳ trực tiếp tại event 131 và hiệu ứng dây chuyền tại event 132. Quyết định của policy thay đổi trước. Các biên nguồn khác nhau sau đó khiến EnViT5 nhận những đoạn nguồn khác nhau.}}{10}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:divergence-cascade}{{6.2}{10}{Phân kỳ trực tiếp tại event 131 và hiệu ứng dây chuyền tại event 132. Quyết định của policy thay đổi trước. Các biên nguồn khác nhau sau đó khiến EnViT5 nhận những đoạn nguồn khác nhau}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}HỆ THỐNG TRỰC QUAN HÓA VÀ DEMO}{10}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Mục tiêu}{10}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Thành phần quan sát}{10}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Replay controlled divergence}{10}{subsection.7.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Giao diện phát lại trace tại event 131 của Sims 0.60. Dòng nguồn được dùng chung, trong khi hai buffer, xác suất COMMIT và timeline đầu ra được duy trì độc lập cho REAL và ZERO.}}{11}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:interactive-demo}{{7.1}{11}{Giao diện phát lại trace tại event 131 của Sims 0.60. Dòng nguồn được dùng chung, trong khi hai buffer, xác suất COMMIT và timeline đầu ra được duy trì độc lập cho REAL và ZERO}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}THẢO LUẬN, HẠN CHẾ VÀ HƯỚNG PHÁT TRIỂN}{11}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Trả lời các câu hỏi nghiên cứu}{11}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Phạm vi của bằng chứng}{11}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Hạn chế}{11}{subsection.8.3}\protected@file@percent }
+\citation{arivazhagan2019monotonic}
+\citation{ma2019stacl}
+\citation{ngo2022mtet}
+\citation{papi2022laal}
+\citation{papineni2002bleu}
+\citation{popovic2015chrf}
+\citation{reimers2019sentencebert}
+\citation{wang2020minilm}
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{arivazhagan2019monotonic}{{1}{2019}{{Arivazhagan et~al.}}{{Arivazhagan, Cherry, Macherey, Chiu, Yavuz, Pang, Li, and Raffel}}}
+\bibcite{ma2019stacl}{{2}{2019}{{Ma et~al.}}{{Ma, Huang, Xiong, Zheng, Liu, Zheng, Zhang, He, Liu, Li, Wu, and Wang}}}
+\bibcite{ngo2022mtet}{{3}{2022}{{Ngo et~al.}}{{Ngo, Trinh, Phan, Tran, Dang, Nguyen, Nguyen, and Luong}}}
+\bibcite{papi2022laal}{{4}{2022}{{Papi et~al.}}{{Papi, Gaido, Negri, and Turchi}}}
+\bibcite{papineni2002bleu}{{5}{2002}{{Papineni et~al.}}{{Papineni, Roukos, Ward, and Zhu}}}
+\bibcite{popovic2015chrf}{{6}{2015}{{Popovi{\'c}}}{{}}}
+\bibcite{reimers2019sentencebert}{{7}{2019}{{Reimers and Gurevych}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Hướng phát triển}{12}{subsection.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}KẾT LUẬN}{12}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{TÀI LIỆU THAM KHẢO}{12}{section*.15}\protected@file@percent }
+\bibcite{wang2020minilm}{{8}{2020}{{Wang et~al.}}{{Wang, Wei, Dong, Bao, Yang, and Zhou}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}CÁC ĐẶC TRƯNG SỐ CỦA POLICY}{14}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}THÔNG TIN MÔ HÌNH VÀ CHECKPOINT}{14}{appendix.B}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}CẤU TRÚC TRACE}{15}{appendix.C}\protected@file@percent }
+\gdef \@abspage@last{18}

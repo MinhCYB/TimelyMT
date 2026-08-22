@@ -1,0 +1,74 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Arivazhagan et~al.(2019)Arivazhagan, Cherry, Macherey, Chiu, Yavuz,
+  Pang, Li, and Raffel]{arivazhagan2019monotonic}
+N.~Arivazhagan, C.~Cherry, W.~Macherey, C.-C. Chiu, S.~Yavuz, R.~Pang, W.~Li,
+  and C.~Raffel.
+\newblock Monotonic infinite lookback attention for simultaneous machine
+  translation.
+\newblock In \emph{Proceedings of the 57th Annual Meeting of the Association
+  for Computational Linguistics}, pages 1313--1323, 2019.
+\newblock \doi{10.18653/v1/P19-1126}.
+
+\bibitem[Ma et~al.(2019)Ma, Huang, Xiong, Zheng, Liu, Zheng, Zhang, He, Liu,
+  Li, Wu, and Wang]{ma2019stacl}
+M.~Ma, L.~Huang, H.~Xiong, R.~Zheng, K.~Liu, B.~Zheng, C.~Zhang, Z.~He, H.~Liu,
+  X.~Li, H.~Wu, and H.~Wang.
+\newblock {STACL}: Simultaneous translation with implicit anticipation and
+  controllable latency using prefix-to-prefix framework.
+\newblock In \emph{Proceedings of the 57th Annual Meeting of the Association
+  for Computational Linguistics}, pages 3025--3036, 2019.
+\newblock \doi{10.18653/v1/P19-1289}.
+
+\bibitem[Ngo et~al.(2022)Ngo, Trinh, Phan, Tran, Dang, Nguyen, Nguyen, and
+  Luong]{ngo2022mtet}
+C.~Ngo, T.~H. Trinh, L.~Phan, H.~Tran, T.~Dang, H.~Nguyen, M.~Nguyen, and M.-T.
+  Luong.
+\newblock {MTet}: Multi-domain translation for english and vietnamese.
+\newblock \emph{arXiv preprint arXiv:2210.05610}, 2022.
+\newblock \doi{10.48550/arXiv.2210.05610}.
+
+\bibitem[Papi et~al.(2022)Papi, Gaido, Negri, and Turchi]{papi2022laal}
+S.~Papi, M.~Gaido, M.~Negri, and M.~Turchi.
+\newblock Over-generation cannot be rewarded: Length-adaptive average lagging
+  for simultaneous speech translation.
+\newblock In \emph{Proceedings of the Third Workshop on Automatic Simultaneous
+  Translation}, pages 12--17, 2022.
+\newblock \doi{10.18653/v1/2022.autosimtrans-1.2}.
+
+\bibitem[Papineni et~al.(2002)Papineni, Roukos, Ward, and
+  Zhu]{papineni2002bleu}
+K.~Papineni, S.~Roukos, T.~Ward, and W.-J. Zhu.
+\newblock {BLEU}: A method for automatic evaluation of machine translation.
+\newblock In \emph{Proceedings of the 40th Annual Meeting of the Association
+  for Computational Linguistics}, pages 311--318, 2002.
+\newblock \doi{10.3115/1073083.1073135}.
+
+\bibitem[Popovi{\'c}(2015)]{popovic2015chrf}
+Maja Popovi{\'c}.
+\newblock {chrF}: Character n-gram {F}-score for automatic {MT} evaluation.
+\newblock In \emph{Proceedings of the Tenth Workshop on Statistical Machine
+  Translation}, pages 392--395, 2015.
+\newblock \doi{10.18653/v1/W15-3049}.
+
+\bibitem[Reimers and Gurevych(2019)]{reimers2019sentencebert}
+N.~Reimers and I.~Gurevych.
+\newblock Sentence-{BERT}: Sentence embeddings using siamese {BERT}-networks.
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing and the 9th International Joint Conference on
+  Natural Language Processing}, pages 3982--3992, 2019.
+\newblock \doi{10.18653/v1/D19-1410}.
+
+\bibitem[Wang et~al.(2020)Wang, Wei, Dong, Bao, Yang, and Zhou]{wang2020minilm}
+W.~Wang, F.~Wei, L.~Dong, H.~Bao, N.~Yang, and M.~Zhou.
+\newblock {MiniLM}: Deep self-attention distillation for task-agnostic
+  compression of pre-trained transformers.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, pages 5776--5788, 2020.
+
+\end{thebibliography}

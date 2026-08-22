@@ -223,6 +223,8 @@ với độ trễ thấp}
   \begin{alertblock}{Giới hạn kết luận}
     \texttt{prepared-global-v0} có ảnh hưởng đến policy, nhưng chưa chứng minh cải thiện ổn định về chất lượng hoặc độ trễ.
   \end{alertblock}
+  \vspace{-0.2em}
+  \centering\scriptsize Held-out TEST: chất lượng giảm so với DEV; không chọn lại ngưỡng từ TEST.
 \end{frame}
 
 % 9. Divergence cascade
@@ -270,7 +272,7 @@ với độ trễ thấp}
         \item Prepared context có thể làm thay đổi quyết định COMMIT của P3 trong thí nghiệm có kiểm soát.
         \item \texttt{prepared-global-v0} chưa cho thấy cải thiện ổn định về chất lượng và độ trễ.
         \item Hệ thống hiện vẫn là mô hình nghiên cứu trên luồng token.
-        \item \textbf{TEST chưa được đánh giá.}
+        \item \textbf{TEST đã được mở một lần sau freeze; không tuning sau TEST.}
       \end{itemize}
     \end{column}
   \end{columns}

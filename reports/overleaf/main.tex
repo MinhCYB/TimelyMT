@@ -148,7 +148,7 @@ Mục tiêu ứng dụng dài hạn của dự án là hỗ trợ dịch cabin t
 
 Quá trình phát triển policy bắt đầu từ baseline V1 đã được đóng băng, sau đó mở rộng sang V2 với embedding ngữ nghĩa và \texttt{P3\_GLOBAL} với ngữ cảnh được chuẩn bị từ tài liệu có sẵn trước bài nói. V2 là một thí nghiệm thăm dò trên DEV và không xác lập ưu thế chất lượng so với V1. P3 lại được huấn luyện riêng thay vì kế thừa trực tiếp P2, nên chênh lệch P3--P2 chỉ có giá trị mô tả và không thể cô lập ảnh hưởng của prepared context.
 
-Bằng chứng nhân quả trung tâm đến từ ablation \texttt{REAL\_CONTEXT}--\texttt{ZERO\_CONTEXT}. Hai điều kiện sử dụng cùng checkpoint P3 và chỉ khác nhau ở lát đầu vào dành cho prepared context. Kết quả cho thấy thông tin chuẩn bị trước làm thay đổi hành vi COMMIT của policy đã huấn luyện. Event 131 minh họa sự thay đổi trực tiếp khi đoạn nguồn và bản dịch ứng viên vẫn giống nhau, còn event 132 cho thấy quyết định đó tạo ra hiệu ứng dây chuyền lên buffer và phân đoạn về sau. Tuy vậy, ảnh hưởng lên BLEU, chrF2, AL và LAAL thay đổi theo ngưỡng, nên \texttt{prepared-global-v0} chưa chứng minh được một cải thiện ổn định về chất lượng hoặc độ trễ. Trường hợp Sims 0.60 chỉ là một ví dụ mô tả giàu thông tin. Prepared context không đi trực tiếp vào EnViT5, và TEST chưa được đánh giá.
+Bằng chứng nhân quả trung tâm đến từ ablation \texttt{REAL\_CONTEXT}--\texttt{ZERO\_CONTEXT}. Hai điều kiện sử dụng cùng checkpoint P3 và chỉ khác nhau ở lát đầu vào dành cho prepared context. Kết quả cho thấy thông tin chuẩn bị trước làm thay đổi hành vi COMMIT của policy đã huấn luyện. Event 131 minh họa sự thay đổi trực tiếp khi đoạn nguồn và bản dịch ứng viên vẫn giống nhau, còn event 132 cho thấy quyết định đó tạo ra hiệu ứng dây chuyền lên buffer và phân đoạn về sau. Tuy vậy, ảnh hưởng lên BLEU, chrF2, AL và LAAL thay đổi theo ngưỡng, nên \texttt{prepared-global-v0} chưa chứng minh được một cải thiện ổn định về chất lượng hoặc độ trễ. Trường hợp Sims 0.60 chỉ là một ví dụ mô tả giàu thông tin. Prepared context không đi trực tiếp vào EnViT5. TEST được mở một lần sau khi thiết kế đã cố định; không có tuning sau TEST.
 
 \noindent\textbf{Từ khóa:} dịch máy đồng thời, dịch máy theo luồng, policy LISTEN/COMMIT, ngữ cảnh chuẩn bị trước, ablation có kiểm soát, dịch máy Anh--Việt.
 
@@ -175,7 +175,7 @@ Về dài hạn, TimelyMT hướng tới dịch cabin tự động Anh--Việt c
 
 Mục tiêu trực tiếp là xây dựng một khung dịch theo luồng trong đó policy chỉ sử dụng thông tin đã quan sát, kiểm tra ảnh hưởng của ngữ cảnh có sẵn trước bài nói và giải thích ảnh hưởng đó bằng trace theo từng quan sát.
 
-EnViT5 được giữ cố định; tham chiếu tiếng Việt chỉ phục vụ đánh giá. TEST chưa được sử dụng, nên mọi kết luận chỉ dựa trên TRAIN và DEV.
+EnViT5 được giữ cố định; tham chiếu tiếng Việt chỉ phục vụ đánh giá. TEST được mở một lần sau khi thiết kế đã cố định; không có tuning sau TEST. Bằng chứng có kiểm soát về prepared context vẫn chỉ đến từ DEV.
 
 \subsection{Dịch máy đồng thời và đánh đổi chất lượng--độ trễ}
 Các hướng prefix-to-prefix \citep{ma2019stacl} và monotonic infinite lookback attention \citep{arivazhagan2019monotonic} mô hình hóa quan hệ giữa đọc nguồn và sinh đích theo những cách khác nhau. TimelyMT không tái hiện các kiến trúc này mà kế thừa câu hỏi chung: hệ thống nên chờ bao nhiêu ngữ cảnh trước khi phát hành đầu ra?
@@ -220,7 +220,7 @@ Hai quy tắc cưỡng bức bảo đảm rollout kết thúc hợp lệ: \textt
 \subsection{Dữ liệu TRAIN/DEV/TEST}
 Việc phân chia được thực hiện ở cấp talk để các quan sát liên quan không vượt qua ranh giới thực nghiệm. Mọi tiền tố, giả thuyết, pseudo-label, context record và ví dụ policy đều kế thừa split gốc.
 
-TRAIN dùng để khớp policy và thống kê chuẩn hóa; DEV phục vụ lựa chọn biến thể, khảo sát ngưỡng, ablation và demo. TEST được giữ kín cho một lần đánh giá sau khi thiết kế ổn định; báo cáo không chứa kết quả hay lựa chọn nào dựa trên TEST.
+TRAIN dùng để khớp policy và thống kê chuẩn hóa; DEV phục vụ lựa chọn biến thể, khảo sát ngưỡng, ablation và demo. TEST được mở một lần sau khi thiết kế đã cố định; không có tuning sau TEST và không có mô hình, ngưỡng hay đặc trưng nào được thay đổi từ kết quả TEST.
 
 \subsection{Nguyên tắc nhân quả và kiểm soát rò rỉ}
 Policy chỉ sử dụng thông tin tồn tại tại thời điểm quyết định, không gồm nguồn tương lai, transcript hoàn chỉnh, alignment, tham chiếu hay TEST. Ràng buộc này bảo đảm LISTEN/COMMIT có thể được thực hiện trong một luồng trực tuyến giả định.
@@ -318,7 +318,7 @@ Bảng~\ref{tab:p3-training} tóm tắt metadata huấn luyện; \texttt{pos\_we
 
 Checkpoint là \path{checkpoints/policy_p3_global/P3_GLOBAL.pt}, với SHA-256 \path{ccf829fdb7ab521cc12c299583efa7222c965440b1257ddfb35e03ddd7bcadb9}.
 
-\section{KẾT QUẢ THỰC NGHIỆM TRÊN DEV}
+\section{KẾT QUẢ THỰC NGHIỆM}
 
 \subsection{Metrics}
 BLEU và chrF2 đánh giá chất lượng, còn AL và LAAL mô tả độ trễ cấp token. Các bảng trình bày nguyên trạng cả bốn độ đo từ artifact chính thức, không tính lại.
@@ -369,6 +369,35 @@ Các chiều thay đổi hỗn hợp: chrF2 có thể tăng khi BLEU giảm, cò
 
 \subsection{Vì sao P3--P2 không phải so sánh nhân quả}
 P3 được huấn luyện riêng và có thêm 384 chiều đầu vào, nên chênh lệch có thể đến từ tham số, kiến trúc hoặc tương tác giữa chúng. Hai policy còn khác nhau trên Jeff và Luis dù vector context bằng không. Do đó P3--P2 chỉ mang tính mô tả; Chương 6 dùng cùng checkpoint và chỉ can thiệp lát context để trả lời câu hỏi nhân quả.
+
+\subsection{Đánh giá cuối cùng trên TEST}
+
+\begin{table}[!htbp]
+  \centering
+  \caption{Kết quả đánh giá cuối cùng trên TEST sau khi thiết kế đã cố định.}
+  \label{tab:final-test}
+  \scriptsize
+  \setlength{\tabcolsep}{3.5pt}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{@{}lrrrrrr@{}}
+    \toprule
+    \textbf{Configuration} & \textbf{Threshold} & \textbf{BLEU} & \textbf{chrF2} & \textbf{AL} & \textbf{LAAL} & \textbf{COMMIT} \\
+    \midrule
+    \texttt{learned\_P1\_0.60} & 0.60 & 23.3764 & 56.2944 & 1.2208 & 41.2577 & 329 \\
+    \texttt{v2\_P2\_0.50} & 0.50 & 21.0542 & 55.3374 & -0.0696 & 40.1514 & 465 \\
+    \texttt{p3\_global\_zeroctx\_0.30} & 0.30 & 19.2575 & 55.3805 & 10.5463 & 13.5856 & 624 \\
+    \texttt{p3\_global\_zeroctx\_0.40} & 0.40 & 19.2526 & 55.4658 & 7.3587 & 16.9839 & 603 \\
+    \texttt{p3\_global\_zeroctx\_0.50} & 0.50 & 21.9787 & 56.7129 & 13.6879 & 20.3813 & 514 \\
+    \texttt{p3\_global\_zeroctx\_0.60} & 0.60 & 20.5661 & 55.1103 & 18.0144 & 55.3536 & 453 \\
+    \texttt{p3\_global\_zeroctx\_0.70} & 0.70 & 22.7885 & 55.6135 & 25.0923 & 56.6111 & 306 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}
+
+TEST được mở đúng một lần sau khi thiết kế TRAIN/DEV đã cố định, và không có tuning sau TEST. Chất lượng TEST của mọi cấu hình, theo cả BLEU và chrF2, đều thấp hơn DEV; trên TEST, V1 có chất lượng cao hơn V2.
+
+P3 trên TEST chỉ dùng \texttt{ZERO\_CONTEXT} và vẫn cho thấy đánh đổi chất lượng, độ trễ và số COMMIT phụ thuộc ngưỡng; không ngưỡng TEST nào được chọn. Vì TEST không dùng prepared context, kết quả này không ủng hộ cũng không bác bỏ lợi ích của prepared context; bằng chứng có kiểm soát về ảnh hưởng của prepared context vẫn là so sánh REAL/ZERO trên DEV.
 
 \section{CONTROLLED ABLATION VÀ PHÂN TÍCH HÀNH VI}
 
@@ -542,10 +571,10 @@ Hình~\ref{fig:interactive-demo} chụp event 131, nơi cùng đoạn nguồn v�
 Độ đo DEV mô tả kết quả đã lưu, còn thống kê trace mô tả hành vi trong artifact. Diễn giải nhân quả chỉ áp dụng cho can thiệp REAL/ZERO cùng checkpoint và ở cấp quyết định policy. Nó không khẳng định thay đổi ngữ nghĩa bản dịch hay hiệu năng của một hệ thống speech-to-speech hoàn chỉnh.
 
 \subsection{Hạn chế}
-Chỉ một trong ba talk DEV có context hợp lệ và corpus chỉ gồm tám nguồn, nên phạm vi khái quát còn hẹp. \texttt{prepared-global-v0} là trung bình global tĩnh, không truy hồi theo quan sát, còn P3 chưa được tối ưu riêng để sử dụng context ổn định. Hiệu ứng nhạy ngưỡng; demo chỉ phát lại artifact với thời gian mô phỏng, không có audio, ASR, TTS hay thực thi trực tuyến. TEST chưa được đánh giá.
+Chỉ một trong ba talk DEV có context hợp lệ và corpus chỉ gồm tám nguồn, nên phạm vi khái quát còn hẹp. \texttt{prepared-global-v0} là trung bình global tĩnh, không truy hồi theo quan sát, còn P3 chưa được tối ưu riêng để sử dụng context ổn định. Hiệu ứng nhạy ngưỡng; demo chỉ phát lại artifact với thời gian mô phỏng, không có audio, ASR, TTS hay thực thi trực tuyến. TEST được mở một lần sau khi thiết kế đã cố định; không có tuning sau TEST. P3 trên TEST chỉ dùng \texttt{ZERO\_CONTEXT}, nên TEST không đánh giá lợi ích của prepared context.
 
 \subsection{Hướng phát triển}
-Hướng tiếp theo là context cục bộ hoặc truy hồi theo quan sát, kết hợp mục tiêu huấn luyện khuyến khích sử dụng context phù hợp. Corpus cần thêm nguồn có provenance và nhiều talk có context để đánh giá qua chủ đề, ngưỡng. TEST chỉ nên được dùng một lần sau khi biểu diễn, huấn luyện và protocol đã cố định.
+Hướng tiếp theo là context cục bộ hoặc truy hồi theo quan sát, kết hợp mục tiêu huấn luyện khuyến khích sử dụng context phù hợp. Corpus cần thêm nguồn có provenance và nhiều talk có context để đánh giá qua chủ đề, ngưỡng. Các hướng này không được điều chỉnh từ kết quả TEST đã mở.
 
 \section{KẾT LUẬN}
 
@@ -553,7 +582,7 @@ TimelyMT nghiên cứu thời điểm phát hành trong dịch máy theo luồng
 
 Ablation \texttt{REAL\_CONTEXT}--\texttt{ZERO\_CONTEXT} cùng checkpoint cho thấy prepared context gây thay đổi hành vi COMMIT của P3. Kiểm soát context rỗng và trace hỗ trợ kết luận này; context không đi trực tiếp vào EnViT5, còn khác biệt bản dịch về sau phát sinh từ biên nguồn đã thay đổi.
 
-Tuy nhiên, \texttt{prepared-global-v0} chưa cải thiện chất lượng hoặc độ trễ ổn định qua ngưỡng; Sims 0.60 chỉ mang tính mô tả và TEST chưa được đánh giá. Kết quả định hướng cách chọn context và huấn luyện policy tốt hơn, không chứng minh một hệ thống dịch nói hoàn chỉnh hay ưu thế tổng quát.
+Tuy nhiên, \texttt{prepared-global-v0} chưa cải thiện chất lượng hoặc độ trễ ổn định qua ngưỡng; Sims 0.60 chỉ mang tính mô tả. TEST được đánh giá đúng một lần sau khi thiết kế đã cố định và không có tuning sau đó; P3 TEST chỉ dùng \texttt{ZERO\_CONTEXT}, nên không kiểm định lợi ích của prepared context. Kết quả định hướng cách chọn context và huấn luyện policy tốt hơn, không chứng minh một hệ thống dịch nói hoàn chỉnh hay ưu thế tổng quát.
 
 \FloatBarrier
 \Needspace{8\baselineskip}
