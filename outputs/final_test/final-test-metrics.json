@@ -1,0 +1,212 @@
+{
+  "learned_P1_0.60": {
+    "BLEU": 23.376354336186665,
+    "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+    "chrF2": 56.294391620085094,
+    "chrF2_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+    "commits_per_100_source_tokens": 12.896903175225402,
+    "forced_commit_rate": 0.00303951367781155,
+    "mean_commit_observation_position": 662.0395136778116,
+    "mean_first_commit_simulated_source_clock_latency_ms": 8625.5,
+    "mean_first_commit_source_tokens": 21.5,
+    "mean_simulated_source_clock_duration_ms": 2712.2705167173253,
+    "mean_source_tokens_per_unit": 7.753799392097265,
+    "median_source_tokens_per_unit": 6,
+    "number_of_commits": 329.0,
+    "per_talk": [
+      {
+        "BLEU": 29.222590159826233,
+        "chrF2": 60.30109098088317,
+        "talk_id": "ted-joy-buolamwini-algorithmic-bias"
+      },
+      {
+        "BLEU": 17.174449721685622,
+        "chrF2": 52.53976241332662,
+        "talk_id": "ted-margaret-mitchell-ai-values"
+      }
+    ],
+    "sacrebleu_version": "2.6.0",
+    "token_level_average_lagging": 1.2207753177394038,
+    "token_level_length_adaptive_average_lagging": 41.2576850720925
+  },
+  "p3_global_zeroctx_0.30": {
+    "BLEU": 19.257518266436104,
+    "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+    "chrF2": 55.38048252006346,
+    "chrF2_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+    "commits_per_100_source_tokens": 24.460995687965504,
+    "forced_commit_rate": 0.003205128205128205,
+    "mean_commit_observation_position": 645.1891025641025,
+    "mean_first_commit_simulated_source_clock_latency_ms": 1138.5,
+    "mean_first_commit_source_tokens": 4,
+    "mean_simulated_source_clock_duration_ms": 1242.514423076923,
+    "mean_source_tokens_per_unit": 4.0881410256410255,
+    "median_source_tokens_per_unit": 4.0,
+    "number_of_commits": 624.0,
+    "per_talk": [
+      {
+        "BLEU": 23.808926574895615,
+        "chrF2": 58.68108080694701,
+        "talk_id": "ted-joy-buolamwini-algorithmic-bias"
+      },
+      {
+        "BLEU": 14.385923484157653,
+        "chrF2": 52.311690678136515,
+        "talk_id": "ted-margaret-mitchell-ai-values"
+      }
+    ],
+    "sacrebleu_version": "2.6.0",
+    "token_level_average_lagging": 10.54626662623664,
+    "token_level_length_adaptive_average_lagging": 13.585579745235828
+  },
+  "p3_global_zeroctx_0.40": {
+    "BLEU": 19.25261578782679,
+    "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+    "chrF2": 55.46577761621475,
+    "chrF2_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+    "commits_per_100_source_tokens": 23.63778910231282,
+    "forced_commit_rate": 0.003316749585406302,
+    "mean_commit_observation_position": 641.8258706467661,
+    "mean_first_commit_simulated_source_clock_latency_ms": 1138.5,
+    "mean_first_commit_source_tokens": 4,
+    "mean_simulated_source_clock_duration_ms": 1309.9402985074628,
+    "mean_source_tokens_per_unit": 4.230514096185738,
+    "median_source_tokens_per_unit": 4,
+    "number_of_commits": 603.0,
+    "per_talk": [
+      {
+        "BLEU": 22.81978099528739,
+        "chrF2": 57.93131823531961,
+        "talk_id": "ted-joy-buolamwini-algorithmic-bias"
+      },
+      {
+        "BLEU": 15.508109105297386,
+        "chrF2": 53.18982871814891,
+        "talk_id": "ted-margaret-mitchell-ai-values"
+      }
+    ],
+    "sacrebleu_version": "2.6.0",
+    "token_level_average_lagging": 7.358675540820599,
+    "token_level_length_adaptive_average_lagging": 16.983867156218107
+  },
+  "p3_global_zeroctx_0.50": {
+    "BLEU": 21.97871057323595,
+    "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+    "chrF2": 56.71289328215403,
+    "chrF2_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+    "commits_per_100_source_tokens": 20.148961191689533,
+    "forced_commit_rate": 0.011673151750972763,
+    "mean_commit_observation_position": 636.5836575875486,
+    "mean_first_commit_simulated_source_clock_latency_ms": 1138.5,
+    "mean_first_commit_source_tokens": 4,
+    "mean_simulated_source_clock_duration_ms": 1577.5428015564203,
+    "mean_source_tokens_per_unit": 4.963035019455253,
+    "median_source_tokens_per_unit": 4.0,
+    "number_of_commits": 514.0,
+    "per_talk": [
+      {
+        "BLEU": 27.071058322831313,
+        "chrF2": 59.6783574602458,
+        "talk_id": "ted-joy-buolamwini-algorithmic-bias"
+      },
+      {
+        "BLEU": 16.52020989168189,
+        "chrF2": 53.961248711468215,
+        "talk_id": "ted-margaret-mitchell-ai-values"
+      }
+    ],
+    "sacrebleu_version": "2.6.0",
+    "token_level_average_lagging": 13.687901794104185,
+    "token_level_length_adaptive_average_lagging": 20.381297272857996
+  },
+  "p3_global_zeroctx_0.60": {
+    "BLEU": 20.56613691841833,
+    "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+    "chrF2": 55.11031938011969,
+    "chrF2_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+    "commits_per_100_source_tokens": 17.757742061936497,
+    "forced_commit_rate": 0.006622516556291391,
+    "mean_commit_observation_position": 641.8962472406181,
+    "mean_first_commit_simulated_source_clock_latency_ms": 1138.5,
+    "mean_first_commit_source_tokens": 4,
+    "mean_simulated_source_clock_duration_ms": 1855.7991169977925,
+    "mean_source_tokens_per_unit": 5.631346578366446,
+    "median_source_tokens_per_unit": 4,
+    "number_of_commits": 453.0,
+    "per_talk": [
+      {
+        "BLEU": 25.100275127041254,
+        "chrF2": 58.26321956641802,
+        "talk_id": "ted-joy-buolamwini-algorithmic-bias"
+      },
+      {
+        "BLEU": 15.652385274955328,
+        "chrF2": 52.177265326823765,
+        "talk_id": "ted-margaret-mitchell-ai-values"
+      }
+    ],
+    "sacrebleu_version": "2.6.0",
+    "token_level_average_lagging": 18.014449632973808,
+    "token_level_length_adaptive_average_lagging": 55.35361056996785
+  },
+  "p3_global_zeroctx_0.70": {
+    "BLEU": 22.78854928437084,
+    "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+    "chrF2": 55.61345226883934,
+    "chrF2_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+    "commits_per_100_source_tokens": 11.995295962367699,
+    "forced_commit_rate": 0.0784313725490196,
+    "mean_commit_observation_position": 624.5294117647059,
+    "mean_first_commit_simulated_source_clock_latency_ms": 1138.5,
+    "mean_first_commit_source_tokens": 4,
+    "mean_simulated_source_clock_duration_ms": 2915.6928104575163,
+    "mean_source_tokens_per_unit": 8.336601307189543,
+    "median_source_tokens_per_unit": 4.0,
+    "number_of_commits": 306.0,
+    "per_talk": [
+      {
+        "BLEU": 27.851459856026853,
+        "chrF2": 58.23129485686306,
+        "talk_id": "ted-joy-buolamwini-algorithmic-bias"
+      },
+      {
+        "BLEU": 17.224237164103968,
+        "chrF2": 53.200041966531096,
+        "talk_id": "ted-margaret-mitchell-ai-values"
+      }
+    ],
+    "sacrebleu_version": "2.6.0",
+    "token_level_average_lagging": 25.09232698022321,
+    "token_level_length_adaptive_average_lagging": 56.611082718917146
+  },
+  "v2_P2_0.50": {
+    "BLEU": 21.054193064771567,
+    "BLEU_signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+    "chrF2": 55.33741118667156,
+    "chrF2_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+    "commits_per_100_source_tokens": 18.228145825166603,
+    "forced_commit_rate": 0.002150537634408602,
+    "mean_commit_observation_position": 645.4021505376344,
+    "mean_first_commit_simulated_source_clock_latency_ms": 2296.5,
+    "mean_first_commit_source_tokens": 7.5,
+    "mean_simulated_source_clock_duration_ms": 1800.3204301075268,
+    "mean_source_tokens_per_unit": 5.486021505376344,
+    "median_source_tokens_per_unit": 4,
+    "number_of_commits": 465.0,
+    "per_talk": [
+      {
+        "BLEU": 25.993167061727505,
+        "chrF2": 58.811775248762686,
+        "talk_id": "ted-joy-buolamwini-algorithmic-bias"
+      },
+      {
+        "BLEU": 15.802114092133229,
+        "chrF2": 52.088563185063045,
+        "talk_id": "ted-margaret-mitchell-ai-values"
+      }
+    ],
+    "sacrebleu_version": "2.6.0",
+    "token_level_average_lagging": -0.06955011377685358,
+    "token_level_length_adaptive_average_lagging": 40.15136973326199
+  }
+}

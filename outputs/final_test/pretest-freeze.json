@@ -1,0 +1,106 @@
+{
+  "authorization": "first and final one-shot held-out TEST evaluation",
+  "dataset": {
+    "dataset_checksum": "6730be08eff2ea874aad693e195ff05488a9b2222902f23e6e83c88e3afb2cce",
+    "identifier": "TimelyMT Streaming Dataset v1",
+    "snapshot_version": "1.0.0",
+    "split_checksum": "aabc06af1836e5d66a69d3b0305f6044892cbe0d3e45883ee7aeed53edd3ddc4",
+    "split_manifest": "data/splits/experimental.json",
+    "test_talk_ids_from_permitted_metadata": [
+      "ted-joy-buolamwini-algorithmic-bias",
+      "ted-margaret-mitchell-ai-values"
+    ]
+  },
+  "execution_order": [
+    "V1 learned_P1_0.60",
+    "V2 v2_P2_0.50",
+    "P3_GLOBAL ZERO thresholds 0.30, 0.40, 0.50, 0.60, 0.70",
+    "load references and compute aggregate metrics",
+    "write immutable summary and provenance",
+    "stop"
+  ],
+  "git": {
+    "commit": "6fc3aa435126d30eda0bb33cb5b15cf432c594ff",
+    "dirty": false,
+    "status_porcelain": ""
+  },
+  "metrics": {
+    "aggregation": "corpus BLEU/chrF2; target-token-weighted talk AL/LAAL",
+    "bleu": "SacreBLEU corpus BLEU; mixed case; tok=13a; smooth=exp",
+    "chrf2": "SacreBLEU CHRF(beta=2)",
+    "implementation": "src/timelymt/research/evaluation.py",
+    "implementation_sha256": "c6135c640800603b83e4ff053b5f447b3f8c6078d96239e6f734a8c97ab27406",
+    "latency": "standard token-level AL and LAAL over lexical source-token positions",
+    "tokenization": "translated_text.split() and reference whitespace split"
+  },
+  "models": {
+    "minilm": {
+      "dimension": 384,
+      "dtype": "float32",
+      "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "pooling": "attention-mask-mean-l2-v1",
+      "revision": "e62509716f15c5fd03a6fd3156a4bc5e43f83f26"
+    },
+    "p3": {
+      "checkpoint": "checkpoints/policy_p3_global/P3_GLOBAL.pt",
+      "checkpoint_sha256": "ccf829fdb7ab521cc12c299583efa7222c965440b1257ddfb35e03ddd7bcadb9",
+      "prepared_context_mode": "zero",
+      "prepared_input": "exact numpy float32 zeros(384)",
+      "variant": "P3_GLOBAL"
+    },
+    "translator": {
+      "config_fingerprint": "a54ba8356642a7a696234453b3fc0a29d2dcf85db5299677c492ae967281bd1c",
+      "config_path": "configs/translator/envit5.json",
+      "generation": {"do_sample": false, "max_new_tokens": 256, "num_beams": 1},
+      "model_id": "VietAI/envit5-translation",
+      "revision": "840bc88104d5a4277af740eaedb024df8c3093e7"
+    },
+    "v1": {
+      "checkpoint": "docs/archive/timelymt-checkpoint/checkpoints/policy/P1.joblib",
+      "checkpoint_sha256": "6e1d273bf2008178265ade654729bb9710e7acfa67b8caa70a8a6114cf8508c4",
+      "selected_configuration": "learned_P1_0.60"
+    },
+    "v2": {
+      "checkpoint": "checkpoints/policy_v2/V2P2.pt",
+      "checkpoint_sha256": "4d531caf165175a4c8b5ef00b54ad09ef7effb3b5f453f0d3f28e1480263fbe7",
+      "selected_configuration": "v2_P2_0.50"
+    }
+  },
+  "p3_threshold_decision": {
+    "decision": "evaluate_full_frozen_grid",
+    "explicit_preexisting_selected_threshold_found": false,
+    "grid": [0.3, 0.4, 0.5, 0.6, 0.7],
+    "provenance": [
+      "reports/p3_global_full_dev_analysis.md: no new winner frozen",
+      "docs/demo-ui-spec.md: Sims 0.60 is descriptive, not best"
+    ],
+    "selection_from_test_permitted": false
+  },
+  "prepared_context": {
+    "manifest": "data/prepared_context/manifest.json",
+    "manifest_fingerprint": "d9b910afd1941873826065bcf6e343be28cd850d339b356457daadbde60ad2eb",
+    "manifest_has_test_pool": false,
+    "test_corpus_creation_permitted": false
+  },
+  "rollout": {
+    "forced_commit": ["max_length at 48 source tokens", "talk_end final candidate/residual flush"],
+    "implementation": "src/timelymt/research/streaming.py::learned_rollout",
+    "implementation_sha256": "b034a73cdf5ef3a5944597320feb96d90fb7ed36d609bc07d0b4bcf3d93c1ed6",
+    "maximum_source_tokens_per_unit": 48,
+    "minimum_source_tokens_before_policy": 4,
+    "normal_commit_rule": "p_commit >= threshold",
+    "source_buffer": "contiguous uncommitted lexical source tokens; reset after each commit"
+  },
+  "runtime": {
+    "cuda_available": true,
+    "cuda_device": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+    "joblib": "1.5.3",
+    "numpy": "2.2.6",
+    "python": "3.10.20",
+    "sacrebleu": "2.6.0",
+    "scikit_learn": "1.7.2",
+    "torch": "2.12.0+cu126",
+    "transformers": "4.57.6"
+  },
+  "timestamp_utc": "2026-08-19T13:29:04.1452304Z"
+}

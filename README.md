@@ -1,125 +1,188 @@
 # TimelyMT
 
-TimelyMT nghiên cứu dịch tăng dần Anh-Việt cho các bài nói kỹ thuật. Hệ thống nhận
-luồng tiếng Anh theo thời gian và liên tục cập nhật giả thuyết dịch tiếng Việt.
+## 1. Overview
 
-Vấn đề trung tâm là quyết định khi nào hệ thống nên **LISTEN** để chờ thêm thông tin
-nguồn, hoặc **COMMIT** để chốt và công bố bản dịch hiện tại. EnViT5 được giữ cố định;
-nghiên cứu tập trung vào policy LISTEN / COMMIT thay vì huấn luyện lại mô hình dịch.
-
-## Mục tiêu
-
-Mục tiêu là đánh giá liệu causal learned commit policy có đạt cân bằng chất lượng-độ
-trễ tốt hơn các policy cố định và thích nghi dựa trên nghiên cứu trước hay không. Phạm
-vi so sánh gồm Fixed baselines, Local Agreement, Meaningful Unit adaptation của
-Zhang et al. 2020 và các biến thể TimelyMT P0/P1/P2.
-
-## Kiến trúc
+TimelyMT nghiên cứu khi nào hệ thống dịch streaming Anh–Việt nên phát hành một
+đơn vị dịch đã được chốt và không thể chỉnh sửa lại. Mục tiêu dài hạn là dịch
+cabin tự động Anh–Việt với độ trễ thấp; phạm vi hiện tại là policy trên luồng
+token quyết định **WAIT**, **LISTEN** hoặc **COMMIT**. EnViT5 được giữ cố định
+và chỉ nhận nguồn; prepared context chỉ tác động đến policy, không đi trực tiếp
+vào EnViT5. Dự án hiện chưa phải hệ thống speech-to-speech đầu cuối.
 
 ```text
-Dataset
-  ↓
-Causal English stream
-  ↓
-Frozen EnViT5
-  ↓
-Translation hypotheses
-  ↓
-LISTEN / COMMIT policy
-  ↓
-Committed Vietnamese translation
-  ↓
-Evaluation
+source tokens
+    -> current source buffer
+    -> frozen EnViT5
+    -> candidate translation
+    -> timing policy
+    -> WAIT / LISTEN / COMMIT
 ```
 
-Tham chiếu tiếng Việt chỉ được dùng cho đánh giá, không được đưa vào đầu vào causal
-của policy.
+## 2. Repository structure
 
-## Cài đặt
+| Path | Vai trò |
+|---|---|
+| `src/timelymt/research/` | V1/V2/P3 policy, rollout, evaluation và research CLI |
+| `src/timelymt/data/` | Chuẩn bị, kiểm tra và nạp dataset streaming |
+| `scripts/` | Bootstrap V2, báo cáo chỉ đọc và kiểm tra trace |
+| `configs/` | Cấu hình dataset, frozen EnViT5 và thí nghiệm |
+| `data/` | Dataset v1, split, V1 supervision và prepared-context pools |
+| `checkpoints/` | Checkpoint V2 và frozen `P3_GLOBAL` được cung cấp sẵn |
+| `outputs/` | DEV predictions, metrics, cache và demo traces |
+| `demo/` | Static artifact-replay viewer |
+| `reports/` | Báo cáo và hình đã sinh; không phải hướng dẫn chạy |
+| `tests/` | Kiểm thử offline |
+| `docs/` | Đặc tả, runbook và frozen V1 archive |
 
-Dự án yêu cầu Python từ 3.10; Python 3.10 là môi trường đã được dự án xác minh.
+## 3. Running the full reproduction pipeline
+
+Chạy từ repository root bằng Windows PowerShell. Workflow thông thường sử dụng
+các artifact đã được freeze; không cần huấn luyện lại V1, V2 hoặc P3. Các bước
+rollout và inference sẽ tải model nếu cache chưa có; GPU CUDA được khuyến nghị
+để giảm thời gian chạy.
+
+### Environment setup
+
+Purpose:
+Cài package Python 3.10+ và các dependency khai báo trong repository.
+
+Command:
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-pip install -e .
+python -m pip install --editable .
 ```
 
-GPU/CUDA được khuyến nghị khi suy luận EnViT5, nhưng không bắt buộc cho mọi phần của
-dự án.
+Output:
+`.venv/` và editable package `timelymt`.
 
-## Kiểm tra nhanh
+### Frozen dataset validation
 
-Kiểm tra package sau khi cài đặt:
+Purpose:
+Kiểm tra dataset streaming hiện có mà không tải hoặc dựng lại dữ liệu.
+
+Command:
 
 ```powershell
-python -c "import timelymt; print('timelymt import OK')"
+python -m timelymt.data.pipeline.cli validate
 ```
 
-Chạy toàn bộ kiểm thử offline:
+Output:
+Kết quả validation trên stdout cho `data/manifests/streaming-dataset.json`.
+
+### V1 frozen supervision import
+
+Purpose:
+Khôi phục và xác minh V1 baseline/supervision đã freeze thay vì tái tạo pseudo labels hoặc huấn luyện lại V1.
+
+Command:
 
 ```powershell
-python -m unittest discover -s tests -p "test_*.py" -v
+python -m timelymt.research.cli import-v1 --source docs/archive/timelymt-checkpoint
 ```
 
-Chạy translator smoke CLI; lần đầu có thể tải model nếu cache cục bộ chưa có:
+Output:
+`data/policy/pseudo_labels/{train,dev}/` và `outputs/experiments/policy-v2/v1-source/`.
+
+### V2 semantic policy
+
+Purpose:
+Chạy coordinator DEV resume-aware cho frozen MiniLM + MLP P0/P1/P2; checkpoint hợp lệ được cung cấp sẵn sẽ được bỏ qua.
+
+Command:
 
 ```powershell
-python -m timelymt.translator.cli --text "Artificial intelligence is changing the world." --device auto
+python scripts/policy_v2_bootstrap.py
 ```
 
-## Cấu trúc repository
+Output:
+`checkpoints/policy_v2/` và `outputs/experiments/policy-v2/`.
 
-```text
-TimelyMT/
-├── configs/          # cấu hình dữ liệu, translator và thí nghiệm
-├── data/             # dataset, manifest, split và artifact nghiên cứu
-├── schemas/          # schema dữ liệu JSON
-├── src/timelymt/
-│   ├── data/         # pipeline chuẩn bị dataset
-│   ├── translator/   # wrapper frozen EnViT5
-│   └── research/     # baseline, policy và evaluation
-├── tests/            # kiểm thử offline
-├── notebooks/        # Kaggle runner
-├── checkpoints/      # checkpoint policy sinh khi chạy
-├── outputs/          # output và cache sinh khi chạy
-├── pyproject.toml    # package và dependency Python
-└── README.md         # hướng dẫn ngắn của dự án
+### P3_GLOBAL checkpoint validation
+
+Purpose:
+Xác minh prepared-context pools và xem metadata của frozen P3 checkpoint được cung cấp sẵn; không chạy `train-p3` trong workflow khuyến nghị.
+
+Command:
+
+```powershell
+python -m timelymt.research.cli validate-p3
+python -m timelymt.research.cli inspect-p3-checkpoint
 ```
 
-## Chạy thí nghiệm trên Kaggle
+Output:
+Kết quả validation của `data/prepared_context/manifest.json` và metadata của
+`checkpoints/policy_p3_global/P3_GLOBAL.pt` trên stdout.
 
-Workflow hiện có nằm tại `notebooks/kaggle-research-mvp.ipynb`:
+### P3_GLOBAL DEV rollout and evaluation
 
-1. Upload repository này dưới dạng Kaggle Dataset.
-2. Tạo hoặc mở một Kaggle notebook.
-3. Thêm Dataset chứa repository vào input.
-4. Bật GPU và Internet.
-5. Mở và chạy `notebooks/kaggle-research-mvp.ipynb`.
-6. Chạy các cell tuần tự.
-7. Dừng tại cell `STOP BEFORE TEST`.
-8. Tải archive artifact nghiên cứu đã được notebook export.
+Purpose:
+Chạy grid REAL_CONTEXT trên ba DEV talks rồi tính quality/latency metrics.
 
-Có thể giảm `INFERENCE_BATCH_SIZE` xuống 2 hoặc 1 nếu bộ nhớ GPU không đủ.
+Command:
 
-## Demo dự kiến
-
-Demo chưa được triển khai. Giao diện dự kiến trình bày luồng xử lý:
-
-```text
-English stream
-→ current translation hypothesis
-→ LISTEN / COMMIT decision
-→ committed Vietnamese subtitle
+```powershell
+python -m timelymt.research.cli rollout-p3 --split dev --thresholds 0.30 0.40 0.50 0.60 0.70 --batch-size 1
+python -m timelymt.research.cli evaluate-p3 --split dev
 ```
 
-Thông tin có thể hiển thị gồm văn bản tiếng Anh đang đến, giả thuyết tiếng Việt hiện
-tại, quyết định policy, `P(COMMIT)` khi áp dụng và bản dịch đã được chốt.
+Output:
+`outputs/experiments/policy-p3-global/predictions/dev/p3_global_*/` và `outputs/experiments/policy-p3-global/metrics/dev/all.json`.
 
-## Trạng thái
+### REAL_CONTEXT vs ZERO_CONTEXT ablation
 
-- Dataset v1 và frozen translator đã có trong repository.
-- Research scaffold, Fixed baselines, Local Agreement, Meaningful Unit và P0/P1/P2 đã có.
-- Kaggle notebook đã sẵn sàng để chạy workflow đầy đủ đến trước TEST.
-- Full Kaggle experiment còn chờ chạy; held-out TEST chưa được thực thi.
+Purpose:
+Giữ nguyên checkpoint P3 và chỉ thay prepared-global policy slice bằng vector 0
+để tạo controlled DEV ablation. Prepared context có thể làm thay đổi hành vi
+COMMIT của P3, nhưng `prepared-global-v0` chưa cho thấy cải thiện ổn định về
+chất lượng hoặc độ trễ qua các ngưỡng.
+
+Command:
+
+```powershell
+python -m timelymt.research.cli rollout-p3 --split dev --thresholds 0.30 0.40 0.50 0.60 0.70 --batch-size 1 --prepared-context-mode zero
+python -m timelymt.research.cli evaluate-p3 --split dev --strategies p3_global_zeroctx_0.30 p3_global_zeroctx_0.40 p3_global_zeroctx_0.50 p3_global_zeroctx_0.60 p3_global_zeroctx_0.70
+python scripts/report_p3_prepared_context_ablation.py
+```
+
+Output:
+`outputs/experiments/policy-p3-global/metrics/dev/all-zeroctx.json` và `reports/p3_prepared_context_ablation.{md,json}`.
+
+### Stored trace artifacts
+
+Purpose:
+Kiểm tra hai trace DEV Sims 0.60 được cung cấp sẵn; workflow khuyến nghị không chạy lại model inference để tái tạo chúng.
+
+Command:
+
+```powershell
+python scripts/validate_demo_trace.py outputs/demo_traces/sims-real-0.60.json
+python scripts/validate_demo_trace.py outputs/demo_traces/sims-zero-0.60.json
+```
+
+Output:
+Các artifact đã xác minh tại `outputs/demo_traces/sims-{real,zero}-0.60.json`; bookmarks nằm tại `outputs/demo_traces/sims-0.60-bookmarks.json`.
+
+TEST chỉ được mở đúng một lần sau khi thiết kế nghiên cứu đã được cố định và
+không có tuning nào được thực hiện sau đó. TEST không thuộc workflow tái lập
+thông thường và không phải bước để người dùng chạy lặp lại.
+
+## 4. Demo
+
+Demo phát lại các DEV trace đã lưu cho ví dụ Sims 0.60 và hiển thị source stream,
+candidate translation, `p(COMMIT)`, quyết định của policy cùng bản dịch tiếng
+Việt đã COMMIT.
+
+Phân kỳ trực tiếp bắt đầu tại Event 131 và làm hai buffer khác nhau từ Event 132
+trở đi. Demo không chạy training, rollout hay model inference.
+
+Từ repository root:
+
+```powershell
+python -m http.server 8000
+```
+
+Mở [http://localhost:8000/demo/](http://localhost:8000/demo/). Dừng server bằng
+`Ctrl+C` trong terminal đang chạy lệnh.
